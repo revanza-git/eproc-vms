@@ -46,14 +46,10 @@
 			<?php } ?>
 			</tbody>
 		</table>
-	<br>
-
+		
 	</div>
 
-	<?php 
-		$admin = $this->session->userdata('admin');
-		if($admin['id_role']==1 || $admin['id_role']==10){
-		?>
+		<?php if($this->session->userdata('admin')['id_role']==1){?>
 <div class="buttonRegBox clearfix">
 	<input type="submit" value="Simpan" class="btnBlue" name="simpan">
 </div>

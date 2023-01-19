@@ -55,12 +55,9 @@
 						<td><?php echo default_date($value['issue_date']);?></td>
 
 						<td><?php echo $value['address'];?></td>
-						<?php if ($value['situ_file'] != '') { ?>
-							<td><a href="<?php echo base_url('lampiran/situ_file/'.$value['situ_file']);?>" target="_blank"><i class="fa fa-download"></i></a></td>
-						<?php } else {?>
-							<td>-</td>
-						<?php } ?>
-						<td><?php if($value['file_extension_situ']!=''){ ?><a href="<?php echo base_url('lampiran/file_extension_situ/'.$value['file_extension_situ']);?>" target="_blank"><i class="fa fa-download"></i></a><?php } ?></td>
+
+						<td><a href="<?php echo BASE_LINK.('lampiran/situ_file/'.$value['situ_file']);?>" target="_blank"><i class="fa fa-download"></i></a></td>
+						<td><?php if($value['file_extension_situ']!=''){ ?><a href="<?php echo BASE_LINK.('lampiran/file_extension_situ/'.$value['file_extension_situ']);?>" target="_blank"><i class="fa fa-download"></i></a><?php } ?></td>
 
 						<td><?php echo ($value['expire_date']=='lifetime')?'Seumur Hidup': ((strtotime($value['expire_date']) > 0) ? default_date($value['expire_date']) : "-");?></td>
 

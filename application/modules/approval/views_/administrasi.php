@@ -37,7 +37,7 @@
 			<tr class="input-form">
 				<td><label>Lampiran</label></td>
 				<td>
-					<a href="<?php echo base_url('lampiran/npwp_file/'.$npwp_file)?>"><?php echo $npwp_file;?></a>
+					<a href="<?php echo BASE_LINK.('lampiran/npwp_file/'.$npwp_file)?>"><?php echo $npwp_file;?></a>
 				</td>
 			</tr>
 			<tr class="input-form">
@@ -55,7 +55,7 @@
 			<tr class="input-form">
 				<td><label>Lampiran</label></td>
 				<td>
-					<a href="<?php echo base_url('lampiran/nppkp_file/'.$nppkp_file)?>"><?php echo $nppkp_file;?></a>
+					<a href="<?php echo BASE_LINK.('lampiran/nppkp_file/'.$nppkp_file)?>"><?php echo $nppkp_file;?></a>
 				</td>
 			</tr>
 			<tr class="input-form">

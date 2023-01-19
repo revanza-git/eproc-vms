@@ -23,10 +23,12 @@ class Note_model extends CI_Model{
 						WHERE
 								a.id_vendor = ?
 							AND a.is_active = ?
+							AND (a.value IS NOT NULL OR a.value != '')
 					";
 		$result = $this->db->query($query,array($id_vendor,1));
 		return $result->result_array();
 	}
+
 	function close($id){
 		return $this->db
 			->where('id',$id)

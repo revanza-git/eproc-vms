@@ -32,7 +32,7 @@
 						<td><?php echo $value['position'];?></td>
 						<td><?php echo $value['position_expire'];?></td>
 						<td><?php echo $value['akta_no'];?></td>
-						<td><a href="<?php echo base_url('lampiran/pengurus_file/'.$value['pengurus_file']);?>" target="_blank"><i class="fa fa-download"></i></a></td>
+						<td><a href="<?php echo BASE_LINK.('lampiran/pengurus_file/'.$value['pengurus_file']);?>" target="_blank"><i class="fa fa-download"></i></a></td>
 						<td><input type="checkbox" name="pengurus[<?php echo $value['id']?>][mandatory]" value="1" <?php echo $this->data_process->set_mandatory($value['data_status']);?>></td>
 						<td class="actionBlock">
 							<input type="radio" name="pengurus[<?php echo $value['id']?>][status]" value="1" <?php echo $this->data_process->set_yes_no(1,$value['data_status']);?>>

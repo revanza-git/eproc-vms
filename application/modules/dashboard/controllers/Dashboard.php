@@ -13,6 +13,8 @@ class Dashboard extends CI_Controller {
 	}
 	public function index()
 	{
+		$user = $this->session->userdata('user');
+
 		$data = $this->session->userdata('user');
 
 		if($this->vm->check_pic($data['id_user'])==0){
@@ -23,7 +25,7 @@ class Dashboard extends CI_Controller {
 		$this->load->model('note/note_model','nm');
 
 		$data['approval_data'] = $this->am->get_total_data($data['id_user']);
-		$data['note'] = $this->nm->get_note($data['id_user']);
+		$data['note'] = $this->nm->get_note($user['id_user']);
 		$data['graphBar'] = array(
 									0=>
 										array('val'=>(count($data['approval_data'][0]))/$data['approval_data']['total']*100,

@@ -8,7 +8,8 @@
 			<td><label><?php echo $value;?></label></td>
 			<td>
 				<?php echo $get_data[$key];?>
-			</td>			<tr>
+			</td>
+			<tr>
 		<?php }?>
 	</table>
 </div>

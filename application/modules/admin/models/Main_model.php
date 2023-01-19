@@ -7,19 +7,24 @@ class Main_model extends CI_Model{
 
 	}
 
-	public function dt($st)
+	public function to_app($id)
 	{
-		$query = $this->db->where('del',0)->where('vendor_status',1)->where('need_approve',$st)->get('ms_vendor');
+		$query = "	SELECT
+						a.*
+						-- b.name role_name
+						-- c.name division
+					FROM
+						ms_admin a
+					-- JOIN
+					-- 	tb_role b ON b.id=a.id_role
+					-- JOIN
+					-- 	tb_division c ON c.id=a.id_division
+					WHERE
+						a.id = ?
+		"; 
 
-		return $query;
-	}
-
-	public function search_bar($q)
-	{
-		$query = " SELECT * FROM ms_vendor WHERE del = 0 AND name LIKE '%".$q."%'";
-
-		$query = $this->db->query($query)->result_array();
-
+		$query = $this->db->query($query,array($id))->row_array();
+		// echo $this->eproc_db->last_query();die;
 		return $query;
 	}
 

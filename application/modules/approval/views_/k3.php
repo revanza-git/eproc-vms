@@ -11,7 +11,7 @@
 		<?php if(isset($get_csms['csms_file'])){ ?>
 		<tr>
 			<td>
-				Lampiran Sertifikat CSMS : <?php echo (isset($get_csms['csms_file'])) ? '<a href="'.base_url('lampiran/csms_file/')."/".$get_csms['csms_file'].'">Lampiran</a>': '-';?>
+				Lampiran Sertifikat CSMS : <?php echo (isset($get_csms['csms_file'])) ? '<a href="'.BASE_LINK.('lampiran/csms_file/')."/".$get_csms['csms_file'].'">Lampiran</a>': '-';?>
 			</td>
 		</tr>
 		<tr>
@@ -134,7 +134,7 @@
 												case 'file':
 													if(isset($data_k3[$val_answer['id']]['value'])){
 														if($data_k3[$val_answer['id']]['value']!=''){
-															echo '<p><a href="'.base_url('lampiran/'.$field_quest[$val_answer['id']]['label'].'/'.$data_k3[$val_answer['id']]['value']).'" target="_blank">Lampiran</a></p>';
+															echo '<p><a href="'.BASE_LINK.('lampiran/'.$field_quest[$val_answer['id']]['label'].'/'.$data_k3[$val_answer['id']]['value']).'" target="_blank">Lampiran</a></p>';
 														}else{
 															echo '-';
 														}
@@ -237,7 +237,7 @@
 												case 'file':
 													if(isset($data_k3[$val_answer['id']]['value'])){
 														if($data_k3[$val_answer['id']]['value']!=''){
-															echo '<p><a href="'.base_url('lampiran/'.$field_quest[$val_answer['id']]['label'].'/'.$data_k3[$val_answer['id']]['value']).'" target="_blank">Lampiran</a></p>';
+															echo '<p><a href="'.BASE_LINK.('lampiran/'.$field_quest[$val_answer['id']]['label'].'/'.$data_k3[$val_answer['id']]['value']).'" target="_blank">Lampiran</a></p>';
 														}else{
 															echo '-';
 														}

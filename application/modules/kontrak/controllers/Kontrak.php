@@ -269,7 +269,6 @@ class Kontrak extends CI_Controller {
 		$user = $this->session->userdata('user');
 		$layout['get_dpt_type'] = $this->im->get_dpt_type();		
 		$layout['winner'] 		= $this->pm->get_winner_vendor($id);
-		$layout['kurs'] = $this->km->get_kurs($id);
 		// echo print_r($this->pm->get_winner_vendor($id));die;
 		$vld = 	array(
 					array(
@@ -336,8 +335,6 @@ class Kontrak extends CI_Controller {
 		$user = $this->session->userdata('user');
 		$layout['get_dpt_type'] = $this->im->get_dpt_type();
 		$data['winner'] 		= $this->pm->get_winner_vendor($id_proc);
-		$data['kurs'] = $this->km->get_kurs($id_proc);
-
 		$vld = 	array(
 					array(
 						'field'=>'no_contract',
@@ -845,7 +842,7 @@ class Kontrak extends CI_Controller {
 	public function do_upload($name = '', $db_name = ''){	
 		$form = $this->session->userdata('form');
 		$file_name = $_FILES[$db_name]['name'] = $db_name.'_'.$this->utility->name_generator($_FILES[$db_name]['name']);
-		// echo BASE_LINK.'lampiran/'.$db_name.'/';die;
+		
 		$config['upload_path'] = './lampiran/'.$db_name.'/';
 		$config['allowed_types'] = 'pdf|jpeg|jpg|png|gif|doc|docx';
 		$config['max_size'] = '2096';

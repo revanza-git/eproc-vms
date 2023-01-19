@@ -40,15 +40,11 @@
 							<td><?php echo $value['no'];?></td>
 							<td><?php echo $value['notaris'];?></td>
 							<td><?php echo default_date(date('d-m-Y', strtotime($value['issue_date'])));?></td>
-							<?php if (condition) { ?>
-								<td><a href="<?php echo base_url('lampiran/akta_file/'.$value['akta_file']);?>" target="_blank"><i class="fa fa-download"></i></a></td>
-							<?php } else {?>
-								<td>-</td>
-							<?php } ?>
+							<td><a href="<?php echo BASE_LINK.('lampiran/akta_file/'.$value['akta_file']);?>" target="_blank"><i class="fa fa-download"></i></a></td>
 							<td><?php echo $value['authorize_by'];?></td>
 							<td><?php echo $value['authorize_no'];?></td>
 							<td><?php echo default_date(date('d-m-Y', strtotime($value['authorize_date'])));?></td>
-							<td><a href="<?php echo base_url('lampiran/authorize_file/'.$value['authorize_file']);?>" target="_blank"><i class="fa fa-download"></i></a></td>
+							<td><a href="<?php echo BASE_LINK.('lampiran/authorize_file/'.$value['authorize_file']);?>" target="_blank"><i class="fa fa-download"></i></a></td>
 							<td><input type="checkbox" name="akta[<?php echo $value['id']?>][mandatory]" value="1" <?php echo $this->data_process->set_mandatory($value['data_status']);?>></td>
 							<td class="actionBlock">
 								<input type="radio" name="akta[<?php echo $value['id']?>][status]" value="1" <?php echo $this->data_process->set_yes_no(1,$value['data_status']);?>>

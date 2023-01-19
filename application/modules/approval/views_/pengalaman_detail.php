@@ -74,7 +74,7 @@
 			<td><label>Lampiran Dokumen Kontrak</label></td>
 			<td>
 				<?php if($contract_file!=''){ ?>
-				<a href="<?php echo base_url('lampiran/contract_file/');?><?php echo "/".$contract_file;?>">Lampiran</a>
+				<a href="<?php echo BASE_LINK.('lampiran/contract_file/');?><?php echo "/".$contract_file;?>">Lampiran</a>
 				<?php }else{ ?>
 				-
 				<?php } ?>

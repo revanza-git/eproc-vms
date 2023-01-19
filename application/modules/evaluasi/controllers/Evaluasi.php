@@ -77,9 +77,9 @@ class Evaluasi extends CI_Controller
 				$msg = $vendor['legal'] . " - " . $vendor['name'] . " memberikan umpan balik ke pengadaan " . $proc['name'] . " dengan pesan sebagai berikut : <br> " . $save['remark'];
 				$sub = "UMPAN BALIK EVALUASI KINERJA";
 
-				// foreach ($div_proc as $key => $value) {
-				// 	$this->utility->mail($value['email'], $msg, $sub);
-				// }
+				foreach ($div_proc as $key => $value) {
+					$this->utility->mail($value['email'], $msg, $sub);
+				}
 				$this->session->set_flashdata('msgSuccess', '<p class="msgSuccess">Sukses memberikan umpan balik!</p>');
 				redirect(site_url('evaluasi'));
 			}

@@ -643,7 +643,9 @@ class Auction_model extends CI_Model{
 		->join('ms_vendor_admistrasi','ms_vendor_admistrasi.id_vendor=ms_vendor.id','LEFT')
 		->join('tr_assessment_point','tr_assessment_point.id_vendor=ms_vendor.id','LEFT')
 		->join('tb_blacklist_limit','tb_blacklist_limit.id=tr_assessment_point.category','LEFT');
-		$this->db->where('((vendor_status = 2 AND is_active = 1 AND ms_vendor.name LIKE "%'.$q.'%") OR is_vms = 0) '.$peserta_id);
+
+		//vendor_status = 2 AND is_active = 1 AND 
+		$this->db->where('((ms_vendor.name LIKE "%'.$q.'%") OR is_vms = 0) '.$peserta_id);
 		
 		$a = $this->filter->generate_query($this->db->group_by('id'),$filter);	
 

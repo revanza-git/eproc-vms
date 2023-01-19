@@ -23,18 +23,6 @@
 						</td>
 					</tr>
 					<tr class="input-form">
-						<td><label>Kurs</label></td>
-						<td><?php 
-							if(count($kurs)>0){
-								echo form_dropdown('id_kurs', $kurs, ($this->form->get_temp_data('id_kurs'))?$this->form->get_temp_data('id_kurs'):$id_kurs,'');
-							}else{
-								echo '-- Belum Ada Kurs Yang Dipilih --';
-							}?>
-							<?php echo form_error('id_kurs'); ?>
-							
-						</td>
-					</tr>
-					<tr class="input-form">
 						<td><label>Nilai Kontrak / PO*</label></td>
 						<td>
 							<input type="text" class="money-masked" name="contract_price" value="<?php echo ($this->form->get_temp_data('contract_price'))?$this->form->get_temp_data('contract_price'):$contract_price;?>" maxlength="20">

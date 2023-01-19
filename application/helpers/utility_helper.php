@@ -15,11 +15,7 @@ function default_date($date){
         11  =>  'November',
         12  =>  'Desember');
 
-  if ($date == '') {
-    return "-";
-  } else {
-    return date('d',strtotime($date)) .' '. $month[date('n',strtotime($date))] .' '.date('Y',strtotime($date));
-  }
+  return date('d',strtotime($date)) .' '. $month[date('n',strtotime($date))] .' '.date('Y',strtotime($date));
 
 }
 function special_date($date){

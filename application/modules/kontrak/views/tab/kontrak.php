@@ -10,7 +10,6 @@
 				<a href="<?php echo site_url('kontrak/tambah_kontrak/'.$id);?>" class="btnBlue"><i class="fa fa-plus"></i> Tambah</a>
 		<?php } ?>
 	</div>
-	<?php } ?>
 
 	<legend>
 		<p>Keterangan :</p>
@@ -65,7 +64,7 @@
 				
 		</div>
 	</div>
-	
+	<?php } ?>
 		<table class="tableData">
 			<thead>
 				<tr>

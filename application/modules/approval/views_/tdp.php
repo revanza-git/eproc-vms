@@ -26,7 +26,7 @@
 						<td>
 							<?php echo ($value['expiry_date'] == "lifetime") ? "Seumur Hidup": ((strtotime($value['expiry_date']) > 0 ) ? default_date($value['expiry_date']) : "-" );?>
 						</td>
-						<td><a href="<?php echo base_url('lampiran/tdp_file/'.$value['tdp_file']);?>" target="_blank"><i class="fa fa-download"></i></a></td>
+						<td><a href="<?php echo BASE_LINK.('lampiran/tdp_file/'.$value['tdp_file']);?>" target="_blank"><i class="fa fa-download"></i></a></td>
 						<td><input type="checkbox" name="tdp[<?php echo $value['id']?>][mandatory]" value="1" <?php echo $this->data_process->set_mandatory($value['data_status']);?>></td>
 						<td class="actionBlock">
 							<input type="radio" name="tdp[<?php echo $value['id']?>][status]" value="1" <?php echo $this->data_process->set_yes_no(1,$value['data_status']);?>>

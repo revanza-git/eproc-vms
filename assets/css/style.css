@@ -2074,8 +2074,6 @@ a.filterBtn{
 /*R E D E S I G N  M A I N*/
 .wrapInner .main {
 	margin-left: -2px;
-	position: relative;
-	/*z-index: -1;*/
 }
 
 /*R E D E S I G N  S I D E B A R*/
@@ -2390,8 +2388,6 @@ input{
 	-ms-align-items: center;
 	align-items: center;
 	border-radius: 6px;
-	position: relative;
-	
 }
 
 .search-bar input {
@@ -2745,18 +2741,6 @@ input{
 	cursor: pointer;
 }
 
-.barLine.progress-report{
-	position: absolute;
-	-webkit-flex: 1;
-	-moz-flex: 1;
-	-ms-flex: 1;
-	-o-flex: 1;
-	flex: 1;
-	height: 30px;
-	background-color: #9bcff2;
-	cursor: pointer;
-}
-
 .barLine.active {
 	background-color: #2ecc71;
 	width: calc(0% - 10px);
@@ -3049,71 +3033,4 @@ input{
 
 .timelineItemText .tanggal {
 	display: block;
-}
-
-.search-bar .result {
-	position: absolute;
-	width: 100%;
-	height: 500px;
-	overflow: hidden;
-	background-color: #fff;
-	left: 0;
-	border-radius: 0 0 10px 10px;
-	box-shadow: 0 4px 8px rgba(0,0,0,.1);
-	opacity: 0;
-	visibility: hidden;
-	top: -100px;
-}
-
-.search-bar .result.active {
-	visibility: visible;
-	opacity: 1;
-	top: 44px;
-}
-
-.search-bar .result .result-list-wrapper {
-	position: relative;
-	min-height: 500px;
-	overflow-y: scroll;
-}
-
-.search-bar .result .result-list-wrapper .scroll-wp {
-	min-height: 500px;
-	/*overflow-y: auto;*/
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-}
-
-.search-bar .result .result-list-wrapper .scroll {
-	height: calc(100px - 25px * 2 - 1px);
-	width: calc(100% - 25px * 2);
-	padding: 25px;
-}
-.search-bar .result .result-list-wrapper .scroll:not(:first-child) {
-	border-top: 1px solid #ddd;
-}
-.search-bar .result .result-content {
-	display: -webkit-flex;
-	display: -moz-flex;
-	display: -ms-flex;
-	display: -o-flex;
-	display: flex;
-	-ms-align-items: center;
-	align-items: center;
-	width: 100%;
-}
-.search-bar .result .result-content span {
-	width: 50px;
-	text-align: center;
-}
-.search-bar .result .result-content-name {
-	font-size: 17px;
-	line-height: 25px;
-	width: calc(36% - 50px);
-}
-
-.result-content-name:nth-child(3) {
-	font-family: 'CeraPro-Bold';
 }

@@ -273,21 +273,10 @@ class Kontrak_model extends CI_Model
 			'edit_stamp' => date('Y-m-d H:i:s'),
 			'del' => 1
 		);
-
 		$this->db->where('id',$id)->update('ms_spk',$arr);
 		$this->db->where('id_spk',$id)->delete('tr_progress_kontrak');
 		$this->db->where('id_spk',$id)->where('type',5)->delete('tr_progress_kontrak');
-
-		$this->db->where('id_spk',$id)->where('type',5)->delete('tr_progress_kontrak');
-
-		$spk = $this->db->where('id',$id)->get('ms_spk')->row_array();
-
-		$last_spk = $this->db->where('id_procurement',$spk['id_proc'])->where('id_spk !=',null)->get('tr_progress_kontrak');
-
-		if ($last_spk->num_rows() == 0) {
-			$this->db->where('is_kontrak',1)->update('tr_progress_kontrak',array('del'=>0));
-		}
-		// $this->db->where('parent',$id)->where('type',1)->delete('tr_progress_kontrak');
+		$this->db->where('parent',$id)->where('type',1)->delete('tr_progress_kontrak');
 		return $this->db->where('id_spk',$id)->update('ms_bast',$arr);
 	}
 
@@ -469,7 +458,7 @@ class Kontrak_model extends CI_Model
 		} else {
 			$amandemen = $this->get_amandemen_date($data['id_proc']);
 			// print_r($amandemen);die;
-			if ($amandemen['start_date'] != '' && $amandemen['end_date'] != '') {
+			if (!empty($amandemen)) {
 				$end_date = $amandemen['end_date'];
 			} else {
 				$contract = $this->get_contract_date($data['id_proc']);
@@ -1256,22 +1245,4 @@ class Kontrak_model extends CI_Model
 		$denda_price = ($max_denda<$cur_price) ? $max_denda : $cur_price;
 		return $denda_price;
    	}
-
-	public function get_kurs($id)
-	{
-		$a = $this->db->where('del', 0)
-						->get('tb_kurs')
-						->result_array();
-		/*$a = $this->db->select('tb_kurs.symbol, tb_kurs.id')
-						->join('tb_kurs', 'ms_procurement_kurs.id_kurs=tb_kurs.id', 'LEFT')
-						->where('id_procurement', $id)
-						->where('ms_procurement_kurs.del', 0)
-						->get('ms_procurement_kurs')
-						->result_array();*/
-		$b = array();
-		foreach ($a as $key => $value) {
-			$b[$value['id']] = $value['symbol'];
-		}
-		return $b;
-	}
 }

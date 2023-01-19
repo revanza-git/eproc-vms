@@ -78,14 +78,79 @@
 							<div class="graphBarWp">
 								<div class="graphBarLines" title='Klik untuk informasi lengkap' data-id='<?php echo $value['id']; ?>'>
 									<span class="barLine"></span>
-									<span class="barLine active" style="width: <?php echo $p ?>% ; top: 9px; height: 30px"></span>
+									<span class="barLine active" style="width: <?php echo $p ?>% ;"></span>
 									<span class="barLineText"><?php echo $prog['value'].' '.default_date($prog['date']) ?></span>
 								</div>
 							</div>
 						<?php } ?>
+						<!-- <div class="graphBar clearfix">
+							<div class="graphBarGroup clearfix barPengadaan" style="width: 100%;">
+								<table width="100%">
+									<tr class="graphWrap">
+									<?php if(isset($value['progress'])){ ?>
+										<?php foreach($value['progress'] as $key => $row){ ?>
+											<td class="graph" title="<?php echo $row['value'];?> (Tanggal : <?php echo default_date($row['date'])?>) " style="width:<?php echo $row['percent'];?>%;background-color: <?php echo $row['color'];?>"></td>
+										<?php } ?>
+									<?php } ?>
+									</tr>
+								</table>
+							</div>
+						</div> -->
 					</td>
 				</tr>
 				<tr>
+					<!-- <td>
+						<div class="graphBar clearfix">
+
+							<?php 
+							// echo print_r($value['data']);
+
+							if(isset($value['graph']['data'])||isset($value['graph']['realization'])){
+
+								 if(isset($value['graph']['realization'])){ ?>
+
+								<div class="graphWrapLine" style="width: <?php echo $value['graph']['realization']['range'];?>%;">
+									<div class="graph" title="Tanggal <?php echo default_date($value['graph']['realization']['date'])?>. Dalam masa <?php echo $value['graph']['realization']['step']?> pada hari ke-<?php echo $value['graph']['realization']['now']?>."  style="width: 100%;background-color: #2ecc71;"></div>
+								</div>
+
+								<?php }
+
+								/*Buat graph progress*/
+
+								if(isset($value['graph']['data'])){ ?>
+
+									<div class="graphWrap">
+										<?php 
+										$i = 0;
+										$amandemen = 0;
+										foreach($value['graph']['data'] as $key => $row){ 
+											?>
+											<div class="graph <?php echo ($row['gap'])?'shading':'' ?>" title="<?php echo $row['label'];?> " style="width: <?php echo ($row['value']/ $value['graph']['total_day']*100);?>%;background-color: 
+											<?php  
+												if($row['type']==3){
+											 		echo $color_amandemen[$amandemen];
+											 		$amandemen++;
+												}elseif($row['type']==4){
+													echo '#8A9FD5';
+												}elseif($row['type']==5){
+													echo '#c0392b';
+												}else{
+													echo  $color[$i];
+													$i++;
+												} 
+											?>"></div>
+										<?php
+											
+										}
+										
+										?>
+									</div>
+
+								<?php } 
+
+							} ?>
+						</div>
+					</td> -->
 					
 				</tr>
 			<?php 

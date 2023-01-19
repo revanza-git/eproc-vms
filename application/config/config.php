@@ -1,5 +1,5 @@
-<?php
-defined('BASEPATH') or exit('No direct script access allowed');
+<?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +17,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | environments.
 |
 */
-//$config['base_url']	=  	"http://eproc.nusantararegas.com/eproc";
-//$config['base_app']	= 	"http://eproc.nusantararegas.com/eproc";
+$config['BASE_LINK.']	=  	"https://eproc.nusantararegas.com/eproc_pengadaan/";
+$config['base_app']		= 	"https://eproc.nusantararegas.com/eproc_pengadaan/";
 
-$config['base_url']	=  	"http://10.10.11.20/eproc_pengadaan/";
-$config['BASE_LINK.']	=  	"http://10.10.11.20/eproc_pengadaan/";
-$config['base_app']	= 	"http://10.10.11.20/eproc_pengadaan/";
+// $config['BASE_LINK.']	=  	"";
+// $config['base_app']	= 	"http://eproc.nusantararegas.com/eproc_pengadaan/";
 
 /*
 |--------------------------------------------------------------------------
@@ -135,7 +134,7 @@ $config['subclass_prefix'] = 'MY_';
 | Note: This will NOT disable or override the CodeIgniter-specific
 |	autoloading (application/config/autoload.php)
 */
-$config['composer_autoload'] = './vendor/autoload.php';
+$config['composer_autoload'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -157,7 +156,7 @@ $config['composer_autoload'] = './vendor/autoload.php';
 | DO NOT CHANGE THIS UNLESS YOU FULLY UNDERSTAND THE REPERCUSSIONS!!
 |
 */
-$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-';
+$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-@\=&()';
 
 /*
 |--------------------------------------------------------------------------
@@ -508,31 +507,31 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
-date_default_timezone_set("Asia/Jakarta");
+date_default_timezone_set("Asia/Jakarta"); 
 
 $config['color'] = array(
-	array(139, 105, 105),
-	array(240, 128, 128),
-	array(205, 92, 92),
-	array(255, 106, 106),
-	array(238, 99, 99),
-	array(139, 58, 58),
-	array(205, 85, 85),
-	array(165, 42, 42),
-	array(255, 64, 64),
-	array(238, 59, 59),
-	array(38, 166, 91),
-	array(205, 51, 51),
-	array(139, 35, 35),
-	array(178, 34, 34),
-	array(255, 48, 48),
-	array(238, 44, 44),
-	array(205, 38, 38),
-	array(139, 26, 26),
+	array(139,105,105),
+	array(240,128,128),
+	array(205,92,92),
+	array(255,106,106),
+	array(238,99,99),
+	array(139,58,58),
+	array(205,85,85),
+	array(165,42,42),
+	array(255,64,64),
+	array(238,59,59),
+	array(38,166,91),
+	array(205,51,51),
+	array(139,35,35),
+	array(178,34,34),
+	array(255,48,48),
+	array(238,44,44),
+	array(205,38,38),
+	array(139,26,26),
 );
 
 $config['basecolor'] = array(
-	array(78, 205, 196),
+	array(78,205,196),
 	array(162, 222, 208),
 	array(135, 211, 124),
 	array(144, 198, 149),

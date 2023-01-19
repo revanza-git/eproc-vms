@@ -223,7 +223,7 @@ class Auction extends CI_Controller {
 				'rules'=>'required'
 				),
 			);
-
+		
 		$division = array(
 			6 => 3,// sekper
 			7 => 4,//Hukum
@@ -243,7 +243,7 @@ class Auction extends CI_Controller {
 			21=> 1,//procurement
 			22=> 6,//resiko
 		);
-		
+
 		$this->form_validation->set_rules($vld);
 		if($this->form_validation->run()==TRUE){
 			$_POST['entry_stamp'] 	= date("Y-m-d H:i:s");

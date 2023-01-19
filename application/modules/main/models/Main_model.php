@@ -30,14 +30,14 @@ class Main_model extends CI_Model{
 	
 		$sql = $_sql->row_array();
 
-		// print_r($sql);die;
+
 	
 		$ct_sql = '';
 
 		
 		
 		if($_sql->num_rows() > 0){
-			// echo "string";die;
+
 			
 	
 			if($sql['type'] == "user"){
@@ -77,35 +77,16 @@ class Main_model extends CI_Model{
 					return false;
 				}
 				
-
-
-
-				
-
 			}else if($sql['type'] == "admin"){
 
-				$ct_sql = "	SELECT 
-								*,
-								ms_admin.id id, 
-								ms_admin.name name, 
-								tb_role.name role_name
-								-- tb_division.name division,
-								-- tb_division.id id_division
-							FROM 
-								ms_admin 
-							JOIN 
-								tb_role ON ms_admin.id_role = tb_role.id 
-							-- JOIN 
-							-- 	tb_division ON ms_admin.id_division = tb_division.id 
-							WHERE 
-								ms_admin.id=? "; //AND ms_admin.del=?
+				$ct_sql = "SELECT *,ms_admin.id id, ms_admin.name name, tb_role.name role_name FROM ms_admin JOIN tb_role ON ms_admin.id_role = tb_role.id WHERE ms_admin.id=? AND ms_admin.del=?";
 
-				$ct_sql = $this->db->query($ct_sql, array($sql['id_user']));
+				$ct_sql = $this->db->query($ct_sql, array($sql['id_user'],0));
 				
 				if(count($ct_sql->result_array() )> 0){
 
 					$data = $ct_sql->row_array();
-					// print_r($data);die;
+
 						
 
 					$set_session = array(
@@ -121,10 +102,6 @@ class Main_model extends CI_Model{
 						'role_name'		=>	$data['role_name'],
 
 						'sbu_name'		=>	$data['sbu_name'],
-
-						'id_division'	=>	$data['id_division'],
-
-						// 'division'		=>	$data['division'],
 
 						'app'			=>	'vms'
 
@@ -146,7 +123,7 @@ class Main_model extends CI_Model{
 
 
 		}else{
-			// echo "string 1";die;
+
 			return false;
 
 		}

@@ -128,11 +128,11 @@ class CI_Session {
 
 		// Sanitize the cookie, because apparently PHP doesn't do that for userspace handlers
 		if (isset($_COOKIE[$this->_config['cookie_name']])
-            && (
-                ! is_string($_COOKIE[$this->_config['cookie_name']])
-                OR ! preg_match('/^[0-9a-z_-]{1,40}$/', $_COOKIE[$this->_config['cookie_name']])
-            )
-        )
+			&& (
+				! is_string($_COOKIE[$this->_config['cookie_name']])
+				OR ! preg_match('/^[0-9a-f]{40}$/', $_COOKIE[$this->_config['cookie_name']])
+			)
+		)
 		{
 			unset($_COOKIE[$this->_config['cookie_name']]);
 		}

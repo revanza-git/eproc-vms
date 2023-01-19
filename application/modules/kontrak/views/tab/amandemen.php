@@ -6,10 +6,9 @@
 	<?php if ($count_contract > 0) { ?>
 		<?php if($this->session->userdata('admin')['id_role']==3){ ?>
 		<div class="btnTopGroup clearfix">
-			<a href="<?php echo site_url('kontrak/tambah_amandemen/'.$id);?>" class="btnBlue"><i class="fa fa-plus"></i> Tambah</a>
-			</div>
-	<legend>
-		<?php } ?>
+		<a href="<?php echo site_url('kontrak/tambah_amandemen/'.$id);?>" class="btnBlue"><i class="fa fa-plus"></i> Tambah</a>
+		</div>
+		<legend>
 		<p>Keterangan :</p>
 		<p><font color="#27ae60">&#8718; Kontrak</font></p>
 		<p><font color="#7f8c8d">&#8718; Jangka Waktu Pelaksanaan Pekerjaan</font></p>
@@ -62,7 +61,7 @@
 				
 		</div>
 	</div>
-		
+		<?php } ?>
 	<?php } else { ?>
 		<p class="noticeMsg">Isi kontrak terlebih dahulu!</p>
 	<?php } ?>

@@ -119,12 +119,6 @@
 					: <?php echo $vendor_website; ?>
 				</td>
 			</tr>
-			<!-- <tr class="input-form">
-				<td><label>Surat Pernyataan*</label></td>
-				<td>
-					: <a target="blank" href="<?php echo base_url('administrasi/'.$surat_pernyataan_file)?>"><?php echo $surat_pernyataan_file;?></a>
-				</td>
-			</tr> -->
 		</table>
 		<div class="buttonRegBox clearfix">
 			<a href="<?= base_url('administrasi/download_surat_pernyataan') ?>" target="_blank" class="btnBlue"><i class="fa fa-download"></i> Download Surat Pernyataan</a>

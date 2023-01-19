@@ -429,7 +429,7 @@ class Cron extends CI_Controller
 
         $this
             ->email
-            ->to('arinaldha@gmail.com');
+            ->to('revanza.raytama@nusantararegas.com');
         $this
             ->email
             ->subject('Notifikasi Cron DROP DPT Server 11.5');

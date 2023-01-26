@@ -10,13 +10,15 @@
 
 	<div id="container" style="min-width: 400px; height: 150px; margin: 0 auto"></div>
 	
-	<?php /*print_r($note);die;*/ foreach ($note as $key => $value) { ?>
+	<?php foreach ($note as $key => $value) { ?>
+		<?php if($value['value']){ ?>
 		<div class="warnVer msgBlock alertClose">
 			<i class="fa fa-exclamation-triangle"></i>&nbsp;<?php echo $value['value']; ?>
 			<div class="close" data-url="<?php echo site_url('note/close/'.$value['id']); ?>">
 				<i class="fa fa-times" ></i>
 			</div>
 		</div>
+		<?php } ?>
 	<?php } ?>
 	
 

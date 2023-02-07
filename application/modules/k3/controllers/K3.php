@@ -161,7 +161,6 @@ class K3 extends CI_Controller {
 			if($this->form_validation->run()==TRUE){
 				unset($_POST['next']);
 				$_POST['entry_stamp'] = date("Y-m-d H:i:s");
-
 				$res = $this->km->edit_csms_data($this->input->post(),$user['id_user'],$data['id']);
 
 				if($res){

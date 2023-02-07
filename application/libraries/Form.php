@@ -363,98 +363,49 @@ class Form{
 
 
 	public function calendar($param = array(), $disable_day = false){
-
 		$return = '';
-
 		$class = 'dekodr-calendar';
-
 		if(!$param['value']) $param['value'] = 'Pilih';
-
-
-
-
 
 		for($i=1;$i<=31;$i++){ $x = $i; if($i < 10) $x = "0".$i; $day[$x] = $x; }
 
 		$month = array(
-
 			'01' => 'Januari',
-
 			'02' => 'Febuari',
-
 			'03' => 'Maret',
-
 			'04' => 'April',
-
 			'05' => 'Mei',
-
 			'06' => 'Juni',
-
 			'07' => 'Juli',
-
 			'08' => 'Agustus',
-
 			'09' => 'September',
-
 			'10' => 'Oktober',
-
 			'11' => 'November',
-
 			'12' => 'Desember'
-
 		);
 
 		for($i=2032;$i>=1900;$i--) $year[$i] = $i;
 
-	
-
 		$return .= '<div class="dekodr-calendar" style="display : inline-block">';
-
-		
 
 		if ($param['value'] == 'Pilih') {
 			$return .= $this->drop_down(array('class' => 'dekodr-calendar-day', 'id'=>$param['name'].'_date-date',	'value' => 'Pilih','onChange'=>'changeCal_date(\''.$param['name'].'\')'), $day);
 			$return .= $this->drop_down(array('class' => 'dekodr-calendar-month', 'id'=>$param['name'].'_date-month',	'value' => 'Pilih','onChange'=>'changeCal_date(\''.$param['name'].'\')'), $month);
-
 			$return .= $this->drop_down(array('class' => 'dekodr-calendar-year', 'id'=>$param['name'].'_date-year', 'value' => 'Pilih','onChange'=>'changeCal_date(\''.$param['name'].'\')'), $year);		
-
-			
-
 			$return .= $this->hidden(array('name' => $param['name'], 'class' => 'dekodr-calendar-hidden', 'value' => $param['value'],'id'=>$param['name']));
-
-
-
 			$return .= '</div>';
 		}else{
 			if(!$disable_day)
-
 			$return .= $this->drop_down(array('class' => 'dekodr-calendar-day', 'id'=>$param['name'].'_date-date',	'value' => date("d", strtotime($param['value'])),'onChange'=>'changeCal_date(\''.$param['name'].'\')'), $day);
-
 			else		
-
-				$return .= $this->hidden(array('class' => 'dekodr-calendar-day', 'value' => '01'));
-
-
-
+			$return .= $this->hidden(array('class' => 'dekodr-calendar-day', 'value' => '01'));
 			$return .= $this->drop_down(array('class' => 'dekodr-calendar-month', 'id'=>$param['name'].'_date-month',	'value' => date("m", strtotime($param['value'])),'onChange'=>'changeCal_date(\''.$param['name'].'\')'), $month);
-
 			$return .= $this->drop_down(array('class' => 'dekodr-calendar-year', 'id'=>$param['name'].'_date-year', 'value' => date("Y", strtotime($param['value'])),'onChange'=>'changeCal_date(\''.$param['name'].'\')'), $year);		
-
-			
-
 			$return .= $this->hidden(array('name' => $param['name'], 'class' => 'dekodr-calendar-hidden', 'value' => $param['value'],'id'=>$param['name']));
-
-
-
 			$return .= '</div>';
 		}
 
-
-
-
-
 		return $return;
-
 	}
 
 

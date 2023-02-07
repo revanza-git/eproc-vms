@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/font-awesome.css" type="text/css"/>
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/font-awesome-ie7.css" type="text/css"/>
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/font/flaticon.css" type="text/css"/>
+		<link rel="icon" href="<?php echo base_url('assets/images/icon-nr.png'); ?>" />
 		
 		<!--[if lt IE 9]>
 		<script src="<?php echo base_url(); ?>assets/js/html5.min.js"></script>

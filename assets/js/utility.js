@@ -5,9 +5,7 @@ function ajaxJsonFeedBack(toLoad, varData, callback){
 		data : varData,
 		dataType : 'json',
 		success : function(data){
-			// console.log(data);
 			callback(data);
-
 		},
 		error : function(xhr, status, error){
 			console.log(xhr);

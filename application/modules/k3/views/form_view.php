@@ -8,7 +8,7 @@
 		<table>
 			<tr class="input-form ">
 				<td><label>Lampiran Sertifikat CSMS</label></td>
-				<td>: <?php  if(isset($csms_file['csms_file']['csms_file'])){?><a href="<?php echo base_url('lampiran/csms_file/'.$csms_file['csms_file']['csms_file']);?>" target="_blank">Lampiran</a><?php }else{echo "-";}?>
+				<td>: <?php  if(isset($csms_file['csms_file']['csms_file'])){?><a href="<?php echo base_url('lampiran/k3_files/'.$csms_file['csms_file']['csms_file']);?>" target="_blank">Lampiran</a><?php }else{echo "-";}?>
 					
 				</td>
 			</tr>

@@ -16,19 +16,20 @@
 				</td>
 			</tr>
 			<tr class="input-form lampiran_csms">
-				<td><label>Sertifikat CSMS *</label></td>
+				<td><label>Sertifikat CSMS*</label></td>
 				<td>
-					<?php echo $this->form->file(array('value'=>$csms_file,'name'=>'csms_file'));?>
-					
+					<?php echo $this->form->file(array('name'=>'csms_file','value'=>$csms_file));?>
+
+					</form>
 				</td>
 			</tr>
-			<!--<tr class="input-form lampiran_csms">
+			<tr class="input-form lampiran_csms">
 				<td><label>Masa Berlaku *</label></td>
 				<td>
 					<?php echo $this->form->calendar(array('name'=>'expiry_date','value'=>(isset($expiry_date)?$expiry_date:$this->form->get_temp_data('expiry_date')), false));?>
 					<?php echo form_error('expiry_date'); ?>
 				</td>
-			</tr>-->
+			</tr>
 			<tr class="input-form lampiran_csms">
 				<td><label>Masukkan Nilai CSMS *</label></td>
 				<td>

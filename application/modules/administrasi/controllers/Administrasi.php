@@ -55,7 +55,7 @@ class Administrasi extends CI_Controller {
 			array(
 				'field'=>'name',
 				'label'=>'Nama Badan Usaha',
-				'rules'=>'required'
+				'rules'=>''
 				),
 			array(
 				'field'=>'npwp_code',

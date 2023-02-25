@@ -17,8 +17,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['BASE_LINK.']	=  	"https://deveproc.nusantararegas.com/eproc_pengadaan/";
-$config['base_app']		= 	"https://deveproc.nusantararegas.com/eproc_pengadaan/";
+$config['BASE_LINK.']	=  	"https://eproc.nusantararegas.com/eproc_pengadaan/";
+$config['base_app']		= 	"https://eproc.nusantararegas.com/eproc_pengadaan/";
 
 // $config['BASE_LINK.']	=  	"";
 // $config['base_app']	= 	"http://eproc.nusantararegas.com/eproc_pengadaan/";

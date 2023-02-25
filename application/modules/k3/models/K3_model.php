@@ -134,6 +134,8 @@ class K3_model extends CI_Model{
 
 		$res = $this->db->insert('ms_csms',array(
 										'id_vendor'=>$id,
+										'data_status'=>0,
+										'del'=>0,
 										'expiry_date'=>$post['expiry_date'],
 										'csms_file'=>$post['csms_file'],
 										'score'=>$post['score'],
@@ -141,6 +143,9 @@ class K3_model extends CI_Model{
 										'id_csms_limit'=>$id_csms_limit
 										)
 						);
+		// $this->db->where('id_vendor',$id)
+		// 	->update($table,array('csms_file'=>$post['csms_file']));
+						
 		$this->update_score($post,$id);
 		return $res;
 		

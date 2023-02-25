@@ -83,6 +83,7 @@ class K3 extends CI_Controller {
 				$vld 	= 	array(
 								array(
 									'field'=>'csms_file',
+									'type'=>'file',
 									'label'=>'Lampiran CSMS',
 									'rules'=>'callback_do_upload_single[csms_file]'
 								),
@@ -97,14 +98,20 @@ class K3 extends CI_Controller {
 									'rules'=>'required'
 								)
 							);
+				// $vld[] = array(
+				// 				'field'=>'csms_file',
+				// 				'type'=>'file',
+				// 				'label'=>'Lampiran CSMS',
+				// 				'rules'=>'callback_do_upload_single[csms_file]'
+				// 			);
 
 				$this->form_validation->set_rules($vld);
 				if($this->form_validation->run()==TRUE){
-
+					print_r($this->form_validation->run());
 					$_POST['entry_stamp'] = date("Y-m-d H:i:s");
 
 					$res = $this->km->save_csms_data($this->input->post(),$user['id_user']);
-
+					print_r($res);
 					if($res){
 						$this->session->set_flashdata('msgSuccess','<p class="msgSuccess">Sukses menambah data!</p>');
 						$this->dpt->non_iu_change($user['id_user']);
@@ -114,7 +121,7 @@ class K3 extends CI_Controller {
 				}
 
 			}else{
-
+				print_r('failed');
 				redirect(site_url('k3/csms_form'));
 
 			}
@@ -246,8 +253,6 @@ class K3 extends CI_Controller {
 		$this->load->view('template',$item);
 	}
 
-	
-
 	public function edit(){
 		$user = $this->session->userdata('user');
 		$data['ms_quest']		= $this->km->get_master_header();
@@ -291,7 +296,6 @@ class K3 extends CI_Controller {
 		$item['content'] = $this->load->view('user/dashboard',$layout,TRUE);
 		$this->load->view('template',$item);
 	}
-	
 	
 	public function get_field(){
 		return array(
@@ -469,27 +473,31 @@ class K3 extends CI_Controller {
 			}
 		}
 	}
-	public function do_upload_single($field, $db_name = ''){	
+	public function do_upload_single($field, $db_name = 'k3_files'){	
 		
 		$file_name = $_FILES[$db_name]['name'] = $db_name.'_'.$this->utility->name_generator($_FILES[$db_name]['name']);
 		
-		$config['upload_path'] = './lampiran/'.$db_name.'/';
+		// $config['upload_path'] = './assets/lampiran';
+		$config['upload_path'] = realpath(FCPATH.'lampiran/k3_files');
 		$config['allowed_types'] = 'pdf|jpeg|jpg|png|gif|doc|docx';
-		$config['max_size'] = '2096';
+		$config['max_size'] = '5096';
+		
+		print_r($config);
 		
 		$this->load->library('upload');
 		$this->upload->initialize($config);
 		
-		if ( ! $this->upload->do_upload($db_name)){
+		if ( ! $this->upload->do_upload('csms_file')){
 			$_POST[$db_name] = $file_name;
 			$this->form_validation->set_message('do_upload_single', $this->upload->display_errors('',''));
+			print_r(array('error' => $this->upload->display_errors()));
 			return false;
 		}else{
+			print_r('upload not failed');
 			$_POST[$db_name] = $file_name; 
 			return true;
 		}
 	}
-
 
 	public function export_excel($title="Data CSMS", $data){
 		$data = $this->km->get_k3_vendor($search, $sort, $page, $per_page,TRUE);

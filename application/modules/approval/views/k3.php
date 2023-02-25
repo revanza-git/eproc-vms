@@ -11,7 +11,7 @@
 		<?php if(isset($get_csms['csms_file'])){ ?>
 		<tr>
 			<td>
-				Lampiran Sertifikat CSMS : <?php echo (isset($get_csms['csms_file'])) ? '<a href="'.base_url('lampiran/csms_file/')."/".$get_csms['csms_file'].'">Lampiran</a>': '-';?>
+				Lampiran Sertifikat CSMSsss : <?php echo (isset($get_csms['csms_file'])) ? '<a href="'.base_url('lampiran/csms_file/')."/".$get_csms['csms_file'].'">Lampiran</a>': '-';?>
 			</td>
 		</tr>
 		<tr>

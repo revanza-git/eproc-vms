@@ -88,13 +88,6 @@
 			</a>
 		</li>
 		<?php }?>
-		<li <?php echo ($this->uri->segment(1)=='k3')?'class="selectedMenu"':''; ?>>
-			<a href="<?php echo site_url('k3');?>">
-				<!-- <i class="fa fa-file-o"></i> -->
-				&nbsp; 
-				<span>Aspek K3 / CSMS</span>
-			</a>
-		</li>
 
 		<?php 
 		$this->load->model('dashboard/dashboard_model');

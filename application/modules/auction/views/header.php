@@ -6,7 +6,7 @@
 <div class="backButton">
 	<div class="search-bar">
         <div class="search-barInner">
-            <input type="text" name="nama_pengadaan" class="input" placeholder="Search..">
+            <input type="text" name="nama_pengadaan" class="input" placeholder="Searchjjj..">
             <span class="icon">
                 <i class="fa fa-search"></i>
             </span>

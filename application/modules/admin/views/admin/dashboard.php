@@ -2,7 +2,7 @@
 	<div class="loginInfo">
 		<!-- <h2>Selamat Datang, <?php echo $this->session->userdata('admin')['role_name'];?></h2> -->
 		<ul class="navMenu">
-        <li><a href="<?php echo site_url()?>"><i class="fa fa-home"></i>&nbsp;Beranda</a></li>
+        <li><a href="<?php echo site_url()?>"><i class="fa fa-home"></i>&nbsp;Berandalan</a></li>
 
         <?php if($id_role==1 || $id_role==3 || $id_role==8){ ?>
         <li><a href="#">Penyedia Barang / Jasa</a><i class="fa fa-chevron-down li-icon"></i>

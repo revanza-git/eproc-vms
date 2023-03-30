@@ -160,7 +160,7 @@
 			</tr>
 		</table>
 		<div class="buttonRegBox clearfix">
-			<input type="submit" value="Simpan" class="btnBlue" name="Update">
+			<input type="submit" value="Simpan" class="btnBlue" name="Simpan">
 		</div>
 	</form>
 </div>

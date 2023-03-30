@@ -139,6 +139,7 @@ class Vendor_model extends CI_Model{
 	function get_total_daftar_tunggu(){
 		return $this->db->select('*')->where('vendor_status',1)->where('ms_vendor.del',0)->join('ms_vendor_admistrasi','ms_vendor.id=ms_vendor_admistrasi.id_vendor','LEFT')->get('ms_vendor')->num_rows();
 	}
+	
 	function get_total_dpt(){
 		return $this->db->select('*')->where('vendor_status',2)->where('ms_vendor.del',0)->join('ms_vendor_admistrasi','ms_vendor.id=ms_vendor_admistrasi.id_vendor','LEFT')->get('ms_vendor')->num_rows();
 	}
@@ -176,8 +177,7 @@ class Vendor_model extends CI_Model{
 		->join('ms_vendor_admistrasi as mva','mva.id_vendor=ms_vendor.id','LEFT')
 		->join('tr_dpt','tr_dpt.id_vendor=ms_vendor.id','LEFT')
 		->join('tb_sbu','tb_sbu.id=ms_vendor.id_sbu','LEFT')
-		->join('tb_legal','tb_legal.id=mva.id_legal','LEFT')/*
-		->join('ms_score_k3','ms_score_k3.id_vendor=ms_vendor.id','LEFT')*/
+		->join('tb_legal','tb_legal.id=mva.id_legal','LEFT')
 		->order_by('tr_dpt.id', 'DESC')
 		->limit('1');
 		$query = $this->db->get('ms_vendor');
@@ -189,12 +189,9 @@ class Vendor_model extends CI_Model{
 	}
 
 	function edit_data($data,$id){
-		
-
 		$fl = array('npwp_code'=>$data['npwp_code'],'name'=>$data['name'],'edit_stamp'=>$data['edit_stamp']);
 		$this->db->where('id',$id);
 		$res = $this->db->update('ms_vendor',$fl);
-		
 
 		$fl = array();
 		$field = array('id_legal','npwp_code','npwp_date','nppkp_code','nppkp_date','vendor_office_status','vendor_address','vendor_country','vendor_province','vendor_city','vendor_phone','vendor_fax','vendor_email','vendor_postal','vendor_website');
@@ -204,47 +201,29 @@ class Vendor_model extends CI_Model{
 		$this->db->where('id_vendor',$id);
 		$this->db->update('ms_vendor_admistrasi',$fl);
 		
-		
-		
-		/*$fl = array('username'=>$data['vendor_email'],'edit_stamp'=>$data['edit_stamp']);
-		$this->db->where('id_user',$id);
-		$this->db->update('ms_login',$fl);*/
-		
 		return $id;
 	}
 
 	function get_waiting_list($status,$search='', $sort='', $page='', $per_page='',$is_page=FALSE,$filter=array()){
-		// $user = $this->session->userdata('user');
 		$this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
-
 	
 		$this->db->select('ms_vendor.id as id,tb_legal.name legal_name,ms_vendor.name name, ms_vendor.edit_stamp last_update, mva.vendor_email email,ms_vendor.npwp_code,mva.vendor_address,mva.vendor_phone,ms_vendor.certificate_no,ms_vendor.need_approve,tr_dpt.start_date end_date,ms_vendor.dpt_first_date start_date')
-->join('ms_vendor_admistrasi as mva','mva.id_vendor=ms_vendor.id','LEFT')
-->join('tb_sbu','tb_sbu.id=ms_vendor.id_sbu','LEFT')
-->join('tb_legal','tb_legal.id=mva.id_legal','LEFT');
-if ($status == 1) {
-$this->db->join('tr_dpt','tr_dpt.id_vendor=ms_vendor.id','LEFT')
-->where('ms_vendor.vendor_status',1)
-->where('ms_vendor.is_active',1)
-->where('ms_vendor.del',0)
-->where('ms_vendor.need_approve',1)
-->where('(tr_dpt.end_date IS NOT NULL OR tr_dpt.end_date IS NULL)');
-}else {
-$this->db ->where('ms_vendor.vendor_status',1)
-->where('ms_vendor.is_active',1)
-->where('ms_vendor.need_approve',0);
-// ->where('tr_dpt.end_date is null');
-}
+			->join('ms_vendor_admistrasi as mva','mva.id_vendor=ms_vendor.id','LEFT')
+			->join('tb_sbu','tb_sbu.id=ms_vendor.id_sbu','LEFT')
+			->join('tb_legal','tb_legal.id=mva.id_legal','LEFT');
 
-		/*if ($status == 0) {
-			$this->db->where('tr_dpt.end_date',null);
-		} else{
-			$this->db->where('tr_dpt.start_date is not null');
-		}*/
-		/*if($this->session->userdata('admin')['id_role']==8){ 
-			$this->db->where('ms_vendor.need_approve',1);
-		}*/
-
+		if ($status == 1) {
+		$this->db->join('tr_dpt','tr_dpt.id_vendor=ms_vendor.id','LEFT')
+			->where('ms_vendor.vendor_status',1)
+			->where('ms_vendor.is_active',1)
+			->where('ms_vendor.del',0)
+			->where('ms_vendor.need_approve',1)
+			->where('(tr_dpt.end_date IS NOT NULL OR tr_dpt.end_date IS NULL)');
+		}else {
+		$this->db ->where('ms_vendor.vendor_status',1)
+			->where('ms_vendor.is_active',1)
+			->where('ms_vendor.need_approve',0);
+		}
 		
 		if($this->input->get('sort')&&$this->input->get('by')){
 			$this->db->order_by($this->input->get('by'), $this->input->get('sort')); 
@@ -257,7 +236,6 @@ $this->db ->where('ms_vendor.vendor_status',1)
 		$a = $this->filter->generate_query($this->db->group_by('ms_vendor.id'),$filter);
 		
 		$query = $a->get('ms_vendor');
-		// echo $this->db->last_query();
 		return $query->result_array();
 	}
 	
@@ -291,31 +269,26 @@ $this->db ->where('ms_vendor.vendor_status',1)
 		}
 
 		$query = $a->get('ms_vendor');
-		// echo $this->db->last_query();die;
 		return $query->result_array();
 	}
 	
-		function get_waiting_dpt_list($search='', $sort='', $page='', $per_page='',$is_page=FALSE,$filter=array()){
+	function get_waiting_dpt_list($search='', $sort='', $page='', $per_page='',$is_page=FALSE,$filter=array()){
 	
 		$this->db->select('ms_vendor.id as id,tb_legal.name legal_name,ms_vendor.name name, ms_vendor.edit_stamp last_update, mva.vendor_email email')
-		->where('ms_vendor.vendor_status',1)
-		->where('ms_vendor.is_active',1)
-		->join('ms_vendor_admistrasi as mva','mva.id_vendor=ms_vendor.id','LEFT')
-		->join('tb_sbu','tb_sbu.id=ms_vendor.id_sbu','LEFT')
-		->join('tb_legal','tb_legal.id=mva.id_legal','LEFT')
-->order_by('id', 'desc');
-
-
+			->where('ms_vendor.vendor_status',1)
+			->where('ms_vendor.is_active',1)
+			->join('ms_vendor_admistrasi as mva','mva.id_vendor=ms_vendor.id','LEFT')
+			->join('tb_sbu','tb_sbu.id=ms_vendor.id_sbu','LEFT')
+			->join('tb_legal','tb_legal.id=mva.id_legal','LEFT')
+			->order_by('id', 'desc');
 
 		$query = $a->get('ms_vendor');
 		print_r($query->result_array());
-		// echo $this->db->last_query();
 		return $query->result_array();
 	}
 	
 	function to_waiting_list(){
 		$user = $this->session->userdata('user');
-		// print_r($user);die;
 		$this->db->where('id',$user['id_user']);
 		$res = $this->db->update('ms_vendor',array(
 			'vendor_status'=>1
@@ -372,7 +345,6 @@ $this->db ->where('ms_vendor.vendor_status',1)
 							`entry_stamp`) 
 				VALUES (?,?,?,?,?)";
 		
-		// echo print_r($data);
 		foreach($this->field_admin as $_param) $param_admin[$_param] = $data[$_param];
 		
 		$this->db->query($sql, $param_admin);
@@ -390,8 +362,9 @@ $this->db ->where('ms_vendor.vendor_status',1)
 
 		return $id;
 	}
+
 	function get_vendor_list($search='', $sort='', $page='', $per_page='',$is_page=FALSE,$filter=array()){
-$this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
+		$this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
  
 		$this->db->select('*,ms_vendor.id id, ms_vendor.name name, tb_legal.name legal_name');
 		$this->db->where('((ms_vendor.del != 1 AND ms_login.type = "user") or ms_vendor.is_vms = 0)',null,false);
@@ -411,7 +384,6 @@ $this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY','
 			$this->db->limit($per_page, $per_page*($cur_page - 1));
 		}
 		$query = $a->get('ms_vendor');
-		// echo $this->db->last_query();
 		return $query->result_array();
 	}
 	function get_all_vendor_list(){
@@ -436,18 +408,17 @@ $this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY','
 
 		return $query->num_rows();
 	}
+
 	public function get_pt($id){
 		$this->db->select('tb_legal.name legal_name,ms_vendor.name name')
 		->join('ms_vendor_admistrasi','ms_vendor_admistrasi.id_vendor = ms_vendor.id','LEFT')
 		->join('tb_legal','tb_legal.id=ms_vendor_admistrasi.id_legal','LEFT')
-		// ->where('vendor_status',1)
 		->where('ms_vendor.id',$id);
 		$query = $this->db->get('ms_vendor');
-		// echo $this->db->last_query();
 		return $query->row_array();
 	}
-	public function save_pic($data)
-	{
+
+	public function save_pic($data){
 		$param_pic = array();
 		$sql = "INSERT INTO ms_vendor_pic (
 							`id_vendor`,
@@ -474,13 +445,10 @@ $this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY','
 		$query = $this->db->get('ms_vendor_pic');
 		return $query->row_array();
 	}
-	function edit_data_pic($data,$id){
 
+	function edit_data_pic($data,$id){
 		$this->db->where('id_vendor',$id);
-		
 		$res = $this->db->update('ms_vendor_pic',$data);
-		// echo $this->db->last_query();
-		
 		return $res;
 	}
 	function get_data_username($id){

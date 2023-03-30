@@ -14,7 +14,7 @@
 			<tr class="input-form">
 				<td><label>Password Baru*</label></td>
 				<td>
-					<input type="password" name="new_password" value="<?php echo (isset($new_password)?$new_password:$this->form->get_temp_data('new_password'));?>">
+					<input id="new_password" type="password" name="new_password" value="<?php echo (isset($new_password)?$new_password:$this->form->get_temp_data('new_password'));?>">
 					<?php echo form_error('new_password'); ?>
 				</td>
 			</tr>

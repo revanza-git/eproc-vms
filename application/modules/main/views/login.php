@@ -14,7 +14,7 @@
 					<input type="text" name="username">
 				</div>
 				<div class="form-group">
-					<label>Password</label>
+					<label>Passworjjd</label>
 					<input type="password" name="password">
 				</div>
 				<?php if($this->session->flashdata('error_msg')){ ?>

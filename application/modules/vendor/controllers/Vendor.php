@@ -514,7 +514,10 @@ class Vendor extends CI_Controller {
 			array(
 				'field'=>'new_password',
 				'label'=>'Password Baru',
-				'rules'=>'required'
+				'rules'=>'required|regex_match[/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,128}$/]'
+				),
+				'errors' => array(
+					'regex_match' => 'Password minimal 12 karakter, terdiri dari kombinasi huruf kapital, huruf kecil, angka dan karakter khusus. Contoh: Jakarta2023!',
 				),
 			array(
 				'field'=>'conf_password',

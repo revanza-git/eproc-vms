@@ -31,7 +31,7 @@ class Main extends CI_Controller {
 		}
 		
 
-		// $value = json_decode($data['value']);
+		$value = json_decode($data['value']);
 
 		// if ($value->type != 'user') {
 		// 	header("Location:https://eproc.nusantararegas.com/eproc_nusantararegas");

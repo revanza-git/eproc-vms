@@ -4,7 +4,9 @@ class Vendor extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		
+		if(!$this->session->userdata('user')){
+			redirect(site_url());
+		}
 		$this->load->model('Vendor_model','vm');
 		$this->load->model('izin/izin_model','im');
 		$this->load->model('k3/K3_model','km');
@@ -396,7 +398,9 @@ class Vendor extends CI_Controller {
 	public function data_pic(){
 		$_POST = $this->securities->clean_input($_POST,'save');
 		$user = $this->session->userdata('user');
+		
 		$data = $this->vm->get_data_pic($user['id_user']);
+		
 		$vld = 	array(
 			array(
 				'field'=>'pic_name',

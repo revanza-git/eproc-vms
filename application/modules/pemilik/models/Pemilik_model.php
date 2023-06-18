@@ -95,6 +95,7 @@ class pemilik_model extends CI_Model{
 		return $res;
 	}
 	function get_akta_list(){
+		// echo 'aa '; print_r($this->session->userdata('user')['id_user']);
 		$get = $this->db->select('*')
 						->where('id_vendor',$this->session->userdata('user')['id_user'])
 						->get('ms_akta');

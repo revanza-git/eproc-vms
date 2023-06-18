@@ -159,11 +159,14 @@ class Administrasi extends CI_Controller {
 
 		$this->form_validation->set_rules($vld);
 		if($this->form_validation->run()==TRUE){
+			
 			$_POST['edit_stamp'] = date("Y-m-d H:i:s");
 			unset($_POST['Update']);
-
+			
 			$result = $this->vm->edit_data($this->input->post(),$user['id_user']);
+			
 			if($result){
+				
 				$this->dpt->non_iu_change($user['id_user']);
 				$this->session->set_flashdata('msgSuccess','<p class="msgSuccess">Sukses mengubah data!</p>');
 				redirect(site_url('administrasi'));
@@ -194,7 +197,7 @@ class Administrasi extends CI_Controller {
 		
 		$config['upload_path'] = './lampiran/'.$db_name.'/';
 		$config['allowed_types'] = 'pdf|jpeg|jpg|png|gif';
-		$config['max_size'] = 0;
+		// $config['max_size'] = 0;
 		
 		$this->load->library('upload');
 		$this->upload->initialize($config);
@@ -202,8 +205,10 @@ class Administrasi extends CI_Controller {
 		if ( ! $this->upload->do_upload($db_name)){
 			$_POST[$db_name] = $file_name;
 			$this->form_validation->set_message('do_upload', $this->upload->display_errors('',''));
+			// echo 'false';
 			return false;
 		}else{
+			// echo 'true';
 			$_POST[$db_name] = $file_name; 
 			return true;
 		}

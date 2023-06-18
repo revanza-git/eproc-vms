@@ -189,6 +189,7 @@ class Vendor_model extends CI_Model{
 	}
 
 	function edit_data($data,$id){
+		// echo 'data'; print_r($id);
 		$fl = array('npwp_code'=>$data['npwp_code'],'name'=>$data['name'],'edit_stamp'=>$data['edit_stamp']);
 		$this->db->where('id',$id);
 		$res = $this->db->update('ms_vendor',$fl);
@@ -439,10 +440,12 @@ class Vendor_model extends CI_Model{
 		return $result;
 	}
 	function get_data_pic($id){
+
 		$user = $this->session->userdata('user');
 		$this->db->select('*')
 		->where('id_vendor',$id);
 		$query = $this->db->get('ms_vendor_pic');
+
 		return $query->row_array();
 	}
 

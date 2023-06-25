@@ -24,9 +24,10 @@ class pemilik_model extends CI_Model{
 							`percentage`,
 							`shares`,
 							`data_status`,
-							`entry_stamp`
+							`entry_stamp`,
+							`del`
 							) 
-				VALUES (?,?,?,?,?,?,?) ";
+				VALUES (?,?,?,?,?,?,?,0) ";
 		
 		
 		foreach($this->field_master as $_param) $param[$_param] = $data[$_param];

@@ -17,8 +17,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['BASE_LINK.']	=  	"https://eproc.nusantararegas.com/eproc_pengadaan/";
-$config['base_app']		= 	"https://eproc.nusantararegas.com/eproc_pengadaan/";
+$config['BASE_LINK.']	=  	"http://local.eproc.vms.com/eproc_pengadaan/";
+$config['base_app']		= 	"http://local.eproc.vms.com/eproc_pengadaan/";
+$config['external_url'] = "http://local.eproc.vms.com/eproc_nusantararegas";
+$config['redirect_dashboard'] = "dashboard";
+$config['redirect_auction'] = "auction";
+$config['redirect_admin'] = "admin";
 
 // $config['BASE_LINK.']	=  	"";
 // $config['base_app']	= 	"http://eproc.nusantararegas.com/eproc_pengadaan/";

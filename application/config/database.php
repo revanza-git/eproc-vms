@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => '10.10.11.20',
 	'username' => 'root',
 	'password' => 'Nusantara1234',
-	'database' => 'eproc',
+	'database' => 'eproc_dev',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -97,10 +97,10 @@ $db['default'] = array(
 
 $db['perencanaan'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => '10.10.11.20',
 	'username' => 'root',
 	'password' => 'Nusantara1234',
-	'database' => 'eproc_perencanaan',
+	'database' => 'eproc_perencanaan_dev',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

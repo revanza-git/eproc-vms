@@ -1,0 +1,31 @@
+INFO - 2025-04-29 21:37:15 --> Config Class Initialized
+INFO - 2025-04-29 21:37:15 --> Hooks Class Initialized
+DEBUG - 2025-04-29 21:37:15 --> UTF-8 Support Enabled
+INFO - 2025-04-29 21:37:15 --> Utf8 Class Initialized
+INFO - 2025-04-29 21:37:15 --> URI Class Initialized
+ERROR - 2025-04-29 21:37:15 --> Severity: 8192 --> strpos(): Non-string needles will be interpreted as strings in the future. Use an explicit chr() call to preserve the current behavior C:\inetpub\eproc\vms\eproc_pengadaan\application\third_party\MX\Router.php 239
+INFO - 2025-04-29 21:37:15 --> Router Class Initialized
+INFO - 2025-04-29 21:37:15 --> Output Class Initialized
+INFO - 2025-04-29 21:37:15 --> Security Class Initialized
+DEBUG - 2025-04-29 21:37:15 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-04-29 21:37:15 --> Input Class Initialized
+INFO - 2025-04-29 21:37:15 --> Language Class Initialized
+INFO - 2025-04-29 21:37:15 --> Language Class Initialized
+INFO - 2025-04-29 21:37:15 --> Config Class Initialized
+INFO - 2025-04-29 21:37:15 --> Loader Class Initialized
+DEBUG - 2025-04-29 21:37:15 --> Config file loaded: C:\inetpub\eproc\vms\eproc_pengadaan\application\config/email.php
+INFO - 2025-04-29 21:37:15 --> Helper loaded: form_helper
+INFO - 2025-04-29 21:37:15 --> Helper loaded: url_helper
+INFO - 2025-04-29 21:37:15 --> Helper loaded: email_helper
+INFO - 2025-04-29 21:37:15 --> Helper loaded: utility_helper
+INFO - 2025-04-29 21:37:15 --> Database Driver Class Initialized
+INFO - 2025-04-29 21:37:15 --> Session: Class initialized using 'files' driver.
+INFO - 2025-04-29 21:37:15 --> Form Validation Class Initialized
+INFO - 2025-04-29 21:37:15 --> Upload Class Initialized
+ERROR - 2025-04-29 21:37:15 --> Severity: error --> Exception: Too few arguments to function MY_DB_mysqli_driver::__construct(), 0 passed in C:\inetpub\eproc\vms\eproc_pengadaan\system\core\Loader.php on line 1247 and exactly 1 expected C:\inetpub\eproc\vms\eproc_pengadaan\application\libraries\MY_DB_mysqli_driver.php 6
+ERROR - 2025-04-29 21:37:15 --> Severity: Error --> Uncaught TypeError: Argument 1 passed to CI_Exceptions::show_exception() must be an instance of Exception, instance of ArgumentCountError given, called in C:\inetpub\eproc\vms\eproc_pengadaan\system\core\Common.php on line 662 and defined in C:\inetpub\eproc\vms\eproc_pengadaan\system\core\Exceptions.php:190
+Stack trace:
+#0 C:\inetpub\eproc\vms\eproc_pengadaan\system\core\Common.php(662): CI_Exceptions->show_exception()
+#1 [internal function]: _exception_handler()
+#2 {main}
+  thrown C:\inetpub\eproc\vms\eproc_pengadaan\system\core\Exceptions.php 190

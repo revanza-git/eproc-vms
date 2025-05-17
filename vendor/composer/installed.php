@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => 'codeigniter/framework',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => 'd9cc479e9d6d2e15903291873afb9bc02fab44c4',
+        'type' => 'project',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
+    ),
+    'versions' => array(
+        'codeigniter/framework' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'd9cc479e9d6d2e15903291873afb9bc02fab44c4',
+            'type' => 'project',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'codinghamster/codeigniter-modular-extensions-hmvc' => array(
+            'pretty_version' => '1.1.0',
+            'version' => '1.1.0.0',
+            'reference' => 'ef0902cb862a9129f9edde4f7ccc12237de9d007',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../codinghamster/codeigniter-modular-extensions-hmvc',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'mikey179/vfsstream' => array(
+            'pretty_version' => 'v1.1.0',
+            'version' => '1.1.0.0',
+            'reference' => 'fc0fe8f4d0b527254a2dc45f0c265567c881d07e',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../mikey179/vfsstream',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+    ),
+);

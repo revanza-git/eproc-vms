@@ -182,7 +182,7 @@ class Summary extends CI_Controller{
 					<table cellpadding="0" cellspacing="0" border="0" width="100%">
 						<tr>
 							<td>
-								<h3 style="text-align: center">Laporan Paket Pengadaan Barang / Jasa PT Nusantara Regas</h3>	
+								<h3 style="text-align: center">Laporan Paket Pengadaan Barang / Jasa [Company Name]</h3>	
 							</td>
 						</tr>
 						<tr>

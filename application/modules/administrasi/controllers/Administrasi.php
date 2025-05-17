@@ -233,17 +233,17 @@ class Administrasi extends CI_Controller {
 					<p>
 						<ul>
 							<li>Saya secara hukum mempunyai kapasitas untuk menandatangani kontrak (sesuai akta pendirian/perubahannya/surat kuasa);</li>
- <li>Saya / Perusahaan mengikuti kegiatan di PT Nusantara Regas berdasarkan prinsip itikad baik dan tidak dalam pengaruh atau mempengaruhi pihak yang berkepentingan.</li>
- <li>Saya atas nama Perusahaan menyatakan tidak akan melakukan tindakan suap (termasuk konflik kepentingan), penipuan ataupun KKN sesuai ketentuan dan perundang-undangan yang berlaku.</li>
+							<li>Saya / Perusahaan mengikuti kegiatan di [Company Name] berdasarkan prinsip itikad baik dan tidak dalam pengaruh atau mempengaruhi pihak yang berkepentingan.</li>
+							<li>Saya atas nama Perusahaan menyatakan tidak akan melakukan tindakan suap (termasuk konflik kepentingan), penipuan ataupun KKN sesuai ketentuan dan perundang-undangan yang berlaku.</li>
 							<li>Saya/perusahaan saya tidak sedang dalam pengawasan pengadilan atau tidak sedang dinyatakan pailit atau kegiatan usahanya tidak sedang dihentikan atau tidak sedang menjalani hukuman (sanksi) pidana;</li>
 							<li>Saya tidak pernah dihukum berdasarkan putusan pengadilan atas tindakan yang berkaitan dengan kondite profesional saya;</li>
-							<li>Perusahaan saya memiliki kinerja baik dan tidak termasuk dalam kelompok yang terkena sanksi atau daftar hitam di PT Nusantara Regas maupun di instansi lainnya, dan tidak dalam sengketa dengan PT Nusantara Regas;</li>
+							<li>Perusahaan saya memiliki kinerja baik dan tidak termasuk dalam kelompok yang terkena sanksi atau daftar hitam di [Company Name] maupun di instansi lainnya, dan tidak dalam sengketa dengan [Company Name];</li>
 							<li>Informasi/dokumen/formulir yang akan saya sampaikan adalah benar dan dapat dipertanggung jawabkan secara hukum.</li>
 							<li>Segala dokumen dan formulir yang disampaikan / isi adalah benar.</li>
 							<li>
 								Apabila dikemudian hari, ditemui bahwa dokumen dokumen dan formulir yang telah kami berikan tidak benar/palsu, maka kami bersedia dikenakan sanksi sebagai berikut:
 								<ul>
-									<li>Administrasi tidak diikutsertakan dalam setiap Pengadaan Barang dan Jasa PT Nusantara Regas selama 2 (dua) tahun</li>
+									<li>Administrasi tidak diikutsertakan dalam setiap Pengadaan Barang dan Jasa [Company Name] selama 2 (dua) tahun</li>
 									<li>Penawaran kami digugurkan</li>
 									<li>Dibatalkan sebagai pemenang pengadaan</li>
 									<li>Dituntut ganti rugi atau digugat secara perdata</li>
@@ -258,7 +258,7 @@ class Administrasi extends CI_Controller {
 					<p>" . $pic['pic_name'] . "</p>
 					<p>" . $pic['pic_position'] . "</p>
 					<br>
-					<p><b>Dicetak dengan sistem aplikasi kelogistikan PT Nusantara Regas, Dokumen ini resmi tanpa stempel dan/atau tanda tangan pejabat.</b></p>
+					<p><b>Dicetak dengan sistem aplikasi kelogistikan [Company Name], Dokumen ini resmi tanpa stempel dan/atau tanda tangan pejabat.</b></p>
 				</body>
 			</html>";
 		

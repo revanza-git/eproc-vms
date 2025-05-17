@@ -355,7 +355,7 @@ class Vendor extends CI_Controller {
 				$res = $this->vm->add_vendor($this->input->post());
 
 				if($res){
-					$message = 'Perusahaan saudara telah terdaftar kedalam Sistem Aplikasi Kelogistikan PT Nusantara Regas.
+					$message = 'Perusahaan saudara telah terdaftar kedalam Sistem Aplikasi Kelogistikan [Company Name].
 					Berikut username &amp; password saudara : <br/><br/>
 					
 					Username : '.(isset($_POST['vendor_email'])?$_POST['vendor_email']:'').'<br/>
@@ -363,7 +363,7 @@ class Vendor extends CI_Controller {
 					
 					Untuk selanjutnya, silahkan melengkapi data - data dan dokumen saudara di aplikasi.<br/><br/>
 					Terima kasih.<br/>
-					PT Nusantara Regas';
+					[Company Name]';
 					$this->mail($_POST['vendor_email'], $message);
 					$this->session->set_flashdata('msgSuccess','<p class="msgSuccess">Data Telah Tersimpan. </br>Username: '.$_POST['vendor_email'].'</br>Password: '.$_POST['password'].'</p>');
 				}else{
@@ -590,7 +590,7 @@ class Vendor extends CI_Controller {
 
 		// $this->email->cc('alicia.ordinary@gmail.com'); 
 		//$this->email->bcc('muarifgustiar@gmail.com'); 
-		$this->email->subject('Autentikasi Login Sistem Aplikasi Kelogistikan PT Nusantara Regas');
+		$this->email->subject('Autentikasi Login Sistem Aplikasi Kelogistikan [Company Name]');
 		
 		$this->email->message($message);	
 		$this->email->send();

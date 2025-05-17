@@ -11,9 +11,11 @@
 		"source": "https://github.com/bcit-ci/CodeIgniter"
 	},
 	"require": {
-		"php": ">=5.2.4"
+		"php": ">=7.4.0",
+		"ext-mysqli": "*",
+		"codinghamster/codeigniter-modular-extensions-hmvc": "1.1"
 	},
 	"require-dev": {
-		"mikey179/vfsStream": "1.1.*"
+		"mikey179/vfsstream": "1.1.*"
 	}
 }

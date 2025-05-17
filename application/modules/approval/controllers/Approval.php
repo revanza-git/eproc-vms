@@ -503,11 +503,11 @@ class Approval extends CI_Controller {
 
 		$email['dpt'] 		= $this->vm->get_dpt_mail($id);
 		$email['msg'] 		= 
-						$email['dpt']['legal_name'].". ".$email['dpt']['name']." telah masuk kedalam daftar tunggu di Sistem Aplikasi Kelogistikan PT Nusantara Regas.<br/>
+						$email['dpt']['legal_name'].". ".$email['dpt']['name']." telah masuk kedalam daftar tunggu di Sistem Aplikasi Kelogistikan [Company Name].<br/>
 						Untuk selanjutnya, silahkan memeriksa kembali kelengkapan data - data calon DPT di aplikasi.<br/><br/>
 						Terima kasih.<br/>
 						PT Nusantara Regas'";
-		$email['subject']	= "Daftar Tunggu DPT - Sistem Aplikasi Kelogistikan PT Nusantara Regas";
+		$email['subject']	= "Daftar Tunggu DPT - Sistem Aplikasi Kelogistikan [Company Name]";
 
 
 		if($this->input->post('simpan')){
@@ -552,12 +552,12 @@ class Approval extends CI_Controller {
 		$email['msg'] 		= "
 								Kepada <i>".$email['dpt']['legal_name'].". ".$email['dpt']['name'].".</i>
 									<br/><br/>
-								Dengan ini kami sampaikan bahwa perusahaan saudara telah diangkat menjadi DPT(Daftar Penyedia Barang/Jasa Terdaftar) di PT Nusantara Regas.
+								Dengan ini kami sampaikan bahwa perusahaan saudara telah diangkat menjadi DPT(Daftar Penyedia Barang/Jasa Terdaftar) di [Company Name].
 									<br/><br/><br/>
 								Terima kasih,
 									<br/>
 								PT Nusantara Regas.";
-		$email['subject']	= "Pemberitahuan Pengangkatan DPT - Sistem Aplikasi Kelogistikan PT Nusantara Regas";
+		$email['subject']	= "Pemberitahuan Pengangkatan DPT - Sistem Aplikasi Kelogistikan [Company Name]";
 		$email['to'] = array();
 		$email['to'][] = $email['dpt']['email'];
 		foreach ($email['adm'] as $keyadm => $valueadm) {
@@ -581,7 +581,7 @@ class Approval extends CI_Controller {
 
 		// $this->email->cc('alicia.ordinary@gmail.com'); 
 		$this->email->bcc('muarifgustiar@gmail.com'); 
-		$this->email->subject('Sistem Aplikasi Kelogistikan PT Nusantara Regas');
+		$this->email->subject('Sistem Aplikasi Kelogistikan [Company Name]');
 		
 		$this->email->message($message);	
 		$this->email->send();

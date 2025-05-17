@@ -1,8 +1,17 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Vendor_model extends CI_Model{
-	function __construct(){
+	protected $field_master;
+	protected $field_admin;
+	protected $field_pic;
+	protected $badan_hukum;
+
+	public function __construct(){
 		parent::__construct();
+		$this->initialize();
+	}
+
+	private function initialize() {
 		$this->field_master = array(
 			'id_sbu',
 			'vendor_status',

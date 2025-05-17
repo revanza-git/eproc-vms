@@ -1,4 +1,13 @@
-
 RewriteEngine on
 RewriteCond $1 !^(index\.php|assets|lampiran|temp_upload)
 RewriteRule ^(.*)$ /eproc_pengadaan/index.php?/$1 [L]
+
+# PHP 7.4 specific configurations
+php_value max_execution_time 3600
+php_value memory_limit 256M
+php_value post_max_size 64M
+php_value upload_max_filesize 64M
+php_value max_input_vars 3000
+php_value session.gc_maxlifetime 7200
+php_flag display_errors off
+php_flag display_startup_errors off

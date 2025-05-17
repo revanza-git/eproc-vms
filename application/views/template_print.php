@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Sistem Aplikasi Kelogistikan - PT Nusantara Regas</title>
+		<title>Sistem Aplikasi Kelogistikan - [Company Name]</title>
 		
 		<!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/normalize.css" type="text/css"/> -->
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/print.css" type="text/css"/>
@@ -26,7 +26,7 @@
 					</div>
 				</div>
 				<div class="footer">
-					<p class="copyright">© PT Nusantara Regas <?php echo date('Y');?></p>
+					<p class="copyright">© [Company Name] <?php echo date('Y');?></p>
 					<p class="systemVer">System Version 1.0</p>
 				</div>
 			</div>

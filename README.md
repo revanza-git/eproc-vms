@@ -2,6 +2,130 @@
 
 A comprehensive Vendor Management System built on CodeIgniter 3 framework, designed to streamline vendor registration, qualification, and management processes. This system helps organizations efficiently manage their vendor relationships, ensure compliance, and maintain a qualified vendor database.
 
+## System Overview
+
+![Login Page](assets/images/eproc1.jpg)
+*Login Page of the VMS System*
+
+![E-Procurement Flow](assets/images/eproc_flow.jpg)
+*Complete E-Procurement System Flow*
+
+## E-Procurement Ecosystem
+
+This VMS is part of a larger E-Procurement ecosystem that consists of three interconnected systems:
+
+1. **Vendor Management System (VMS)** - Current Project
+   - Handles vendor registration and qualification
+   - Manages vendor documents and compliance
+   - Processes vendor assessments and evaluations
+
+2. **Internal E-Procurement System** ([eproc-internal](https://github.com/revanza-git/eproc-internal))
+   - Manages internal procurement processes
+   - Handles purchase requests and orders
+   - Controls budget and approvals
+   - Requires admin access
+
+3. **VMS Admin System** ([eproc-vms-admin](https://github.com/revanza-git/eproc-vms-admin))
+   - Provides administrative controls
+   - Manages system configurations
+   - Handles user management
+   - Requires admin access
+
+### System Integration
+- All three systems are designed to work together seamlessly
+- Shared authentication and authorization
+- Synchronized data across systems
+- Unified reporting and analytics
+
+### Detailed System Flow
+
+#### 1. Vendor Management System (VMS) Flow
+- **Vendor Registration**
+  - Initial registration with basic company information
+  - Document submission (legal documents, certifications)
+  - Automated document validation
+  - Initial screening and verification
+
+- **Vendor Qualification**
+  - Document verification process
+  - Compliance checks
+  - Risk assessment
+  - Performance evaluation
+  - Qualification status determination
+
+- **Vendor Assessment**
+  - K3 (Health & Safety) evaluation
+  - CSMS (Contractor Safety Management System) assessment
+  - Technical capability assessment
+  - Financial stability check
+  - Performance history review
+
+#### 2. Internal E-Procurement Flow
+- **Purchase Request (PR) Process**
+  - PR creation and submission
+  - Budget verification
+  - Technical specification review
+  - Multi-level approval workflow
+  - Vendor selection from qualified pool
+
+- **Purchase Order (PO) Management**
+  - PO generation
+  - Contract creation
+  - Terms and conditions verification
+  - Approval routing
+  - Document finalization
+
+- **Contract Management**
+  - Contract execution
+  - Performance monitoring
+  - Payment processing
+  - Contract renewal/termination
+  - Compliance tracking
+
+#### 3. VMS Admin System Flow
+- **User Management**
+  - User registration and role assignment
+  - Access control configuration
+  - Permission management
+  - User activity monitoring
+  - Security policy enforcement
+
+- **System Configuration**
+  - Workflow customization
+  - Document template management
+  - Email notification setup
+  - System parameter configuration
+  - Integration settings
+
+- **Monitoring and Reporting**
+  - System health monitoring
+  - Performance metrics tracking
+  - Audit log management
+  - Report generation
+  - Data analytics
+
+#### Integration Points
+- **Data Synchronization**
+  - Real-time vendor data updates
+  - Document status synchronization
+  - User authentication sharing
+  - Transaction data consistency
+  - Cross-system reporting
+
+- **Workflow Integration**
+  - Seamless handoff between systems
+  - Automated status updates
+  - Unified notification system
+  - Consistent user experience
+  - Integrated approval chains
+
+- **Security Integration**
+  - Single sign-on (SSO) capability
+  - Unified access control
+  - Centralized audit logging
+  - Cross-system security policies
+  - Integrated backup systems
+
 ## Table of Contents
 - [Core Features](#core-features)
 - [Technical Requirements](#technical-requirements)

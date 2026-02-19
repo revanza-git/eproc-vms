@@ -47,7 +47,7 @@ graph TD
 Before you begin, ensure you have the following installed/configured:
 - A web server (Apache, Nginx, or IIS)
 - **PHP 5.6** (use the distribution located at **`C:\tools\php56`** on Windows)
-- **MySQL 5.7.44** database server (this project assumes a Docker-hosted instance on `localhost:3307` with username **`root`** and password **`Nusantara1234`**)
+- **MySQL 5.7.44** database server (this project assumes a Docker-hosted instance on `localhost:3307` with username **`root`** and password from environment variable `E2E_DB_PASSWORD`)
 - `mod_rewrite` (or the **URL Rewrite** module on IIS) enabled on your web server
 
 ## Installation and Setup
@@ -76,7 +76,7 @@ Before you begin, ensure you have the following installed/configured:
         'hostname' => '127.0.0.1',  // Docker host
         'port'     => '3307',       // Mapped port
         'username' => 'root',
-        'password' => 'Nusantara1234',
+        'password' => 'change_me_local',
         'database' => 'eproc_perencanaan',
         'dbdriver' => 'mysqli',
         // ... other settings remain unchanged

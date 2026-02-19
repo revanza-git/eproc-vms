@@ -9,11 +9,11 @@ echo "<p>This script creates the admin test user required for test login functio
 
 // Database configuration (from main/application/config/database.php)
 $db_config = [
-    'hostname' => '127.0.0.1',
-    'port' => 3307,
-    'username' => 'root',
-    'password' => 'Nusantara1234',
-    'database' => 'eproc'
+    'hostname' => getenv('E2E_DB_HOST') ?: '127.0.0.1',
+    'port' => (int) (getenv('E2E_DB_PORT') ?: 3307),
+    'username' => getenv('E2E_DB_USER') ?: 'root',
+    'password' => getenv('E2E_DB_PASSWORD') ?: '',
+    'database' => getenv('E2E_DB_NAME') ?: 'eproc'
 ];
 
 try {

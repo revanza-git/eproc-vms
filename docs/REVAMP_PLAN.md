@@ -3,8 +3,8 @@
 ## Metadata
 - Project: `eproc-vms`
 - Created: `February 19, 2026`
-- Last Updated: `February 20, 2026`
-- Current Status: `Planning`
+- Last Updated: `February 19, 2026`
+- Current Status: `Phase 2 Completed`
 - Branch Target: `main` (akan disesuaikan jika nanti pakai branch khusus revamp)
 
 ## Target Framework
@@ -133,8 +133,8 @@ Sebuah phase hanya boleh ditandai `Completed` jika seluruh syarat berikut terpen
 | Milestone | Target | Status | Notes |
 |---|---|---|---|
 | M0 - Planning docs active | 2026-02-20 | Completed | Plan/checklist + baseline register + acceptance criteria Phase 1 |
-| M1 - Dev env stabilized | TBD | Not Started |  |
-| M2 - Security baseline pass | TBD | Not Started |  |
+| M1 - Dev env stabilized | 2026-02-19 | Completed | Phase 1 completion gate pass (compose lifecycle + smoke + runbook) |
+| M2 - Security baseline pass | 2026-02-19 | Completed | Phase 2 completion gate pass (secret scan + CSRF/session + query safety) |
 | M3 - Runtime upgrade path validated | TBD | Not Started |  |
 | M4 - CI quality gate live | TBD | Not Started |  |
 | M5 - Framework target selected | 2026-02-20 | Completed | Laravel |

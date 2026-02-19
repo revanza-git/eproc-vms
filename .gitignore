@@ -15,6 +15,12 @@ Desktop.ini
 **/.env
 **/.env.*
 !**/.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
 
 # --- PHP / Composer ---
 **/vendor/
@@ -53,6 +59,13 @@ Desktop.ini
 *.bak.*
 *.tmp
 *.log
+*.dump
+*.dmp
+*.sql.bak
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
 
 # --- dompdf (runtime/generated) ---
 **/dompdf2/lib/fonts/log.htm
@@ -62,3 +75,10 @@ Desktop.ini
 # --- Test / tooling caches ---
 **/.phpunit.result.cache
 **/.phpunit.cache/
+**/coverage/
+**/test-results/
+coverage.xml
+clover.xml
+junit.xml
+*.lcov
+**/.cache/

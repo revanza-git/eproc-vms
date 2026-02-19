@@ -2,11 +2,11 @@
 echo "Testing database connection (simple)...\n";
 
 // Manual database settings from .env file
-$host = 'localhost';
-$port = 3307;
-$user = 'root';
-$pass = 'Nusantara1234';
-$database = 'eproc';
+$host = getenv('E2E_DB_HOST') ?: 'localhost';
+$port = (int) (getenv('E2E_DB_PORT') ?: 3307);
+$user = getenv('E2E_DB_USER') ?: 'root';
+$pass = getenv('E2E_DB_PASSWORD') ?: '';
+$database = getenv('E2E_DB_NAME') ?: 'eproc';
 
 echo "DB Settings:\n";
 echo "Host: $host\n";

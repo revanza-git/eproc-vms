@@ -66,7 +66,7 @@ $config['csrf_protection'] = TRUE;
 **Changes:**
 ```php
 // Before
-'password' => 'Nusantara1234',
+'password' => 'change_me_local',
 
 // After
 'password' => env('DB_EPROC_PASSWORD', ''),

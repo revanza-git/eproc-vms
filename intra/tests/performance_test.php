@@ -11,7 +11,7 @@
 require_once "main/application/helpers/env_helper.php";
 $host = env('PERFORMANCE_TEST_HOST', 'localhost');
 $username = env('DB_EPROC_USERNAME', 'root');
-$password = env('DB_EPROC_PASSWORD', 'Nusantara1234');
+$password = env('DB_EPROC_PASSWORD', '');
 $database = env('DB_EPROC_DATABASE', 'eproc');
 $port = env('DB_EPROC_PORT', 3307);
 

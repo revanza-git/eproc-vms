@@ -8,6 +8,10 @@
 
 - Run the secret scanner:
   - `php scripts/scan_secrets.php`
+- Run CSRF/session baseline regression check:
+  - `php scripts/check_csrf_session_baseline.php`
+- Run sample query safety check:
+  - `php scripts/check_query_safety.php`
 
 ## Email Configuration
 

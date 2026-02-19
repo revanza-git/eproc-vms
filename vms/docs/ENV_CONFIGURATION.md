@@ -211,7 +211,7 @@ If you're migrating from the previous hardcoded configuration:
 | `DB_DATABASE_PLANNING` | string | `eproc_perencanaan` | Planning database name |
 | `BASE_URL` | string | `http://local.eproc.web.com/app/` | Application base URL |
 | `EXTERNAL_URL` | string | `http://local.eproc.web.com/main` | External URL |
-| `ENCRYPTION_KEY` | string | `pgn_vms` | Encryption key (32 chars) |
+| `ENCRYPTION_KEY` | string | `(required)` | Encryption key (32 chars) |
 | `SESSION_DRIVER` | string | `files` | Session storage driver |
 | `SESSION_EXPIRE` | integer | `7200` | Session expiration (seconds) |
 

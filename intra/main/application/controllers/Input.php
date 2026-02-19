@@ -191,6 +191,8 @@ class Input extends CI_Controller
    	}
 	
 	function show_riwayat_pengadaan($id_pengadaan,$status){
+		$id_pengadaan = (int) $id_pengadaan;
+		$status = (int) $status;
 		$q = "	SELECT 
 						a.*
 					FROM
@@ -198,8 +200,8 @@ class Input extends CI_Controller
 					LEFT JOIN
 						eproc.ms_admin b ON b.id=a.approved_by
 					WHERE
-						a.del = 0 AND a.id_pengadaan = $id_pengadaan AND a.is_status = $status";
-		$q = $this->db->query($q)->result();
+						a.del = 0 AND a.id_pengadaan = ? AND a.is_status = ?";
+		$q = $this->db->query($q, array($id_pengadaan, $status))->result();
 		//print_r($q);die;
 		$bl = "<table border=1><tr><td>Status</td><td>Tanggal</td></tr>";
 		foreach($q as $k => $v){

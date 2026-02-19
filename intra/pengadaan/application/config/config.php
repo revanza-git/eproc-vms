@@ -1,6 +1,10 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+if (!function_exists('env')) {
+	require_once(APPPATH . 'helpers/env_helper.php');
+}
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -316,7 +320,8 @@ $config['cache_query_string'] = FALSE;
 | http://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = 'pgn_vms';
+$config['encryption_key'] = env('ENCRYPTION_KEY', '');
+$config['encryption_key'] = ($config['encryption_key'] === '' && ENVIRONMENT === 'development') ? 'dev_only_change_me' : $config['encryption_key'];
 
 /*
 |--------------------------------------------------------------------------
@@ -391,7 +396,7 @@ if ($sessDriver === 'redis') {
 	}
 }
 $config['sess_save_path'] = $sessSavePath;
-$config['sess_match_ip'] = FALSE;
+$config['sess_match_ip'] = env('SESSION_MATCH_IP', FALSE);
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = TRUE;
 
@@ -460,7 +465,7 @@ $config['global_xss_filtering'] = FALSE;
 | 'csrf_regenerate' = Regenerate token on every submission
 | 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
 */
-$config['csrf_protection'] = FALSE;
+$config['csrf_protection'] = env('CSRF_PROTECTION', TRUE);
 $config['csrf_token_name'] = 'csrf_test_name';
 $config['csrf_cookie_name'] = 'csrf_cookie_name';
 $config['csrf_expire'] = 7200;

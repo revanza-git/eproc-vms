@@ -602,7 +602,15 @@ class Main_model extends CI_model{
 
 	function search_data($value){
 		$result = array();
-		$admin = $this->session->userdata('admin');		
+		$search = trim((string) $value);
+		if ($search === '' && isset($_POST['search'])) {
+			$search = trim((string) $_POST['search']);
+		}
+
+		if ($search === '') {
+			return $result;
+		}
+
 		$query = "	SELECT
 		                a.id,
 		                a.nama_pengadaan,
@@ -616,7 +624,7 @@ class Main_model extends CI_model{
 					WHERE a.del = 0 AND a.nama_pengadaan LIKE ? OR b.name LIKE ?
 					LIMIT 5";
 
-	    $query = $this->db->query($query, array('%'.$_POST['search'].'%','%'.$_POST['search'].'%'))->result_array();		
+	    $query = $this->db->query($query, array('%'.$search.'%','%'.$search.'%'))->result_array();		
 		$result = array();
 		foreach($query as $key => $value){
 			if ($value['is_status'] == 0) {

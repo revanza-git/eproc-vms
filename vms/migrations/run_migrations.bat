@@ -7,7 +7,11 @@ echo.
 set MYSQL_HOST=localhost
 set MYSQL_PORT=3307
 set MYSQL_USER=root
-set MYSQL_PASS=Nusantara1234
+set MYSQL_PASS=%E2E_DB_PASSWORD%
+
+if "%MYSQL_PASS%"=="" (
+    set /p MYSQL_PASS=Enter MySQL password:
+)
 
 echo Connecting to MySQL Docker on %MYSQL_HOST%:%MYSQL_PORT%
 echo.

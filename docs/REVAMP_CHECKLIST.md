@@ -8,8 +8,8 @@
 - Jika ada blocker, tulis di bagian **Active Blockers**.
 
 ## Snapshot
-- Last Updated: `February 20, 2026`
-- Overall Status: `Phase 1 Completed`
+- Last Updated: `February 19, 2026`
+- Overall Status: `Phase 2 Completed`
 
 ---
 
@@ -32,14 +32,32 @@
 - [x] Testing evidence Phase 1 dicatat (compose lifecycle + healthcheck + smoke)
 
 ## Phase 2 - Security & Hygiene Foundation
-- [ ] Audit dan cleanup secret yang tidak boleh ada di repo
-- [ ] Rotasi credential yang pernah ter-expose
-- [ ] Aktifkan dan samakan baseline CSRF/session policy antar app
-- [ ] Prioritaskan perbaikan query berisiko tinggi (input -> raw SQL)
-- [ ] Rapikan `.gitignore` untuk artefak coverage/build/backup
-- [ ] Upgrade/ketatkan scanner secret internal
-- [ ] Confirmation check Phase 2 (security baseline terpenuhi)
-- [ ] Testing evidence Phase 2 dicatat (secret scan + CSRF/session regression)
+- [x] Audit dan cleanup secret yang tidak boleh ada di repo
+- [x] Rotasi credential yang pernah ter-expose
+- [x] Aktifkan dan samakan baseline CSRF/session policy antar app
+- [x] Prioritaskan perbaikan query berisiko tinggi (input -> raw SQL)
+- [x] Rapikan `.gitignore` untuk artefak coverage/build/backup
+- [x] Upgrade/ketatkan scanner secret internal
+- [x] Confirmation check Phase 2 (security baseline terpenuhi)
+- [x] Testing evidence Phase 2 dicatat (secret scan + CSRF/session regression)
+
+### Confirmation check Phase 2
+- Tindakan cleanup secret sudah diterapkan pada file terdampak (`vms/app/tests`, `intra/tests`, config `intra/pengadaan`) dan literal kredensial terekspos sudah dihapus dari code path aktif.
+- Dokumentasi rotasi credential + placeholder aman tersedia di `docs/SECURITY_CREDENTIAL_ROTATION.md`.
+- Baseline CSRF/session policy sudah disamakan lintas app via config env-driven (`CSRF_PROTECTION`, `SESSION_MATCH_IP`, `COOKIE_HTTPONLY`) di:
+  - `vms/app/application/config/config.php`
+  - `intra/main/application/config/config.php`
+  - `intra/pengadaan/application/config/config.php`
+- Quick-win query safety pada jalur berisiko tinggi sudah diperbaiki (input route -> parameterized query) di `intra/main/application/controllers/Input.php`.
+- Internal scanner secret ditingkatkan di `scripts/scan_secrets.php` dan repo hygiene untuk artefak/noise diperbarui di `.gitignore`.
+
+### Testing evidence Phase 2
+| Date | Command | Result | File/Area |
+|---|---|---|---|
+| 2026-02-19 | `php scripts/scan_secrets.php` | PASS (`OK: no obvious hardcoded secrets detected`) | `scripts/scan_secrets.php`, `vms/app/tests`, `intra/tests`, repo tracked files |
+| 2026-02-19 | `php scripts/check_csrf_session_baseline.php` | PASS (`CSRF/session baseline is consistent across apps`) | `vms/app/application/config/config.php`, `intra/main/application/config/config.php`, `intra/pengadaan/application/config/config.php` |
+| 2026-02-19 | `php scripts/check_query_safety.php` | PASS (`Sample high-risk query paths use parameter binding`) | `intra/main/application/controllers/Input.php`, `intra/main/application/models/Main_model.php` |
+| 2026-02-19 | `php -l` (lint) untuk file PHP yang diubah | PASS (no syntax errors) | config/security scripts + controller/model + test utilities |
 
 ## Phase 3 - Runtime Modernization Path
 - [ ] Buat compatibility checklist PHP 7.4 -> target runtime modern
@@ -106,13 +124,27 @@ Blockers:
 |---|---|---|---|---|---|
 | Phase 0 | 2026-02-20 | Dokumen baseline + acceptance criteria lengkap | Validasi referensi antar dokumen/checklist | PASS | `docs/REVAMP_PLAN.md`, `docs/BASELINE_ISSUES.md` |
 | Phase 1 | 2026-02-19 | Acceptance criteria environment terpenuhi | Compose lifecycle + healthcheck + smoke endpoint minimum | PASS | Session Log entry Phase 1 + `docs/DEV_ENV_RUNBOOK.md` |
-| Phase 2 | TBD | TBD | TBD | TBD | TBD |
+| Phase 2 | 2026-02-19 | Security baseline policy diterapkan (secret cleanup, credential rotation log, CSRF/session baseline, query quick-win, scanner hardening) | Secret scan + CSRF/session baseline regression + sample query safety check + lint file terdampak | PASS | `docs/SECURITY_CREDENTIAL_ROTATION.md`, `scripts/scan_secrets.php`, `scripts/check_csrf_session_baseline.php`, `scripts/check_query_safety.php` |
 | Phase 3 | TBD | TBD | TBD | TBD | TBD |
 | Phase 4 | TBD | TBD | TBD | TBD | TBD |
 | Phase 5 | TBD | TBD | TBD | TBD | TBD |
 | Phase 6 | TBD | TBD | TBD | TBD | TBD |
 
 ## Session Log
+Date: February 19, 2026
+Scope: Phase 2 - Security & Hygiene Foundation
+Completed:
+- Secret audit/cleanup: hardcoded credential literal dihapus dari script test dan diganti env-based config.
+- Credential rotation baseline terdokumentasi dengan placeholder aman (`docs/SECURITY_CREDENTIAL_ROTATION.md`).
+- Baseline CSRF/session disamakan lintas `vms`, `intra/main`, `intra/pengadaan` (env-driven policy).
+- Query berisiko tinggi (input route -> raw SQL) diparameterisasi pada `show_riwayat_pengadaan` dan sample search flow diperketat.
+- `.gitignore` dirapikan untuk artefak coverage/build/backup + file sensitif.
+- Secret scanner internal ditingkatkan dan ditambah regression checker (`scripts/check_csrf_session_baseline.php`, `scripts/check_query_safety.php`).
+Next:
+- Lanjut ke Phase 3 (runtime modernization path) sesuai checklist.
+Blockers:
+- Tidak ada blocker aktif untuk completion gate Phase 2.
+
 Date: February 19, 2026
 Scope: Phase 1 - Stabilize Development Environment
 Completed:

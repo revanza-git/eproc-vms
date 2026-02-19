@@ -5,7 +5,13 @@
  */
 
 try {
-    $pdo = new PDO('mysql:host=localhost;port=3307;dbname=eproc', 'root', 'Nusantara1234');
+    $dbHost = getenv('E2E_DB_HOST') ?: 'localhost';
+    $dbPort = (int) (getenv('E2E_DB_PORT') ?: 3307);
+    $dbName = getenv('E2E_DB_NAME') ?: 'eproc';
+    $dbUser = getenv('E2E_DB_USER') ?: 'root';
+    $dbPass = getenv('E2E_DB_PASSWORD') ?: '';
+
+    $pdo = new PDO("mysql:host={$dbHost};port={$dbPort};dbname={$dbName}", $dbUser, $dbPass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
     echo "<h2>🔍 Database Table Analysis</h2>";

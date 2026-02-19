@@ -8,9 +8,15 @@ echo "<h1>VMS to Main Project Authentication Flow Test</h1>";
 
 echo "<h2>1. Database Connection Test</h2>";
 
+$dbHost = getenv('E2E_DB_HOST') ?: 'localhost';
+$dbPort = (int) (getenv('E2E_DB_PORT') ?: 3307);
+$dbName = getenv('E2E_DB_NAME') ?: 'eproc';
+$dbUser = getenv('E2E_DB_USER') ?: 'root';
+$dbPass = getenv('E2E_DB_PASSWORD') ?: '';
+
 try {
     // Test VMS database connection
-    $vms_pdo = new PDO("mysql:host=localhost;port=3307;dbname=eproc", "root", "Nusantara1234");
+    $vms_pdo = new PDO("mysql:host={$dbHost};port={$dbPort};dbname={$dbName}", $dbUser, $dbPass);
     $vms_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "<p style='color: green;'>✅ VMS Database (eproc) connection successful</p>";
     

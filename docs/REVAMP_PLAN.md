@@ -110,6 +110,25 @@ Deliverables:
 - Ekstraksi modul prioritas ke aplikasi baru (strangler pattern).
 - Rencana dekomisioning CI3 per domain.
 
+## Mandatory Phase Completion Gate
+Sebuah phase hanya boleh ditandai `Completed` jika seluruh syarat berikut terpenuhi:
+1. Semua checklist phase tersebut selesai.
+2. Confirmation check phase dilakukan (review deliverable terhadap objective/acceptance criteria).
+3. Testing phase dijalankan dan hasilnya `PASS`.
+4. Bukti eksekusi (command, hasil, tanggal) dicatat di `docs/REVAMP_CHECKLIST.md` pada bagian **Phase Validation Log**.
+5. Milestone status di dokumen ini diperbarui.
+
+## Minimum Verification Matrix
+| Phase | Confirmation Check (Wajib) | Testing (Wajib) |
+|---|---|---|
+| Phase 0 | Dokumen plan/checklist/baseline/acceptance criteria lengkap & konsisten | Verifikasi referensi dokumen dan status checklist |
+| Phase 1 | Semua acceptance criteria environment terpenuhi | `docker compose` lifecycle check + healthcheck + smoke endpoint minimum |
+| Phase 2 | Security baseline policy sudah diterapkan pada target area | Secret scan + CSRF/session regression check + sample query safety check |
+| Phase 3 | Mekanisme dual runtime dan compatibility scope tervalidasi | Smoke test runtime 7.4 + smoke test runtime target modern + job/cron check minimum |
+| Phase 4 | Quality gate sudah aktif sebagai guardrail merge | CI pipeline run sukses (lint/test/smoke sesuai definisi) |
+| Phase 5 | Refactor plan dan scope domain terkonfirmasi | Regression test pada area yang direfactor |
+| Phase 6 | Coexistence architecture dan pilot migration readiness terkonfirmasi | Contract/integration test pilot + UAT pilot + rollback drill |
+
 ## Milestones
 | Milestone | Target | Status | Notes |
 |---|---|---|---|

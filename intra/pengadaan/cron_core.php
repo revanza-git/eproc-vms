@@ -1,53 +1,116 @@
 <?php
-require_once "application/config/database.php";
-require_once "cron_mail.php";
+if (!defined('BASEPATH')) {
+	define('BASEPATH', __DIR__ . DIRECTORY_SEPARATOR);
+}
+if (!defined('APPPATH')) {
+	define('APPPATH', __DIR__ . DIRECTORY_SEPARATOR . 'application' . DIRECTORY_SEPARATOR);
+}
+if (!defined('ENVIRONMENT')) {
+	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : ((getenv('CI_ENV') !== false) ? getenv('CI_ENV') : 'development'));
+}
+if (!function_exists('env')) {
+	require_once APPPATH . "helpers/env_helper.php";
+}
 
-mysql_connect($db['default']['hostname'],$db['default']['username'],$db['default']['password']);
-mysql_select_db($db['default']['database']);
+require_once APPPATH . "config/database.php";
+require_once __DIR__ . "/cron_mail.php";
 
 class cron{
+	/** @var mysqli */
+	private $conn;
 
 	function __construct(){
 		error_reporting(E_ERROR);
+		$this->connect();
+	}
+
+	private function connect(){
+		global $db;
+
+		$config = isset($db['default']) && is_array($db['default']) ? $db['default'] : array();
+		$hostname = isset($config['hostname']) ? (string) $config['hostname'] : '127.0.0.1';
+		$username = isset($config['username']) ? (string) $config['username'] : '';
+		$password = isset($config['password']) ? (string) $config['password'] : '';
+		$database = isset($config['database']) ? (string) $config['database'] : '';
+		$port = isset($config['port']) ? (int) $config['port'] : 3306;
+		$charset = isset($config['char_set']) ? (string) $config['char_set'] : 'utf8';
+
+		$this->conn = @mysqli_init();
+		if ($this->conn === false) {
+			throw new RuntimeException('Failed to initialize mysqli connection.');
+		}
+
+		if (!@$this->conn->real_connect($hostname, $username, $password, $database, $port)) {
+			throw new RuntimeException('Failed to connect to database for cron execution.');
+		}
+
+		@$this->conn->set_charset($charset);
 	}
 	
 	function query($sql = ''){
-		return mysql_query($sql);
-	}
-	
-	function num_rows($sql = ''){
-		return mysql_num_rows($sql);
+		return $this->conn->query($sql);
 	}
 
-	function row_array($sql = ''){
-		$return = array();
-		$x = 0;
-		
-		while($data = mysql_fetch_array($sql)){
-			for($i=0;$i<count($data);$i++){
-				$index = key($data);
-				$return[$index] = $data[$index];
-				next($data);
+	function execute($sql = '', $types = '', $params = array()){
+		$stmt = $this->conn->prepare($sql);
+		if ($stmt === false) {
+			return false;
+		}
+
+		if (!empty($params)) {
+			$bind = array($types);
+			foreach ($params as $key => $value) {
+				$bind[] = &$params[$key];
+			}
+			if (!call_user_func_array(array($stmt, 'bind_param'), $bind)) {
+				$stmt->close();
+				return false;
 			}
 		}
-		
-		return $return;
+
+		$ok = $stmt->execute();
+		$stmt->close();
+		return $ok;
 	}
 	
-	function result($query = ''){
-		$return = array();
-		$x = 0;
-		
-		while($data = mysql_fetch_array($query)){
-			for($i=0;$i<count($data);$i++){
-				$index = key($data);
-				$return[$x][$index] = $data[$index];
-				next($data);
-			}
-			$x++;
+	function num_rows($query = null){
+		return ($query instanceof mysqli_result) ? $query->num_rows : 0;
+	}
+
+	function row_array($query = null){
+		if (!($query instanceof mysqli_result)) {
+			return array();
 		}
-		
-		return $return;
+
+		$row = $query->fetch_assoc();
+		$query->free();
+
+		return is_array($row) ? $row : array();
+	}
+	
+	function result($query = null){
+		if (!($query instanceof mysqli_result)) {
+			return array();
+		}
+
+		$return = $query->fetch_all(MYSQLI_ASSOC);
+		$query->free();
+		return is_array($return) ? $return : array();
+	}
+
+	function escape_identifier($value = ''){
+		$identifier = (string) $value;
+		if ($identifier === '' || preg_match('/^[a-zA-Z0-9_]+$/', $identifier) !== 1) {
+			return false;
+		}
+
+		return '`'.$identifier.'`';
+	}
+
+	function close(){
+		if ($this->conn instanceof mysqli) {
+			$this->conn->close();
+		}
 	}
 	
 	function send_email($to = '', $subject = '', $message = ''){
@@ -64,5 +127,9 @@ class cron{
 		$header .= "X-Mailer: PHP/" . phpversion()."\n";
 
 		mail($to, $subject, $message, $header,"-f $from");
+	}
+
+	function __destruct(){
+		$this->close();
 	}
 }

@@ -80,7 +80,20 @@ class Modules
 	/** Load a module controller **/
 	public static function load($module) 
 	{
-		(is_array($module)) ? list($module, $params) = each($module) : $params = NULL;	
+		if (is_array($module))
+		{
+			$params = NULL;
+			foreach ($module as $module_name => $module_params)
+			{
+				$module = $module_name;
+				$params = $module_params;
+				break;
+			}
+		}
+		else
+		{
+			$params = NULL;
+		}
 		
 		/* get the requested controller class name */
 		$alias = strtolower(basename($module));

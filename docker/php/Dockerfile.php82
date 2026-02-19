@@ -11,6 +11,9 @@ RUN apt-get update && apt-get install -y \
     unzip \
     libzip-dev
 
+RUN pecl install redis \
+    && docker-php-ext-enable redis
+
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd mysqli zip soap
 
 RUN apt-get purge -y --auto-remove $PHPIZE_DEPS \

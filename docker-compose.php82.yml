@@ -1,0 +1,10 @@
+services:
+  vms-app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile.php82
+
+  intra-app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile.php82

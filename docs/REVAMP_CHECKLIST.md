@@ -9,7 +9,7 @@
 
 ## Snapshot
 - Last Updated: `February 19, 2026`
-- Overall Status: `Phase 2 Completed`
+- Overall Status: `Phase 3 Completed`
 
 ---
 
@@ -60,14 +60,37 @@
 | 2026-02-19 | `php -l` (lint) untuk file PHP yang diubah | PASS (no syntax errors) | config/security scripts + controller/model + test utilities |
 
 ## Phase 3 - Runtime Modernization Path
-- [ ] Buat compatibility checklist PHP 7.4 -> target runtime modern
-- [ ] Identifikasi blocker runtime (contoh: `mysql_*`, API deprecated)
-- [ ] Refactor script cron legacy ke driver modern (`mysqli`/CI DB)
-- [ ] Jalankan smoke test pada runtime saat ini
-- [ ] Jalankan smoke test pada runtime target
-- [ ] Catat gap dan rollback strategy
-- [ ] Confirmation check Phase 3 (compatibility scope tervalidasi)
-- [ ] Testing evidence Phase 3 dicatat (smoke 7.4 + smoke target + cron check)
+- [x] Buat compatibility checklist PHP 7.4 -> target runtime modern
+- [x] Identifikasi blocker runtime (contoh: `mysql_*`, API deprecated)
+- [x] Refactor script cron legacy ke driver modern (`mysqli`/CI DB)
+- [x] Jalankan smoke test pada runtime saat ini
+- [x] Jalankan smoke test pada runtime target
+- [x] Catat gap dan rollback strategy
+- [x] Confirmation check Phase 3 (compatibility scope tervalidasi)
+- [x] Testing evidence Phase 3 dicatat (smoke 7.4 + smoke target + cron check)
+
+### Confirmation check Phase 3
+- Mekanisme dual-runtime sudah tersedia dan repeatable lewat `tools/dev-env.ps1` dengan parameter `-PhpRuntime 7.4|8.2`.
+- Compatibility checklist dan runtime matrix 7.4 vs 8.2 terdokumentasi di `docs/PHP_UPGRADE.md`.
+- Blocker prioritas tinggi runtime sudah direfactor:
+  - Migrasi `mysql_*` cron legacy ke `mysqli` + query execution yang aman di `vms/app/jobs/*` dan `intra/pengadaan/cron_*`.
+  - Hot path fatal `each()` sudah dihilangkan dari `Security` core dan `MX Modules`.
+- Dependency runtime penting (`mysqli`, `redis`) tervalidasi pada kedua runtime melalui action `deps`.
+- Rollback strategy eksplisit untuk fallback ke 7.4 sudah dicatat di `docs/PHP_UPGRADE.md`.
+
+### Testing evidence Phase 3
+| Date | Command | Result | File/Area |
+|---|---|---|---|
+| 2026-02-19 | `php scripts/check_php82_blockers.php` | PASS (`no high-severity PHP 8.2 blockers found in scoped runtime paths`) | `scripts/check_php82_blockers.php`, cron legacy + Security + MX runtime path |
+| 2026-02-19 | `pwsh ./tools/dev-env.ps1 -Action start -PhpRuntime 7.4` | PASS | Docker runtime 7.4 (`docker/php/Dockerfile`) |
+| 2026-02-19 | `pwsh ./tools/dev-env.ps1 -Action smoke -PhpRuntime 7.4` | PASS (`vms/main/pengadaan endpoint 200`) | Nginx routing + 3 app endpoint minimum |
+| 2026-02-19 | `pwsh ./tools/dev-env.ps1 -Action deps -PhpRuntime 7.4` | PASS (`DB query + Redis ping`) | DB/Redis connectivity from `vms-app` |
+| 2026-02-19 | `pwsh ./tools/dev-env.ps1 -Action cron -PhpRuntime 7.4` | PASS (`cron runtime DB check`) | `vms/app/jobs/cron_core.php` |
+| 2026-02-19 | `pwsh ./tools/dev-env.ps1 -Action start -PhpRuntime 8.2` | PASS | Docker runtime 8.2 (`docker/php/Dockerfile.php82`, `docker-compose.php82.yml`) |
+| 2026-02-19 | `pwsh ./tools/dev-env.ps1 -Action smoke -PhpRuntime 8.2` | PASS (`vms/main/pengadaan endpoint 200`) | Nginx routing + 3 app endpoint minimum |
+| 2026-02-19 | `pwsh ./tools/dev-env.ps1 -Action deps -PhpRuntime 8.2` | PASS (`DB query + Redis ping`) | DB/Redis connectivity from `vms-app` |
+| 2026-02-19 | `pwsh ./tools/dev-env.ps1 -Action cron -PhpRuntime 8.2` | PASS (`cron runtime DB check`) | `vms/app/jobs/cron_core.php` |
+| 2026-02-19 | `php -l` untuk file PHP yang diubah | PASS (no syntax errors) | Cron refactor + Security/MX patch + runtime checker scripts |
 
 ## Phase 4 - Quality Gates & Automation
 - [ ] Definisikan command standar `lint`, `test`, `smoke`
@@ -103,7 +126,11 @@
 ---
 
 ## Active Blockers
-- (kosong)
+- Tidak ada blocker aktif yang menghentikan gate Phase 3.
+- Gap residual (non-blocking, ditrack untuk phase lanjut):
+  - `each()` di XMLRPC legacy library.
+  - `create_function()` di dompdf legacy.
+  - Driver `mysql` bawaan CI3 masih ada (tidak aktif, app memakai `mysqli`).
 
 ## Session Log Template
 Gunakan format ini setiap selesai sesi kerja:
@@ -125,12 +152,26 @@ Blockers:
 | Phase 0 | 2026-02-20 | Dokumen baseline + acceptance criteria lengkap | Validasi referensi antar dokumen/checklist | PASS | `docs/REVAMP_PLAN.md`, `docs/BASELINE_ISSUES.md` |
 | Phase 1 | 2026-02-19 | Acceptance criteria environment terpenuhi | Compose lifecycle + healthcheck + smoke endpoint minimum | PASS | Session Log entry Phase 1 + `docs/DEV_ENV_RUNBOOK.md` |
 | Phase 2 | 2026-02-19 | Security baseline policy diterapkan (secret cleanup, credential rotation log, CSRF/session baseline, query quick-win, scanner hardening) | Secret scan + CSRF/session baseline regression + sample query safety check + lint file terdampak | PASS | `docs/SECURITY_CREDENTIAL_ROTATION.md`, `scripts/scan_secrets.php`, `scripts/check_csrf_session_baseline.php`, `scripts/check_query_safety.php` |
-| Phase 3 | TBD | TBD | TBD | TBD | TBD |
+| Phase 3 | 2026-02-19 | Dual-runtime mechanism + compatibility scope tervalidasi, blocker high priority direfactor, gap+rollback terdokumentasi | Runtime smoke 7.4 + runtime smoke 8.2 + DB/Redis dependency check + cron runtime check + blocker scan + lint | PASS | `docs/PHP_UPGRADE.md`, `tools/dev-env.ps1`, `docker-compose.php82.yml`, `vms/app/jobs/*`, `intra/pengadaan/cron_*`, `scripts/check_php82_blockers.php` |
 | Phase 4 | TBD | TBD | TBD | TBD | TBD |
 | Phase 5 | TBD | TBD | TBD | TBD | TBD |
 | Phase 6 | TBD | TBD | TBD | TBD | TBD |
 
 ## Session Log
+Date: February 19, 2026
+Scope: Phase 3 - Runtime Modernization Path
+Completed:
+- Compatibility matrix PHP 7.4 vs 8.2 dan runtime guidance dilengkapi di `docs/PHP_UPGRADE.md`.
+- Refactor blocker prioritas tinggi: cron legacy `mysql_*` dipindah ke `mysqli` dengan helper execution aman di `vms` dan `intra/pengadaan`.
+- Fatal risk `each()` pada runtime path utama (`Security`, `MX Modules`) dipatch agar kompatibel PHP 8.2.
+- Mekanisme dual-runtime dibuat repeatable (`docker-compose.php82.yml`, `tools/dev-env.ps1 -PhpRuntime 7.4|8.2`).
+- Tambahan action validasi runtime (`smoke`, `deps`, `cron`) dan checker blocker (`scripts/check_php82_blockers.php`) dijalankan.
+- Smoke + dependency + cron check PASS di kedua runtime (7.4 dan 8.2).
+Next:
+- Lanjut ke Phase 4 (quality gates & automation) dengan baseline command yang sudah stabil.
+Blockers:
+- Tidak ada blocker aktif untuk completion gate Phase 3; residual gap dicatat sebagai non-blocking di `docs/PHP_UPGRADE.md`.
+
 Date: February 19, 2026
 Scope: Phase 2 - Security & Hygiene Foundation
 Completed:

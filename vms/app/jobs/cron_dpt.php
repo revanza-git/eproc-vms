@@ -5,13 +5,14 @@ class dpt extends cron{
 		parent::__construct();
 	}
 	function remove_dpt($id){
-		$sql = "UPDATE tr_dpt SET end_date = '".date('Y-m-d')."' , status = 2, edit_stamp = '".date('Y-m-d H:i:s')."' WHERE id_vendor = ".$id;
-		$this->query($sql);
+		$vendor_id = (int) $id;
+		$today = date('Y-m-d');
+		$timestamp = date('Y-m-d H:i:s');
 
-		$sql1 = "UPDATE ms_vendor SET vendor_status = 1 , edit_stamp = '".date('Y-m-d H:i:s')."' WHERE id_vendor = ".$id;
-		$this->query($sql1);
-	}
-	function __destruct(){
-		mysql_close();
+		$sql = "UPDATE tr_dpt SET end_date = ?, status = 2, edit_stamp = ? WHERE id_vendor = ?";
+		$this->execute($sql, "ssi", array($today, $timestamp, $vendor_id));
+
+		$sql1 = "UPDATE ms_vendor SET vendor_status = 1, edit_stamp = ? WHERE id_vendor = ?";
+		$this->execute($sql1, "si", array($timestamp, $vendor_id));
 	}
 }

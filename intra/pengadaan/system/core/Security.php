@@ -351,9 +351,9 @@ class CI_Security {
 		// Is the string an array?
 		if (is_array($str))
 		{
-			while (list($key) = each($str))
+			foreach ($str as $key => $value)
 			{
-				$str[$key] = $this->xss_clean($str[$key]);
+				$str[$key] = $this->xss_clean($value);
 			}
 
 			return $str;
@@ -574,12 +574,16 @@ class CI_Security {
 			return FALSE;
 		}
 
-		// Unfortunately, none of the following PRNGs is guaranteed to exist ...
-		if (defined('MCRYPT_DEV_URANDOM') && ($output = mcrypt_create_iv($length, MCRYPT_DEV_URANDOM)) !== FALSE)
+		if (function_exists('random_bytes'))
 		{
-			return $output;
+			try
+			{
+				return random_bytes((int) $length);
+			}
+			catch (Exception $e)
+			{
+			}
 		}
-
 
 		if (is_readable('/dev/urandom') && ($fp = fopen('/dev/urandom', 'rb')) !== FALSE)
 		{
@@ -596,6 +600,15 @@ class CI_Security {
 		if (function_exists('openssl_random_pseudo_bytes'))
 		{
 			return openssl_random_pseudo_bytes($length);
+		}
+
+		if (defined('MCRYPT_DEV_URANDOM') && function_exists('mcrypt_create_iv'))
+		{
+			$output = mcrypt_create_iv($length, MCRYPT_DEV_URANDOM);
+			if ($output !== FALSE)
+			{
+				return $output;
+			}
 		}
 
 		return FALSE;

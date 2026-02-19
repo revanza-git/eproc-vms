@@ -4,7 +4,7 @@
 - Project: `eproc-vms`
 - Created: `February 19, 2026`
 - Last Updated: `February 19, 2026`
-- Current Status: `Phase 2 Completed`
+- Current Status: `Phase 3 Completed`
 - Branch Target: `main` (akan disesuaikan jika nanti pakai branch khusus revamp)
 
 ## Target Framework
@@ -135,7 +135,7 @@ Sebuah phase hanya boleh ditandai `Completed` jika seluruh syarat berikut terpen
 | M0 - Planning docs active | 2026-02-20 | Completed | Plan/checklist + baseline register + acceptance criteria Phase 1 |
 | M1 - Dev env stabilized | 2026-02-19 | Completed | Phase 1 completion gate pass (compose lifecycle + smoke + runbook) |
 | M2 - Security baseline pass | 2026-02-19 | Completed | Phase 2 completion gate pass (secret scan + CSRF/session + query safety) |
-| M3 - Runtime upgrade path validated | TBD | Not Started |  |
+| M3 - Runtime upgrade path validated | 2026-02-19 | Completed | Dual-runtime 7.4/8.2 validated (smoke + DB/Redis + cron check), blocker prioritas tinggi direfactor |
 | M4 - CI quality gate live | TBD | Not Started |  |
 | M5 - Framework target selected | 2026-02-20 | Completed | Laravel |
 | M6 - First domain migrated off CI3 | TBD | Not Started |  |
@@ -158,6 +158,7 @@ Sebuah phase hanya boleh ditandai `Completed` jika seluruh syarat berikut terpen
 | 2026-02-20 | CI3 tidak dijadikan target jangka panjang production architecture | Framework EOL/legacy risk tinggi | Perlu migration track framework |
 | 2026-02-20 | Framework target dipilih: Laravel | Tradeoff terbaik untuk maintainability dan velocity tim | Menjadi baseline migration architecture |
 | 2026-02-20 | Baseline issues diregister dan acceptance criteria Phase 1 dikunci | Agar eksekusi phase teknis terarah dan terukur | Phase 0 dinyatakan selesai |
+| 2026-02-19 | Phase 3 dijalankan dengan dual-runtime non-breaking (7.4 tetap default, 8.2 untuk validasi) | Menjaga stabilitas CI3 sambil menurunkan risiko runtime modernisasi | Gate Phase 3 bisa divalidasi tanpa big-bang rewrite |
 
 ## Update Protocol
 - Update dokumen ini setiap ada perubahan scope, milestone, atau keputusan arsitektural.

@@ -45,6 +45,7 @@ Nginx routing for these hosts lives in `docker/nginx/default.conf`.
 ## Repo Layout
 
 - `docker-compose.yml` – brings up Nginx + 2 PHP-FPM containers + MariaDB + Redis
+- `docker-compose.php82.yml` – runtime override untuk mem-build `vms-app` dan `intra-app` ke PHP 8.2
 - `docker/`
   - `nginx/default.conf` – vhost routing for `vms.localhost` and `intra.localhost`
   - `php/Dockerfile` – PHP-FPM 7.4 image used by both apps (legacy-compatible, includes `mcrypt` + `redis`)
@@ -106,6 +107,22 @@ From repo root:
 
 ```bash
 docker compose up -d --build
+```
+
+Dual-runtime helper (recommended):
+```powershell
+pwsh ./tools/dev-env.ps1 -Action start -PhpRuntime 7.4
+pwsh ./tools/dev-env.ps1 -Action smoke -PhpRuntime 7.4
+pwsh ./tools/dev-env.ps1 -Action deps -PhpRuntime 7.4
+pwsh ./tools/dev-env.ps1 -Action cron -PhpRuntime 7.4
+```
+
+PHP 8.2 validation:
+```powershell
+pwsh ./tools/dev-env.ps1 -Action start -PhpRuntime 8.2
+pwsh ./tools/dev-env.ps1 -Action smoke -PhpRuntime 8.2
+pwsh ./tools/dev-env.ps1 -Action deps -PhpRuntime 8.2
+pwsh ./tools/dev-env.ps1 -Action cron -PhpRuntime 8.2
 ```
 
 This brings up:
@@ -185,9 +202,11 @@ Use the phase-1 runbook for daily operations and troubleshooting:
 
 Shortcut helper command:
 ```powershell
-pwsh ./tools/dev-env.ps1 -Action start
-pwsh ./tools/dev-env.ps1 -Action smoke
-pwsh ./tools/dev-env.ps1 -Action stop
+pwsh ./tools/dev-env.ps1 -Action start -PhpRuntime 7.4
+pwsh ./tools/dev-env.ps1 -Action smoke -PhpRuntime 7.4
+pwsh ./tools/dev-env.ps1 -Action deps -PhpRuntime 7.4
+pwsh ./tools/dev-env.ps1 -Action cron -PhpRuntime 7.4
+pwsh ./tools/dev-env.ps1 -Action stop -PhpRuntime 7.4
 ```
 
 ## Cross-App Flows

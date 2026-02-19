@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FPPBJ</title>
+</head>
+<style>
+
+input[type=textarea], select, textarea {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+</style>
+<body>
+        Nama Paket Pengadaan<input type="text">
+        <br>
+        <input type="checkbox">Is recuiring
+        <br>
+        Lingkup Pekerjaan<br><textarea></textarea>
+        <br>
+        Anggaran : IDR<input type="text"> USD<input type="text">
+        <br>
+        Tahun Anggaran<input type="text">
+        <br>
+        <input type="radio">WBS<br>
+        <input type="radio">Cost Centre: <input type="text"> GL account: <input type="text">
+        <br>
+
+        Divisi : Nama Divisi
+        <br>
+	<h2>1. Kelengkapan Dokumen Permohonan</h2>
+a. Pengadaan Jasa:
+<br>
+ <!-- <select name="" >
+ 	 <option value="">Pilih Dibawah Ini</option>
+     <option value="Form Analisa Risiko">Form Analisa Risiko</option>
+     <option value="HPS (Dalam Amplop Tertutup)">HPS (Dalam Amplop Tertutup)</option>
+     <option value="KAK / Spesifikasi Teknis">KAK / Spesifikasi Teknis</option>
+     <option value="PR : Nomor PR . .. . ">PR : Nomor PR . . . .</option>
+ </select> -->
+ <ul>
+    <!-- <li><input type="checkbox">Pilih Dibawah Ini</li> -->
+    <li>Form Analisa Risiko <a href="var.html">Tambah Analisa</a></li>
+    <!-- <li>Anggaran <br><input type="number"  name="ada"></li> -->
+    <li>HPS (Dalam Amplop Tertutup) <br><input type="radio"  name="ada">Ada <br> <input type="radio" name="ada">Tidak Ada</li>
+    <li>KAK / Spesifikasi Teknis <input type="file"></li>
+    <!-- <li><input type="checkbox">HPS (Dalam Amplop Tertutup)</li>
+    <li><input type="checkbox">KAK / Spesifikasi Teknis</li> -->
+ </ul>
+ 
+ 
+ 
+ 
+ PR : <input type="text">
+ <br>
+Keterangan:
+<br>
+<textarea type="textarea" rows="3" cols="30">
+</textarea>
+<br>
+<p>
+
+<!-- b. Pengadaan Barang:
+<br>
+ <select name="" >
+ 	 <option value="">Pilih Dibawah Ini</option>
+     <option value="HPS (Dalam Amplop Tertutup)">HPS (Dalam Amplop Tertutup)</option>
+     <option value="Spesifikasi Teknis / Barang">Spesifikasi Teknis / Barang</option>
+     <option value="PR : Nomor PR . . . . . ">PR : Nomor PR . . . . </option>
+ </select>
+<br>
+Keterangan:
+<br>
+<textarea type="textarea" rows="3" cols="30">
+</textarea>
+<br>
+<p> -->
+
+<h2>2. Uraian Pengadaan Jasa</h2>
+a. Jenis Pengadaan:
+<br>
+ <select name="" >
+ 	 <option value="">Pilih Dibawah Ini</option>
+     <!-- <option value="Barang">Barang</option> -->
+     <option value="Jasa Konstruksi">Jasa Konstruksi</option>
+     <option value="Jasa Konsultansi">Jasa Konsultansi</option>
+     <option value="Jasa Lainnya">Jasa Lainnya</option>
+ </select>
+<br>
+<p>
+    a. Metode Pengadaan:
+    <br>
+     <select name="" >
+          <option value="">Pilih Dibawah Ini</option>
+         <option value="Barang">Pelelangan</option>
+         <option value="Jasa Konstruksi">Pemilihan Langsung</option>
+         <option value="Jasa Konsultansi">Swakelola</option>
+         <option value="Jasa Lainnya">Penunjukan Langsung</option>
+     </select>
+    <br>
+    <p>
+
+b. Penggolongan Penyedia Jasa (Usulan):
+<br>
+ <select name="" >
+ 	 <option value="">Pilih Dibawah Ini</option>
+     <option value="Perseorangan">Perseorangan</option>
+     <option value="Usaha Kecil (K)">Usaha Kecil (K)</option>
+     <option value="Usaha Mengengah (M)">Usaha Mengengah (M)</option>
+     <option value="Usaha Besar (B)">Usaha Besar (B)</option>
+ </select>
+<br>
+<p>
+
+c. Penggolongan CSMS (Sesuai Hasil Analisa Resiko):
+<br>
+ <select name="" >
+ 	 <option value="">Pilih Dibawah Ini</option>
+     <option value="High">High</option>
+     <option value="Medium">Medium</option>
+     <option value="Low">Low</option>
+ </select>
+
+<br>
+<p>
+
+d. Jangka Waktu Penyelesaian Pekerjaan ("JWPP"):
+
+<br>
+<br>
+<input type="number">
+ <select name="" >
+ 	 <option value="">Pilih Dibawah Ini</option>
+     <!-- <option value="Barang">Barang</option> -->
+     <option value="Jasa Konstruksi">Hari Kalender</option>
+     <option value="Jasa Konsultansi">Bulan</option>
+     <option value="Jasa Lainnya">Tahun</option>
+ </select>
+<p>
+
+e. Jangka Waktu Perjanjian ("JWP") Adalah : JWPP + Masa Pemeliharaan dan/atau Durasi Laporan :
+<br>
+<br>
+<input type="number">
+ <select name="" >
+ 	 <option value="">Pilih Dibawah Ini</option>
+     <!-- <option value="Barang">Barang</option> -->
+     <option value="Jasa Konstruksi">Hari Kalender</option>
+     <option value="Jasa Konsultansi">Bulan</option>
+     <option value="Jasa Lainnya">Tahun</option>
+ </select>
+
+<br>
+<p>
+        Asumsi Penerimaan Pekerjaan :
+        <br>
+        <br>
+         <select name="" >
+              <option value="">Tanggal</option>
+         </select>
+         <select name="" >
+              <option value="">Bulan</option>
+         </select>
+         <select name="" >
+              <option value="">Tahun</option>
+         </select>
+        
+        <br>
+        <p>
+
+f. Ketersediaan Penyedia Barang/Jasa (usulan):
+<br>
+<input type="radio"  name="ada">DPT <input type="text" placeholder="Search di VMS"> <br> <input type="radio" name="ada">Non DPT<br> <input type="text" placeholder="Ketik Nama PT"> <input type="radio" name="ada">Tidak Ada <br><br>
+
+<br>
+<p>
+
+g. Metode pembayaran (Usulan) :
+
+<br>
+Keterangan:
+<br>
+<textarea></textarea>
+<br>
+<br>
+<p>
+
+h. Jenis Kontrak (Usulan) :
+<br>
+<select name="" >
+ 	 <option value="">Pilih Dibawah Ini</option>
+     <!-- <option value="Purchase Order (PO)">Purchase Order (PO)</option> -->
+     <option value="GTC 01 - Kontrak Jasa Konstruksi Non EPC">GTC 01 - Kontrak Jasa Konstruksi Non EPC</option>
+     <option value="GTC 02 - Kontrak Jasa Konsultan">GTC 02 - Kontrak Jasa Konsultan</option>
+     <option value="GTC 03 - Kontrak Jasa Umum">GTC 03 - Kontrak Jasa Umum</option>
+     <option value="GTC 04 - Kontrak Jasa Pemeliharaan">GTC 04 - Kontrak Jasa Pemeliharaan</option>
+     <option value="GTC 05 - Kontrak Jasa Pembuatan Software">GTC 05 - Kontrak Jasa Pembuatan Software</option>
+     <option value="GTC 06 - Kontrak Jasa Sewa Fasilitasi dan Alat">GTC 06 - Kontrak Jasa Sewa Fasilitasi dan Alat</option>
+     <option value="GTC 07 - Kontrak Jasa Tenaga Kerja">GTC 07 - Kontrak Jasa Tenaga Kerja</option>
+ </select>
+
+ <h2>3. Lainnya</h2>
+Keterangan:
+<br>
+<textarea></textarea>
+<br>
+<p>
+</form>
+
+<div style="width: 100% height: 50px; border : 1px solid #000">
+    <p>Pic</p>
+    <input type="radio" name="pic">Ayu
+    <input type="radio" name="pic">Pandu
+    <br>
+    *hanya ada di approval logistik
+</div>
+</body>
+</html>

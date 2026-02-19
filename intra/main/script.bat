@@ -1,0 +1,1 @@
+"C:\xampp\php\php.exe" -f "C:\inetpub\wwwroot\eproc_nusantararegas\cron_base.php"

@@ -1,0 +1,21 @@
+@import '6-utilities/initial-variables';
+
+.panel {
+  position: relative;
+  // width: width(1.75rem);//calc((50 % - 1.75rem) / 2)
+  background-color: white;
+  padding: 0.75em 1.75rem;
+  border-radius: 4px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); 
+
+  &:nth-child(odd) {
+    margin-right: 15px;
+    margin-bottom: 15px;
+  }
+}
+  .panel .panel-heading {
+    height: 50%;
+    background-color: dodgerblue; }
+  .panel .panel-wrapper {
+    height: 50%;
+    background-color: red; }

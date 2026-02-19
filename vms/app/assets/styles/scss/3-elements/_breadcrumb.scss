@@ -1,0 +1,27 @@
+@import '6-utilities/initial-variables';
+
+.breadcrumb {
+  line-height: 1.35rem;
+  list-style: none;
+  position: relative;
+  z-index: 1;
+  margin: 0 2px; 
+
+  li {
+    font-size: 17px;
+    display: inline-block;
+    list-style: none;
+    padding: 1rem 0.75rem;
+  }
+
+  li:not(.active):after {
+    color: #b5b5b5;
+    content: "/";
+    padding-left: 20px;
+  }
+
+  .active {
+    color: #4a4a4a; 
+    background-color: transparent;
+  }
+}

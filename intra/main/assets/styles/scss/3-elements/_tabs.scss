@@ -1,0 +1,32 @@
+@import '6-utilities/initial-variables';
+
+.tabs {
+  -webkit-overflow-scrolling: touch; }
+  .tabs a {
+    align-items: center;
+    color: #4a4a4a;
+    display: flex;
+    justify-content: center;
+    margin-bottom: -1px;
+    padding: 0.5em 1em;
+    vertical-align: top; }
+  .tabs a:hover {
+    border-bottom-color: #363636;
+    color: #363636; }
+  .tabs li {
+    display: block; }
+  .tabs li.is-active a {
+    border-bottom: 1px solid #3273dc;
+    color: #3273dc; }
+  .tabs ul {
+    align-items: center;
+    border: 1px solid #dbdbdb;
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    justify-content: flex-start;
+    border: 1px solid #ddd; }
+  .tabs-element {
+    padding: 0 10px;
+    padding-right: 20px;
+    border: 1px solid #ddd; }

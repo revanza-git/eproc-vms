@@ -1,0 +1,37 @@
+@import '6-utilities/initial-variables';
+
+.accordion-header {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 17px;
+  transition: 0.4s;
+  border-radius: 0;
+  display: flex; }
+  .accordion-header .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto 0; }
+
+.accordion:hover { //.active
+  background-color: #ccc; }
+
+.accordion-panel {
+  padding: 0 18px;
+  visibility: hidden;
+  opacity: 0;
+  max-height: 0;
+  transition: all .3s;
+  background-color: white;
+  overflow: hidden; }
+  .accordion-panel.active {
+  max-height: 1000px;
+  opacity: 1;
+  transition: all .3s;
+  visibility: visible;
+}

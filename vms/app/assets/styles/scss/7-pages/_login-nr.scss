@@ -1,0 +1,155 @@
+@import '6-utilities/initial-variables';
+
+$primary : nth($primary,1);
+$danger : nth($danger,1);
+$success : nth($success,1);
+$warning : nth($warning,1);
+
+$background-body : #f9f9f9;
+
+$box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+
+*{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body.body-login-wrapper {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: transparent!important;
+}
+canvas{
+    background-color: transparent;
+    z-index: 0;
+    position: absolute;
+}
+
+body {
+	// background-color: $background-body;
+	// background-image: url(../../source/img/regas-bg.jpg);
+	// background-size: cover;
+	// background-repeat: no-repeat;
+}
+
+.bg {
+    width: 100%;
+    height: 100%;
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    
+    background: url('../../images/regas-bg.jpg') no-repeat center center;
+    background-size: cover;
+
+    transform: scale(1.1);
+  }
+
+.overlay {
+	background-color: rgba(26, 56, 111, 0.45);
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+}
+
+.login-wrapper {
+	height: 100vh;
+}
+
+.form-login {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	position: relative;
+	box-shadow: $box-shadow;
+	border-radius: $radius-large;
+
+	.group-start, .group-end {
+		width: 50%;
+		height: 400px;
+	}
+
+	.group-start {
+		background-color: rgba(0,0,0,0.4);
+		border-top-left-radius: $radius-large;
+		border-bottom-left-radius: $radius-large;
+
+		.logo-wrapper {
+			background-color: #fff;
+			padding: 10px;
+			border-radius: $radius;
+			width: 50%;
+			position: relative;
+			margin-top: 20px;
+			margin-left: -15px;
+			box-shadow: $box-shadow;
+
+			img {
+				height: 50px;
+			}
+		}
+
+		.logo-title {
+			color: #fff;
+			font-size: 3rem;
+			font-weight: 300;
+			padding-left: 40px;
+			padding-top: 20px;
+
+			.line {
+				display: flex;
+				width: 100%;
+				align-items: flex-end;
+				justify-content: flex-end;
+				margin-left: -10rem;
+				margin-top: 15px;
+
+				span {
+					height: 4px;
+					width: 60px;
+					display: inline-block;
+					background-color: #fff;
+				}
+
+				span:nth-child(1) {
+					background-color: #ed1b2f;
+				}
+
+				span:nth-child(2) {
+					background-color: #acc32b;
+				}
+
+				span:nth-child(3) {
+					background-color: #006cb7;
+				}
+			}
+		}
+	}
+
+	.group-end {
+		background-color: #fff;
+		border-top-right-radius: $radius-large;
+		border-bottom-right-radius: $radius-large;
+		padding: 20px;
+
+		.field {
+			margin: 65px auto;
+
+			.control {
+				input {
+					width: 100%;
+				}
+			}
+		}	
+	}
+
+}
+

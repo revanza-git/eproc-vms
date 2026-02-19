@@ -1,0 +1,197 @@
+@import '6-utilities/initial-variables';
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  width: 83.33%!important;
+}
+
+.is- {
+
+  &dropdown {
+    visibility: hidden; 
+  }
+
+  &show {
+    display: block;
+    visibility: visible;
+    opacity: 1; 
+  }
+
+  &hide {
+    display: none; 
+  }
+
+  &white {
+    background-color: #fff !important;
+    border: 1px solid #ddd !important;
+    color: #121212 !important; 
+  }
+
+  &primary {
+    background-color: #3273dc !important;
+    color: #fff !important; 
+  }
+
+  &danger {
+    background-color: #ff3860 !important;
+    color: #fff !important; 
+  }
+
+  &warning {
+    background-color: #ffdd57 !important;
+    color: rgba(0, 0, 0, 0.7) !important; 
+  }
+
+  &success {
+    background-color: #23d160 !important;
+    color: #fff !important; 
+  }
+
+  &centered {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+  }
+
+  &right {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end; 
+  }
+
+  &left {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start; 
+  }
+
+  &grouped {
+    display: flex;
+    clear: both;
+    justify-content: center;
+    align-items: center; 
+  }
+
+  &grouped-right {
+    display: flex;
+    clear: both;
+    justify-content: flex-end;
+    align-items: flex-end; 
+  }
+
+  &grouped-left {
+    display: flex;
+    clear: both;
+    justify-content: flex-start;
+    align-items: flex-start; 
+  }
+
+  &link {
+    background-color: transparent !important;
+    color: #3273dc !important; 
+  }
+
+  &block {
+    margin: 1rem 0 2rem; 
+  }
+
+  &expand {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center !important; 
+  }
+}
+
+.initialize-after {
+  margin-top: 9.1rem; }
+
+.block {
+  margin-bottom: 1.75rem; }
+
+
+
+.gigantic, .huge, .large, .bigger, .big,
+h1, h2, h3, h4, h5, h6 {
+  color: #222;
+  margin: 0 12px;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif; }
+
+h1, .huge {
+  font-size: 68px-43 !important;
+  line-height: 1.05 !important; }
+  @media only screen and (max-width: 680px) {
+    h1, .huge {
+      font-size: 44px; } }
+
+h2, .large {
+  font-size: 42px !important;
+  line-height: 1.14 !important; }
+  @media only screen and (max-width: 680px) {
+    h2, .large {
+      font-size: 32px; } }
+
+h3, .bigger {
+  font-size: 26px !important;
+  line-height: 1.38 !important; }
+  @media only screen and (max-width: 680px) {
+    h3, .bigger {
+      font-size: 22px; } }
+
+h4, .big {
+  font-size: 22px !important;
+  line-height: 1.38 !important; }
+  @media only screen and (max-width: 680px) {
+    h4, .big {
+      font-size: 18px; } }
+
+.gigantic {
+  font-size: 110px;
+  line-height: 1.09;
+  letter-spacing: -2px; }
+
+.small, small {
+  font-size: 10px;
+  line-height: 1.2; }
+
+
+// - - - - - - - -
+// F U N C T I O N
+// - - - - - - - -
+
+@mixin transition($prop, $time) {
+  transition: $prop $time ease-in-out;
+}
+
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}
+

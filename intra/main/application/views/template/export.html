@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		thead:before, thead:after { display: none; }
+		tbody:before, tbody:after { display: none; }
+			@page{
+				size: A4 portrait;
+				page-break-after : always;
+				
+			}
+			
+			@media all{
+				ol{
+					padding-left : 20px;
+					padding-top : -15px;
+					padding-bottom : -15px;
+				}
+				
+				thead { display:table-header-group; }
+			}
+		table {
+			width: 705px;
+			border : 1px solid #000;
+			border-spacing : 0;
+			align: center;
+		}
+		.no{
+			vertical-align: top;
+		}
+		td, th {
+			border : 1px solid #000;
+			padding: 5px;
+			word-wrap: break-word;
+		}
+		tr{
+			page-break-inside: avoid; 
+		}
+		.desc{
+			margin-top: 50px;
+			margin-bottom: 50px;
+		}
+		.desc, .desc td, .desc th{
+			border: none !important;
+		}
+		span img{
+			width: 15px !important;
+			margin: 0 5px;
+		}
+		.ttd{
+			width: 705px;
+			page-break-inside: avoid; 
+			margin-top: 50px;
+		}
+		.ttd td, .ttd th{
+			padding: 5px;
+		}
+	</style>
+</head>
+<body>
+
+	<table align="center">
+		<tr>
+			<td>
+				<img src="http://127.0.0.1/eproc_nr/assets/images/NUSANTARA-REGAS-2.png" style="height: 45px">
+			</td>
+			<td>
+				<div style="font-size: 14px;">
+					FORMULIR PERMOHONAN PENGADAAN BARANG/JASA (FPPBJ) 
+				</div>
+			</td>
+		</tr>
+	</table>
+	<table align="center" style="border:none; margin-top: 25px">
+		<tr>
+			<td style="border:none; width: 170px">Nomor</td>
+			<td style="border:none">: </td>
+		</tr>
+		<tr>
+			<td style="border:none; width: 170px">Tanggal Kesepakatan</td>
+			<td style="border:none">: </td>
+		</tr>
+		<tr>
+			<td style="border:none; width: 170px">Div/Dept</td>
+			<td style="border:none">: </td>
+		</tr>
+		<tr>
+			<td style="border:none; width: 170px">Judul Pengadaan</td>
+			<td style="border:none">: </td>
+		</tr>
+	</table>
+	<table align="center" style="margin-top: 25px">
+		<tr>
+			<th style="width: 20px;">
+				No.
+			</th>
+			<th>
+				SYARAT KELENGKAPAN
+			</th>
+			<th style="width: 170px;">
+				DATA
+			</th>
+		</tr>
+		<tr>
+			<th>
+				1.
+			</th>
+			<th colspan="2">
+				Kelengkapan Dokumen Permohonan
+			</th>
+		</tr>
+	</table>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+@CHARSET "ISO-8859-1";
+@page{
+	size: A4 landscape;
+	margin: 10mm;
+}
+
+@media all{
+	body{	
+		font-family : "Segoe UI";
+		font-size : 11px;
+		height : 100%;
+	}
+	
+	table{
+		width : 100%;
+		margin: 3px 0 6px 0; 
+		border-collapse : collapse;
+	}
+	
+	thead {display: table-header-group;}
+	
+	tr{ 
+		page-break-after : avoid; 
+	}
+	
+	div.container{
+		position: relative;
+	}
+
+	div.mainInner > div.container{
+		page-break-after : auto;
+	}
+
+	div.mainInner > div.container > div.container{
+		page-break-after : always;
+	}
+
+	div.mainInner > div.container > div.container:last-child{
+		page-break-after : auto;
+	}
+	
+	div.content{
+		margin-top : 20px;
+		position: relative;
+	}
+	
+	table.recap-table{
+		border-collapse : collapse;
+		border : 1px solid #000;
+		page-break-after : avoid; 
+	}
+	
+	table.recap-table td{
+		border : 1px solid #000;
+		padding : 1px 3px;
+		line-height: 1.05;
+		vertical-align: top;
+	}
+	
+	table.recap-table th{
+		border : 1px solid #000;
+		padding : 1px 3px;
+		line-height: 1.05;
+		vertical-align: top;
+		background: #f2f2f2;
+		font-weight: 600;
+	}
+
+	table.recap-table td div,
+	table.recap-table th div{
+		margin: 0;
+	}
+
+	table.recap-table td i.fa,
+	table.recap-table th i.fa{
+		line-height: 1;
+	}
+
+	table.recap-table{
+		font-size: 10px;
+	}
+
+	table.recap-table td:first-child{
+		width: 28px;
+		text-align: right;
+		white-space: nowrap;
+	}
+
+	table.recap-table td:nth-child(2){
+		width: 30%;
+	}
+	
+	div.page-border{
+		page-break-after : always;
+		border : 1px solid #000;
+		width : 27cm;
+		height : 20cm;
+		top : -25px;
+		left : 5px;
+		position : relative;
+	}
+
+	div.page-border:last-child{
+		page-break-after : auto;
+	}
+}

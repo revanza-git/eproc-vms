@@ -1,0 +1,113 @@
+@import '6-utilities/initial-variables';
+
+// .export-layout {
+// 	width: 800px;
+// 	background-color: #fff;
+
+// 	.row-1 {
+// 		display: flex;
+// 		align-items: center;
+
+// 		.image-logo {
+// 			padding: 15px;
+// 			position: relative;
+
+// 			&:after {
+// 				display: block;
+// 				content: "";
+// 				width: 2px;
+// 				height: 50px;
+// 				position: absolute;
+// 				right: 0;
+// 				top: 12px;
+// 				border-radius: 25px;
+// 				background-color: #ddd;
+// 			}
+// 		}
+
+// 		.form-name {
+// 			font-size: 1.15rem;
+// 			text-transform: uppercase;
+// 			padding: 0 15px;
+// 		}
+// 	}
+
+// 	.row-2 {
+// 		padding: 15px;
+
+// 		&_info {
+// 			width: 50%;
+// 			padding: 0 15px;
+// 			float: left;
+
+// 			li {
+// 				display: flex;
+// 				justify-content: space-between;
+// 			}
+
+// 			&:not(:last-child) {
+// 				border-right: 2px solid #ddd;
+// 			}
+// 		}
+// 	}
+// }
+
+.export {
+	background-color: #fff;
+	width: 900px;
+	margin: 5px 15px;
+
+	td , th {
+		vertical-align: middle;
+		text-align: center;
+		padding: 5px;
+	}
+
+	th {
+		padding: 5px;
+	}
+
+	&-logo {
+		margin: 15px;
+		
+		img {
+			height: 55px;
+		}
+	}
+
+	&-name {
+		font-size: 1.2rem;
+		font-weight: 400;
+		margin: 15px;
+		text-transform: uppercase;
+	}
+
+	&-info {
+
+		li {
+			display: flex;
+
+			span {
+				padding: 5px 15px;
+				text-align: left;
+
+				&:nth-child(1) {
+					width: calc(40% - 15px * 2);
+				}
+
+				&:nth-child(2) {
+					width: calc(10% - 15px * 2)
+				}
+
+				&:nth-child(3) {
+					width: calc(60% - 15px * 2);
+				}
+			}
+		}
+	}
+
+	.sign-area {
+		height: 150px;
+		padding: 5px;
+	}
+}

@@ -1,0 +1,25 @@
+@font-face {
+	font-family: "Flaticon-auction";
+	src: url("flaticon-auction-auction.eot");
+	src: url("flaticon-auction.eot#iefix") format("embedded-opentype"),
+	url("flaticon-auction.woff") format("woff"),
+	url("flaticon-auction.ttf") format("truetype"),
+	url("flaticon-auction.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="auction-"]:before, [class*=" auction-"]:before,
+[class^="auction-"]:after, [class*=" auction-"]:after {   
+	font-family: Flaticon-auction;
+        font-size: 20px;
+font-style: normal;
+margin-right: 10px;
+}.auction-hammers4:before {
+	content: "\e000";
+}
+.auction-prize3:before {
+	content: "\e001";
+}
+.auction-thumb1:before {
+	content: "\e002";
+}

@@ -1,0 +1,65 @@
+@import '6-utilities/initial-variables';
+
+$black : rgb(0,0,0);
+
+.filter-overlay .filterBlock {
+	opacity: 1;
+	transform: translate(0px ,0);
+	transition: all 320ms ease-in-out;
+}
+
+.filterBlock {
+	display: block;
+	position: fixed;
+	z-index: 1040;
+	right: 0;
+	top: 0;
+	width: 500px;
+	height: 100%;
+	box-shadow: 0 2px 3px rgba($black, .5);
+	color: #3273dc;
+	opacity: 1;
+	transform: translate(0px, 0);
+	transition: all 200ms ease-in-out;
+
+	.filterHeader {
+		padding: 13px;
+		display: flex;
+		align-items: center;
+		width: 100%;
+
+		.headerStart {
+			margin-right: auto;
+
+			h3 {
+				display: flex;
+				align-items: center;
+				font-size: 1.5rem;
+
+				span.icon {
+					vertical-align: middle;
+					font-size: 1.2rem;
+					margin-right: 10px;
+				}
+			}
+		}
+
+		.headerEnd {
+			margin-left: auto;
+
+			.closeFilter, .closeFilter:hover {
+			    float: right;
+			    font-size: 13px;
+			    display: flex;
+			    align-items: center;
+			    padding: 11px 7px;
+			    line-height: 1;
+			    cursor: pointer;
+			    background-color: rgba(0,0,0,.2);
+			    color: #fff;
+			    border-radius: 50px;
+			    height: 0;
+			}
+		}
+	}
+}

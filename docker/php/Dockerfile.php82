@@ -1,0 +1,24 @@
+FROM php:8.2-fpm
+
+RUN apt-get update && apt-get install -y \
+    $PHPIZE_DEPS \
+    git \
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    unzip \
+    libzip-dev
+
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd mysqli zip soap
+
+RUN apt-get purge -y --auto-remove $PHPIZE_DEPS \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+COPY docker/php/uploads.ini /usr/local/etc/php/conf.d/zz-uploads.ini
+
+WORKDIR /var/www/html

@@ -1,0 +1,52 @@
+@import '6-utilities/initial-variables';
+
+.form-keterangan-reject {
+	position: fixed;
+	left: calc(50% - 250px);
+	z-index: 99999;
+	width: 500px;
+	box-shadow: 0 0 0 999px rgba(0,0,0,.3);
+	padding: 15px;
+	background-color: #fff;
+	border-radius: 4px;
+
+	visibility: hidden;
+	opacity: 0;
+	transition: all .3s;
+	top: -30px;
+
+	&.active {
+		visibility: visible;
+		opacity: 1;
+		top: 30px;
+	}
+
+	fieldset {
+		padding: 0.35em 0 0.35em!important;
+	}
+
+	.fkr-textarea {
+		width: 100%;
+	}
+
+	.fkr-btn-group {
+		button {
+			float: right;
+		}
+	}
+
+	.fkr-btn-close {
+		width: 22px;
+	    height: 22px;
+	    padding: 0 5px;
+	    position: absolute;
+	    right: 5px;
+	    top: 5px;
+	    font-size: 14px;
+	    float: right;
+	    text-align: center;
+	    background-color: rgba(0, 0, 0, 0.3);
+	    color: #333;
+	    border-radius: 50px;
+	}
+}

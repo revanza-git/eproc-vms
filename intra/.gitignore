@@ -1,0 +1,82 @@
+# CodeIgniter .gitignore
+
+# Application cache
+*/cache/*
+!*/cache/index.html
+
+# Application logs
+*/logs/*
+!*/logs/index.html
+logs/*
+!logs/.gitkeep
+pengadaan/application/logs/*
+!pengadaan/application/logs/index.html
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Composer vendor directory
+vendor/
+*/vendor/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node modules (if any)
+node_modules/
+npm-debug.log*
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Database configuration (uncomment if sensitive)
+# */config/database.php
+
+# User uploads
+*/application/uploads/*
+uploads/*
+lampiran/*
+
+# Session files
+*/sessions/*
+
+# Error logs
+error_log
+php_errors.log
+
+# Backup files
+*.bak
+*.backup
+
+# Windows specific
+desktop.ini
+
+# PHP specific
+*.php~
+
+# Configuration files with sensitive data
+# config.php
+# database.php
+
+# Cache directories
+**/cache/**
+**/tmp/** 

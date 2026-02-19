@@ -1,0 +1,40 @@
+@import '6-utilities/initial-variables';
+
+ul li {
+	list-style: none;
+	font-family: $open-sans;
+	// font-size: 1.75rem;
+}
+
+.info-wrapper {
+	width: calc(100% - 15px * 2);
+	margin: 5px 15px;
+
+	.info-row {
+		width:calc(100% - 15px * 2);
+		padding: 5px 15px;
+		font-size: 1rem;
+		display: flex;
+		flex-wrap: wrap;
+		border-bottom: 2px dotted #ddd;
+
+		.title {
+			font-weight: 700;
+			width: 20%;
+			display: flex;
+
+			span {
+				margin-left: auto;
+			}
+		}
+
+		.info {
+			flex-shrink: 1;
+			margin-left: 15px;
+			font-weight: 400;
+		}
+	}
+}
+
+
+

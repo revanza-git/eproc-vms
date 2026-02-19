@@ -1,0 +1,37 @@
+
+RewriteEngine on
+RewriteCond $1 !^(index\.php|assets|lampiran|temp_upload|debug\.php)
+RewriteRule ^(.*)$ /app/index.php?/$1 [L]
+
+<IfModule mod_php5.c>
+    # Increase upload limits to support 100 MB files (plus overhead)
+    php_value  upload_max_filesize  100M
+    php_value  post_max_size        110M
+    
+    # Error reporting for debugging (remove in production)
+    php_flag   display_errors       On
+    php_flag   log_errors           On
+    php_value  error_reporting      "E_ALL & ~E_NOTICE & ~E_STRICT"
+    
+    # Memory and execution limits
+    php_value  memory_limit         256M
+    php_value  max_execution_time   300
+</IfModule>
+
+# For PHP 7+, ensure the same values (Apache may ignore these if running PHP-FPM)
+<IfModule mod_php7.c>
+    php_value  upload_max_filesize  100M
+    php_value  post_max_size        110M
+    php_flag   display_errors       On
+    php_flag   log_errors           On
+    php_value  error_reporting      "E_ALL & ~E_NOTICE & ~E_STRICT"
+    php_value  memory_limit         256M
+    php_value  max_execution_time   300
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+</IfModule>

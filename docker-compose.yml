@@ -1,0 +1,89 @@
+services:
+  webserver:
+    image: nginx:alpine
+    container_name: eproc-webserver
+    ports:
+      - "8080:80"
+    volumes:
+      - ./vms:/var/www/html/vms
+      - ./intra:/var/www/html/intra
+      - ./shared:/var/www/html/shared
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - vms-app
+      - intra-app
+    networks:
+      - eproc-network
+
+  vms-app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: eproc-vms-app
+    working_dir: /var/www/html/vms
+    volumes:
+      - ./vms:/var/www/html/vms
+      - ./shared:/var/www/html/shared
+    networks:
+      - eproc-network
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_HOSTNAME: ${EPROC_DB_HOSTNAME:-db}
+      DB_USERNAME: ${EPROC_DB_USERNAME:-eproc_app}
+      DB_PASSWORD: ${EPROC_DB_PASSWORD:-root}
+      DB_DATABASE: ${EPROC_DB_DATABASE:-eproc}
+      DB_DATABASE_PLANNING: ${EPROC_DB_DATABASE_PLANNING:-eproc_perencanaan}
+      SESSION_DRIVER: ${EPROC_SESSION_DRIVER:-redis}
+      SESSION_SAVE_PATH: ${EPROC_SESSION_SAVE_PATH:-tcp://redis:6379?database=0&prefix=eproc_}
+
+  intra-app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: eproc-intra-app
+    working_dir: /var/www/html/intra
+    volumes:
+      - ./intra:/var/www/html/intra
+      - ./shared:/var/www/html/shared
+    networks:
+      - eproc-network
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_HOSTNAME: ${EPROC_DB_HOSTNAME:-db}
+      DB_USERNAME: ${EPROC_DB_USERNAME:-eproc_app}
+      DB_PASSWORD: ${EPROC_DB_PASSWORD:-root}
+      DB_DATABASE: ${EPROC_DB_DATABASE:-eproc}
+      DB_DATABASE_PLANNING: ${EPROC_DB_DATABASE_PLANNING:-eproc_perencanaan}
+      SESSION_DRIVER: ${EPROC_SESSION_DRIVER:-redis}
+      SESSION_SAVE_PATH: ${EPROC_SESSION_SAVE_PATH:-tcp://redis:6379?database=0&prefix=eproc_}
+
+  db:
+    image: mariadb:10.5
+    container_name: eproc-db
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${EPROC_MYSQL_ROOT_PASSWORD:-root}
+      MYSQL_DATABASE: ${EPROC_MYSQL_DATABASE:-eproc}
+      MYSQL_USER: ${EPROC_MYSQL_USER:-eproc_app}
+      MYSQL_PASSWORD: ${EPROC_MYSQL_PASSWORD:-root}
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./docker/init-db:/docker-entrypoint-initdb.d
+    networks:
+      - eproc-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: eproc-redis
+    networks:
+      - eproc-network
+
+networks:
+  eproc-network:
+    driver: bridge
+
+volumes:
+  db-data:

@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteCond $1 !^(index\.php|assets|lampiran|temp_upload)
+RewriteRule ^(.*)$ /main/index.php?/$1 [L]
+

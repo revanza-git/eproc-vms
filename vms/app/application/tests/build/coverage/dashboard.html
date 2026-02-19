@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for C:\inetpub\eproc\vms\app\application</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/nv.d3.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+ </head>
+ <body>
+  <header>
+   <div class="container">
+    <div class="row">
+     <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li><a href="index.html">C:\inetpub\eproc\vms\app\application</a></li>
+        <li class="active">(Dashboard)</li>
+
+      </ol>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="libraries/Utility.php.html#2">Utility</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/data_process.php.html#2">Data_process</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/jctable.php.html#2">Jctable</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Securities.php.html#2">Securities</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/MY_Form_validation.php.html#3">MY_Form_Validation</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Dpt.php.html#3">Dpt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#2">Filter</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Form.php.html#3">Form</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Custom_report_builder.php.html#2">Custom_report_builder</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#17">Secure_Password</a></td><td class="text-right">8%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="libraries/Utility.php.html#2">Utility</a></td><td class="text-right">5112</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#2">Filter</a></td><td class="text-right">4830</td></tr>
+       <tr><td><a href="libraries/Form.php.html#3">Form</a></td><td class="text-right">4692</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#17">Secure_Password</a></td><td class="text-right">4573</td></tr>
+       <tr><td><a href="libraries/jctable.php.html#2">Jctable</a></td><td class="text-right">1892</td></tr>
+       <tr><td><a href="libraries/data_process.php.html#2">Data_process</a></td><td class="text-right">650</td></tr>
+       <tr><td><a href="libraries/Custom_report_builder.php.html#2">Custom_report_builder</a></td><td class="text-right">600</td></tr>
+       <tr><td><a href="libraries/Dpt.php.html#3">Dpt</a></td><td class="text-right">380</td></tr>
+       <tr><td><a href="libraries/MY_Form_validation.php.html#3">MY_Form_Validation</a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="libraries/Securities.php.html#2">Securities</a></td><td class="text-right">12</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="libraries/Utility.php.html#54"><abbr title="Utility::generateLink">generateLink</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#70"><abbr title="Utility::name_generator">name_generator</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#47"><abbr title="Utility::generateSort">generateSort</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#15"><abbr title="Utility::generate_page">generate_page</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#7"><abbr title="Utility::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#92"><abbr title="Utility::password_generator">password_generator</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#105"><abbr title="Utility::session_id">session_id</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#149"><abbr title="Utility::bidang_sub_bidang">bidang_sub_bidang</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#176"><abbr title="Utility::drop_down_vendor">drop_down_vendor</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#141"><abbr title="Utility::get_sbu">get_sbu</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#132"><abbr title="Utility::get_nama">get_nama</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#114"><abbr title="Utility::get_userdata">get_userdata</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Securities.php.html#8"><abbr title="Securities::clean_input">clean_input</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Securities.php.html#4"><abbr title="Securities::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#33"><abbr title="Secure_Password::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#50"><abbr title="Secure_Password::hash_password">hash_password</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/MY_Form_validation.php.html#60"><abbr title="MY_Form_Validation::is_valid_npwp">is_valid_npwp</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/MY_Form_validation.php.html#48"><abbr title="MY_Form_Validation::date_range_same">date_range_same</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/MY_Form_validation.php.html#36"><abbr title="MY_Form_Validation::date_low">date_low</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#205"><abbr title="Secure_Password::validate_password_strength">validate_password_strength</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#288"><abbr title="Secure_Password::generate_password">generate_password</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#403"><abbr title="Secure_Password::generate_salt">generate_salt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#446"><abbr title="Secure_Password::get_hash_info">get_hash_info</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#378"><abbr title="Secure_Password::bcrypt_verify">bcrypt_verify</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#360"><abbr title="Secure_Password::bcrypt_hash">bcrypt_hash</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#335"><abbr title="Secure_Password::verify_legacy_hash">verify_legacy_hash</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#204"><abbr title="Utility::drop_down_sbu">drop_down_sbu</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#223"><abbr title="Utility::drop_down_bsb">drop_down_bsb</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/data_process.php.html#73"><abbr title="Data_process::set_yes_no">set_yes_no</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/data_process.php.html#86"><abbr title="Data_process::generate_note">generate_note</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/data_process.php.html#68"><abbr title="Data_process::set_mandatory">set_mandatory</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/data_process.php.html#9"><abbr title="Data_process::check">check</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/data_process.php.html#6"><abbr title="Data_process::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/data_process.php.html#99"><abbr title="Data_process::generate_progress">generate_progress</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/jctable.php.html#6"><abbr title="Jctable::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/jctable.php.html#131"><abbr title="Jctable::query">query</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/jctable.php.html#160"><abbr title="Jctable::generate_query_filter">generate_query_filter</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/jctable.php.html#115"><abbr title="Jctable::drop_down_paging">drop_down_paging</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/jctable.php.html#21"><abbr title="Jctable::generate_table">generate_table</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/jctable.php.html#11"><abbr title="Jctable::generate_filter">generate_filter</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#433"><abbr title="Utility::mail">mail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#410"><abbr title="Utility::generate_checked_k3">generate_checked_k3</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#294"><abbr title="Utility::drop_down_bsb_katalog">drop_down_bsb_katalog</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#322"><abbr title="Utility::cek_note">cek_note</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#278"><abbr title="Utility::drop_down_paging">drop_down_paging</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#263"><abbr title="Utility::drop_down_produk">drop_down_produk</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#241"><abbr title="Utility::drop_down_sub_bidang">drop_down_sub_bidang</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#340"><abbr title="Utility::check_administrasi">check_administrasi</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#351"><abbr title="Utility::get_bidang">get_bidang</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#391"><abbr title="Utility::generate_radio_k3">generate_radio_k3</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#378"><abbr title="Utility::tabNav">tabNav</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#369"><abbr title="Utility::get_sub_bidang_list">get_sub_bidang_list</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#360"><abbr title="Utility::get_bidang_list">get_bidang_list</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Custom_report_builder.php.html#6"><abbr title="Custom_report_builder::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/MY_Form_validation.php.html#25"><abbr title="MY_Form_Validation::date_range">date_range</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#12"><abbr title="Filter::group_filter_post">group_filter_post</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#211"><abbr title="Filter::generate_query">generate_query</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#5"><abbr title="Filter::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Dpt.php.html#380"><abbr title="Dpt::check_iu">check_iu</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Dpt.php.html#352"><abbr title="Dpt::edit_data">edit_data</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Dpt.php.html#358"><abbr title="Dpt::set_message">set_message</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#349"><abbr title="Filter::field_array">field_array</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#372"><abbr title="Filter::get_legal">get_legal</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#401"><abbr title="Filter::get_bidang">get_bidang</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#410"><abbr title="Filter::get_sub_bidang">get_sub_bidang</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#394"><abbr title="Filter::get_izin_type">get_izin_type</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#386"><abbr title="Filter::get_dpt_type">get_dpt_type</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#381"><abbr title="Filter::status_dpt">status_dpt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Dpt.php.html#304"><abbr title="Dpt::set_email_blast">set_email_blast</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Dpt.php.html#280"><abbr title="Dpt::decrease_status_dpt">decrease_status_dpt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Custom_report_builder.php.html#73"><abbr title="Custom_report_builder::build_html_pengurus">build_html_pengurus</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Custom_report_builder.php.html#90"><abbr title="Custom_report_builder::build_html_asosiasi">build_html_asosiasi</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Custom_report_builder.php.html#57"><abbr title="Custom_report_builder::build_html_akta">build_html_akta</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Custom_report_builder.php.html#41"><abbr title="Custom_report_builder::build_html_situ">build_html_situ</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Custom_report_builder.php.html#13"><abbr title="Custom_report_builder::build_html_constructor">build_html_constructor</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Custom_report_builder.php.html#106"><abbr title="Custom_report_builder::build_html_tdp">build_html_tdp</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Custom_report_builder.php.html#122"><abbr title="Custom_report_builder::build_html_bsb">build_html_bsb</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Dpt.php.html#64"><abbr title="Dpt::iu_change">iu_change</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Dpt.php.html#158"><abbr title="Dpt::iu_add">iu_add</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Dpt.php.html#17"><abbr title="Dpt::non_iu_change">non_iu_change</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Dpt.php.html#11"><abbr title="Dpt::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Custom_report_builder.php.html#138"><abbr title="Custom_report_builder::build_html_agen">build_html_agen</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#418"><abbr title="Filter::get_k3_limit">get_k3_limit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#426"><abbr title="Filter::get_warna">get_warna</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Form.php.html#365"><abbr title="Form::calendar">calendar</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Form.php.html#413"><abbr title="Form::calendar_filter">calendar_filter</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Form.php.html#319"><abbr title="Form::drop_down_db">drop_down_db</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Form.php.html#273"><abbr title="Form::drop_down">drop_down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Form.php.html#243"><abbr title="Form::text_area">text_area</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Form.php.html#495"><abbr title="Form::lifetime_calendar">lifetime_calendar</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Form.php.html#521"><abbr title="Form::file">file</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/MY_Form_validation.php.html#5"><abbr title="MY_Form_Validation::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Form.php.html#718"><abbr title="Form::get_temp_data">get_temp_data</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Form.php.html#658"><abbr title="Form::input">input</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Form.php.html#622"><abbr title="Form::upload">upload</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/MY_Form_validation.php.html#9"><abbr title="MY_Form_Validation::backdate">backdate</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Form.php.html#221"><abbr title="Form::button">button</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#450"><abbr title="Filter::get_field">get_field</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Form.php.html#11"><abbr title="Form::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#444"><abbr title="Filter::get_category_katalog">get_category_katalog</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#437"><abbr title="Filter::get_kualifikasi">get_kualifikasi</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#434"><abbr title="Filter::get_is_vms">get_is_vms</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Form.php.html#199"><abbr title="Form::hidden">hidden</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Form.php.html#25"><abbr title="Form::get_kurs">get_kurs</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Form.php.html#157"><abbr title="Form::decimal">decimal</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Form.php.html#177"><abbr title="Form::password">password</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Form.php.html#139"><abbr title="Form::number">number</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Form.php.html#121"><abbr title="Form::text_box">text_box</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Form.php.html#43"><abbr title="Form::build_str_query">build_str_query</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#105"><abbr title="Secure_Password::verify_password">verify_password</abbr></a></td><td class="text-right">36%</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#170"><abbr title="Secure_Password::needs_rehash">needs_rehash</abbr></a></td><td class="text-right">38%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="libraries/Filter_.php.html#211"><abbr title="Filter::generate_query">generate_query</abbr></a></td><td class="text-right">870</td></tr>
+       <tr><td><a href="libraries/jctable.php.html#160"><abbr title="Jctable::generate_query_filter">generate_query_filter</abbr></a></td><td class="text-right">650</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#12"><abbr title="Filter::group_filter_post">group_filter_post</abbr></a></td><td class="text-right">380</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#205"><abbr title="Secure_Password::validate_password_strength">validate_password_strength</abbr></a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#288"><abbr title="Secure_Password::generate_password">generate_password</abbr></a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#403"><abbr title="Secure_Password::generate_salt">generate_salt</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="libraries/data_process.php.html#9"><abbr title="Data_process::check">check</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="libraries/Form.php.html#43"><abbr title="Form::build_str_query">build_str_query</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#50"><abbr title="Secure_Password::hash_password">hash_password</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="libraries/jctable.php.html#131"><abbr title="Jctable::query">query</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="libraries/Form.php.html#658"><abbr title="Form::input">input</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="libraries/data_process.php.html#73"><abbr title="Data_process::set_yes_no">set_yes_no</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="libraries/Form.php.html#365"><abbr title="Form::calendar">calendar</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#391"><abbr title="Utility::generate_radio_k3">generate_radio_k3</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="libraries/Custom_report_builder.php.html#13"><abbr title="Custom_report_builder::build_html_constructor">build_html_constructor</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="libraries/Form.php.html#413"><abbr title="Form::calendar_filter">calendar_filter</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#294"><abbr title="Utility::drop_down_bsb_katalog">drop_down_bsb_katalog</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#105"><abbr title="Secure_Password::verify_password">verify_password</abbr></a></td><td class="text-right">41</td></tr>
+       <tr><td><a href="libraries/Form.php.html#521"><abbr title="Form::file">file</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="libraries/jctable.php.html#21"><abbr title="Jctable::generate_table">generate_table</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="libraries/Form.php.html#319"><abbr title="Form::drop_down_db">drop_down_db</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#410"><abbr title="Utility::generate_checked_k3">generate_checked_k3</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#170"><abbr title="Secure_Password::needs_rehash">needs_rehash</abbr></a></td><td class="text-right">22</td></tr>
+       <tr><td><a href="libraries/Dpt.php.html#158"><abbr title="Dpt::iu_add">iu_add</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="libraries/Dpt.php.html#304"><abbr title="Dpt::set_email_blast">set_email_blast</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="libraries/Form.php.html#273"><abbr title="Form::drop_down">drop_down</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#335"><abbr title="Secure_Password::verify_legacy_hash">verify_legacy_hash</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#378"><abbr title="Secure_Password::bcrypt_verify">bcrypt_verify</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#114"><abbr title="Utility::get_userdata">get_userdata</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#204"><abbr title="Utility::drop_down_sbu">drop_down_sbu</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#446"><abbr title="Secure_Password::get_hash_info">get_hash_info</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="libraries/Custom_report_builder.php.html#138"><abbr title="Custom_report_builder::build_html_agen">build_html_agen</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="libraries/Custom_report_builder.php.html#122"><abbr title="Custom_report_builder::build_html_bsb">build_html_bsb</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="libraries/MY_Form_validation.php.html#60"><abbr title="MY_Form_Validation::is_valid_npwp">is_valid_npwp</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="libraries/jctable.php.html#115"><abbr title="Jctable::drop_down_paging">drop_down_paging</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#54"><abbr title="Utility::generateLink">generateLink</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#47"><abbr title="Utility::generateSort">generateSort</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#176"><abbr title="Utility::drop_down_vendor">drop_down_vendor</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="libraries/Custom_report_builder.php.html#73"><abbr title="Custom_report_builder::build_html_pengurus">build_html_pengurus</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#241"><abbr title="Utility::drop_down_sub_bidang">drop_down_sub_bidang</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="libraries/Dpt.php.html#64"><abbr title="Dpt::iu_change">iu_change</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#340"><abbr title="Utility::check_administrasi">check_administrasi</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="libraries/Dpt.php.html#358"><abbr title="Dpt::set_message">set_message</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#378"><abbr title="Utility::tabNav">tabNav</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="libraries/data_process.php.html#99"><abbr title="Data_process::generate_progress">generate_progress</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#278"><abbr title="Utility::drop_down_paging">drop_down_paging</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#322"><abbr title="Utility::cek_note">cek_note</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="libraries/Form.php.html#718"><abbr title="Form::get_temp_data">get_temp_data</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="libraries/Form.php.html#495"><abbr title="Form::lifetime_calendar">lifetime_calendar</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="libraries/MY_Form_validation.php.html#9"><abbr title="MY_Form_Validation::backdate">backdate</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="libraries/data_process.php.html#68"><abbr title="Data_process::set_mandatory">set_mandatory</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="libraries/jctable.php.html#11"><abbr title="Jctable::generate_filter">generate_filter</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#369"><abbr title="Utility::get_sub_bidang_list">get_sub_bidang_list</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#360"><abbr title="Utility::get_bidang_list">get_bidang_list</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#105"><abbr title="Utility::session_id">session_id</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#223"><abbr title="Utility::drop_down_bsb">drop_down_bsb</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#263"><abbr title="Utility::drop_down_produk">drop_down_produk</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#351"><abbr title="Utility::get_bidang">get_bidang</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/MY_Form_validation.php.html#48"><abbr title="MY_Form_Validation::date_range_same">date_range_same</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#418"><abbr title="Filter::get_k3_limit">get_k3_limit</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#410"><abbr title="Filter::get_sub_bidang">get_sub_bidang</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#426"><abbr title="Filter::get_warna">get_warna</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#450"><abbr title="Filter::get_field">get_field</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Form.php.html#25"><abbr title="Form::get_kurs">get_kurs</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#401"><abbr title="Filter::get_bidang">get_bidang</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#386"><abbr title="Filter::get_dpt_type">get_dpt_type</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Custom_report_builder.php.html#57"><abbr title="Custom_report_builder::build_html_akta">build_html_akta</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Custom_report_builder.php.html#41"><abbr title="Custom_report_builder::build_html_situ">build_html_situ</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Custom_report_builder.php.html#90"><abbr title="Custom_report_builder::build_html_asosiasi">build_html_asosiasi</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Custom_report_builder.php.html#106"><abbr title="Custom_report_builder::build_html_tdp">build_html_tdp</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Filter_.php.html#372"><abbr title="Filter::get_legal">get_legal</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Form.php.html#121"><abbr title="Form::text_box">text_box</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Form.php.html#139"><abbr title="Form::number">number</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/MY_Form_validation.php.html#36"><abbr title="MY_Form_Validation::date_low">date_low</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/MY_Form_validation.php.html#25"><abbr title="MY_Form_Validation::date_range">date_range</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Secure_Password.php.html#360"><abbr title="Secure_Password::bcrypt_hash">bcrypt_hash</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Securities.php.html#8"><abbr title="Securities::clean_input">clean_input</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#70"><abbr title="Utility::name_generator">name_generator</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Form.php.html#622"><abbr title="Form::upload">upload</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Form.php.html#243"><abbr title="Form::text_area">text_area</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Form.php.html#157"><abbr title="Form::decimal">decimal</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Form.php.html#177"><abbr title="Form::password">password</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Form.php.html#199"><abbr title="Form::hidden">hidden</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Form.php.html#221"><abbr title="Form::button">button</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="libraries/Utility.php.html#92"><abbr title="Utility::password_generator">password_generator</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 4.0.8</a> using <a href="https://secure.php.net/" target="_top">PHP 5.6.40</a> with <a href="https://xdebug.org/">Xdebug 2.5.5</a> and <a href="https://phpunit.de/">PHPUnit 5.7.27</a> at Tue Jul 8 22:30:35 WIB 2025.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="js/jquery.min.js" type="text/javascript"></script>
+  <script src="js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="js/holder.min.js" type="text/javascript"></script>
+  <script src="js/d3.min.js" type="text/javascript"></script>
+  <script src="js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([9,1,0,0,0,0,0,0,0,0,0,1], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([109,0,0,0,2,0,0,0,0,0,0,2], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,24,"<a href=\"libraries\/Custom_report_builder.php.html#2\">Custom_report_builder<\/a>"],[100,1,"<a href=\"libraries\/Datatables.php.html#1\">Datatables<\/a>"],[0,19,"<a href=\"libraries\/Dpt.php.html#3\">Dpt<\/a>"],[0,69,"<a href=\"libraries\/Filter_.php.html#2\">Filter<\/a>"],[0,68,"<a href=\"libraries\/Form.php.html#3\">Form<\/a>"],[0,13,"<a href=\"libraries\/MY_Form_validation.php.html#3\">MY_Form_Validation<\/a>"],[8.8082901554404,77,"<a href=\"libraries\/Secure_Password.php.html#17\">Secure_Password<\/a>"],[0,3,"<a href=\"libraries\/Securities.php.html#2\">Securities<\/a>"],[0,71,"<a href=\"libraries\/Utility.php.html#2\">Utility<\/a>"],[0,25,"<a href=\"libraries\/data_process.php.html#2\">Data_process<\/a>"],[0,43,"<a href=\"libraries\/jctable.php.html#2\">Jctable<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"libraries\/Custom_report_builder.php.html#6\">Custom_report_builder::__construct<\/a>"],[0,6,"<a href=\"libraries\/Custom_report_builder.php.html#13\">Custom_report_builder::build_html_constructor<\/a>"],[0,2,"<a href=\"libraries\/Custom_report_builder.php.html#41\">Custom_report_builder::build_html_situ<\/a>"],[0,2,"<a href=\"libraries\/Custom_report_builder.php.html#57\">Custom_report_builder::build_html_akta<\/a>"],[0,3,"<a href=\"libraries\/Custom_report_builder.php.html#73\">Custom_report_builder::build_html_pengurus<\/a>"],[0,2,"<a href=\"libraries\/Custom_report_builder.php.html#90\">Custom_report_builder::build_html_asosiasi<\/a>"],[0,2,"<a href=\"libraries\/Custom_report_builder.php.html#106\">Custom_report_builder::build_html_tdp<\/a>"],[0,3,"<a href=\"libraries\/Custom_report_builder.php.html#122\">Custom_report_builder::build_html_bsb<\/a>"],[0,3,"<a href=\"libraries\/Custom_report_builder.php.html#138\">Custom_report_builder::build_html_agen<\/a>"],[100,1,"<a href=\"libraries\/Datatables.php.html#1\">Datatables::__construct<\/a>"],[0,1,"<a href=\"libraries\/Dpt.php.html#11\">Dpt::__construct<\/a>"],[0,1,"<a href=\"libraries\/Dpt.php.html#17\">Dpt::non_iu_change<\/a>"],[0,3,"<a href=\"libraries\/Dpt.php.html#64\">Dpt::iu_change<\/a>"],[0,4,"<a href=\"libraries\/Dpt.php.html#158\">Dpt::iu_add<\/a>"],[0,1,"<a href=\"libraries\/Dpt.php.html#280\">Dpt::decrease_status_dpt<\/a>"],[0,4,"<a href=\"libraries\/Dpt.php.html#304\">Dpt::set_email_blast<\/a>"],[0,1,"<a href=\"libraries\/Dpt.php.html#352\">Dpt::edit_data<\/a>"],[0,3,"<a href=\"libraries\/Dpt.php.html#358\">Dpt::set_message<\/a>"],[0,1,"<a href=\"libraries\/Dpt.php.html#380\">Dpt::check_iu<\/a>"],[0,1,"<a href=\"libraries\/Filter_.php.html#5\">Filter::__construct<\/a>"],[0,19,"<a href=\"libraries\/Filter_.php.html#12\">Filter::group_filter_post<\/a>"],[0,29,"<a href=\"libraries\/Filter_.php.html#211\">Filter::generate_query<\/a>"],[0,1,"<a href=\"libraries\/Filter_.php.html#349\">Filter::field_array<\/a>"],[0,2,"<a href=\"libraries\/Filter_.php.html#372\">Filter::get_legal<\/a>"],[0,1,"<a href=\"libraries\/Filter_.php.html#381\">Filter::status_dpt<\/a>"],[0,2,"<a href=\"libraries\/Filter_.php.html#386\">Filter::get_dpt_type<\/a>"],[0,1,"<a href=\"libraries\/Filter_.php.html#394\">Filter::get_izin_type<\/a>"],[0,2,"<a href=\"libraries\/Filter_.php.html#401\">Filter::get_bidang<\/a>"],[0,2,"<a href=\"libraries\/Filter_.php.html#410\">Filter::get_sub_bidang<\/a>"],[0,2,"<a href=\"libraries\/Filter_.php.html#418\">Filter::get_k3_limit<\/a>"],[0,2,"<a href=\"libraries\/Filter_.php.html#426\">Filter::get_warna<\/a>"],[0,1,"<a href=\"libraries\/Filter_.php.html#434\">Filter::get_is_vms<\/a>"],[0,1,"<a href=\"libraries\/Filter_.php.html#437\">Filter::get_kualifikasi<\/a>"],[0,1,"<a href=\"libraries\/Filter_.php.html#444\">Filter::get_category_katalog<\/a>"],[0,2,"<a href=\"libraries\/Filter_.php.html#450\">Filter::get_field<\/a>"],[0,1,"<a href=\"libraries\/Form.php.html#11\">Form::__construct<\/a>"],[0,2,"<a href=\"libraries\/Form.php.html#25\">Form::get_kurs<\/a>"],[0,9,"<a href=\"libraries\/Form.php.html#43\">Form::build_str_query<\/a>"],[0,2,"<a href=\"libraries\/Form.php.html#121\">Form::text_box<\/a>"],[0,2,"<a href=\"libraries\/Form.php.html#139\">Form::number<\/a>"],[0,2,"<a href=\"libraries\/Form.php.html#157\">Form::decimal<\/a>"],[0,2,"<a href=\"libraries\/Form.php.html#177\">Form::password<\/a>"],[0,2,"<a href=\"libraries\/Form.php.html#199\">Form::hidden<\/a>"],[0,2,"<a href=\"libraries\/Form.php.html#221\">Form::button<\/a>"],[0,2,"<a href=\"libraries\/Form.php.html#243\">Form::text_area<\/a>"],[0,4,"<a href=\"libraries\/Form.php.html#273\">Form::drop_down<\/a>"],[0,5,"<a href=\"libraries\/Form.php.html#319\">Form::drop_down_db<\/a>"],[0,7,"<a href=\"libraries\/Form.php.html#365\">Form::calendar<\/a>"],[0,6,"<a href=\"libraries\/Form.php.html#413\">Form::calendar_filter<\/a>"],[0,3,"<a href=\"libraries\/Form.php.html#495\">Form::lifetime_calendar<\/a>"],[0,5,"<a href=\"libraries\/Form.php.html#521\">Form::file<\/a>"],[0,2,"<a href=\"libraries\/Form.php.html#622\">Form::upload<\/a>"],[0,7,"<a href=\"libraries\/Form.php.html#658\">Form::input<\/a>"],[0,3,"<a href=\"libraries\/Form.php.html#718\">Form::get_temp_data<\/a>"],[0,1,"<a href=\"libraries\/MY_Form_validation.php.html#5\">MY_Form_Validation::__construct<\/a>"],[0,3,"<a href=\"libraries\/MY_Form_validation.php.html#9\">MY_Form_Validation::backdate<\/a>"],[0,2,"<a href=\"libraries\/MY_Form_validation.php.html#25\">MY_Form_Validation::date_range<\/a>"],[0,2,"<a href=\"libraries\/MY_Form_validation.php.html#36\">MY_Form_Validation::date_low<\/a>"],[0,2,"<a href=\"libraries\/MY_Form_validation.php.html#48\">MY_Form_Validation::date_range_same<\/a>"],[0,3,"<a href=\"libraries\/MY_Form_validation.php.html#60\">MY_Form_Validation::is_valid_npwp<\/a>"],[0,1,"<a href=\"libraries\/Secure_Password.php.html#33\">Secure_Password::__construct<\/a>"],[0,9,"<a href=\"libraries\/Secure_Password.php.html#50\">Secure_Password::hash_password<\/a>"],[36.666666666667,11,"<a href=\"libraries\/Secure_Password.php.html#105\">Secure_Password::verify_password<\/a>"],[38.461538461538,8,"<a href=\"libraries\/Secure_Password.php.html#170\">Secure_Password::needs_rehash<\/a>"],[0,12,"<a href=\"libraries\/Secure_Password.php.html#205\">Secure_Password::validate_password_strength<\/a>"],[0,11,"<a href=\"libraries\/Secure_Password.php.html#288\">Secure_Password::generate_password<\/a>"],[100,1,"<a href=\"libraries\/Secure_Password.php.html#323\">Secure_Password::is_bcrypt_hash<\/a>"],[0,4,"<a href=\"libraries\/Secure_Password.php.html#335\">Secure_Password::verify_legacy_hash<\/a>"],[0,2,"<a href=\"libraries\/Secure_Password.php.html#360\">Secure_Password::bcrypt_hash<\/a>"],[0,4,"<a href=\"libraries\/Secure_Password.php.html#378\">Secure_Password::bcrypt_verify<\/a>"],[0,10,"<a href=\"libraries\/Secure_Password.php.html#403\">Secure_Password::generate_salt<\/a>"],[0,4,"<a href=\"libraries\/Secure_Password.php.html#446\">Secure_Password::get_hash_info<\/a>"],[0,1,"<a href=\"libraries\/Securities.php.html#4\">Securities::__construct<\/a>"],[0,2,"<a href=\"libraries\/Securities.php.html#8\">Securities::clean_input<\/a>"],[0,1,"<a href=\"libraries\/Utility.php.html#7\">Utility::__construct<\/a>"],[0,1,"<a href=\"libraries\/Utility.php.html#15\">Utility::generate_page<\/a>"],[0,3,"<a href=\"libraries\/Utility.php.html#47\">Utility::generateSort<\/a>"],[0,3,"<a href=\"libraries\/Utility.php.html#54\">Utility::generateLink<\/a>"],[0,2,"<a href=\"libraries\/Utility.php.html#70\">Utility::name_generator<\/a>"],[0,2,"<a href=\"libraries\/Utility.php.html#92\">Utility::password_generator<\/a>"],[0,2,"<a href=\"libraries\/Utility.php.html#105\">Utility::session_id<\/a>"],[0,4,"<a href=\"libraries\/Utility.php.html#114\">Utility::get_userdata<\/a>"],[0,1,"<a href=\"libraries\/Utility.php.html#132\">Utility::get_nama<\/a>"],[0,1,"<a href=\"libraries\/Utility.php.html#141\">Utility::get_sbu<\/a>"],[0,1,"<a href=\"libraries\/Utility.php.html#149\">Utility::bidang_sub_bidang<\/a>"],[0,3,"<a href=\"libraries\/Utility.php.html#176\">Utility::drop_down_vendor<\/a>"],[0,4,"<a href=\"libraries\/Utility.php.html#204\">Utility::drop_down_sbu<\/a>"],[0,2,"<a href=\"libraries\/Utility.php.html#223\">Utility::drop_down_bsb<\/a>"],[0,3,"<a href=\"libraries\/Utility.php.html#241\">Utility::drop_down_sub_bidang<\/a>"],[0,2,"<a href=\"libraries\/Utility.php.html#263\">Utility::drop_down_produk<\/a>"],[0,3,"<a href=\"libraries\/Utility.php.html#278\">Utility::drop_down_paging<\/a>"],[0,6,"<a href=\"libraries\/Utility.php.html#294\">Utility::drop_down_bsb_katalog<\/a>"],[0,3,"<a href=\"libraries\/Utility.php.html#322\">Utility::cek_note<\/a>"],[0,3,"<a href=\"libraries\/Utility.php.html#340\">Utility::check_administrasi<\/a>"],[0,2,"<a href=\"libraries\/Utility.php.html#351\">Utility::get_bidang<\/a>"],[0,2,"<a href=\"libraries\/Utility.php.html#360\">Utility::get_bidang_list<\/a>"],[0,2,"<a href=\"libraries\/Utility.php.html#369\">Utility::get_sub_bidang_list<\/a>"],[0,3,"<a href=\"libraries\/Utility.php.html#378\">Utility::tabNav<\/a>"],[0,6,"<a href=\"libraries\/Utility.php.html#391\">Utility::generate_radio_k3<\/a>"],[0,5,"<a href=\"libraries\/Utility.php.html#410\">Utility::generate_checked_k3<\/a>"],[0,1,"<a href=\"libraries\/Utility.php.html#433\">Utility::mail<\/a>"],[0,1,"<a href=\"libraries\/data_process.php.html#6\">Data_process::__construct<\/a>"],[0,10,"<a href=\"libraries\/data_process.php.html#9\">Data_process::check<\/a>"],[0,3,"<a href=\"libraries\/data_process.php.html#68\">Data_process::set_mandatory<\/a>"],[0,7,"<a href=\"libraries\/data_process.php.html#73\">Data_process::set_yes_no<\/a>"],[0,1,"<a href=\"libraries\/data_process.php.html#86\">Data_process::generate_note<\/a>"],[0,3,"<a href=\"libraries\/data_process.php.html#99\">Data_process::generate_progress<\/a>"],[0,1,"<a href=\"libraries\/jctable.php.html#6\">Jctable::__construct<\/a>"],[0,2,"<a href=\"libraries\/jctable.php.html#11\">Jctable::generate_filter<\/a>"],[0,5,"<a href=\"libraries\/jctable.php.html#21\">Jctable::generate_table<\/a>"],[0,3,"<a href=\"libraries\/jctable.php.html#115\">Jctable::drop_down_paging<\/a>"],[0,7,"<a href=\"libraries\/jctable.php.html#131\">Jctable::query<\/a>"],[0,25,"<a href=\"libraries\/jctable.php.html#160\">Jctable::generate_query_filter<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

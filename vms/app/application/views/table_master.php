@@ -1,0 +1,1 @@
+<?php $this->jctable->generate_filter($table_setting); ?>

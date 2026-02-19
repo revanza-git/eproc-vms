@@ -1,0 +1,46 @@
+@import '6-utilities/initial-variables';
+
+.plus-sign-up {
+	&:before, &:after {
+		position: relative;
+		display: block;
+		content: "";
+		background-color: #999;
+		transition: .3s;
+	}
+
+	&:before {
+		width: 10px;
+		height: 2px;
+		// top: 6px;
+		background-color: #d63031;
+		right: 4px;
+		transition: .3s;
+	}
+}
+
+.plus-sign-bottom {
+	&:before, &:after {
+		position: relative;
+		display: block;
+		content: "";
+		background-color: #999;
+		transition: .3s;
+	}
+
+	&:before {
+		width: 10px;
+		height: 2px;
+		top: 6px;
+		right: 4px;
+		transition: .3s;
+	}
+
+	&:after {
+		height: 10px;
+		width: 2px;
+		transition: .3s;
+	}
+}
+
+

@@ -1,0 +1,34 @@
+@import '6-utilities/initial-variables';
+
+.timeline-legend {
+	width: calc(100% - 15px * 2);
+	margin: 25px 0 10px;
+	clear: both;
+	display: flex;
+	justify-content: flex-end;
+	font-size: 13px;
+	align-items: flex-end;
+
+	.legend-item {
+		display: flex;
+		align-items: center;
+
+		span {
+			background-color: #ddd;
+			border-radius: 2px;
+			height: 15px;
+			width: 15px;
+			display: block;
+			margin-right: 10px;
+			float: left;
+
+			&.yellow {background-color: rgba(254, 202, 87, .7);}
+			&.red {background-color: rgba(255, 118, 117, .8);}
+			&.blue {background-color: rgba(84, 160, 255, .7);}
+		}
+
+		&:not(:last-child) {
+			margin-right: 25px;
+		}
+	}
+}

@@ -1,0 +1,158 @@
+@import '6-utilities/initial-variables';
+
+$danger : nth($danger,1);
+$warning : nth($warning,1);
+$success : nth($success,1);
+$primary : nth($primary,1);
+
+button.sr-close-btn {
+	border-radius: 50px;
+	font-size: 14px;
+	position: fixed;
+	z-index: 1000;
+	top: 22px;
+	left: calc(50% - 60px);
+	// box-shadow: 0 6px 28px rgba(255, 0, 0, 0.6);
+}
+
+.sr-wrapper {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	font-family: $open-sans;
+	z-index: 9999;
+	padding-bottom: 15px;
+    margin-left: -15px;
+    position: absolute;
+    background: darken(#f9f9f9,10%);
+
+    visibility: hidden;
+    opacity: 0;
+    &.active {
+    	visibility: visible;
+    	opacity: 1;
+    }
+
+	.search-result {
+
+		&:first-child {
+			margin-top: 5px;
+		}
+
+		&:not(:last-child) {
+			margin-bottom: 5px;
+		}
+		width: calc(100% - 15px * 2);
+		// padding: 0 15px;
+		display: flex;
+		border-radius: 4px;
+
+		.sr-logo {
+			border-top-left-radius: 4px;
+			border-bottom-left-radius: 4px;
+			position: relative;
+			width: 55px;
+			border-right: 3px solid darken(#ddd,10%);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: repeating-linear-gradient(45deg, #ddd, #ddd 10px, lighten(#ddd, 10%) 10px, lighten(#ddd, 10%) 20px);
+
+			& .icon {
+				border: 3px solid darken(#ddd,10%);
+				color: #ddd;
+				font-size: 15px;
+			    height: 30px;
+			    width: 30px;
+			    padding: 6px;
+			    margin: auto;
+			    position: absolute;
+			    background-color: #fff;
+			    border-radius: 15px;
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+			    right: -16px;
+			}
+
+			&.fppbj {
+				border-right: 3px solid darken($primary,10%);
+				background: repeating-linear-gradient(45deg, $primary, $primary 10px, lighten($primary, 10%) 10px, lighten($primary, 10%) 20px);
+			
+				.icon {
+					border: 3px solid darken($primary,10%);
+					color: $primary;
+				}
+			}
+
+			&.fkpbj {
+				border-right: 3px solid darken($success,10%);
+				background: repeating-linear-gradient(45deg, $success, $success 10px, lighten($success, 10%) 10px, lighten($success, 10%) 20px);
+			
+				.icon {
+					border: 3px solid darken($success,10%);
+					color: $success;
+				}
+			}
+
+			&.fp3 {
+				border-right: 3px solid darken($warning,10%);
+				background: repeating-linear-gradient(45deg, $warning, $warning 10px, lighten($warning, 10%) 10px, lighten($warning, 10%) 20px);
+			
+				.icon {
+					border: 3px solid darken($warning,10%);
+					color: $warning;
+				}
+			}
+		}
+
+		.sr-item {
+			width: calc(100% - 15px * 2);
+			background-color: #fff;
+			padding: 5px 25px;
+			display: flex;
+			flex-direction: column;
+
+			.sr-no {
+				margin-right: 10px;
+				display: none;
+			}
+
+			.sr-keterangan {
+				font-size: 14px;
+				color: #c1c0c0;
+
+				.status {
+					margin-right: 25px;
+				}
+			}
+
+			.sr-icon {
+				display: flex;
+				justify-content: flex-end; 
+
+				.icon {
+					background-color: #ffdd57;
+				    color: #fff;
+				    height: 22px;
+				    width: 22px;
+				    font-size: 15px;
+				    padding: 5px;
+				    display: flex;
+				    justify-content: center;
+				    align-items: center;
+				    border-radius: 25px;
+
+					&:not(:last-child) {
+						margin-right: 10px;
+					}
+				}
+			}
+
+			&:not(:last-child) {
+				margin-bottom: 5px;
+			}
+		}
+	}
+}

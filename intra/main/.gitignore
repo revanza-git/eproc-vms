@@ -1,0 +1,14 @@
+.DS_Store
+
+# Environment files - contains sensitive information
+.env
+.env.local
+.env.production
+.env.staging
+
+application/cache/
+assets/lampiran/
+application/config/config.php
+application/config/database.php
+application/config/constants.php
+application/logs/

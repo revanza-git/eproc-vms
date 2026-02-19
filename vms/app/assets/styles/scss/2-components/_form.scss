@@ -1,0 +1,164 @@
+@import '6-utilities/initial-variables';
+
+// .from-wrapper {
+//   width: 100%;
+//   display: block;
+
+//   .title {
+//     text-align: center;
+//     font-size: 25px;
+//     font-weight: 500;
+//     margin: 1.25rem auto;
+//     color: #3273dc;
+//   }
+
+//   .label {
+//     font-size: 15px;
+//     color: #b5b5b5;
+//     position: relative; 
+
+//     p {
+//       font-size: 14px;
+//       color: #ddd;
+//       font-style: italic;
+//     }
+//   }
+
+//   .control {
+//     position: relative;
+
+//     a {
+//       margin-right: auto;
+//     }
+
+//     input {
+//       font-size: 17px;
+//       color: #121212;
+//       padding: 5px 2px;
+//     }
+
+//     button {
+//       font-size: 15px;
+//     }
+
+//     .input {
+//       margin-top: 5px;
+//       width: 90%;
+//       border: 1px solid #ddd;
+//       outline: none;
+//       border-radius: 2px;
+//     }
+
+//     .input:focus {
+//       border: 1px solid #3273dc;
+//     }
+
+//     .input-mandatory {
+//       background-color: #ffe78a;
+//     }
+
+//     .input-disabled {
+//       background-color: #e0e0e0; 
+//       cursor: no-drop;
+//     }
+
+//     .select {
+//       display: inline-block;
+//       max-width: 100%;
+//       position: relative;
+//       vertical-align: top;
+
+//       select {
+//         background-color: white;
+//         border-color: #dbdbdb;
+//         color: #363636;
+//         cursor: pointer;
+//         display: block;
+//         font-size: 1em;
+//         outline: none;
+//         padding: 5px 2.75rem;
+//         width: 200px
+//       }
+//     }
+//   }
+// }
+
+.field {
+  width: 100% ;display: block; }
+  .field .title { text-align: center; font-size: 25px; font-weight: 500; margin: 1.25rem auto; color: #3273dc; }
+  .field .label { font-size: 15px; color: darken(#ddd, 30%); position: relative; }
+    .field .label p { font-size: 14px; color: #ddd; font-style: italic; }
+  .field .control { position: relative; }
+    .field .control a { margin-right: auto; }
+    .field .control input { font-size: 17px; color: #121212; padding: 5px 10px; }
+    .field .control p { margin-right: 20px; }
+    .field .control .input { margin-top: 5px; width: calc(100% - 10px * 2); border: 1px solid #ddd; outline: none; border-radius: 2px; }
+    .field .control .input:focus { border: 1px solid #3273dc; }
+    .field .control .input-mandatory { background-color: #ffe78a; @include placeholder {color: darken(#ddd,30%)} }
+    .field .control .input-disabled { background-color: #e0e0e0; cursor: no-drop; @include placeholder {color: darken(#ddd,30%)} }
+    .field .control button { font-size: 15px; }
+    .field .control .select { display: inline-block; width: 100%; position: relative; vertical-align: top; }
+      .field .control .select select { background-color: white; border-color: #dbdbdb; color: #363636; cursor: pointer; display: block; font-size: 1em; outline: none; padding: 5px 2.75rem; width: 100%; box-sizing: border-box; }
+      .field .control .select select:hover { border-color: #b5b5b5; }
+    .field .control .date-picker { display: flex; flex-wrap: wrap; }
+      .field .control .date-picker select:nth-child(1) { padding: 5px .5rem; width: 60px; }
+      .field .control .date-picker select:nth-child(2) { padding: 5px .5rem; width: 120px; }
+      .field .control .date-picker select:nth-child(3) { padding: 5px .5rem; width: 80px; }
+  .field .is-center { width: 100% !important; display: flex; justify-content: center; }
+  .field .control:not(:last-child) { margin-bottom: 1.25rem; }
+  .field .alert-primary { padding-bottom: 1.25rem; display: flex; justify-content: center; flex-wrap: wrap; }
+    .field .alert-primary p { color: #3273dc; font-size: 14px; font-weight: 500; float: right; padding-top: 10px; margin-left: auto; }
+  .field .alert-danger .input { border: 1px solid #ff3860 !important; }
+  .field .alert-danger p { color: #ff3860; font-size: 14px; }
+  .field .alert-success .input { border: 1px solid #23d160 !important; }
+  .field .alert-success p { color: #23d160; font-size: 14px; }
+
+.display-info { display: flex; flex-wrap: wrap; }
+  .display-info .title { width: 100%; }
+  .display-info .label { width: 50%; font-size: 19px; color: #121212; }
+  .display-info .control { width: 50%; }
+    .display-info .control p { display: inline-block; }
+
+.captcha-area { display: block; height: 130px; width: 250px; border: 1px solid #c4c4c4; background-color: #ddd; }
+
+.form-start, .form-end {
+  width: calc(100% - 20px * 2);
+  padding: 20px;
+}
+
+.form-group {
+  width: 100%;
+  display: block; }
+  .form-group .currency {
+    position: relative;
+    width: 0%;
+    left: -115px;
+    display: inline-block; }
+  .form-group .money {
+    width: 70%; }
+  .form-group label {
+    margin-right: auto;
+    float: left;
+    width: 30%;
+    display: inline-block;
+    padding-left: 15px;
+    vertical-align: middle; }
+  .form-group input, .form-group select, .form-group textarea {
+    margin-left: auto;
+    width: 70%;
+    display: inline-block; }
+  .form-group .wrapper, .form-group .radioWrapper, .form-group .checkboxWrapper {
+    // margin-left: auto;
+    width: 70%;
+    display: inline-block; }
+    .form-group .wrapper input {
+      width: 100%; }
+    .form-group .checkboxWrapper {
+      display: flex!important;
+      flex-wrap: wrap;
+    }
+
+
+#step4 > div {
+  
+}

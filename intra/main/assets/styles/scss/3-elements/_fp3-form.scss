@@ -1,0 +1,84 @@
+@import '6-utilities/initial-variables';
+
+#tab-intro {
+  width: 100%;
+
+  .tab-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+    .intro-wrapper {
+      width: 50%;
+
+      .intro-title {
+        margin-top: 10px;
+      }
+
+      &:first-child {
+        width: calc(50% - 1px);
+        border-right: 1px solid #ddd;
+      }
+    }
+  }
+}
+
+.fp3-wrapper {
+	width: 100%;
+	font-family: $open-sans;
+}
+
+.fp3-tab {
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+.tab-form-header {
+  font-size: 20px!important;
+  height: 35px!important;
+  background-color: transparent!important;
+  line-height: 1.6;
+  border: 1px solid nth($primary,1)!important;
+  color: nth($primary,1)!important;
+
+  &.active {
+    background-color: nth($primary,1)!important;
+    color: #fff!important;
+  }
+}
+
+/* Style the buttons inside the tab */
+.fp3-tab button, .tab-form-header {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  // padding: 14px 16px;
+  text-align: center;
+  transition: 0.3s;
+  font-size: 17px;
+  margin: 0!important;
+  border-radius: 0!important;
+  width: 50%;
+  background-color: nth($primary,1);
+  color: #fff;
+}
+
+/* Change background color of buttons on hover */
+.fp3-tab button:hover , .tab-form-header:hover {
+  background-color: darken(nth($primary,1), 10%);
+}
+
+/* Create an active/current tablink class */
+.fp3-tab button.active , .tab-form-header.active {
+  background-color: darken(nth($primary,1), 10%);
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}

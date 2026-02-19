@@ -1,0 +1,22 @@
+@import '6-utilities/initial-variables';
+
+$primary: nth($primary,1);
+
+.showLimit {
+	outline: none;
+	border: 0;
+	border-bottom: 2px solid $primary;
+	font-size: 1.25rem;
+	margin: 0 15px;
+	width: 80px;
+	@include transition(all, .3s);
+}
+
+.showLimit:focus {
+	border: 1px solid $primary;
+}
+
+.row:nth-child(even) {
+   background-color: #f7f5f5;
+}
+

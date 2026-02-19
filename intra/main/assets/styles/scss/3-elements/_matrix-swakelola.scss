@@ -1,0 +1,89 @@
+@import '6-utilities/initial-variables';
+
+.matrix-swakelola-wrapper {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	height: 150px;
+
+	.matrix-swakelola {
+		display: table;
+		width: 80%;
+		font-family: $open-sans;
+		position: relative;
+
+		.ms-line {
+			height: 150px;
+			width: 2px;
+			background-color: #3273dc;
+			display: block;
+			position: absolute;
+			z-index: 99;
+			top: calc(50% - 75px);
+	    }
+
+		.ms-item {
+			display: table-cell;
+			padding: 10px 15px;
+			background-color: #ddd;
+			filter: grayscale(.9);
+			transition: all .3s;
+
+			&.green {
+	    	background-color: #2ecc71;
+		    }
+
+		    &.green-light {
+		    	background-color: #93efba;
+		    }
+
+		    &.yellow {
+		    	background-color: #fed330;
+		    }
+
+		    &.orange {
+		    	background-color: #e67e22;
+		    }
+
+		    &.red {
+		    	background-color: #e74c3c;
+		    }
+
+		    &:hover , &.active {
+		    	filter: grayscale(0);
+		    }
+
+		    &.sw {
+		    	position: relative;
+
+		    	&:after {
+		    		content: "Swakelola";
+		    		display: block;
+		    		position: absolute;
+		    		right: 10px;
+		    		bottom: -35px;
+		    		width: 150px;
+		    		text-align: right;
+		    		font-size: 18px;
+		    	}
+		    }
+
+		    &.pk {
+		    	position: relative;
+
+		    	&:before {
+		    		content: "Pihak Ketiga";
+		    		display: block;
+		    		position: absolute;
+		    		left: 10px;
+		    		top: -35px;
+		    		width: 150px;
+		    		text-align: left;
+		    		font-size: 18px;
+		    	}
+		    }
+		}
+	}
+}

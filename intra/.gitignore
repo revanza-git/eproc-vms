@@ -79,4 +79,10 @@ desktop.ini
 
 # Cache directories
 **/cache/**
-**/tmp/** 
+**/tmp/**
+
+# Keep CodeIgniter Cache library source (not runtime cache)
+!main/system/libraries/Cache/
+!main/system/libraries/Cache/**
+!pengadaan/system/libraries/Cache/
+!pengadaan/system/libraries/Cache/**

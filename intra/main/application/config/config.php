@@ -1,9 +1,8 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-// Load environment variables before using them
 if (!function_exists('env')) {
-    require_once(dirname(dirname(__FILE__)) . '/env_loader.php');
+	require_once(APPPATH . 'helpers/env_helper.php');
 }
 
 /*
@@ -22,30 +21,17 @@ if (!function_exists('env')) {
 | environments.
 |
 */
-// Base URL Configuration using Environment Variables
-$config['BASE_LINK.']	= env('BASE_URL', 'http://vms.localhost:8080/');
-$config['base_app']		= env('BASE_URL', 'http://vms.localhost:8080/');
-$config['external_url'] = env('EXTERNAL_URL', 'http://intra.localhost:8080/main');
-$config['redirect_dashboard'] = env('REDIRECT_DASHBOARD', 'dashboard');
-$config['redirect_auction'] = env('REDIRECT_AUCTION', 'auction');
-$config['redirect_admin'] = env('REDIRECT_ADMIN', 'admin');
+// $config['BASE_LINK.']	=  	"http://eprocnr.pertamina.com/internal/eproc_pengadaan/";
+// $config['base_app']		= 	"http://eprocnr.pertamina.com/internal/eproc_pengadaan/";
 
-// Admin Intra Domain Configuration
-$config['admin_intra_url'] = env('ADMIN_INTRA_URL', 'http://intra.localhost:8080/main');
-$config['jwt_secret_key'] = env('JWT_SECRET_KEY', '');
-$config['jwt_secret_key'] = ($config['jwt_secret_key'] === '' && ENVIRONMENT === 'development') ? 'dev_only_change_me' : $config['jwt_secret_key'];
-$config['jwt_algorithm'] = env('JWT_ALGORITHM', 'HS256');
-$config['jwt_expire_time'] = env('JWT_EXPIRE_TIME', 3600); // 1 hour
-
-// URL Configuration for merged authentication using Environment Variables
-$config['url_eproc_pengadaan_dashboard'] = env('PENGADAAN_DASHBOARD_URL', env('BASE_URL', 'http://vms.localhost:8080/') . 'dashboard');
-$config['url_eproc_pengadaan_admin'] = env('PENGADAAN_ADMIN_URL', env('BASE_URL', 'http://vms.localhost:8080/') . 'admin');
-$config['url_eproc_nusantararegas_dashboard'] = env('NUSANTARA_DASHBOARD_URL', env('BASE_URL', 'http://vms.localhost:8080/') . 'dashboard');
-$config['url_eproc_nusantararegas'] = env('NUSANTARA_BASE_URL', env('BASE_URL', 'http://vms.localhost:8080/'));
-
-// Legacy configurations (commented for reference)
-// $config['BASE_LINK.']	=  	"";
-// $config['base_app']	= 	"http://eproc.nusantararegas.com/eproc_pengadaan/";
+$config['BASE_LINK.'] = '';
+$config['BASE_LINK_EXTERNAL.'] = '';
+$config['base_app'] = env('MAIN_BASE_URL', 'http://intra.localhost:8080/main/');
+$config['base_url'] = env('MAIN_BASE_URL', 'http://intra.localhost:8080/main/');
+$config['vms_url'] = env('MAIN_VMS_URL', 'http://vms.localhost:8080/');
+$config['pengadaan_url'] = env('MAIN_PENGADAAN_URL', 'http://intra.localhost:8080/pengadaan/');
+$config['vms_pengadaan_url'] = env('MAIN_VMS_PENGADAAN_URL', env('MAIN_PENGADAAN_URL', 'http://intra.localhost:8080/pengadaan/'));
+$config['enable_vms_session_clearing'] = env('ENABLE_VMS_SESSION_CLEARING', TRUE);
 
 /*
 |--------------------------------------------------------------------------
@@ -336,8 +322,7 @@ $config['cache_query_string'] = FALSE;
 | http://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = env('ENCRYPTION_KEY', '');
-$config['encryption_key'] = ($config['encryption_key'] === '' && ENVIRONMENT === 'development') ? 'dev_only_change_me' : $config['encryption_key'];
+$config['encryption_key'] = env('ENCRYPTION_KEY', 'dev_only_change_me');
 
 /*
 |--------------------------------------------------------------------------
@@ -388,7 +373,7 @@ $config['encryption_key'] = ($config['encryption_key'] === '' && ENVIRONMENT ===
 |
 */
 $config['sess_driver'] = env('SESSION_DRIVER', 'files');
-$config['sess_cookie_name'] = 'vms_session';
+$config['sess_cookie_name'] = 'main_internal';
 $config['sess_expiration'] = env('SESSION_EXPIRE', 7200);
 $sessSavePath = env('SESSION_SAVE_PATH', '');
 $sessDriver = strtolower((string) $config['sess_driver']);
@@ -404,7 +389,7 @@ if ($sessDriver === 'redis') {
 		@mkdir($sessSavePath, 0755, true);
 	}
 	if (!is_writable($sessSavePath)) {
-		$sessSavePathFallback = rtrim(sys_get_temp_dir(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . 'vms_sessions';
+		$sessSavePathFallback = rtrim(sys_get_temp_dir(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . 'main_sessions';
 		if (!is_dir($sessSavePathFallback)) {
 			@mkdir($sessSavePathFallback, 0700, true);
 		}
@@ -481,12 +466,12 @@ $config['global_xss_filtering'] = FALSE;
 | 'csrf_regenerate' = Regenerate token on every submission
 | 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
 */
-$config['csrf_protection'] = TRUE;
+$config['csrf_protection'] = env('CSRF_PROTECTION', FALSE);
 $config['csrf_token_name'] = 'csrf_test_name';
 $config['csrf_cookie_name'] = 'csrf_cookie_name';
 $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = TRUE;
-$config['csrf_exclude_uris'] = array('main/check');
+$config['csrf_exclude_uris'] = array('main/check', 'main/api_logout');
 
 /*
 |--------------------------------------------------------------------------

@@ -6,7 +6,6 @@
 !.env.example
 
 # Database Configuration (if contains sensitive data)
-app/application/config/database.php
 pengadaan/application/config/database.php
 
 # Security Tools (remove after use)

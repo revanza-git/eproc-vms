@@ -10,8 +10,20 @@ services:
       - ./shared:/var/www/html/shared
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
-      - vms-app
-      - intra-app
+      vms-app:
+        condition: service_healthy
+      intra-app:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "wget -q -O /dev/null --header='Host: vms.localhost' http://127.0.0.1/",
+        ]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
     networks:
       - eproc-network
 
@@ -26,7 +38,20 @@ services:
       - ./shared:/var/www/html/shared
     networks:
       - eproc-network
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "php-fpm -t || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
     environment:
+      APP_ENV: ${EPROC_APP_ENV:-development}
+      CI_ENV: ${EPROC_APP_ENV:-development}
       DB_HOST: db
       DB_PORT: 3306
       DB_HOSTNAME: ${EPROC_DB_HOSTNAME:-db}
@@ -34,8 +59,8 @@ services:
       DB_PASSWORD: ${EPROC_DB_PASSWORD:-root}
       DB_DATABASE: ${EPROC_DB_DATABASE:-eproc}
       DB_DATABASE_PLANNING: ${EPROC_DB_DATABASE_PLANNING:-eproc_perencanaan}
-      SESSION_DRIVER: ${EPROC_SESSION_DRIVER:-redis}
-      SESSION_SAVE_PATH: ${EPROC_SESSION_SAVE_PATH:-tcp://redis:6379?database=0&prefix=eproc_}
+      SESSION_DRIVER: ${EPROC_SESSION_DRIVER:-files}
+      SESSION_SAVE_PATH: ${EPROC_SESSION_SAVE_PATH:-}
 
   intra-app:
     build:
@@ -48,7 +73,20 @@ services:
       - ./shared:/var/www/html/shared
     networks:
       - eproc-network
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "php-fpm -t || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
     environment:
+      APP_ENV: ${EPROC_APP_ENV:-development}
+      CI_ENV: ${EPROC_APP_ENV:-development}
       DB_HOST: db
       DB_PORT: 3306
       DB_HOSTNAME: ${EPROC_DB_HOSTNAME:-db}
@@ -56,8 +94,8 @@ services:
       DB_PASSWORD: ${EPROC_DB_PASSWORD:-root}
       DB_DATABASE: ${EPROC_DB_DATABASE:-eproc}
       DB_DATABASE_PLANNING: ${EPROC_DB_DATABASE_PLANNING:-eproc_perencanaan}
-      SESSION_DRIVER: ${EPROC_SESSION_DRIVER:-redis}
-      SESSION_SAVE_PATH: ${EPROC_SESSION_SAVE_PATH:-tcp://redis:6379?database=0&prefix=eproc_}
+      SESSION_DRIVER: ${EPROC_SESSION_DRIVER:-files}
+      SESSION_SAVE_PATH: ${EPROC_SESSION_SAVE_PATH:-}
 
   db:
     image: mariadb:10.5
@@ -74,12 +112,24 @@ services:
       - ./docker/init-db:/docker-entrypoint-initdb.d
     networks:
       - eproc-network
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$${MYSQL_ROOT_PASSWORD} --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 35s
 
   redis:
     image: redis:7-alpine
     container_name: eproc-redis
     networks:
       - eproc-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
 
 networks:
   eproc-network:

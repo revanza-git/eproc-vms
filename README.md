@@ -32,7 +32,7 @@ flowchart LR
 
 ## URLs (Docker Compose)
 
-Assuming `docker-compose up` and your hosts/DNS resolves the following hostnames:
+Assuming `docker compose up` and your hosts/DNS resolves the following hostnames:
 
 - **Intra**
   - `http://intra.localhost:8080/main/`
@@ -40,7 +40,7 @@ Assuming `docker-compose up` and your hosts/DNS resolves the following hostnames
 - **VMS**
   - `http://vms.localhost:8080/`
 
-Nginx routing for these hosts lives in [default.conf](file:///c:/inetpub/eproc/docker/nginx/default.conf).
+Nginx routing for these hosts lives in `docker/nginx/default.conf`.
 
 ## Repo Layout
 
@@ -80,8 +80,8 @@ Windows hosts file:
 ### 2) Create `.env` files (do not commit)
 
 At repo root:
-- Copy `.env.example` → `.env`
-- Set strong values for `MYSQL_ROOT_PASSWORD` and `MYSQL_PASSWORD`
+- Copy `.env.example` -> `.env`
+- Adjust values that need to differ from local defaults
 
 There are example env files in both app trees.
 
@@ -105,7 +105,7 @@ Important:
 From repo root:
 
 ```bash
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 This brings up:
@@ -120,18 +120,18 @@ This brings up:
 On first boot, MariaDB runs initialization scripts from:
 - `docker/init-db/` (mounted into `/docker-entrypoint-initdb.d`)
 
-Default DB config in [docker-compose.yml](file:///c:/inetpub/eproc/docker-compose.yml#L47-L66):
+Default DB config in `docker-compose.yml`:
 - Host (from apps): `db:3306` (Docker network)
 - Host (from your machine): `localhost:3308`
 - User: `eproc_app` (from `.env`)
-- Password: `MYSQL_PASSWORD` (from `.env`)
+- Password: `EPROC_MYSQL_PASSWORD` (from `.env`)
 - Database: `eproc`
 
 If you need a clean reset (destructive):
 
 ```bash
-docker-compose down -v
-docker-compose up -d --build
+docker compose down -v
+docker compose up -d --build
 ```
 
 ### 5) (Optional) Install PHP dependencies
@@ -139,9 +139,9 @@ docker-compose up -d --build
 Each app contains a `composer.json`. If you do not have `vendor/` directories yet, run Composer inside the containers:
 
 ```bash
-docker-compose exec intra-app bash -lc "cd /var/www/html/intra/main && composer install"
-docker-compose exec intra-app bash -lc "cd /var/www/html/intra/pengadaan && composer install"
-docker-compose exec vms-app bash -lc "cd /var/www/html/vms/app && composer install"
+docker compose exec intra-app bash -lc "cd /var/www/html/intra/main && composer install"
+docker compose exec intra-app bash -lc "cd /var/www/html/intra/pengadaan && composer install"
+docker compose exec vms-app bash -lc "cd /var/www/html/vms/app && composer install"
 ```
 
 ### 6) Open the apps
@@ -153,12 +153,12 @@ docker-compose exec vms-app bash -lc "cd /var/www/html/vms/app && composer insta
 Stop:
 
 ```bash
-docker-compose down
+docker compose down
 ```
 
 ### 7) Where routing is defined
 
-Nginx vhost routing lives in [default.conf](file:///c:/inetpub/eproc/docker/nginx/default.conf):
+Nginx vhost routing lives in `docker/nginx/default.conf`:
 - `server_name vms.localhost` → `root /var/www/html/vms/app`
 - `server_name intra.localhost` → routes `/main` and `/pengadaan` to their respective `index.php`
 
@@ -177,6 +177,18 @@ Typical local values (example):
   - `EXTERNAL_URL=http://intra.localhost:8080/main/`
 
 Do **not** commit real `.env` files; use `.env.example` as the template.
+
+## Dev Runbook
+
+Use the phase-1 runbook for daily operations and troubleshooting:
+- `docs/DEV_ENV_RUNBOOK.md`
+
+Shortcut helper command:
+```powershell
+pwsh ./tools/dev-env.ps1 -Action start
+pwsh ./tools/dev-env.ps1 -Action smoke
+pwsh ./tools/dev-env.ps1 -Action stop
+```
 
 ## Cross-App Flows
 
@@ -215,5 +227,6 @@ Cross-app logout should clear session in the current app and also clear the corr
 ## Additional Docs
 
 - `docs/` – security and PHP upgrade notes for the Dockerized stack
+- `docs/DEV_ENV_RUNBOOK.md` – start/stop/reset/smoke/troubleshooting for local dev env
 - `intra/docs/` – environment setup notes and operational guides for Intra
 - `vms/docs/` – VMS-specific guides (auth, production readiness, testing)

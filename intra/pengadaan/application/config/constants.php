@@ -23,8 +23,8 @@ if (!function_exists('env')) {
     require_once(APPPATH . 'helpers/env_helper.php');
 }
 
-define('BASE_LINK_EXTERNAL', env('PENGADAAN_BASE_LINK_EXTERNAL', 'http://eprocnr.pertamina.com/eproc_pengadaan/'));
-define('BASE_LINK', env('PENGADAAN_BASE_LINK', 'http://eproc.nusantararegas.com/internal/eproc_pengadaan/'));
+define('BASE_LINK_EXTERNAL', env('PENGADAAN_BASE_LINK_EXTERNAL', 'http://intra.localhost:8080/pengadaan/'));
+define('BASE_LINK', env('PENGADAAN_BASE_LINK', 'http://intra.localhost:8080/pengadaan/'));
 
 /*
 |--------------------------------------------------------------------------
@@ -90,4 +90,3 @@ define('EXIT_USER_INPUT', 7); // invalid user input
 define('EXIT_DATABASE', 8); // database error
 define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
-

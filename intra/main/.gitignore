@@ -8,7 +8,4 @@
 
 application/cache/
 assets/lampiran/
-application/config/config.php
-application/config/database.php
-application/config/constants.php
 application/logs/

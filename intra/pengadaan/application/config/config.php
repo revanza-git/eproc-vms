@@ -22,10 +22,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config['BASE_LINK.']	=  	"";
 $config['BASE_LINK_EXTERNAL.']	=  	"";
-$config['base_app']	= 	env('PENGADAAN_BASE_APP', 'http://local.eproc.web.com/internal/pengadaan/');
-$config['base_url'] = env('PENGADAAN_BASE_URL', 'http://local.eproc.web.com/internal/pengadaan/');
-$config['vms_url'] = env('PENGADAAN_VMS_URL', 'http://local.eproc.vms.com/');
-$config['pengadaan_url'] = env('PENGADAAN_BASE_URL', 'http://local.eproc.web.com/internal/pengadaan/');
+$config['base_app']	= 	env('PENGADAAN_BASE_APP', 'http://intra.localhost:8080/pengadaan/');
+$config['base_url'] = env('PENGADAAN_BASE_URL', 'http://intra.localhost:8080/pengadaan/');
+$config['vms_url'] = env('PENGADAAN_VMS_URL', 'http://vms.localhost:8080/');
+$config['pengadaan_url'] = env('PENGADAAN_BASE_URL', 'http://intra.localhost:8080/pengadaan/');
 
 /*
 |--------------------------------------------------------------------------
@@ -368,8 +368,29 @@ $config['encryption_key'] = 'pgn_vms';
 */
 $config['sess_driver'] = env('SESSION_DRIVER', 'files');
 $config['sess_cookie_name'] = 'pengadaan_internal';
-$config['sess_expiration'] = 7200;
-$config['sess_save_path'] = env('SESSION_SAVE_PATH', APPPATH . 'cache/sessions');
+$config['sess_expiration'] = env('SESSION_EXPIRE', 7200);
+$sessSavePath = env('SESSION_SAVE_PATH', '');
+$sessDriver = strtolower((string) $config['sess_driver']);
+if ($sessDriver === 'redis') {
+	if ($sessSavePath === '' || $sessSavePath === null) {
+		$sessSavePath = 'tcp://redis:6379?database=0&prefix=eproc_';
+	}
+} else {
+	if (!is_string($sessSavePath) || $sessSavePath === '' || strpos($sessSavePath, '://') !== false) {
+		$sessSavePath = APPPATH . 'cache/sessions';
+	}
+	if (!is_dir($sessSavePath)) {
+		@mkdir($sessSavePath, 0755, true);
+	}
+	if (!is_writable($sessSavePath)) {
+		$sessSavePathFallback = rtrim(sys_get_temp_dir(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . 'pengadaan_sessions';
+		if (!is_dir($sessSavePathFallback)) {
+			@mkdir($sessSavePathFallback, 0700, true);
+		}
+		$sessSavePath = $sessSavePathFallback;
+	}
+}
+$config['sess_save_path'] = $sessSavePath;
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = TRUE;

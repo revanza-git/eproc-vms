@@ -1,0 +1,52 @@
+name: quality-gates
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  quality-gates:
+    name: build-lint-test-smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup PHP 7.4 CLI
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "7.4"
+          coverage: none
+          tools: none
+
+      - name: Bootstrap environment templates
+        shell: pwsh
+        run: pwsh ./tools/dev-env.ps1 -Action bootstrap -PhpRuntime 7.4
+
+      - name: Build and start stack
+        shell: pwsh
+        run: pwsh ./tools/dev-env.ps1 -Action start -PhpRuntime 7.4
+
+      - name: Lint quality gate
+        shell: pwsh
+        run: pwsh ./tools/dev-env.ps1 -Action lint -PhpRuntime 7.4
+
+      - name: Test quality gate
+        shell: pwsh
+        run: pwsh ./tools/dev-env.ps1 -Action test -PhpRuntime 7.4
+
+      - name: Smoke quality gate
+        shell: pwsh
+        run: pwsh ./tools/dev-env.ps1 -Action smoke -PhpRuntime 7.4
+
+      - name: Stop stack
+        if: always()
+        shell: pwsh
+        run: pwsh ./tools/dev-env.ps1 -Action stop -PhpRuntime 7.4

@@ -75,6 +75,25 @@ pwsh ./tools/dev-env.ps1 -Action reset -PhpRuntime 7.4
   pwsh ./tools/dev-env.ps1 -Action cron -PhpRuntime 7.4
   ```
 
+## Quality Gate Commands (Phase 4)
+Jalankan command ini setelah environment aktif (`start`) untuk validasi minimum sebelum merge:
+
+- Lint:
+  ```powershell
+  pwsh ./tools/dev-env.ps1 -Action lint -PhpRuntime 7.4
+  ```
+- Test bootstrap:
+  ```powershell
+  pwsh ./tools/dev-env.ps1 -Action test -PhpRuntime 7.4
+  ```
+- Smoke endpoint minimum:
+  ```powershell
+  pwsh ./tools/dev-env.ps1 -Action smoke -PhpRuntime 7.4
+  ```
+
+Referensi lengkap quality gate + branch protection:
+- `docs/CI_QUALITY_GATES.md`
+
 ## Smoke Check Targets
 - `http://vms.localhost:8080/`
 - `http://intra.localhost:8080/main/`
@@ -119,4 +138,19 @@ Healthcheck tersedia untuk:
   - Cek log:
     ```powershell
     docker compose logs webserver vms-app intra-app
+    ```
+- `php` tidak dikenali saat `Action lint`
+  - Pastikan PHP CLI tersedia di `PATH`.
+  - Validasi:
+    ```powershell
+    php -v
+    ```
+- `Action test` gagal karena service `vms-app` tidak bisa di-exec
+  - Cek status service:
+    ```powershell
+    pwsh ./tools/dev-env.ps1 -Action status -PhpRuntime 7.4
+    ```
+  - Start ulang environment:
+    ```powershell
+    pwsh ./tools/dev-env.ps1 -Action restart -PhpRuntime 7.4
     ```

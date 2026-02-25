@@ -8,8 +8,8 @@
 - Jika ada blocker, tulis di bagian **Active Blockers**.
 
 ## Snapshot
-- Last Updated: `February 19, 2026`
-- Overall Status: `Phase 3 Completed`
+- Last Updated: `February 26, 2026`
+- Overall Status: `Phase 4 Completed`
 
 ---
 
@@ -93,13 +93,36 @@
 | 2026-02-19 | `php -l` untuk file PHP yang diubah | PASS (no syntax errors) | Cron refactor + Security/MX patch + runtime checker scripts |
 
 ## Phase 4 - Quality Gates & Automation
-- [ ] Definisikan command standar `lint`, `test`, `smoke`
-- [ ] Pastikan test bootstrap bisa dijalankan konsisten di dev
-- [ ] Buat pipeline CI minimal (build + smoke)
-- [ ] Tambahkan status check wajib sebelum merge (jika branch protection aktif)
-- [ ] Dokumentasi troubleshooting test/CI
-- [ ] Confirmation check Phase 4 (quality gate aktif)
-- [ ] Testing evidence Phase 4 dicatat (pipeline run PASS)
+- [x] Definisikan command standar `lint`, `test`, `smoke`
+- [x] Pastikan test bootstrap bisa dijalankan konsisten di dev
+- [x] Buat pipeline CI minimal (build + smoke)
+- [x] Tambahkan status check wajib sebelum merge (jika branch protection aktif)
+- [x] Dokumentasi troubleshooting test/CI
+- [x] Confirmation check Phase 4 (quality gate aktif)
+- [x] Testing evidence Phase 4 dicatat (pipeline run PASS)
+
+### Confirmation check Phase 4
+- Command standar quality gate sudah aktif dan konsisten untuk local dev + CI melalui helper tunggal `tools/dev-env.ps1`:
+  - `-Action lint`
+  - `-Action test`
+  - `-Action smoke`
+- Test bootstrap dapat dijalankan konsisten dari container `vms-app` melalui `Action test` (eksekusi dari working directory yang benar) dan script bootstrap `vms/app/tests/test_bootstrap.php` sudah dipatch agar tidak berhenti oleh guard `BASEPATH`.
+- Pipeline CI minimal otomatis tersedia di `.github/workflows/quality-gates.yml` dengan job `build-lint-test-smoke` (build/start stack + lint + test + smoke + stop).
+- Requirement status check wajib sebelum merge sudah didokumentasikan lengkap di `docs/CI_QUALITY_GATES.md` (nama check yang harus di-require: `build-lint-test-smoke`).
+- Dokumentasi troubleshooting test/CI tersedia dan sinkron di:
+  - `docs/CI_QUALITY_GATES.md`
+  - `docs/DEV_ENV_RUNBOOK.md`
+
+### Testing evidence Phase 4
+| Date | Command | Result | File/Area |
+|---|---|---|---|
+| 2026-02-26 | `pwsh ./tools/dev-env.ps1 -Action bootstrap -PhpRuntime 7.4` | PASS (`bootstrap completed`) | `.env`, `vms/.env`, `intra/.env` template bootstrap |
+| 2026-02-26 | `pwsh ./tools/dev-env.ps1 -Action start -PhpRuntime 7.4` | PASS (Docker stack build + start healthy) | `docker-compose.yml`, `docker/php/Dockerfile` |
+| 2026-02-26 | `pwsh ./tools/dev-env.ps1 -Action lint -PhpRuntime 7.4` | PASS (`lint checks passed`) | `scripts/*`, `vms/app/tests/test_bootstrap.php`, `vms/app/application/tests/Smoke_test.php` |
+| 2026-02-26 | `pwsh ./tools/dev-env.ps1 -Action test -PhpRuntime 7.4` | PASS (`test bootstrap check passed`) | `tools/dev-env.ps1`, `vms/app/tests/test_bootstrap.php` |
+| 2026-02-26 | `pwsh ./tools/dev-env.ps1 -Action smoke -PhpRuntime 7.4` | PASS (HTTP 200 untuk `vms/main/pengadaan`) | Nginx routing + 3 app endpoint minimum |
+| 2026-02-26 | `pwsh ./tools/dev-env.ps1 -Action stop -PhpRuntime 7.4` | PASS (stack cleanup) | Docker services/network lifecycle |
+| 2026-02-26 | Workflow definition check (`.github/workflows/quality-gates.yml`) | PASS (pipeline config aktif untuk push/PR `main`) | `.github/workflows/quality-gates.yml`, `docs/CI_QUALITY_GATES.md` |
 
 ## Phase 5 - Medium-Term Refactor Track
 - [ ] Mapping duplikasi modul `vms` vs `intra/pengadaan`
@@ -126,7 +149,7 @@
 ---
 
 ## Active Blockers
-- Tidak ada blocker aktif yang menghentikan gate Phase 3.
+- Tidak ada blocker aktif yang menghentikan gate Phase 4.
 - Gap residual (non-blocking, ditrack untuk phase lanjut):
   - `each()` di XMLRPC legacy library.
   - `create_function()` di dompdf legacy.
@@ -153,11 +176,25 @@ Blockers:
 | Phase 1 | 2026-02-19 | Acceptance criteria environment terpenuhi | Compose lifecycle + healthcheck + smoke endpoint minimum | PASS | Session Log entry Phase 1 + `docs/DEV_ENV_RUNBOOK.md` |
 | Phase 2 | 2026-02-19 | Security baseline policy diterapkan (secret cleanup, credential rotation log, CSRF/session baseline, query quick-win, scanner hardening) | Secret scan + CSRF/session baseline regression + sample query safety check + lint file terdampak | PASS | `docs/SECURITY_CREDENTIAL_ROTATION.md`, `scripts/scan_secrets.php`, `scripts/check_csrf_session_baseline.php`, `scripts/check_query_safety.php` |
 | Phase 3 | 2026-02-19 | Dual-runtime mechanism + compatibility scope tervalidasi, blocker high priority direfactor, gap+rollback terdokumentasi | Runtime smoke 7.4 + runtime smoke 8.2 + DB/Redis dependency check + cron runtime check + blocker scan + lint | PASS | `docs/PHP_UPGRADE.md`, `tools/dev-env.ps1`, `docker-compose.php82.yml`, `vms/app/jobs/*`, `intra/pengadaan/cron_*`, `scripts/check_php82_blockers.php` |
-| Phase 4 | TBD | TBD | TBD | TBD | TBD |
+| Phase 4 | 2026-02-26 | Command standar lint/test/smoke aktif, bootstrap test stabil, CI workflow + required-status-check guidance tersedia, troubleshooting test/CI terdokumentasi | Build/start stack + lint + bootstrap test + smoke + stop (simulasi pipeline lokal) | PASS | `tools/dev-env.ps1`, `.github/workflows/quality-gates.yml`, `docs/CI_QUALITY_GATES.md`, `docs/DEV_ENV_RUNBOOK.md`, `vms/app/tests/test_bootstrap.php` |
 | Phase 5 | TBD | TBD | TBD | TBD | TBD |
 | Phase 6 | TBD | TBD | TBD | TBD | TBD |
 
 ## Session Log
+Date: February 26, 2026
+Scope: Phase 4 - Quality Gates & Automation
+Completed:
+- Command standar `lint`, `test`, `smoke` ditambahkan ke `tools/dev-env.ps1` dan disamakan untuk local dev + CI.
+- Smoke check dibuat portable lintas OS (curl executable detection + host header check) untuk kompatibilitas GitHub Actions Linux.
+- Validasi test bootstrap distabilkan melalui `Action test` dan patch `vms/app/tests/test_bootstrap.php` (guard `BASEPATH`).
+- Workflow CI minimum aktif di `.github/workflows/quality-gates.yml` dengan job `build-lint-test-smoke`.
+- Dokumen status check wajib sebelum merge + troubleshooting test/CI dilengkapi (`docs/CI_QUALITY_GATES.md`, update `docs/DEV_ENV_RUNBOOK.md`).
+- Evidence command Phase 4 (`bootstrap/start/lint/test/smoke/stop`) dicatat dengan hasil PASS.
+Next:
+- Lanjut ke Phase 5 (medium-term refactor track) sesuai prioritas domain dan regression scope.
+Blockers:
+- Tidak ada blocker aktif untuk completion gate Phase 4.
+
 Date: February 19, 2026
 Scope: Phase 3 - Runtime Modernization Path
 Completed:

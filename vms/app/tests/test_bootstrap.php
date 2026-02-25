@@ -30,6 +30,16 @@ try {
     // Try to load the env_loader
     if (file_exists('application/env_loader.php')) {
         echo "<p>✅ env_loader.php exists</p>";
+
+        // env_loader.php menolak akses langsung jika BASEPATH belum didefinisikan
+        if (!defined('BASEPATH')) {
+            $bootstrapBasePath = realpath('system');
+            if ($bootstrapBasePath === false) {
+                $bootstrapBasePath = 'system';
+            }
+            define('BASEPATH', rtrim($bootstrapBasePath, '/\\') . '/');
+        }
+
         include_once 'application/env_loader.php';
         
         // Test if env function exists

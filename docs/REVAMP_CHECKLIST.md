@@ -9,7 +9,7 @@
 
 ## Snapshot
 - Last Updated: `February 26, 2026`
-- Overall Status: `Phase 4 Completed`
+- Overall Status: `Phase 5 Completed`
 
 ---
 
@@ -125,13 +125,34 @@
 | 2026-02-26 | Workflow definition check (`.github/workflows/quality-gates.yml`) | PASS (pipeline config aktif untuk push/PR `main`) | `.github/workflows/quality-gates.yml`, `docs/CI_QUALITY_GATES.md` |
 
 ## Phase 5 - Medium-Term Refactor Track
-- [ ] Mapping duplikasi modul `vms` vs `intra/pengadaan`
-- [ ] Tentukan candidate shared components
-- [ ] Susun urutan refactor per domain (high value first)
-- [ ] Jalankan refactor bertahap dengan regression check
-- [ ] Dokumentasi perubahan arsitektur dan dependency map
-- [ ] Confirmation check Phase 5 (refactor scope & output tervalidasi)
-- [ ] Testing evidence Phase 5 dicatat (regression test area terdampak)
+- [x] Mapping duplikasi modul `vms` vs `intra/pengadaan`
+- [x] Tentukan candidate shared components
+- [x] Susun urutan refactor per domain (high value first)
+- [x] Jalankan refactor bertahap dengan regression check
+- [x] Dokumentasi perubahan arsitektur dan dependency map
+- [x] Confirmation check Phase 5 (refactor scope & output tervalidasi)
+- [x] Testing evidence Phase 5 dicatat (regression test area terdampak)
+
+### Confirmation check Phase 5
+- Mapping duplikasi lintas `vms` vs `intra/pengadaan` sudah terdokumentasi lengkap mencakup controller, model, helper, query path, dan utility di `docs/PHASE5_DUPLICATION_MAP.md`.
+- Candidate shared component sudah diprioritaskan berdasarkan dampak vs risiko (P0/P1/P2), dengan fokus `high value + low risk` terlebih dahulu.
+- Urutan refactor per domain sudah didefinisikan per wave (in-scope, out-of-scope, risk, rollback) di `docs/PHASE5_REFACTOR_WAVES.md`.
+- Minimal 1 wave refactor nyata sudah dieksekusi secara incremental dan non-breaking:
+  - Ekstraksi runtime inti cron ke `shared/legacy/cron_runtime.php`.
+  - `vms/app/jobs/cron_core.php` dan `intra/pengadaan/cron_core.php` dipertahankan kompatibel via adapter `class cron extends SharedCronRuntime`.
+- Dependency map pasca-refactor sudah dicatat di `docs/PHASE5_DEPENDENCY_MAP.md`.
+- Objective Phase 5 terpenuhi: duplikasi struktural mulai diturunkan dengan komponen shared yang aman tanpa big-bang migration.
+
+### Testing evidence Phase 5
+| Date | Command | Result | File/Area |
+|---|---|---|---|
+| 2026-02-26 | `php -l shared/legacy/cron_runtime.php; php -l vms/app/jobs/cron_core.php; php -l intra/pengadaan/cron_core.php` | PASS (no syntax errors) | `shared/legacy/cron_runtime.php`, `vms/app/jobs/cron_core.php`, `intra/pengadaan/cron_core.php` |
+| 2026-02-26 | `pwsh ./tools/dev-env.ps1 -Action start -PhpRuntime 7.4` | PASS | Docker runtime 7.4 (`db`, `redis`, `vms-app`, `intra-app`, `webserver`) |
+| 2026-02-26 | `pwsh ./tools/dev-env.ps1 -Action lint -PhpRuntime 7.4` | PASS (`lint checks passed`) | Secret/security checks + syntax gate |
+| 2026-02-26 | `pwsh ./tools/dev-env.ps1 -Action test -PhpRuntime 7.4` | PASS (`test bootstrap check passed`) | `vms/app/tests/test_bootstrap.php` |
+| 2026-02-26 | `pwsh ./tools/dev-env.ps1 -Action smoke -PhpRuntime 7.4` | PASS (`vms/main/pengadaan` endpoint HTTP 200) | Nginx route + 3 app endpoint minimum |
+| 2026-02-26 | `pwsh ./tools/dev-env.ps1 -Action stop -PhpRuntime 7.4` | PASS | Docker lifecycle cleanup |
+| 2026-02-26 | `pwsh ./tools/dev-env.ps1 -Action start -PhpRuntime 7.4; pwsh ./tools/dev-env.ps1 -Action cron -PhpRuntime 7.4; pwsh ./tools/dev-env.ps1 -Action stop -PhpRuntime 7.4` | PASS (`PASS cron runtime check`) | Regression area refactor cron (`cron_core` shared runtime path) |
 
 ## Phase 6 - Framework Migration (Out of CI3)
 - [x] Tetapkan framework target (decision record) - Laravel (2026-02-20)
@@ -149,7 +170,7 @@
 ---
 
 ## Active Blockers
-- Tidak ada blocker aktif yang menghentikan gate Phase 4.
+- Tidak ada blocker aktif yang menghentikan gate Phase 5.
 - Gap residual (non-blocking, ditrack untuk phase lanjut):
   - `each()` di XMLRPC legacy library.
   - `create_function()` di dompdf legacy.
@@ -177,10 +198,23 @@ Blockers:
 | Phase 2 | 2026-02-19 | Security baseline policy diterapkan (secret cleanup, credential rotation log, CSRF/session baseline, query quick-win, scanner hardening) | Secret scan + CSRF/session baseline regression + sample query safety check + lint file terdampak | PASS | `docs/SECURITY_CREDENTIAL_ROTATION.md`, `scripts/scan_secrets.php`, `scripts/check_csrf_session_baseline.php`, `scripts/check_query_safety.php` |
 | Phase 3 | 2026-02-19 | Dual-runtime mechanism + compatibility scope tervalidasi, blocker high priority direfactor, gap+rollback terdokumentasi | Runtime smoke 7.4 + runtime smoke 8.2 + DB/Redis dependency check + cron runtime check + blocker scan + lint | PASS | `docs/PHP_UPGRADE.md`, `tools/dev-env.ps1`, `docker-compose.php82.yml`, `vms/app/jobs/*`, `intra/pengadaan/cron_*`, `scripts/check_php82_blockers.php` |
 | Phase 4 | 2026-02-26 | Command standar lint/test/smoke aktif, bootstrap test stabil, CI workflow + required-status-check guidance tersedia, troubleshooting test/CI terdokumentasi | Build/start stack + lint + bootstrap test + smoke + stop (simulasi pipeline lokal) | PASS | `tools/dev-env.ps1`, `.github/workflows/quality-gates.yml`, `docs/CI_QUALITY_GATES.md`, `docs/DEV_ENV_RUNBOOK.md`, `vms/app/tests/test_bootstrap.php` |
-| Phase 5 | TBD | TBD | TBD | TBD | TBD |
+| Phase 5 | 2026-02-26 | Mapping duplikasi + kandidat shared component + wave plan + 1 wave refactor incremental + dependency map tervalidasi terhadap objective reduksi duplikasi | Lint syntax file terdampak + quality gates (`start/lint/test/smoke/stop`) + cron regression check | PASS | `docs/PHASE5_DUPLICATION_MAP.md`, `docs/PHASE5_REFACTOR_WAVES.md`, `docs/PHASE5_DEPENDENCY_MAP.md`, `shared/legacy/cron_runtime.php`, `vms/app/jobs/cron_core.php`, `intra/pengadaan/cron_core.php` |
 | Phase 6 | TBD | TBD | TBD | TBD | TBD |
 
 ## Session Log
+Date: February 26, 2026
+Scope: Phase 5 - Medium-Term Refactor Track
+Completed:
+- Mapping duplikasi `vms` vs `intra/pengadaan` diselesaikan dengan per-area summary (controller/model/helper/query path/utility) di `docs/PHASE5_DUPLICATION_MAP.md`.
+- Candidate shared component diprioritaskan (P0/P1/P2) dan urutan wave refactor dengan in-scope/out-of-scope/risk/rollback disusun di `docs/PHASE5_REFACTOR_WAVES.md`.
+- Wave 1 refactor nyata dieksekusi: ekstraksi runtime cron shared ke `shared/legacy/cron_runtime.php`, lalu `vms/app/jobs/cron_core.php` dan `intra/pengadaan/cron_core.php` dijadikan adapter kompatibel.
+- Dependency map pasca-wave didokumentasikan di `docs/PHASE5_DEPENDENCY_MAP.md`.
+- Regression + quality gates dijalankan dan PASS (`lint`, `test`, `smoke`, serta `cron runtime check` pada runtime 7.4).
+Next:
+- Lanjut ke Phase 6 (framework migration execution track) dengan boundary domain pilot yang paling siap.
+Blockers:
+- Tidak ada blocker aktif untuk completion gate Phase 5.
+
 Date: February 26, 2026
 Scope: Phase 4 - Quality Gates & Automation
 Completed:

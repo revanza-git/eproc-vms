@@ -4,7 +4,7 @@
 - Project: `eproc-vms`
 - Created: `February 19, 2026`
 - Last Updated: `February 26, 2026`
-- Current Status: `Phase 4 Completed`
+- Current Status: `Phase 5 Completed`
 - Branch Target: `main` (akan disesuaikan jika nanti pakai branch khusus revamp)
 
 ## Target Framework
@@ -137,8 +137,9 @@ Sebuah phase hanya boleh ditandai `Completed` jika seluruh syarat berikut terpen
 | M2 - Security baseline pass | 2026-02-19 | Completed | Phase 2 completion gate pass (secret scan + CSRF/session + query safety) |
 | M3 - Runtime upgrade path validated | 2026-02-19 | Completed | Dual-runtime 7.4/8.2 validated (smoke + DB/Redis + cron check), blocker prioritas tinggi direfactor |
 | M4 - CI quality gate live | 2026-02-26 | Completed | Standard `lint/test/smoke` command aktif di `tools/dev-env.ps1`, workflow `.github/workflows/quality-gates.yml` live, dan panduan required status check tersedia di `docs/CI_QUALITY_GATES.md` |
-| M5 - Framework target selected | 2026-02-20 | Completed | Laravel |
-| M6 - First domain migrated off CI3 | TBD | Not Started |  |
+| M5 - Medium-term refactor wave 1 pass | 2026-02-26 | Completed | Phase 5 gate pass: duplication map + shared-component prioritization + wave plan + incremental shared cron runtime refactor + regression pass |
+| M6 - Framework target selected | 2026-02-20 | Completed | Laravel |
+| M7 - First domain migrated off CI3 | TBD | Not Started |  |
 
 ## Risks and Mitigation
 | Risk | Impact | Mitigation | Status |
@@ -160,6 +161,7 @@ Sebuah phase hanya boleh ditandai `Completed` jika seluruh syarat berikut terpen
 | 2026-02-20 | Baseline issues diregister dan acceptance criteria Phase 1 dikunci | Agar eksekusi phase teknis terarah dan terukur | Phase 0 dinyatakan selesai |
 | 2026-02-19 | Phase 3 dijalankan dengan dual-runtime non-breaking (7.4 tetap default, 8.2 untuk validasi) | Menjaga stabilitas CI3 sambil menurunkan risiko runtime modernisasi | Gate Phase 3 bisa divalidasi tanpa big-bang rewrite |
 | 2026-02-26 | Standard quality gate disatukan ke `tools/dev-env.ps1` dan CI minimum dikunci via workflow `quality-gates` | Supaya lint/test/smoke repeatable dan branch protection bisa mengacu ke status check tunggal | Gate Phase 4 dinyatakan pass, siap lanjut Phase 5 |
+| 2026-02-26 | Phase 5 dimulai dengan refactor incremental shared cron runtime (`shared/legacy/cron_runtime.php`) | Mengurangi duplikasi berdampak tinggi dengan risiko rendah tanpa ubah kontrak `class cron` | Gate Phase 5 dinyatakan pass, siap lanjut Phase 6 |
 
 ## Update Protocol
 - Update dokumen ini setiap ada perubahan scope, milestone, atau keputusan arsitektural.

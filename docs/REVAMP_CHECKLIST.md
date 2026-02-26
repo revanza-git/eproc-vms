@@ -204,6 +204,9 @@
 | 2026-02-26 | Route toggle subset `get_barang/get_peserta` + rollback switch (Nginx include active + reload) diimplementasikan | PASS (Wave B Stage 2 scoped routing) | `docker-compose.yml`, `docker/nginx/default.conf`, `docker/nginx/includes/pilot-auction-subset-toggle.active.conf`, `docker/nginx/templates/pilot-auction-subset-toggle.*.conf`, `tools/dev-env.ps1`, `pilot-app/public/index.php` |
 | 2026-02-26 | Validasi `CX-03` + `CX-04` (toggle ON/OFF + marker verification) dieksekusi | PASS (routing marker); CI3 sample HTTP `500` saat OFF karena gap seed DB dev | `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`, `docs/DEV_ENV_RUNBOOK.md`, `tools/dev-env.ps1` |
 | 2026-02-26 | Hook sibling bind mount untuk skeleton Laravel final (`EPROC_PILOT_APP_BIND_PATH`) diimplementasikan + verifikasi post-change | PASS (hook ready, fallback placeholder tetap stabil; sample override `docker compose config` resolve path sibling; repo sibling final belum tersedia di mesin ini) | `docker-compose.yml`, `.env`, `.env.example`, `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`, `docs/DEV_ENV_RUNBOOK.md`, `docs/PHASE6_GO_NO_GO.md` |
+| 2026-02-26 | Re-validasi pasca-merge hook sibling bind mount (`33139dc`) dengan fallback `EPROC_PILOT_APP_BIND_PATH=./pilot-app` | PASS (Stage 1/2 tetap stabil: `CX-01`..`CX-04`; rollback marker CI3 tetap acceptable walau HTTP `500`) | `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`, `docs/DEV_ENV_RUNBOOK.md`, `docs/PHASE6_GO_NO_GO.md` |
+| 2026-02-26 | Attempt integrasi skeleton Laravel final ke path in-project `./pilot-app` + smoke re-check baseline | PARTIAL (integrasi final BLOCKED; smoke PASS) | `pilot-app/public/index.php`, `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`, `docs/DEV_ENV_RUNBOOK.md`, `docs/PHASE6_GO_NO_GO.md` |
+| 2026-02-26 | Integrasi skeleton Laravel final-compatible ke path in-project `./pilot-app` + smoke re-check baseline | PASS (next-step selesai; coexistence tetap stabil) | `pilot-app/artisan`, `pilot-app/composer.json`, `pilot-app/routes/web.php`, `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`, `docs/DEV_ENV_RUNBOOK.md`, `docs/PHASE6_GO_NO_GO.md` |
 
 ---
 
@@ -298,6 +301,47 @@ Next:
 Blockers:
 - Repo Laravel final sibling belum tersedia / path final belum diketahui, sehingga hook bind mount belum bisa dihubungkan ke skeleton final aktual.
 - `CX-04` rollback CI3 masih marker-based karena tabel dev `ms_procurement_barang` / `ms_procurement_peserta` belum ada (accepted untuk tahap ini).
+
+Date: February 26, 2026
+Scope: Phase 6 Wave B - Post-merge `33139dc` revalidation (sibling bind-mount hook)
+Completed:
+- Re-check ketersediaan repo Laravel sibling final di `C:\Users\Revanza-Home\source\repos` (indikator file `artisan`) dan hasilnya masih belum ditemukan, sehingga integrasi final aktual tetap blocked.
+- Menjalankan `docker compose -f docker-compose.yml config` dengan override session `EPROC_PILOT_APP_BIND_PATH=./pilot-app`; bind mount `pilot-app` tetap ter-resolve ke placeholder lokal.
+- Menjalankan `pwsh ./tools/dev-env.ps1 -Action start -PhpRuntime 7.4 -NoBuild`, lalu smoke `coexistence` (`CX-01`,`CX-02`) dan `coexistence-stage2` (`CX-03`,`CX-04`) dengan override session bind path yang sama.
+- Memverifikasi compatibility tetap terjaga: shadow route `/_pilot/auction/*`, scoped toggle `get_barang/get_peserta`, dan rollback switch cepat via `nginx -s reload` (terlihat dari output helper Stage 2).
+Next:
+- Sediakan/clone repo Laravel final sibling dan tentukan path final `EPROC_PILOT_APP_BIND_PATH`, lalu ulangi `CX-01` s.d. `CX-04` terhadap repo final aktual.
+- Lanjut ke auth bridge minimal (`CX-05`) + integration/contract test automation setelah path repo final tersedia.
+Blockers:
+- Open question path sudah ditutup: path dev dipakai di dalam project ini (`./pilot-app`). Jika target berubah ke repo terpisah, nilai `EPROC_PILOT_APP_BIND_PATH` perlu diperbarui dan smoke `CX-01` s.d. `CX-04` diulang.
+- `CX-04` rollback CI3 tetap marker-based (HTTP `500` sample dev karena tabel `ms_procurement_barang` / `ms_procurement_peserta` belum ada), dan ini tetap accepted untuk tahap ini.
+
+Date: February 26, 2026
+Scope: Phase 6 Wave B - In-project path `./pilot-app` final skeleton integration check (next step)
+Completed:
+- Menginspeksi `./pilot-app` (in-project path yang sudah diputuskan) dan mengonfirmasi isi masih placeholder-only; hasil file scan hanya `pilot-app/public/index.php`.
+- Menjalankan evidence minimal sesi ini: `docker compose -f docker-compose.yml config`, `pwsh ./tools/dev-env.ps1 -Action coexistence -PhpRuntime 7.4`, dan `pwsh ./tools/dev-env.ps1 -Action coexistence-stage2 -PhpRuntime 7.4 -AuctionLelangId 1`.
+- Output re-run tervalidasi: `coexistence` menghasilkan `CX-01` (3 endpoint legacy) + `CX-02` (shadow health) seluruhnya HTTP `200`; `coexistence-stage2` mengeksekusi toggle `on/off` + `nginx reload completed`, `CX-03` kedua endpoint subset HTTP `200`, dan `CX-04` kedua endpoint subset HTTP `500` dengan marker rollback CI3 tetap PASS (accepted dev table gap).
+- Memverifikasi compatibility tetap terjaga setelah inspeksi/integrasi attempt gagal: shadow route `/_pilot/auction/*`, scoped toggle `get_barang/get_peserta`, marker header pilot/legacy, dan rollback switch cepat via helper (`nginx -s reload`).
+Next:
+- Sediakan skeleton Laravel final aktual pada `./pilot-app` (atau sinkronkan source final ke path itu), lalu ulangi smoke `CX-01` s.d. `CX-04`.
+- Pertahankan hook `EPROC_PILOT_APP_BIND_PATH` sebagai fallback jika penempatan app final berubah ke repo terpisah.
+Blockers:
+- Integrasi skeleton Laravel final ke `./pilot-app` belum bisa dikerjakan karena artefak final belum tersedia pada path target (saat ini hanya placeholder `public/index.php`).
+- `CX-04` rollback CI3 tetap marker-based (HTTP `500` sample dev karena tabel `ms_procurement_barang` / `ms_procurement_peserta` belum ada), dan ini tetap accepted; tidak menambah requirement seed data.
+
+Date: February 26, 2026
+Scope: Phase 6 Wave B - In-project `./pilot-app` Laravel skeleton integration (next-step implementation)
+Completed:
+- Backup placeholder `pilot-app` dibuat lalu `./pilot-app` diganti in-place menjadi skeleton Laravel 8 (`composer create-project`, PHP 7.4-compatible) dengan struktur `artisan`, `composer.json`, `bootstrap/`, `routes/`, `public/`.
+- Stub route kompatibel untuk `/_pilot/auction/health`, `auction/admin/json_provider/get_barang/{id}`, dan `.../get_peserta/{id}` dipindahkan ke Laravel (`pilot-app/routes/web.php`) sambil mempertahankan marker header `X-App-Source: pilot-skeleton`.
+- Menjalankan verifikasi pasca-integrasi: `docker compose -f docker-compose.yml config` PASS, `coexistence` PASS (`CX-01`,`CX-02`), `coexistence-stage2` PASS (`CX-03`,`CX-04`), serta header dump `curl -D -` menunjukkan marker pilot/toggle tetap muncul saat toggle `ON`.
+- Memverifikasi compatibility coexistence tetap terjaga: shadow route `/_pilot/auction/*`, scoped toggle `get_barang/get_peserta`, dan rollback cepat via `nginx -s reload` (terlihat dari output helper).
+Next:
+- Lanjut implementasi endpoint pilot nyata (read-only subset) di atas skeleton Laravel sambil menjaga marker/contract smoke.
+- Lanjut auth bridge minimal (`CX-05`) + integration/contract test automation.
+Blockers:
+- `CX-04` rollback CI3 tetap marker-based (HTTP `500` sample dev karena tabel `ms_procurement_barang` / `ms_procurement_peserta` belum ada), dan ini tetap accepted; tidak menambah requirement seed data.
 
 Date: February 26, 2026
 Scope: Phase 5 - Medium-Term Refactor Track

@@ -100,14 +100,15 @@ Referensi lengkap quality gate + branch protection:
 
 ## Phase 6 Coexistence Baseline (Wave A -> Wave B Stage 1/2 + Sibling Bind-Mount Hook)
 
-Status saat ini: `Stage 2 implemented untuk scoped route toggle (get_barang/get_peserta) + rollback switch via nginx reload; sibling bind-mount hook untuk skeleton Laravel final ready; CX-05 auth bridge pending`
+Status saat ini: `Stage 2 implemented untuk scoped route toggle (get_barang/get_peserta) + rollback switch via nginx reload; ./pilot-app sudah berisi skeleton Laravel (stub kompatibel smoke); EPROC_PILOT_APP_BIND_PATH hook tetap ready/opsional; CX-05 auth bridge pending`
 
 Wave A menyiapkan baseline desain/checklist/test plan. Wave B Stage 1/2 sudah menambahkan proof runtime coexistence dev di repo ini:
-- service placeholder `pilot-app` pada compose (non-bisnis, untuk health/shadow wiring),
+- service `pilot-app` pada compose (dev pilot; saat ini skeleton Laravel in-project untuk health/shadow + subset stub),
 - bind mount path `pilot-app` configurable via `.env` (`EPROC_PILOT_APP_BIND_PATH`, default `./pilot-app`) untuk integrasi repo sibling Laravel final,
 - route shadow `/_pilot/auction/*` di Nginx (`vms.localhost`),
 - toggle subset endpoint bisnis `auction/admin/json_provider/{get_barang|get_peserta}` via include file Nginx aktif,
 - action `coexistence` (`CX-01`,`CX-02`) dan `coexistence-stage2` (`CX-03`,`CX-04`) di `tools/dev-env.ps1`.
+- `./pilot-app` sudah diganti dari placeholder ke skeleton Laravel 8 (kompatibel PHP 7.4) dan tetap mempertahankan marker header `X-App-Source: pilot-skeleton`.
 
 Referensi detail status, checklist, dan evidence:
 - `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`
@@ -159,11 +160,29 @@ Referensi detail status, checklist, dan evidence:
    pwsh ./tools/dev-env.ps1 -Action stop -PhpRuntime 7.4
    ```
 
-### Integrasi Skeleton Laravel Final via Sibling Bind Mount (Dev, Minimal Workflow Change)
-Gunakan langkah ini saat repo Laravel final sudah tersedia sebagai sibling repo (terpisah dari repo ini).
+### Integrasi Skeleton Laravel Final (Default In-Project, Sibling Bind Mount Tetap Opsional)
+Gunakan langkah ini untuk maintain/replace source pilot Laravel. Default dev path saat ini adalah in-project `./pilot-app`; opsi sibling repo tetap tersedia via hook bind mount.
 
-1. Pastikan repo sibling Laravel final sudah ada di mesin lokal.
-   - Jika belum ada, status tetap `hook-ready` (belum bisa claim integrasi final tersambung).
+Keputusan terbaru Wave B: path dev utama untuk pilot adalah in-project `./pilot-app`. Hook `EPROC_PILOT_APP_BIND_PATH` tetap dipertahankan sebagai opsi jika nanti dipindah ke repo terpisah.
+
+Status terbaru (2026-02-26, next-step Wave B selesai): `./pilot-app` berhasil diganti in-place menjadi skeleton Laravel 8 (kompatibel PHP 7.4) dengan route stub kompatibel (`/_pilot/auction/health`, `get_barang`, `get_peserta`) dan marker header `X-App-Source: pilot-skeleton` tetap muncul.
+Hook `EPROC_PILOT_APP_BIND_PATH` tetap dipertahankan (opsional jika nanti pindah repo sibling); workflow route shadow, scoped toggle subset, dan rollback cepat `nginx reload` tidak berubah.
+Ringkasan evidence pasca-integrasi (2026-02-26): `docker compose -f docker-compose.yml config` PASS, `pwsh ./tools/dev-env.ps1 -Action coexistence -PhpRuntime 7.4` PASS (`CX-01`,`CX-02`), `pwsh ./tools/dev-env.ps1 -Action coexistence-stage2 -PhpRuntime 7.4 -AuctionLelangId 1` PASS (`CX-03`,`CX-04`; `CX-04` marker rollback CI3 PASS dengan HTTP `500` tetap accepted), dan `curl -D -` menunjukkan marker pilot (`X-App-Source`, `X-Coexistence-Route`, `X-Coexistence-Toggle`) saat toggle `ON`.
+
+1. Pilih source pilot Laravel yang akan dipakai.
+   - Default saat ini: gunakan in-project `./pilot-app` (sudah terisi skeleton Laravel).
+   - Opsi alternatif: repo sibling Laravel final via `EPROC_PILOT_APP_BIND_PATH`.
+   - Jika memilih repo sibling, pastikan repo tersebut sudah ada di mesin lokal.
+   - Quick-check (opsional, PowerShell):
+     ```powershell
+     Get-ChildItem -Path C:\Users\Revanza-Home\source\repos -Recurse -File -Filter artisan -ErrorAction SilentlyContinue
+     ```
+   - Quick-check path in-project target (`./pilot-app`) sebelum klaim integrasi final:
+     ```powershell
+     Get-ChildItem -Force .\pilot-app
+     rg --files .\pilot-app
+     ```
+   - Jika hasil tidak menunjukkan struktur Laravel (`artisan`, `composer.json`, `bootstrap/`, `routes/`, `public/`) atau kembali placeholder-only, catat blocker eksplisit lalu jalankan smoke baseline (`coexistence`, `coexistence-stage2`) tanpa klaim integrasi final.
 2. Ubah path bind `pilot-app` di `.env`:
    ```dotenv
    EPROC_PILOT_APP_BIND_PATH=../nama-repo-laravel-final
@@ -176,6 +195,11 @@ Gunakan langkah ini saat repo Laravel final sudah tersedia sebagai sibling repo 
    ```powershell
    docker compose -f docker-compose.yml config
    ```
+   - Untuk verifikasi non-destruktif sementara (tanpa edit `.env`), boleh gunakan override session:
+     ```powershell
+     $env:EPROC_PILOT_APP_BIND_PATH='./pilot-app'
+     docker compose -f docker-compose.yml config
+     ```
 4. Start/restart environment (container `pilot-app` perlu recreate agar mount path baru terpakai):
    ```powershell
    pwsh ./tools/dev-env.ps1 -Action restart -PhpRuntime 7.4 -NoBuild
@@ -185,6 +209,8 @@ Gunakan langkah ini saat repo Laravel final sudah tersedia sebagai sibling repo 
    pwsh ./tools/dev-env.ps1 -Action coexistence -PhpRuntime 7.4
    pwsh ./tools/dev-env.ps1 -Action coexistence-stage2 -PhpRuntime 7.4 -AuctionLelangId 1
    ```
+   - Ini juga command evidence minimal untuk sesi verifikasi saat skeleton final belum tersedia di `./pilot-app`.
+   - `CX-04` boleh tetap dianggap PASS untuk tahap ini jika marker rollback CI3 valid tetapi HTTP sample CI3 `500` (gap tabel dev `ms_procurement_barang` / `ms_procurement_peserta`).
 6. Rollback paling ringan untuk kembali ke placeholder lokal:
    - Kembalikan `.env`:
      ```dotenv

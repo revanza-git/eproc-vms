@@ -1,87 +1,55 @@
 <?php
 
-declare(strict_types=1);
+use Illuminate\Contracts\Http\Kernel;
+use Illuminate\Http\Request;
 
-$uri = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
-$method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+define('LARAVEL_START', microtime(true));
 
-header('Content-Type: application/json');
-header('X-App-Source: pilot-skeleton');
+/*
+|--------------------------------------------------------------------------
+| Check If Application Is Under Maintenance
+|--------------------------------------------------------------------------
+|
+| If the application is maintenance / demo mode via the "down" command we
+| will require this file so that any prerendered template can be shown
+| instead of starting the framework, which could cause an exception.
+|
+*/
 
-if ($method === 'GET' && $uri === '/_pilot/auction/health') {
-    http_response_code(200);
-    echo json_encode([
-        'ok' => true,
-        'app' => 'pilot-skeleton',
-        'route' => $uri,
-        'ts' => gmdate('c'),
-    ]);
-    exit;
+if (file_exists(__DIR__.'/../storage/framework/maintenance.php')) {
+    require __DIR__.'/../storage/framework/maintenance.php';
 }
 
-if ($method === 'GET' && preg_match('#^/_pilot/auction/#', $uri) === 1) {
-    http_response_code(501);
-    echo json_encode([
-        'ok' => false,
-        'error' => 'NOT_IMPLEMENTED',
-        'message' => 'Pilot skeleton route is wired; endpoint contract not implemented yet.',
-        'route' => $uri,
-    ]);
-    exit;
-}
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader for
+| this application. We just need to utilize it! We'll simply require it
+| into the script here so we don't need to manually load our classes.
+|
+*/
 
-if (
-    $method === 'GET'
-    && preg_match('#^/auction/admin/json_provider/(get_barang|get_peserta)/([^/]+)$#', $uri, $matches) === 1
-) {
-    $endpoint = $matches[1];
-    $idLelang = $matches[2];
-    header('X-Pilot-Endpoint: ' . $endpoint);
-    header('X-Pilot-Route-Mode: business-toggle');
+require __DIR__.'/../vendor/autoload.php';
 
-    http_response_code(200);
-    if ($endpoint === 'get_barang') {
-        echo json_encode([
-            [
-                'id' => 'pilot-item-1',
-                'name' => 'Pilot Barang Stub 1',
-                'hps' => 100000,
-                'hps_in_idr' => '100.000',
-                '_pilot' => true,
-                '_id_lelang' => $idLelang,
-            ],
-            [
-                'id' => 'pilot-item-2',
-                'name' => 'Pilot Barang Stub 2',
-                'hps' => 250000,
-                'hps_in_idr' => '250.000',
-                '_pilot' => true,
-                '_id_lelang' => $idLelang,
-            ],
-        ]);
-        exit;
-    }
+/*
+|--------------------------------------------------------------------------
+| Run The Application
+|--------------------------------------------------------------------------
+|
+| Once we have the application, we can handle the incoming request using
+| the application's HTTP kernel. Then, we will send the response back
+| to this client's browser, allowing them to enjoy our application.
+|
+*/
 
-    echo json_encode([
-        [
-            'id' => 'pilot-peserta-1',
-            'name' => 'Pilot Peserta A',
-            '_pilot' => true,
-            '_id_lelang' => $idLelang,
-        ],
-        [
-            'id' => 'pilot-peserta-2',
-            'name' => 'Pilot Peserta B',
-            '_pilot' => true,
-            '_id_lelang' => $idLelang,
-        ],
-    ]);
-    exit;
-}
+$app = require_once __DIR__.'/../bootstrap/app.php';
 
-http_response_code(404);
-echo json_encode([
-    'ok' => false,
-    'error' => 'NOT_FOUND',
-    'route' => $uri,
-]);
+$kernel = $app->make(Kernel::class);
+
+$response = tap($kernel->handle(
+    $request = Request::capture()
+))->send();
+
+$kernel->terminate($request, $response);

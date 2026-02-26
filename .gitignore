@@ -26,6 +26,20 @@ Desktop.ini
 **/vendor/
 **/composer.phar
 
+# --- Pilot app (Phase 6 Wave B placeholder / future Laravel skeleton) ---
+pilot-app/.env
+pilot-app/.env.*
+!pilot-app/.env.example
+pilot-app/storage/*.key
+pilot-app/storage/framework/*
+!pilot-app/storage/framework/.gitignore
+pilot-app/storage/logs/*
+!pilot-app/storage/logs/.gitignore
+pilot-app/bootstrap/cache/*
+!pilot-app/bootstrap/cache/.gitignore
+pilot-app/public/build/
+pilot-app/public/hot
+
 # --- Node ---
 **/node_modules/
 **/npm-debug.log*

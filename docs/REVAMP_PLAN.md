@@ -3,8 +3,8 @@
 ## Metadata
 - Project: `eproc-vms`
 - Created: `February 19, 2026`
-- Last Updated: `February 26, 2026`
-- Current Status: `Phase 5 Completed`
+- Last Updated: `February 25, 2026`
+- Current Status: `Phase 5 Completed; Phase 6 Wave B Pilot Readiness In Progress (cutover still NO-GO)`
 - Branch Target: `main` (akan disesuaikan jika nanti pakai branch khusus revamp)
 
 ## Target Framework
@@ -106,6 +106,11 @@ Tujuan:
 
 Deliverables:
 - Keputusan framework target (berdasarkan kriteria tim dan operasional).
+- Decision record formal Wave A (migration pattern, pilot boundary, auth/session, data access strategy).
+- Baseline desain coexistence dev + checklist implementasi + acceptance test plan.
+- Template evidence pilot (UAT + rollback drill) dan rencana quality gate contract/integration.
+- Inventory endpoint pilot `auction` (path-by-path, contract ringkas, auth assumption) + draft contract/integration matrix.
+- Proof runtime coexistence dev Stage 1 (placeholder pilot-app + shadow route + smoke `CX-01`/`CX-02`).
 - Arsitektur coexistence (CI3 + app baru) dengan routing transisi.
 - Ekstraksi modul prioritas ke aplikasi baru (strangler pattern).
 - Rencana dekomisioning CI3 per domain.
@@ -139,6 +144,8 @@ Sebuah phase hanya boleh ditandai `Completed` jika seluruh syarat berikut terpen
 | M4 - CI quality gate live | 2026-02-26 | Completed | Standard `lint/test/smoke` command aktif di `tools/dev-env.ps1`, workflow `.github/workflows/quality-gates.yml` live, dan panduan required status check tersedia di `docs/CI_QUALITY_GATES.md` |
 | M5 - Medium-term refactor wave 1 pass | 2026-02-26 | Completed | Phase 5 gate pass: duplication map + shared-component prioritization + wave plan + incremental shared cron runtime refactor + regression pass |
 | M6 - Framework target selected | 2026-02-20 | Completed | Laravel |
+| M6A - Phase 6 Wave A prerequisite hardening | 2026-03-14 | Completed | Governance sync + decision records + coexistence baseline design + pilot quality evidence templates selesai |
+| M6B - Phase 6 Wave B pilot readiness (Stage 1 shadow coexistence) | 2026-03-28 | In Progress | Endpoint inventory v1 + skeleton placement decision + `pilot-app` shadow route + `CX-01/CX-02` smoke PASS; route toggle/auth bridge/CI gates masih pending |
 | M7 - First domain migrated off CI3 | TBD | Not Started |  |
 
 ## Risks and Mitigation
@@ -162,6 +169,12 @@ Sebuah phase hanya boleh ditandai `Completed` jika seluruh syarat berikut terpen
 | 2026-02-19 | Phase 3 dijalankan dengan dual-runtime non-breaking (7.4 tetap default, 8.2 untuk validasi) | Menjaga stabilitas CI3 sambil menurunkan risiko runtime modernisasi | Gate Phase 3 bisa divalidasi tanpa big-bang rewrite |
 | 2026-02-26 | Standard quality gate disatukan ke `tools/dev-env.ps1` dan CI minimum dikunci via workflow `quality-gates` | Supaya lint/test/smoke repeatable dan branch protection bisa mengacu ke status check tunggal | Gate Phase 4 dinyatakan pass, siap lanjut Phase 5 |
 | 2026-02-26 | Phase 5 dimulai dengan refactor incremental shared cron runtime (`shared/legacy/cron_runtime.php`) | Mengurangi duplikasi berdampak tinggi dengan risiko rendah tanpa ubah kontrak `class cron` | Gate Phase 5 dinyatakan pass, siap lanjut Phase 6 |
+| 2026-02-25 | Pattern migrasi Phase 6 dikunci ke `Strangler Fig` melalui decision record Wave A | Menghilangkan mismatch antara strategi (rekomendasi) vs checklist (belum formal) | Menjadi baseline untuk coexistence route split dan rollback per-domain |
+| 2026-02-25 | Pilot domain pertama ditetapkan: `auction` read-only endpoint subset | Domain `auction` punya duplikasi tinggi + diff lebih rendah (evidence Phase 5), cocok untuk pilot risiko lebih rendah | Wave B fokus ke endpoint inventory + route toggle + contract comparison |
+| 2026-02-25 | Auth/session pilot memakai CI3 authority + signed bridge token | Hindari shared-cookie/session trust langsung saat coexistence awal | Perlu bridge contract + integration test login/logout di Wave B |
+| 2026-02-25 | Data access pilot memakai shared DB read-only; CI3 tetap single writer | Mempercepat pilot tanpa dual-write inconsistency | Wave B dibatasi ke endpoint read-only; ACL ditinjau ulang untuk domain berikutnya |
+| 2026-02-25 | Inventory endpoint pilot `auction` v1 dipublikasikan path-by-path (scope host `vms`) | Mengurangi ambiguity scope pilot dan unblock draft contract/integration matrix | B3 turun; contract test dapat dimulai dari subset endpoint yang jelas |
+| 2026-02-25 | Wave B Stage 1 memakai placeholder `pilot-app` di repo ini + shadow route `/_pilot/auction/*` | Unblock proof coexistence dev tanpa menunggu Laravel final app/repo | B2 turun (Stage 1); route toggle bisnis + auth bridge tetap pending |
 
 ## Update Protocol
 - Update dokumen ini setiap ada perubahan scope, milestone, atau keputusan arsitektural.

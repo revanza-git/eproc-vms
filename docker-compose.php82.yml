@@ -8,3 +8,6 @@ services:
     build:
       context: .
       dockerfile: docker/php/Dockerfile.php82
+
+  pilot-app:
+    image: eproc-vms-vms-app:latest

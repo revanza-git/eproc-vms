@@ -1,10 +1,11 @@
 # eProc (VMS + Intra)
 
-This repository contains a Dockerized local development setup for an eProc ecosystem that consists of three CodeIgniter applications:
+This repository contains a Dockerized local development setup for an eProc ecosystem that consists of three CodeIgniter applications, plus a Phase 6 Wave B dev-only pilot placeholder app for coexistence proof:
 
 - **VMS** (Vendor Management System) served from `vms/app`
 - **Intra Main** (internal portal) served from `intra/main`
 - **Intra Pengadaan** (procurement module) served from `intra/pengadaan`
+- **Pilot App Placeholder** (`pilot-app/public/index.php`) for shadow-route readiness checks (`/_pilot/auction/*`, dev only)
 
 The stack is primarily **PHP (CodeIgniter 3)** + **Nginx** + **MariaDB** + **Redis** (sessions).
 
@@ -16,12 +17,14 @@ flowchart LR
   N[Nginx :8080]
   V[VMS PHP-FPM\n/var/www/html/vms]
   I[Intra PHP-FPM\n/var/www/html/intra]
+  P[Pilot Placeholder PHP-FPM\n/var/www/html/pilot-app]
   D[(MariaDB 10.5)]
   R[(Redis 7)]
 
   U -->|Host: vms.localhost| N
   U -->|Host: intra.localhost| N
   N -->|/ -> /var/www/html/vms/app| V
+  N -->|/_pilot/auction/* (dev shadow)| P
   N -->|/main -> /var/www/html/intra/main| I
   N -->|/pengadaan -> /var/www/html/intra/pengadaan| I
   V --> D
@@ -39,18 +42,21 @@ Assuming `docker compose up` and your hosts/DNS resolves the following hostnames
   - `http://intra.localhost:8080/pengadaan/`
 - **VMS**
   - `http://vms.localhost:8080/`
+  - `http://vms.localhost:8080/_pilot/auction/health` (Phase 6 Wave B shadow-route health, dev only)
 
 Nginx routing for these hosts lives in `docker/nginx/default.conf`.
 
 ## Repo Layout
 
-- `docker-compose.yml` – brings up Nginx + 2 PHP-FPM containers + MariaDB + Redis
-- `docker-compose.php82.yml` – runtime override untuk mem-build `vms-app` dan `intra-app` ke PHP 8.2
+- `docker-compose.yml` – brings up Nginx + 3 PHP-FPM containers (`vms`, `intra`, `pilot-app` placeholder) + MariaDB + Redis
+- `docker-compose.php82.yml` – runtime override untuk mem-build `vms-app` dan `intra-app` ke PHP 8.2 (pilot placeholder tetap image lokal dev proof)
 - `docker/`
   - `nginx/default.conf` – vhost routing for `vms.localhost` and `intra.localhost`
   - `php/Dockerfile` – PHP-FPM 7.4 image used by both apps (legacy-compatible, includes `mcrypt` + `redis`)
   - `php/Dockerfile.php82` – optional PHP-FPM 8.2 image for upgrade work
   - `init-db/` – initial SQL loaded into MariaDB on first boot
+- `pilot-app/`
+  - `public/index.php` – placeholder endpoint untuk `/_pilot/auction/health` dan shadow-route wiring proof (bukan implementasi bisnis/Laravel final)
 - `intra/`
   - `main/` – CodeIgniter app for internal “main” portal
   - `pengadaan/` – CodeIgniter app for procurement module
@@ -113,6 +119,7 @@ Dual-runtime helper (recommended):
 ```powershell
 pwsh ./tools/dev-env.ps1 -Action start -PhpRuntime 7.4
 pwsh ./tools/dev-env.ps1 -Action smoke -PhpRuntime 7.4
+pwsh ./tools/dev-env.ps1 -Action coexistence -PhpRuntime 7.4
 pwsh ./tools/dev-env.ps1 -Action deps -PhpRuntime 7.4
 pwsh ./tools/dev-env.ps1 -Action cron -PhpRuntime 7.4
 ```
@@ -129,6 +136,7 @@ This brings up:
 - `eproc-webserver` (Nginx, port `8080`)
 - `eproc-vms-app` (PHP-FPM)
 - `eproc-intra-app` (PHP-FPM)
+- `eproc-pilot-app` (PHP-FPM placeholder for Phase 6 shadow route readiness)
 - `eproc-db` (MariaDB, host port `3308`)
 - `eproc-redis` (Redis, internal-only)
 
@@ -166,6 +174,7 @@ docker compose exec vms-app bash -lc "cd /var/www/html/vms/app && composer insta
 - Intra Main: `http://intra.localhost:8080/main/`
 - Intra Pengadaan: `http://intra.localhost:8080/pengadaan/`
 - VMS: `http://vms.localhost:8080/`
+- Pilot shadow health (dev only): `http://vms.localhost:8080/_pilot/auction/health`
 
 Stop:
 
@@ -204,10 +213,22 @@ Shortcut helper command:
 ```powershell
 pwsh ./tools/dev-env.ps1 -Action start -PhpRuntime 7.4
 pwsh ./tools/dev-env.ps1 -Action smoke -PhpRuntime 7.4
+pwsh ./tools/dev-env.ps1 -Action coexistence -PhpRuntime 7.4
 pwsh ./tools/dev-env.ps1 -Action deps -PhpRuntime 7.4
 pwsh ./tools/dev-env.ps1 -Action cron -PhpRuntime 7.4
 pwsh ./tools/dev-env.ps1 -Action stop -PhpRuntime 7.4
 ```
+
+## Phase 6 Wave B (Pilot Readiness) Notes
+
+- `pilot-app` saat ini adalah **placeholder dev-only** untuk membuktikan wiring coexistence (`docker-compose` + Nginx shadow route + smoke), bukan aplikasi Laravel final.
+- Shadow route yang aktif untuk proof:
+  - `/_pilot/auction/*` pada host `vms.localhost`
+- Smoke coexistence lokal:
+  - `pwsh ./tools/dev-env.ps1 -Action coexistence -PhpRuntime 7.4`
+- Referensi status/evidence:
+  - `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`
+  - `docs/PHASE6_GO_NO_GO.md`
 
 ## Cross-App Flows
 

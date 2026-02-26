@@ -8,8 +8,8 @@
 - Jika ada blocker, tulis di bagian **Active Blockers**.
 
 ## Snapshot
-- Last Updated: `February 26, 2026`
-- Overall Status: `Phase 5 Completed`
+- Last Updated: `February 25, 2026`
+- Overall Status: `Phase 5 Completed; Phase 6 Wave B Pilot Readiness In Progress (cutover tetap NO-GO)`
 
 ---
 
@@ -156,16 +156,50 @@
 
 ## Phase 6 - Framework Migration (Out of CI3)
 - [x] Tetapkan framework target (decision record) - Laravel (2026-02-20)
-- [ ] Tetapkan migration pattern (strangler/modular replacement)
-- [ ] Definisikan boundary domain prioritas migrasi pertama
+- [x] Tetapkan migration pattern (strangler/modular replacement) via `docs/PHASE6_DECISION_RECORDS.md` (`DR-P6-001`)
+- [x] Definisikan boundary domain prioritas migrasi pertama via `docs/PHASE6_DECISION_RECORDS.md` (`DR-P6-002`)
 - [ ] Siapkan arsitektur coexistence (routing CI3 + app baru)
-- [ ] Siapkan auth/session strategy lintas aplikasi
-- [ ] Siapkan data access strategy (shared DB vs anti-corruption layer)
+- [x] Siapkan auth/session strategy lintas aplikasi (decision locked, implement + test di Wave B) via `docs/PHASE6_DECISION_RECORDS.md` (`DR-P6-003`)
+- [x] Siapkan data access strategy (shared DB vs anti-corruption layer) via `docs/PHASE6_DECISION_RECORDS.md` (`DR-P6-004`)
 - [ ] Migrasikan domain pilot pertama ke framework baru
 - [ ] Jalankan UAT domain pilot dan rollback drill
 - [ ] Rencanakan dekomisioning modul CI3 yang tergantikan
 - [ ] Confirmation check Phase 6 (pilot migration readiness/cutover plan)
 - [ ] Testing evidence Phase 6 dicatat (contract + UAT + rollback drill)
+
+### Wave A - Prerequisite Hardening (Before Pilot)
+- [x] Sinkronisasi mismatch status dokumen M1-M4 (checklist/plan/baseline/strategy)
+- [x] Kunci decision record Wave A (pattern, pilot boundary, auth/session, data access)
+- [x] Siapkan baseline desain coexistence dev + checklist implementasi + acceptance test plan
+- [x] Extend quality gate readiness plan pilot (contract/integration + UAT/rollback evidence template)
+- [x] Update assessment `docs/PHASE6_GO_NO_GO.md` dengan progres blocker Wave A
+
+### Wave B - Pilot Readiness Implementation (In Progress)
+- [x] Finalisasi inventory endpoint pilot `auction` read-only (path-by-path + contract ringkas + auth assumption) [v1 scope `vms`]
+- [x] Putuskan strategi skeleton app pilot untuk proof coexistence dev (`DR-P6-005`)
+- [x] Implement service placeholder `pilot-app` + route shadow `/_pilot/auction/*`
+- [x] Tambah helper smoke coexistence (`tools/dev-env.ps1 -Action coexistence`)
+- [x] Validasi `CX-01` + `CX-02` (legacy route + pilot shadow route)
+- [ ] Implement route toggle subset endpoint bisnis `/auction/*` + rollback switch (`CX-03`, `CX-04`)
+- [ ] Kunci contract auth bridge (error code + enforcement point) dan implement verifier minimal (`CX-05`)
+- [ ] Jalankan `pilot-contract` dan `pilot-integration` CI untuk subset endpoint pilot
+- [ ] Jalankan UAT pilot + rollback drill evidence
+
+### Wave A Evidence (Phase 6)
+| Date | Artifact/Action | Result | Evidence |
+|---|---|---|---|
+| 2026-02-25 | Decision record Wave A dibuat (`DR-P6-001` s.d. `DR-P6-004`) | PASS (formal decisions locked untuk readiness Wave B) | `docs/PHASE6_DECISION_RECORDS.md` |
+| 2026-02-25 | Baseline coexistence dev (design-only) + acceptance test plan dibuat | PASS (readiness proof untuk Wave B implementation) | `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md` |
+| 2026-02-25 | Template evidence UAT pilot + rollback drill disiapkan | PASS | `docs/templates/PHASE6_PILOT_UAT_EVIDENCE_TEMPLATE.md`, `docs/templates/PHASE6_PILOT_ROLLBACK_DRILL_TEMPLATE.md` |
+| 2026-02-25 | Quality gate docs + runbook + status docs disinkronkan untuk Wave A | PASS | `docs/CI_QUALITY_GATES.md`, `docs/DEV_ENV_RUNBOOK.md`, `docs/REVAMP_PLAN.md`, `docs/BASELINE_ISSUES.md`, `docs/FRAMEWORK_MIGRATION_STRATEGY.md`, `docs/PHASE6_GO_NO_GO.md` |
+
+### Wave B Evidence (Phase 6 - Stage 1)
+| Date | Artifact/Action | Result | Evidence |
+|---|---|---|---|
+| 2026-02-25 | Inventory endpoint pilot `auction` v1 (path-by-path + contract ringkas + auth assumption) + draft auth/integration matrix | PASS (dokumen baseline scope pilot tersedia) | `docs/PHASE6_DECISION_RECORDS.md`, `docs/CI_QUALITY_GATES.md` |
+| 2026-02-25 | Keputusan skeleton app pilot placement untuk proof dev (`DR-P6-005`) | PASS (provisional Wave B Stage 1) | `docs/PHASE6_DECISION_RECORDS.md` |
+| 2026-02-25 | Coexistence runtime Stage 1 (`pilot-app` + shadow route + helper smoke) diimplementasikan | PASS | `docker-compose.yml`, `docker-compose.php82.yml`, `docker/nginx/default.conf`, `pilot-app/public/index.php`, `tools/dev-env.ps1` |
+| 2026-02-25 | Coexistence smoke `CX-01` + `CX-02` dieksekusi | PASS | `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`, `docs/DEV_ENV_RUNBOOK.md` |
 
 ---
 
@@ -202,6 +236,35 @@ Blockers:
 | Phase 6 | TBD | TBD | TBD | TBD | TBD |
 
 ## Session Log
+Date: February 25, 2026
+Scope: Phase 6 Wave A - Prerequisite Hardening (Before Pilot)
+Completed:
+- Sinkronisasi mismatch M1-M4 lintas `REVAMP_CHECKLIST`, `REVAMP_PLAN`, `FRAMEWORK_MIGRATION_STRATEGY`, dan `BASELINE_ISSUES` (status + ownership + decision formal).
+- Decision record Wave A dikunci di `docs/PHASE6_DECISION_RECORDS.md` untuk pattern, pilot boundary `auction` (read-only subset), auth/session bridge, dan data access strategy pilot.
+- Baseline coexistence dev (design/checklist/acceptance test plan) disiapkan di `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md` tanpa mengubah runtime stack existing karena service app pilot belum tersedia.
+- Quality gate readiness plan pilot diperluas di `docs/CI_QUALITY_GATES.md` dan template evidence UAT/rollback drill ditambahkan di `docs/templates/`.
+- Assessment gate diperbarui di `docs/PHASE6_GO_NO_GO.md` dengan progres blocker Wave A dan rekomendasi gate terbaru untuk masuk Wave B.
+Next:
+- Wave B: finalisasi endpoint inventory `auction`, siapkan skeleton app pilot, implement route split coexistence dev, lalu jalankan contract/integration/UAT/rollback drill evidence.
+Blockers:
+- Runtime coexistence dev (`pilot-app` service + route split live) belum bisa dibuktikan karena app pilot belum tersedia di repo ini.
+
+Date: February 25, 2026
+Scope: Phase 6 Wave B - Pilot Readiness Implementation (Stage 1 shadow coexistence)
+Completed:
+- Finalisasi inventory endpoint pilot `auction` read-only (path-by-path) v1 pada `vms` + contract ringkas + auth assumption + backlog endpoint defer di appendix `docs/PHASE6_DECISION_RECORDS.md`.
+- Menambahkan `DR-P6-005` untuk keputusan provisional skeleton `pilot-app` di repo ini sebagai proof coexistence dev.
+- Implement `pilot-app` placeholder (`pilot-app/public/index.php`), service compose, dan route shadow `/_pilot/auction/*` di Nginx tanpa mengubah route bisnis CI3.
+- Menambahkan action `coexistence` pada `tools/dev-env.ps1` untuk validasi `CX-01` (legacy routes) dan `CX-02` (pilot shadow route marker).
+- Menjalankan verifikasi runtime: compose config checks, start/stop stack, `coexistence` PASS, dan header marker shadow route (`X-App-Source`, `X-Coexistence-Route`) terlihat.
+Next:
+- Implement route toggle subset `/auction/*` (mulai `get_barang`, `get_peserta`) + rollback switch (`CX-03`, `CX-04`).
+- Kunci contract auth bridge (enforcement point + `401/403`) lalu implement verifier minimal + integration tests untuk `get_user_update`.
+- Bekukan schema nested payload (`get_initial_data`, `get_chart_update`) dari sample response CI3 untuk `pilot-contract`.
+Blockers:
+- Auth bridge lintas aplikasi belum diimplementasikan; endpoint `get_user_update` masih sebatas draft contract/integration matrix.
+- Route toggle subset endpoint bisnis `/auction/*` belum ada (Stage 2 pending).
+
 Date: February 26, 2026
 Scope: Phase 5 - Medium-Term Refactor Track
 Completed:

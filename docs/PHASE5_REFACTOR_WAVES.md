@@ -71,3 +71,10 @@
 2. Wave 2 masih rendah risiko karena helper identik.
 3. Wave 3 mulai medium-risk karena menyentuh HMVC loader.
 4. Wave 4 highest-risk di Phase 5 karena menyentuh query behavior bisnis.
+
+## Phase 6 Handoff Note (Wave A)
+- Evidence mapping Phase 5 dipakai sebagai input penetapan pilot Phase 6:
+  - domain `auction` memiliki duplikasi tinggi (`same=68`, `diff=8`) dan sample query-heavy file identik,
+  - sehingga dipilih sebagai kandidat pilot boundary read-only pada decision record Phase 6 Wave A.
+- Referensi keputusan formal:
+  - `docs/PHASE6_DECISION_RECORDS.md` (`DR-P6-002`)

@@ -1,5 +1,5 @@
 param(
-	[ValidateSet('bootstrap', 'start', 'stop', 'down', 'restart', 'reset', 'status', 'logs', 'smoke', 'doctor', 'deps', 'cron', 'lint', 'test')]
+	[ValidateSet('bootstrap', 'start', 'stop', 'down', 'restart', 'reset', 'status', 'logs', 'smoke', 'coexistence', 'doctor', 'deps', 'cron', 'lint', 'test')]
 	[string] $Action = 'status',
 	[string] $Service = '',
 	[ValidateSet('7.4', '8.2')]
@@ -143,6 +143,56 @@ function Test-Endpoint {
 	}
 }
 
+function Test-EndpointHeader {
+	param(
+		[string] $Url,
+		[string] $HostHeader = '',
+		[string] $HeaderPattern
+	)
+
+	if (-not $script:CurlExecutable) {
+		$script:CurlExecutable = Get-CurlExecutable
+	}
+
+	$curlArgs = @('-sS', '-D', '-', '-o', '-', '-w', "`n%{http_code}")
+	if ($HostHeader -ne '') {
+		$curlArgs += @('-H', "Host: $HostHeader")
+	}
+	$curlArgs += $Url
+
+	$raw = & $script:CurlExecutable @curlArgs
+	if ($LASTEXITCODE -ne 0) {
+		return [pscustomobject]@{
+			url = $Url
+			host = $HostHeader
+			code = 0
+			ok = $false
+			reason = 'curl failed'
+			headerMatched = $false
+		}
+	}
+
+	$parts = $raw -split "`n"
+	$code = 0
+	[void] [int]::TryParse($parts[-1], [ref] $code)
+	$payload = if ($parts.Length -gt 1) {
+		($parts[0..($parts.Length - 2)] -join "`n")
+	} else {
+		''
+	}
+	$headerMatched = $payload -match $HeaderPattern
+	$ok = ($code -lt 400) -and $headerMatched
+
+	return [pscustomobject]@{
+		url = $Url
+		host = $HostHeader
+		code = $code
+		ok = $ok
+		reason = if ($ok) { 'ok' } elseif (-not $headerMatched) { 'missing header marker' } else { 'http error' }
+		headerMatched = $headerMatched
+	}
+}
+
 switch ($Action) {
 	'bootstrap' {
 		Copy-IfMissing -Source (Join-Path $root '.env.example') -Destination (Join-Path $root '.env')
@@ -207,6 +257,34 @@ switch ($Action) {
 			throw 'smoke check failed'
 		}
 		Write-Host 'smoke check passed'
+	}
+	'coexistence' {
+		$legacyTargets = @(
+			@{ url = 'http://127.0.0.1:8080/'; host = 'vms.localhost' },
+			@{ url = 'http://127.0.0.1:8080/main/'; host = 'intra.localhost' },
+			@{ url = 'http://127.0.0.1:8080/pengadaan/'; host = 'intra.localhost' }
+		)
+		$legacyResults = foreach ($target in $legacyTargets) {
+			Test-Endpoint -Url $target.url -HostHeader $target.host
+		}
+		$pilotResult = Test-EndpointHeader `
+			-Url 'http://127.0.0.1:8080/_pilot/auction/health' `
+			-HostHeader 'vms.localhost' `
+			-HeaderPattern 'X-App-Source:\s*pilot-skeleton'
+
+		$legacyResults | ForEach-Object {
+			Write-Host "CX-01 $($_.code) $($_.url) [Host: $($_.host)] - $($_.reason)"
+		}
+		Write-Host "CX-02 $($pilotResult.code) $($pilotResult.url) [Host: $($pilotResult.host)] - $($pilotResult.reason)"
+
+		if (($legacyResults | Where-Object { -not $_.ok }).Count -gt 0) {
+			throw 'coexistence check failed: CX-01 legacy smoke failed'
+		}
+		if (-not $pilotResult.ok) {
+			throw 'coexistence check failed: CX-02 pilot shadow route failed'
+		}
+
+		Write-Host 'coexistence check passed (CX-01, CX-02)'
 	}
 	'doctor' {
 		& docker version > $null

@@ -110,6 +110,8 @@ Wave A menyiapkan baseline desain/checklist/test plan. Wave B Stage 1/2 sudah me
 - action `coexistence` (`CX-01`,`CX-02`) dan `coexistence-stage2` (`CX-03`,`CX-04`) di `tools/dev-env.ps1`.
 - `./pilot-app` sudah diganti dari placeholder ke skeleton Laravel 8 (kompatibel PHP 7.4), marker header `X-App-Source: pilot-skeleton` tetap dipertahankan, endpoint subset `get_barang/get_peserta` sudah memakai query builder read-only dengan fallback `[]` + header degradasi jika DB/schema dev mismatch, dan endpoint nested `get_initial_data/get_chart_update` sudah memiliki implementasi query-based + fallback object-shape (diverifikasi via shadow path, belum ditambahkan ke toggle Stage 2).
 
+Catatan arah program: coexistence Stage 1/2 di runbook ini adalah sarana transisi (safety rail) untuk migrasi penuh CI3 -> Laravel, bukan kondisi akhir yang dipertahankan permanen.
+
 Referensi detail status, checklist, dan evidence:
 - `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`
 - `docs/PHASE6_DECISION_RECORDS.md`
@@ -167,7 +169,27 @@ Referensi detail status, checklist, dan evidence:
    pwsh ./tools/dev-env.ps1 -Action toggle-auction-subset -ToggleMode off -PhpRuntime 7.4
    curl.exe -sS -D - -o NUL -H "Host: vms.localhost" http://127.0.0.1:8080/auction/admin/json_provider/get_barang/1
    ```
-7. Stop environment (opsional setelah verifikasi):
+7. Jalankan compare harness subset `json_provider` (disarankan untuk freeze contract/compare evidence Wave B):
+   ```powershell
+   pwsh ./tools/compare-auction-json-provider-subset.ps1 -AuctionLelangId 1 -AuctionBarangId 1 -PhpRuntime 7.4
+   ```
+   - Harness akan:
+     - membandingkan CI3 vs pilot untuk `get_barang`, `get_peserta`, `get_initial_data`, `get_chart_update`,
+     - memakai toggle `ON/OFF` existing hanya untuk `get_barang/get_peserta`,
+     - memakai shadow path untuk verifikasi nested pilot (`get_initial_data`, `get_chart_update`),
+     - menulis artifact JSON ke `docs/artifacts/phase6-waveb-json-provider-subset-compare-<timestamp>.json`.
+   - Semantics hasil:
+     - `PASS`: sample CI3 dan pilot comparable (minimum shape + marker expectation).
+     - `BLOCKED`: compare belum bisa disimpulkan (mis. CI3 `HTTP 500` / non-JSON / schema gap dev). Ini expected dan harus dicatat eksplisit, bukan false PASS.
+     - `MISMATCH`: kedua sisi reachable tapi minimum shape/marker berbeda.
+   - Pada baseline dev saat ini, `BLOCKED` untuk semua endpoint subset masih acceptable jika bukti blocker (`endpoint`, `HTTP status`, `SQLSTATE/error code` pilot) tercatat; jangan menambah requirement seed data hanya untuk memaksa PASS.
+   - Sebelum mengklaim `id_lelang/id_barang` invalid, lakukan inspeksi read-only schema lokal untuk memastikan tabel runtime subset memang ada:
+     ```powershell
+     docker exec eproc-db mysql -uroot -proot -e "SELECT TABLE_SCHEMA, TABLE_NAME FROM information_schema.tables WHERE TABLE_NAME IN ('ms_procurement','ms_procurement_barang','ms_procurement_peserta','ms_penawaran','tb_kurs','ms_vendor','ms_procurement_kurs') ORDER BY TABLE_SCHEMA, TABLE_NAME;"
+     ```
+     Jika hasil kosong (seperti baseline dev lokal sesi ini), maka sample CI3 `HTTP 200` memang tidak tersedia secara lokal dan compare akan tetap `BLOCKED` untuk seluruh endpoint subset.
+   - Jika local dev tidak menyediakan schema/data runtime subset, gunakan dev/staging/non-prod hanya jika akses memang tersedia dan aman; simpan artifact compare terbaru + reason blocker per-endpoint, jangan menambah requirement seed data untuk memaksa `PASS`.
+8. Stop environment (opsional setelah verifikasi):
    ```powershell
    pwsh ./tools/dev-env.ps1 -Action stop -PhpRuntime 7.4
    ```
@@ -179,7 +201,7 @@ Keputusan terbaru Wave B: path dev utama untuk pilot adalah in-project `./pilot-
 
 Status terbaru (2026-02-26, next-step Wave B nested endpoint step selesai parsial): `./pilot-app` berhasil diganti in-place menjadi skeleton Laravel 8 (kompatibel PHP 7.4) dengan route kompatibel (`/_pilot/auction/health`, `get_barang`, `get_peserta`) dan kini endpoint nested `get_initial_data`/`get_chart_update` juga tersedia pada route direct + shadow pilot dengan marker header `X-App-Source: pilot-skeleton` tetap muncul.
 Hook `EPROC_PILOT_APP_BIND_PATH` tetap dipertahankan (opsional jika nanti pindah repo sibling); workflow route shadow, scoped toggle subset, dan rollback cepat `nginx reload` tidak berubah.
-Ringkasan evidence pasca-step nested (2026-02-26): `docker compose -f docker-compose.yml config` PASS, `pwsh ./tools/dev-env.ps1 -Action coexistence -PhpRuntime 7.4` PASS (`CX-01`,`CX-02`), `pwsh ./tools/dev-env.ps1 -Action coexistence-stage2 -PhpRuntime 7.4 -AuctionLelangId 1` PASS (`CX-03`,`CX-04`; `CX-04` marker rollback CI3 PASS dengan HTTP `500` tetap accepted), header dump manual saat toggle `ON` menunjukkan marker pilot tetap muncul pada `/_pilot/auction/health` dan `/auction/admin/json_provider/get_barang/1`, serta verifikasi shadow path `/_pilot/auction/admin/json_provider/get_initial_data/1/1` dan `.../get_chart_update/1` mengembalikan `HTTP 200` dengan header degradasi `X-Pilot-Data-*` + object-shape minimum saat DB/schema dev mismatch (`42S02/1146`).
+Ringkasan evidence pasca-step nested (2026-02-26, termasuk follow-up sample hunt): `docker compose -f docker-compose.yml config` PASS, `pwsh ./tools/dev-env.ps1 -Action coexistence -PhpRuntime 7.4` PASS (`CX-01`,`CX-02`), `pwsh ./tools/dev-env.ps1 -Action coexistence-stage2 -PhpRuntime 7.4 -AuctionLelangId 1` PASS (`CX-03`,`CX-04`; `CX-04` marker rollback CI3 PASS dengan HTTP `500` tetap accepted), header dump manual saat toggle `ON` menunjukkan marker pilot tetap muncul pada `/_pilot/auction/health` dan `/auction/admin/json_provider/get_barang/1`, verifikasi shadow path `/_pilot/auction/admin/json_provider/get_initial_data/1/1` dan `.../get_chart_update/1` mengembalikan `HTTP 200` dengan header degradasi `X-Pilot-Data-*` + object-shape minimum saat DB/schema dev mismatch (`42S02/1146`), inspeksi `information_schema` DB lokal menunjukkan tabel runtime subset `auction` (`ms_procurement*`, `ms_penawaran`, `tb_kurs`, `ms_vendor`) tidak tersedia, dan compare harness `pwsh ./tools/compare-auction-json-provider-subset.ps1 -AuctionLelangId 1 -AuctionBarangId 1 -PhpRuntime 7.4` tetap `BLOCKED` eksplisit untuk keempat endpoint subset (CI3 dev `HTTP 500`) sambil merekam artifact JSON terbaru `docs/artifacts/phase6-waveb-json-provider-subset-compare-20260226-130218.json` (granular per-endpoint, tidak false PASS).
 
 1. Pilih source pilot Laravel yang akan dipakai.
    - Default saat ini: gunakan in-project `./pilot-app` (sudah terisi skeleton Laravel).
@@ -237,6 +259,7 @@ Ringkasan evidence pasca-step nested (2026-02-26): `docker compose -f docker-com
 ### Target Wave B Stage 3+ (Remaining)
 - Implement auth bridge/token verifier untuk endpoint protected (`CX-05`).
 - Sambungkan repo Laravel final aktual ke `pilot-app` via `EPROC_PILOT_APP_BIND_PATH`, lalu ganti placeholder traffic secara bertahap.
+- Naikkan compare harness subset dari `BLOCKED` ke compare payload nyata (CI3 runtime sample valid) setelah environment dev/staging/non-prod yang aman menyediakan schema/data subset `auction`, lalu lanjutkan freeze contract endpoint berikutnya.
 - Tambah contract/integration test automation + CI jobs untuk endpoint pilot bisnis.
 
 ### Acceptance Test Plan Reference

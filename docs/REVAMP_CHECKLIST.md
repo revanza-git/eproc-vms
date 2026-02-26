@@ -183,6 +183,7 @@
 - [x] Implement route toggle subset endpoint bisnis `/auction/*` + rollback switch (`CX-03`, `CX-04`)
 - [x] Siapkan hook integrasi skeleton Laravel final via sibling bind mount (`EPROC_PILOT_APP_BIND_PATH`) tanpa merusak Stage 2 toggle
 - [x] Implement endpoint pilot subset `auction` read-only nyata di Laravel (`get_barang`, `get_peserta`) tanpa merusak coexistence Stage 1/2
+- [x] Bekukan contract baseline + compare harness subset `auction/admin/json_provider` (`get_barang`, `get_peserta`, `get_initial_data`, `get_chart_update`) dengan semantics `PASS/BLOCKED/MISMATCH` dan artifact compare dev
 - [ ] Kunci contract auth bridge (error code + enforcement point) dan implement verifier minimal (`CX-05`)
 - [ ] Jalankan `pilot-contract` dan `pilot-integration` CI untuk subset endpoint pilot
 - [ ] Jalankan UAT pilot + rollback drill evidence
@@ -210,6 +211,8 @@
 | 2026-02-26 | Integrasi skeleton Laravel final-compatible ke path in-project `./pilot-app` + smoke re-check baseline | PASS (next-step selesai; coexistence tetap stabil) | `pilot-app/artisan`, `pilot-app/composer.json`, `pilot-app/routes/web.php`, `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`, `docs/DEV_ENV_RUNBOOK.md`, `docs/PHASE6_GO_NO_GO.md` |
 | 2026-02-26 | Implement endpoint pilot subset `auction` read-only di Laravel (`get_barang/get_peserta`) + revalidasi coexistence | PASS (query path implemented; dev table gap handled gracefully) | `pilot-app/routes/web.php`, `pilot-app/app/Http/Controllers/PilotAuctionController.php`, `pilot-app/app/Services/Auction/JsonProviderReadOnlyService.php`, `docker-compose.yml`, `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`, `docs/DEV_ENV_RUNBOOK.md`, `docs/PHASE6_GO_NO_GO.md` |
 | 2026-02-26 | Implement endpoint pilot nested read-only `auction` (`get_initial_data/get_chart_update`) + verifikasi shadow route aman | PARTIAL (query path + graceful fallback implemented; CI3 runtime compare nested blocked oleh gap schema dev) | `pilot-app/routes/web.php`, `pilot-app/app/Http/Controllers/PilotAuctionController.php`, `pilot-app/app/Services/Auction/JsonProviderReadOnlyService.php`, `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`, `docs/DEV_ENV_RUNBOOK.md`, `docs/PHASE6_GO_NO_GO.md` |
+| 2026-02-26 | Bekukan contract baseline + compare harness/artifact subset `auction/admin/json_provider` | PASS (harness reusable tersedia; hasil compare dev tercatat `BLOCKED` secara eksplisit) | `tools/compare-auction-json-provider-subset.ps1`, `docs/artifacts/phase6-waveb-json-provider-subset-compare-20260226-124453.json`, `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`, `docs/DEV_ENV_RUNBOOK.md`, `docs/PHASE6_GO_NO_GO.md` |
+| 2026-02-26 | Follow-up sample hunt runtime compare subset `auction/admin/json_provider` (target `PASS/MISMATCH`) | PARTIAL (baseline/harness tetap sehat; local sample tetap unavailable) | `docs/artifacts/phase6-waveb-json-provider-subset-compare-20260226-130218.json`, `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`, `docs/DEV_ENV_RUNBOOK.md`, `docs/PHASE6_GO_NO_GO.md` |
 
 ---
 
@@ -378,6 +381,43 @@ Blockers:
 - DB dev masih missing tabel `eproc.ms_procurement_barang` (terbukti dari log Laravel `42S02/1146` untuk query nested), sehingga pilot nested endpoint berjalan dalam mode graceful fallback dan compare body CI3 vs pilot penuh belum bisa dilakukan.
 - CI3 nested sample (`get_initial_data/1/1`, `get_chart_update/1`) saat toggle `OFF` terobservasi `HTTP 500` di dev; blocker dicatat eksplisit dan tidak menambah requirement seed data.
 - `CX-04` rollback CI3 tetap marker-based (HTTP `500` sample dev), dan ini tetap accepted; tidak menambah requirement seed data.
+
+Date: February 26, 2026
+Scope: Phase 6 Wave B - Contract freeze + compare harness subset `auction/admin/json_provider` (migration-oriented, no new toggle scope)
+Completed:
+- Menginspeksi implementasi CI3 (`Json_provider`, `Json_provider_model`) dan pilot Laravel (`JsonProviderReadOnlyService`, `PilotAuctionController`, `pilot-app/routes/web.php`) untuk subset `get_barang`, `get_peserta`, `get_initial_data`, `get_chart_update`.
+- Menjalankan ulang evidence baseline wajib: `docker compose -f docker-compose.yml config`, `pwsh ./tools/dev-env.ps1 -Action coexistence -PhpRuntime 7.4`, dan `pwsh ./tools/dev-env.ps1 -Action coexistence-stage2 -PhpRuntime 7.4 -AuctionLelangId 1` (tetap PASS; `CX-04` marker rollback CI3 PASS dengan HTTP `500` accepted).
+- Verifikasi manual header/body: `/_pilot/auction/health`, `/auction/admin/json_provider/get_barang/1` (toggle `ON`), serta shadow nested `/_pilot/.../get_initial_data/1/1` dan `.../get_chart_update/1`; marker pilot + header degradasi `X-Pilot-Data-*` tetap muncul, nested fallback object-shape minimum tetap `HTTP 200`.
+- Menambahkan harness compare reusable `tools/compare-auction-json-provider-subset.ps1` (semantics `PASS/BLOCKED/MISMATCH`, reuse toggle existing untuk `get_barang/get_peserta`, shadow path untuk nested, artifact JSON output).
+- Menjalankan harness compare dan menyimpan artifact `docs/artifacts/phase6-waveb-json-provider-subset-compare-20260226-124453.json`; seluruh endpoint subset tercatat `BLOCKED` eksplisit karena CI3 dev sample `HTTP 500`, sementara pilot side tetap `HTTP 200` + minimum shape/marker valid + bukti degradasi `SQLSTATE 42S02 / 1146`.
+- Follow-up sample hunt menjalankan ulang baseline (`docker compose config`, `coexistence`, `coexistence-stage2`) dan compare harness; artifact terbaru `docs/artifacts/phase6-waveb-json-provider-subset-compare-20260226-130218.json` tetap mencatat `BLOCKED` granular untuk `get_barang`, `get_peserta`, `get_initial_data`, `get_chart_update` (CI3 `HTTP 500`, tidak false PASS).
+- Inspeksi `information_schema` DB lokal (`eproc`, `eproc_perencanaan`) menunjukkan tabel runtime subset `auction` (`ms_procurement*`, `ms_penawaran`, `tb_kurs`, `ms_vendor`) tidak tersedia, sehingga blocker sample runtime nyata lokal bukan sekadar salah pilih `id_lelang/id_barang`.
+- Header dump manual toggle `ON` untuk `/_pilot/auction/health` dan `/auction/admin/json_provider/get_barang/1` tetap menunjukkan marker kompatibel `X-App-Source: pilot-skeleton`; endpoint `get_barang/1` juga mengembalikan header degradasi `X-Pilot-Data-*` (`42S02/1146`) pada jalur pilot.
+- Memperbarui `PHASE6_COEXISTENCE_DEV_BASELINE`, `DEV_ENV_RUNBOOK`, `PHASE6_GO_NO_GO`, dan checklist ini untuk menegaskan coexistence sebagai safety rail transisi menuju migrasi penuh CI3 -> Laravel (bukan state akhir), serta memisahkan readiness teknis vs readiness bisnis.
+Next:
+- Ambil sample CI3 runtime valid (`HTTP 200`) untuk subset `json_provider`, lalu rerun harness compare agar hasil dapat naik dari `BLOCKED` ke `PASS/MISMATCH` berbasis payload nyata.
+- Prioritaskan source sample berikutnya dari dev/staging/non-prod yang aman dan memang memiliki schema/data subset `auction` (tanpa seed/import baru ke baseline lokal).
+- Lanjut auth bridge minimal (`CX-05`) + automation `pilot-contract` / `pilot-integration`.
+Blockers:
+- CI3 runtime sample untuk keempat endpoint subset pada dev saat ini masih `HTTP 500`, sehingga compare payload penuh masih `BLOCKED`.
+- DB lokal baseline tidak menyediakan tabel runtime subset `auction`, sehingga tidak ada candidate `id_lelang/id_barang` lokal untuk CI3 `HTTP 200` tanpa seed/import data.
+- Auth bridge, contract/integration CI automation, UAT, dan rollback drill evidence tetap pending; status Phase 6 cutover tetap `NO-GO`.
+
+Date: February 26, 2026
+Scope: Phase 6 Wave B - Follow-up sample hunt `json_provider` runtime compare (payload nyata target, no scope expansion)
+Completed:
+- Menjalankan ulang evidence baseline wajib (`docker compose -f docker-compose.yml config`, `pwsh ./tools/dev-env.ps1 -Action coexistence -PhpRuntime 7.4`, `pwsh ./tools/dev-env.ps1 -Action coexistence-stage2 -PhpRuntime 7.4 -AuctionLelangId 1`) dan semuanya tetap PASS (`CX-04` marker rollback CI3 PASS dengan HTTP `500` accepted).
+- Menginspeksi schema DB lokal secara read-only via `information_schema`; tabel runtime subset `auction` (`ms_procurement`, `ms_procurement_barang`, `ms_procurement_peserta`, `ms_penawaran`, `tb_kurs`, `ms_vendor`, `ms_procurement_kurs`) tidak ditemukan di baseline lokal.
+- Verifikasi manual header dump toggle `ON` untuk `/_pilot/auction/health` dan `/auction/admin/json_provider/get_barang/1`; marker `X-App-Source: pilot-skeleton` tetap kompatibel, marker route/toggle tetap benar, dan header degradasi pilot `42S02/1146` terobservasi.
+- Menjalankan ulang `pwsh ./tools/compare-auction-json-provider-subset.ps1 -AuctionLelangId 1 -AuctionBarangId 1 -PhpRuntime 7.4`; artifact `docs/artifacts/phase6-waveb-json-provider-subset-compare-20260226-130218.json` merekam status `BLOCKED` granular untuk empat endpoint subset karena CI3 `HTTP 500` (Database Error HTML) sementara pilot tetap `HTTP 200` + marker valid.
+- Memperbarui dokumentasi evidence/runbook/go-no-go/checklist tanpa mengubah keputusan `NO-GO`, `CONDITIONAL GO`, atau `B2 Resolved`.
+Next:
+- Cari sample CI3 runtime valid (`HTTP 200`) dari environment dev/staging/non-prod yang aman dan memang memiliki schema/data subset `auction`, lalu rerun harness compare agar hasil dapat naik ke `PASS/MISMATCH` berbasis payload nyata.
+- Lanjut auth bridge minimal (`CX-05`) + automation `pilot-contract` / `pilot-integration` dengan coexistence rail yang sudah proven.
+Blockers:
+- Baseline lokal tidak punya tabel runtime subset `auction`, sehingga sample compare runtime nyata CI3 tidak tersedia tanpa seed/import data baru.
+- Akses staging/non-prod yang aman untuk subset `auction/admin/json_provider` belum tersedia/ditetapkan pada sesi ini.
+- Auth bridge, contract/integration CI automation, UAT, dan rollback drill evidence tetap pending; status Phase 6 cutover tetap `NO-GO`.
 
 Date: February 26, 2026
 Scope: Phase 5 - Medium-Term Refactor Track

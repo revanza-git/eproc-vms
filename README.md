@@ -1,11 +1,11 @@
 # eProc (VMS + Intra)
 
-This repository contains a Dockerized local development setup for an eProc ecosystem that consists of three CodeIgniter applications, plus a Phase 6 Wave B dev-only pilot placeholder app for coexistence proof:
+This repository contains a Dockerized local development setup for an eProc ecosystem that consists of three CodeIgniter applications, plus a Phase 6 Wave B dev-only pilot Laravel skeleton app for coexistence proof:
 
 - **VMS** (Vendor Management System) served from `vms/app`
 - **Intra Main** (internal portal) served from `intra/main`
 - **Intra Pengadaan** (procurement module) served from `intra/pengadaan`
-- **Pilot App Placeholder** (`pilot-app/public/index.php`) for shadow-route and scoped toggle readiness checks (`/_pilot/auction/*`, selected `/auction/*`, dev only)
+- **Pilot Laravel Skeleton** (`pilot-app`) for shadow-route and scoped toggle readiness checks (`/_pilot/auction/*`, selected `/auction/*`, dev only)
 
 The stack is primarily **PHP (CodeIgniter 3)** + **Nginx** + **MariaDB** + **Redis** (sessions).
 
@@ -17,7 +17,7 @@ flowchart LR
   N[Nginx :8080]
   V[VMS PHP-FPM\n/var/www/html/vms]
   I[Intra PHP-FPM\n/var/www/html/intra]
-  P[Pilot Placeholder PHP-FPM\n/var/www/html/pilot-app]
+  P[Pilot Laravel Skeleton PHP-FPM\n/var/www/html/pilot-app]
   D[(MariaDB 10.5)]
   R[(Redis 7)]
 
@@ -60,7 +60,7 @@ Nginx routing for these hosts lives in `docker/nginx/default.conf`.
   - `php/Dockerfile.php82` – optional PHP-FPM 8.2 image for upgrade work
   - `init-db/` – initial SQL loaded into MariaDB on first boot
 - `pilot-app/`
-  - `public/index.php` – placeholder endpoint untuk `/_pilot/auction/health` + stub Stage 2 route toggle subset (`get_barang`, `get_peserta`) (bukan implementasi bisnis/Laravel final)
+  - Laravel skeleton (Phase 6 Wave B dev pilot) untuk shadow route `/_pilot/auction/*` dan scoped toggle subset `json_provider`
 - `intra/`
   - `main/` – CodeIgniter app for internal “main” portal
   - `pengadaan/` – CodeIgniter app for procurement module
@@ -145,7 +145,7 @@ This brings up:
 - `eproc-webserver` (Nginx, port `8080`)
 - `eproc-vms-app` (PHP-FPM)
 - `eproc-intra-app` (PHP-FPM)
-- `eproc-pilot-app` (PHP-FPM placeholder for Phase 6 shadow route readiness)
+- `eproc-pilot-app` (PHP-FPM Laravel skeleton for Phase 6 shadow route readiness)
 - `eproc-db` (MariaDB, host port `3308`)
 - `eproc-redis` (Redis, internal-only)
 
@@ -230,7 +230,7 @@ pwsh ./tools/dev-env.ps1 -Action stop -PhpRuntime 7.4
 
 ## Phase 6 Wave B (Pilot Readiness) Notes
 
-- `pilot-app` saat ini adalah **placeholder dev-only** untuk membuktikan wiring coexistence (`docker-compose` + Nginx shadow route + smoke), bukan aplikasi Laravel final.
+- `pilot-app` saat ini adalah **Laravel skeleton dev-only** untuk membuktikan wiring coexistence (`docker-compose` + Nginx shadow route + smoke), bukan aplikasi Laravel final produksi.
 - Stage 2 scoped route toggle sudah tersedia untuk endpoint:
   - `/auction/admin/json_provider/get_barang/*`
   - `/auction/admin/json_provider/get_peserta/*`
@@ -250,6 +250,9 @@ pwsh ./tools/dev-env.ps1 -Action stop -PhpRuntime 7.4
 - Referensi status/evidence:
   - `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`
   - `docs/PHASE6_GO_NO_GO.md`
+- Compare harness subset `json_provider` (Wave B contract/runtime compare evidence):
+  - `pwsh ./tools/compare-auction-json-provider-subset.ps1 -AuctionLelangId <id> -AuctionBarangId <id> -PhpRuntime 7.4`
+  - Artifact JSON disimpan di `docs/artifacts/phase6-waveb-json-provider-subset-compare-<timestamp>.json`
 
 ## Cross-App Flows
 

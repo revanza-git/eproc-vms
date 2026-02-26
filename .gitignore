@@ -26,7 +26,7 @@ Desktop.ini
 **/vendor/
 **/composer.phar
 
-# --- Pilot app (Phase 6 Wave B placeholder / future Laravel skeleton) ---
+# --- Pilot app (Phase 6 Wave B Laravel skeleton) ---
 pilot-app/.env
 pilot-app/.env.*
 !pilot-app/.env.example
@@ -39,6 +39,10 @@ pilot-app/bootstrap/cache/*
 !pilot-app/bootstrap/cache/.gitignore
 pilot-app/public/build/
 pilot-app/public/hot
+
+# --- Local docs compare scratch (keep curated evidence artifacts tracked) ---
+docs/artifacts/*.local.json
+docs/artifacts/*.tmp.json
 
 # --- Node ---
 **/node_modules/

@@ -1,0 +1,671 @@
+{
+  "meta": {
+    "generated_at": "2026-02-26 13:02:05 +07:00",
+    "base_url": "http://127.0.0.1:8080",
+    "host_header": "vms.localhost",
+    "auction_lelang_id": "1",
+    "auction_barang_id": "1",
+    "php_runtime": "7.4",
+    "original_toggle_state": "on",
+    "restored_toggle_state": "on",
+    "semantics": {
+      "PASS": "CI3 and pilot responses both comparable at minimum shape level for current sample",
+      "BLOCKED": "Compare cannot conclude due to CI3/pilot runtime block (HTTP 5xx/network/non-JSON/min-shape unavailable)",
+      "MISMATCH": "Both sides reachable but minimum shape/marker expectations differ"
+    }
+  },
+  "summary": [
+    {
+      "endpoint": "get_barang",
+      "mode": "business-toggle",
+      "compare": "BLOCKED",
+      "ci3_http": 500,
+      "ci3_json": false,
+      "ci3_markers": "True",
+      "pilot_http": 200,
+      "pilot_json": true,
+      "pilot_shape": true,
+      "pilot_markers": "True",
+      "pilot_data_status": "db-unavailable-or-schema-mismatch",
+      "pilot_sqlstate": "42S02",
+      "pilot_error_code": "1146",
+      "reason": "ci3-runtime-http-5xx-or-network"
+    },
+    {
+      "endpoint": "get_peserta",
+      "mode": "business-toggle",
+      "compare": "BLOCKED",
+      "ci3_http": 500,
+      "ci3_json": false,
+      "ci3_markers": "True",
+      "pilot_http": 200,
+      "pilot_json": true,
+      "pilot_shape": true,
+      "pilot_markers": "True",
+      "pilot_data_status": "db-unavailable-or-schema-mismatch",
+      "pilot_sqlstate": "42S02",
+      "pilot_error_code": "1146",
+      "reason": "ci3-runtime-http-5xx-or-network"
+    },
+    {
+      "endpoint": "get_initial_data",
+      "mode": "shadow-route",
+      "compare": "BLOCKED",
+      "ci3_http": 500,
+      "ci3_json": false,
+      "ci3_markers": "n/a",
+      "pilot_http": 200,
+      "pilot_json": true,
+      "pilot_shape": true,
+      "pilot_markers": "True",
+      "pilot_data_status": "db-unavailable-or-schema-mismatch",
+      "pilot_sqlstate": "42S02",
+      "pilot_error_code": "1146",
+      "reason": "ci3-runtime-http-5xx-or-network"
+    },
+    {
+      "endpoint": "get_chart_update",
+      "mode": "shadow-route",
+      "compare": "BLOCKED",
+      "ci3_http": 500,
+      "ci3_json": false,
+      "ci3_markers": "n/a",
+      "pilot_http": 200,
+      "pilot_json": true,
+      "pilot_shape": true,
+      "pilot_markers": "True",
+      "pilot_data_status": "db-unavailable-or-schema-mismatch",
+      "pilot_sqlstate": "42S02",
+      "pilot_error_code": "1146",
+      "reason": "ci3-runtime-http-5xx-or-network"
+    }
+  ],
+  "results": [
+    {
+      "endpoint": "get_barang",
+      "pilot_mode": "business-toggle",
+      "compare_status": "BLOCKED",
+      "compare_reason": "ci3-runtime-http-5xx-or-network",
+      "blocker_details": [
+        "ci3-http=500"
+      ],
+      "ci3": {
+        "endpoint": "get_barang",
+        "variant": "ci3",
+        "url": "http://127.0.0.1:8080/auction/admin/json_provider/get_barang/1",
+        "host": "vms.localhost",
+        "http_status": 500,
+        "curl_exit_code": 0,
+        "headers": {
+          "X-App-Source": "ci3-legacy",
+          "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+          "Content-Type": "text/html; charset=UTF-8",
+          "Date": "Thu, 26 Feb 2026 06:02:07 GMT",
+          "Pragma": "no-cache",
+          "X-Powered-By": "PHP/7.4.33",
+          "Set-Cookie": [
+            "csrf_cookie_name=f3d73f8ba34d6659dc96d8ba189f5d7a; expires=Thu, 26-Feb-2026 08:02:06 GMT; Max-Age=7200; path=/; HttpOnly",
+            "vms_session=3b5c200ee7abd2cf756c9da0be140927; expires=Thu, 26-Feb-2026 08:02:06 GMT; Max-Age=7200; path=/; HttpOnly"
+          ],
+          "X-Coexistence-Route": "ci3-legacy-subset",
+          "Server": "nginx/1.29.5",
+          "Transfer-Encoding": "chunked",
+          "Cache-Control": "no-store, no-cache, must-revalidate",
+          "X-Coexistence-Toggle": "auction-json-provider=off",
+          "Connection": "keep-alive"
+        },
+        "header_checks": [
+          {
+            "name": "X-Coexistence-Toggle",
+            "expected": "auction-json-provider=off",
+            "actual": "auction-json-provider=off",
+            "matched": true
+          },
+          {
+            "name": "X-App-Source",
+            "expected": "ci3-legacy",
+            "actual": "ci3-legacy",
+            "matched": true
+          },
+          {
+            "name": "X-Coexistence-Route",
+            "expected": "ci3-legacy-subset",
+            "actual": "ci3-legacy-subset",
+            "matched": true
+          }
+        ],
+        "header_expectation_count": 3,
+        "headers_ok": true,
+        "http_ok": false,
+        "blocked": true,
+        "json_ok": false,
+        "json_kind": "non-json",
+        "json_error": "body is not JSON",
+        "min_shape": {
+          "ok": false,
+          "endpoint": "get_barang",
+          "expected_top": "array",
+          "actual_top": "non-json",
+          "missing_keys": [],
+          "element_checked": false,
+          "notes": []
+        },
+        "body_snippet": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"utf-8\"> <title>Database Error</title> <style type=\"text/css\"> ::selection { background-color: #E13300; color: white; } ::-moz-selection { background-color: #E13300; color: white; } body { background-color: #fff; margin: 40px;...",
+        "pilot_data_source": null,
+        "pilot_data_status": null,
+        "pilot_error_sqlstate": null,
+        "pilot_error_code": null
+      },
+      "pilot": {
+        "endpoint": "get_barang",
+        "variant": "pilot",
+        "url": "http://127.0.0.1:8080/auction/admin/json_provider/get_barang/1",
+        "host": "vms.localhost",
+        "http_status": 200,
+        "curl_exit_code": 0,
+        "headers": {
+          "X-App-Source": "pilot-skeleton",
+          "X-Pilot-Error-Code": "1146",
+          "Content-Type": "application/json",
+          "Date": "Thu, 26 Feb 2026 06:02:09 GMT",
+          "X-Pilot-Data-Source": "degraded-empty",
+          "Set-Cookie": [
+            "XSRF-TOKEN=eyJpdiI6InZQdG8vUjg0NEJxWnAxaC9FUzF6T2c9PSIsInZhbHVlIjoiN0Z3M1hXOXJackd6SHgzVWlGcWtUbk5JcmptOFA0d1VraVB3ZytGNTB5bWlXNFUwSHg2WjcyUDUwWm1lSFIvL25RUExhV3hvZmRseFlmMUplS3VnQ0c1d1FjbUF2dmFrcEJvQ2luMlo1Ymp2c01SYktkQXFWRUNjanhpSC9TbHkiLCJtYWMiOiJhNjI5ZGU1ZTk2MTY4ZjUyYTdiMTRhZjY5MzNmM2VkNmNlYWFhODg0YjU4ZmU5ZGVhMDdlM2FmYmYwZGEyMjIwIiwidGFnIjoiIn0%3D; expires=Thu, 26-Feb-2026 08:02:09 GMT; Max-Age=7200; path=/; samesite=lax",
+            "laravel_session=eyJpdiI6InVmVnJla1V5SEZycTB0QjF2bm1ndnc9PSIsInZhbHVlIjoiV2RHalFlL3hPeUJoRGwxa0dCakJXSlAyUkwrbEZpZ0tKeXpLcHZldm02MllQdTR6dlc3TXBqSXFnZHpsc3pkQjVoV2V1ckRVQ0hSZ3l0TDdadVV1K3A2cU5Td3Q5NisrTVp2SDZocWFoZExQYUhQR3RWcnVrVnE2SVJtbEY2MnUiLCJtYWMiOiJhMzBlZjhkYzQ1YjhjNThiNmZjNjFjZDhhYWQ4NzU2MzE4ZjFjNWZkMmY2Mzk5ZmZiYjJmZmUyOTI0MjNmZWMyIiwidGFnIjoiIn0%3D; expires=Thu, 26-Feb-2026 08:02:09 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+          ],
+          "X-Pilot-Error-SqlState": "42S02",
+          "X-Powered-By": "PHP/7.4.33",
+          "X-Pilot-Data-Status": "db-unavailable-or-schema-mismatch",
+          "X-Coexistence-Route": "pilot-business-toggle",
+          "X-Pilot-Route-Mode": "business-toggle",
+          "Server": "nginx/1.29.5",
+          "Transfer-Encoding": "chunked",
+          "Vary": "Accept-Encoding",
+          "Cache-Control": "no-cache, private",
+          "X-Pilot-Endpoint": "get_barang",
+          "X-Coexistence-Toggle": "auction-json-provider=on",
+          "Connection": "keep-alive"
+        },
+        "header_checks": [
+          {
+            "name": "X-Coexistence-Toggle",
+            "expected": "auction-json-provider=on",
+            "actual": "auction-json-provider=on",
+            "matched": true
+          },
+          {
+            "name": "X-Pilot-Route-Mode",
+            "expected": "business-toggle",
+            "actual": "business-toggle",
+            "matched": true
+          },
+          {
+            "name": "X-App-Source",
+            "expected": "pilot-skeleton",
+            "actual": "pilot-skeleton",
+            "matched": true
+          },
+          {
+            "name": "X-Pilot-Endpoint",
+            "expected": "get_barang",
+            "actual": "get_barang",
+            "matched": true
+          },
+          {
+            "name": "X-Coexistence-Route",
+            "expected": "pilot-business-toggle",
+            "actual": "pilot-business-toggle",
+            "matched": true
+          }
+        ],
+        "header_expectation_count": 5,
+        "headers_ok": true,
+        "http_ok": true,
+        "blocked": false,
+        "json_ok": true,
+        "json_kind": "array",
+        "json_error": null,
+        "min_shape": {
+          "ok": true,
+          "endpoint": "get_barang",
+          "expected_top": "array",
+          "actual_top": "array",
+          "missing_keys": [],
+          "element_checked": false,
+          "notes": [
+            "empty-array-allowed"
+          ]
+        },
+        "body_snippet": "[]",
+        "pilot_data_source": "degraded-empty",
+        "pilot_data_status": "db-unavailable-or-schema-mismatch",
+        "pilot_error_sqlstate": "42S02",
+        "pilot_error_code": "1146"
+      }
+    },
+    {
+      "endpoint": "get_peserta",
+      "pilot_mode": "business-toggle",
+      "compare_status": "BLOCKED",
+      "compare_reason": "ci3-runtime-http-5xx-or-network",
+      "blocker_details": [
+        "ci3-http=500"
+      ],
+      "ci3": {
+        "endpoint": "get_peserta",
+        "variant": "ci3",
+        "url": "http://127.0.0.1:8080/auction/admin/json_provider/get_peserta/1",
+        "host": "vms.localhost",
+        "http_status": 500,
+        "curl_exit_code": 0,
+        "headers": {
+          "X-App-Source": "ci3-legacy",
+          "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+          "Content-Type": "text/html; charset=UTF-8",
+          "Date": "Thu, 26 Feb 2026 06:02:11 GMT",
+          "Pragma": "no-cache",
+          "X-Powered-By": "PHP/7.4.33",
+          "Set-Cookie": [
+            "csrf_cookie_name=2bfce64d06c928c7da7c9888ed03fc01; expires=Thu, 26-Feb-2026 08:02:11 GMT; Max-Age=7200; path=/; HttpOnly",
+            "vms_session=69a10b87b21f3a130d871f3b3bb9be50; expires=Thu, 26-Feb-2026 08:02:11 GMT; Max-Age=7200; path=/; HttpOnly"
+          ],
+          "X-Coexistence-Route": "ci3-legacy-subset",
+          "Server": "nginx/1.29.5",
+          "Transfer-Encoding": "chunked",
+          "Cache-Control": "no-store, no-cache, must-revalidate",
+          "X-Coexistence-Toggle": "auction-json-provider=off",
+          "Connection": "keep-alive"
+        },
+        "header_checks": [
+          {
+            "name": "X-Coexistence-Toggle",
+            "expected": "auction-json-provider=off",
+            "actual": "auction-json-provider=off",
+            "matched": true
+          },
+          {
+            "name": "X-App-Source",
+            "expected": "ci3-legacy",
+            "actual": "ci3-legacy",
+            "matched": true
+          },
+          {
+            "name": "X-Coexistence-Route",
+            "expected": "ci3-legacy-subset",
+            "actual": "ci3-legacy-subset",
+            "matched": true
+          }
+        ],
+        "header_expectation_count": 3,
+        "headers_ok": true,
+        "http_ok": false,
+        "blocked": true,
+        "json_ok": false,
+        "json_kind": "non-json",
+        "json_error": "body is not JSON",
+        "min_shape": {
+          "ok": false,
+          "endpoint": "get_peserta",
+          "expected_top": "array",
+          "actual_top": "non-json",
+          "missing_keys": [],
+          "element_checked": false,
+          "notes": []
+        },
+        "body_snippet": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"utf-8\"> <title>Database Error</title> <style type=\"text/css\"> ::selection { background-color: #E13300; color: white; } ::-moz-selection { background-color: #E13300; color: white; } body { background-color: #fff; margin: 40px;...",
+        "pilot_data_source": null,
+        "pilot_data_status": null,
+        "pilot_error_sqlstate": null,
+        "pilot_error_code": null
+      },
+      "pilot": {
+        "endpoint": "get_peserta",
+        "variant": "pilot",
+        "url": "http://127.0.0.1:8080/auction/admin/json_provider/get_peserta/1",
+        "host": "vms.localhost",
+        "http_status": 200,
+        "curl_exit_code": 0,
+        "headers": {
+          "X-App-Source": "pilot-skeleton",
+          "X-Pilot-Error-Code": "1146",
+          "Content-Type": "application/json",
+          "Date": "Thu, 26 Feb 2026 06:02:13 GMT",
+          "X-Pilot-Data-Source": "degraded-empty",
+          "Set-Cookie": [
+            "XSRF-TOKEN=eyJpdiI6IjVTdjdvOWV3RERCT3l0UjltSUM0ZHc9PSIsInZhbHVlIjoiREhFVTdsMGJiOUtXQTdjWldmZkxJdDVXZU44RHd1RVBWYkhobHlRUXgzYU44aHB5RDRPbStTMjZ0QXVWQUFycjJOc0Vtd1krendlNlFVMGZnZ2dqdmpJWkoreHczQm15bDRKelFIU1U2TTdrV2JLV292WWZlS0dEQ0xPWThSbXQiLCJtYWMiOiJmYzcwOGIzZWFiNTIzMTk3ZTM0Y2Q1NGU3OGQxN2MwMTlkOGM5ZGViYWJhZGMzNTgxZWUyYTIyYTAxNTg0NjVkIiwidGFnIjoiIn0%3D; expires=Thu, 26-Feb-2026 08:02:13 GMT; Max-Age=7200; path=/; samesite=lax",
+            "laravel_session=eyJpdiI6Im1UTFREVFBWT3U2RDlOWHo4WFAxRVE9PSIsInZhbHVlIjoiVGRyMVhSSWhMQit3MUx1MitmelZYZ2l3bVhWbXRBUUZzT1VhRlRVVVkwM0hXb0N2Z2l6alZJLzZEdHg1eUtUdEQ0RVpwaW5CVEE1NHpUSHdtY000TklMcWFwQ2p4ejN5YllWMkxOL0ljWDg4QlFpdFRNdVlmNm5WRCtuVGJOS1ciLCJtYWMiOiJiMjBiMWZhNzAxMmY2OWQ3NzNjNTIxYzhkYzBlZDg2YjY4ZThmMjliNDE5YTU1ODBmYTMxODdmMzIzYTgzNDhjIiwidGFnIjoiIn0%3D; expires=Thu, 26-Feb-2026 08:02:13 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+          ],
+          "X-Pilot-Error-SqlState": "42S02",
+          "X-Powered-By": "PHP/7.4.33",
+          "X-Pilot-Data-Status": "db-unavailable-or-schema-mismatch",
+          "X-Coexistence-Route": "pilot-business-toggle",
+          "X-Pilot-Route-Mode": "business-toggle",
+          "Server": "nginx/1.29.5",
+          "Transfer-Encoding": "chunked",
+          "Vary": "Accept-Encoding",
+          "Cache-Control": "no-cache, private",
+          "X-Pilot-Endpoint": "get_peserta",
+          "X-Coexistence-Toggle": "auction-json-provider=on",
+          "Connection": "keep-alive"
+        },
+        "header_checks": [
+          {
+            "name": "X-Coexistence-Toggle",
+            "expected": "auction-json-provider=on",
+            "actual": "auction-json-provider=on",
+            "matched": true
+          },
+          {
+            "name": "X-Pilot-Route-Mode",
+            "expected": "business-toggle",
+            "actual": "business-toggle",
+            "matched": true
+          },
+          {
+            "name": "X-App-Source",
+            "expected": "pilot-skeleton",
+            "actual": "pilot-skeleton",
+            "matched": true
+          },
+          {
+            "name": "X-Pilot-Endpoint",
+            "expected": "get_peserta",
+            "actual": "get_peserta",
+            "matched": true
+          },
+          {
+            "name": "X-Coexistence-Route",
+            "expected": "pilot-business-toggle",
+            "actual": "pilot-business-toggle",
+            "matched": true
+          }
+        ],
+        "header_expectation_count": 5,
+        "headers_ok": true,
+        "http_ok": true,
+        "blocked": false,
+        "json_ok": true,
+        "json_kind": "array",
+        "json_error": null,
+        "min_shape": {
+          "ok": true,
+          "endpoint": "get_peserta",
+          "expected_top": "array",
+          "actual_top": "array",
+          "missing_keys": [],
+          "element_checked": false,
+          "notes": [
+            "empty-array-allowed"
+          ]
+        },
+        "body_snippet": "[]",
+        "pilot_data_source": "degraded-empty",
+        "pilot_data_status": "db-unavailable-or-schema-mismatch",
+        "pilot_error_sqlstate": "42S02",
+        "pilot_error_code": "1146"
+      }
+    },
+    {
+      "endpoint": "get_initial_data",
+      "pilot_mode": "shadow-route",
+      "compare_status": "BLOCKED",
+      "compare_reason": "ci3-runtime-http-5xx-or-network",
+      "blocker_details": [
+        "ci3-http=500"
+      ],
+      "ci3": {
+        "endpoint": "get_initial_data",
+        "variant": "ci3",
+        "url": "http://127.0.0.1:8080/auction/admin/json_provider/get_initial_data/1/1",
+        "host": "vms.localhost",
+        "http_status": 500,
+        "curl_exit_code": 0,
+        "headers": {
+          "Connection": "keep-alive",
+          "Server": "nginx/1.29.5",
+          "Content-Type": "text/html; charset=UTF-8",
+          "X-Powered-By": "PHP/7.4.33",
+          "Set-Cookie": [
+            "csrf_cookie_name=f700c097cd8c9e74e2fa410ecbd555cb; expires=Thu, 26-Feb-2026 08:02:13 GMT; Max-Age=7200; path=/; HttpOnly",
+            "vms_session=fb0f7c9309e20848092fd5e25d8d39e0; expires=Thu, 26-Feb-2026 08:02:14 GMT; Max-Age=7200; path=/; HttpOnly"
+          ],
+          "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+          "Pragma": "no-cache",
+          "Transfer-Encoding": "chunked",
+          "Cache-Control": "no-store, no-cache, must-revalidate",
+          "Date": "Thu, 26 Feb 2026 06:02:14 GMT"
+        },
+        "header_checks": [],
+        "header_expectation_count": 0,
+        "headers_ok": true,
+        "http_ok": false,
+        "blocked": true,
+        "json_ok": false,
+        "json_kind": "non-json",
+        "json_error": "body is not JSON",
+        "min_shape": {
+          "ok": false,
+          "endpoint": "get_initial_data",
+          "expected_top": "object",
+          "actual_top": "non-json",
+          "missing_keys": [],
+          "element_checked": false,
+          "notes": []
+        },
+        "body_snippet": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"utf-8\"> <title>Database Error</title> <style type=\"text/css\"> ::selection { background-color: #E13300; color: white; } ::-moz-selection { background-color: #E13300; color: white; } body { background-color: #fff; margin: 40px;...",
+        "pilot_data_source": null,
+        "pilot_data_status": null,
+        "pilot_error_sqlstate": null,
+        "pilot_error_code": null
+      },
+      "pilot": {
+        "endpoint": "get_initial_data",
+        "variant": "pilot",
+        "url": "http://127.0.0.1:8080/_pilot/auction/admin/json_provider/get_initial_data/1/1",
+        "host": "vms.localhost",
+        "http_status": 200,
+        "curl_exit_code": 0,
+        "headers": {
+          "X-App-Source": "pilot-skeleton",
+          "X-Pilot-Error-Code": "1146",
+          "Content-Type": "application/json",
+          "Date": "Thu, 26 Feb 2026 06:02:15 GMT",
+          "X-Pilot-Data-Source": "degraded-empty",
+          "Set-Cookie": [
+            "XSRF-TOKEN=eyJpdiI6Im5LT2hNUFFhYWhYN3JVSm14N0pGYXc9PSIsInZhbHVlIjoiTXg2am1sUmlzOEN1YUkrdGY0cm1sdWpvbVRFdjJGTXRBbkEyTmV4cUlWYlhPUWNpVHowOUs2cW0vWVJFM2MzREdxa1lxT0pROTVoTjc1OTllUUlPUmxabGJVcy9sMHFVN0hORjh6MWZQVHdiMUZyOEp4clRNdVhGUnc0QUc1N0wiLCJtYWMiOiJkNzg0ODUzYzBjYmM4ZjI5MWQ4NmI1NDkyZTUxZThiNGRlYzI3ZDhhN2UwZWY2OGU3MDcwMjUzODFlN2ZhNmM5IiwidGFnIjoiIn0%3D; expires=Thu, 26-Feb-2026 08:02:15 GMT; Max-Age=7200; path=/; samesite=lax",
+            "laravel_session=eyJpdiI6IlBPOXhvazNLOFRtOXVzN2FVdGFUd1E9PSIsInZhbHVlIjoiamFZNm56dWJPRHE2ZG1TWEU3eEFHbUYyZ2NTNTN0RTYwdTB1eFlVN0JNQUJ2VzM2VWV6a2N5Y3haaERCR2RWanppd011OVdwcUMyYTN1Q3dlQklTMXdVaWZzTlhvN2ZqQ1puT1hybGJ3ZU9NM0FtK2NwOVZPdW9INTVKTktKVWQiLCJtYWMiOiI4NTMwZmU5NTFjNDhkMDZjMjVjMThjOThiOWRjMGQ4YTQ4NDMwM2M2ZWU3MTExOTQzNDUyNjY2NjhiZTQzODc1IiwidGFnIjoiIn0%3D; expires=Thu, 26-Feb-2026 08:02:15 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+          ],
+          "X-Pilot-Error-SqlState": "42S02",
+          "X-Powered-By": "PHP/7.4.33",
+          "X-Pilot-Data-Status": "db-unavailable-or-schema-mismatch",
+          "X-Coexistence-Route": "pilot-shadow",
+          "X-Pilot-Route-Mode": "shadow-route",
+          "Server": "nginx/1.29.5",
+          "Transfer-Encoding": "chunked",
+          "Vary": "Accept-Encoding",
+          "Cache-Control": "no-cache, private",
+          "X-Pilot-Endpoint": "get_initial_data",
+          "Connection": "keep-alive"
+        },
+        "header_checks": [
+          {
+            "name": "X-Pilot-Route-Mode",
+            "expected": "shadow-route",
+            "actual": "shadow-route",
+            "matched": true
+          },
+          {
+            "name": "X-App-Source",
+            "expected": "pilot-skeleton",
+            "actual": "pilot-skeleton",
+            "matched": true
+          },
+          {
+            "name": "X-Pilot-Endpoint",
+            "expected": "get_initial_data",
+            "actual": "get_initial_data",
+            "matched": true
+          },
+          {
+            "name": "X-Coexistence-Route",
+            "expected": "pilot-shadow",
+            "actual": "pilot-shadow",
+            "matched": true
+          }
+        ],
+        "header_expectation_count": 4,
+        "headers_ok": true,
+        "http_ok": true,
+        "blocked": false,
+        "json_ok": true,
+        "json_kind": "object",
+        "json_error": null,
+        "min_shape": {
+          "ok": true,
+          "endpoint": "get_initial_data",
+          "expected_top": "object",
+          "actual_top": "object",
+          "missing_keys": [],
+          "element_checked": false,
+          "notes": []
+        },
+        "body_snippet": "{\"id\":\"1\",\"name\":\"\",\"subtitle\":\"\",\"data\":[],\"last\":[],\"time\":\"2026-02-26 06:02:15\"}",
+        "pilot_data_source": "degraded-empty",
+        "pilot_data_status": "db-unavailable-or-schema-mismatch",
+        "pilot_error_sqlstate": "42S02",
+        "pilot_error_code": "1146"
+      }
+    },
+    {
+      "endpoint": "get_chart_update",
+      "pilot_mode": "shadow-route",
+      "compare_status": "BLOCKED",
+      "compare_reason": "ci3-runtime-http-5xx-or-network",
+      "blocker_details": [
+        "ci3-http=500"
+      ],
+      "ci3": {
+        "endpoint": "get_chart_update",
+        "variant": "ci3",
+        "url": "http://127.0.0.1:8080/auction/admin/json_provider/get_chart_update/1",
+        "host": "vms.localhost",
+        "http_status": 500,
+        "curl_exit_code": 0,
+        "headers": {
+          "Connection": "keep-alive",
+          "Server": "nginx/1.29.5",
+          "Content-Type": "text/html; charset=UTF-8",
+          "X-Powered-By": "PHP/7.4.33",
+          "Set-Cookie": [
+            "csrf_cookie_name=068dd4e38544e6380ece23ecc65f02f2; expires=Thu, 26-Feb-2026 08:02:15 GMT; Max-Age=7200; path=/; HttpOnly",
+            "vms_session=4e9e100a0dcf0eba4a9260be5c2099b2; expires=Thu, 26-Feb-2026 08:02:15 GMT; Max-Age=7200; path=/; HttpOnly"
+          ],
+          "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+          "Pragma": "no-cache",
+          "Transfer-Encoding": "chunked",
+          "Cache-Control": "no-store, no-cache, must-revalidate",
+          "Date": "Thu, 26 Feb 2026 06:02:15 GMT"
+        },
+        "header_checks": [],
+        "header_expectation_count": 0,
+        "headers_ok": true,
+        "http_ok": false,
+        "blocked": true,
+        "json_ok": false,
+        "json_kind": "non-json",
+        "json_error": "body is not JSON",
+        "min_shape": {
+          "ok": false,
+          "endpoint": "get_chart_update",
+          "expected_top": "object",
+          "actual_top": "non-json",
+          "missing_keys": [],
+          "element_checked": false,
+          "notes": []
+        },
+        "body_snippet": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"utf-8\"> <title>Database Error</title> <style type=\"text/css\"> ::selection { background-color: #E13300; color: white; } ::-moz-selection { background-color: #E13300; color: white; } body { background-color: #fff; margin: 40px;...",
+        "pilot_data_source": null,
+        "pilot_data_status": null,
+        "pilot_error_sqlstate": null,
+        "pilot_error_code": null
+      },
+      "pilot": {
+        "endpoint": "get_chart_update",
+        "variant": "pilot",
+        "url": "http://127.0.0.1:8080/_pilot/auction/admin/json_provider/get_chart_update/1",
+        "host": "vms.localhost",
+        "http_status": 200,
+        "curl_exit_code": 0,
+        "headers": {
+          "X-App-Source": "pilot-skeleton",
+          "X-Pilot-Error-Code": "1146",
+          "Content-Type": "application/json",
+          "Date": "Thu, 26 Feb 2026 06:02:16 GMT",
+          "X-Pilot-Data-Source": "degraded-empty",
+          "Set-Cookie": [
+            "XSRF-TOKEN=eyJpdiI6IkxqNmlsTC9uU05vZ083UlFCNFQvV3c9PSIsInZhbHVlIjoiN3JkZjhwVXFqcXJ5R2JmcDV2VmtxN3k1TVRvYVBpeGJ4Wms5cTRjT1EyOG1lOGZuQkxaUlpPOGRwbDdlQ1Evak91Sks1SXZ2cTFwZEhJZDJ3R0VRVGRKNEdFYVl0V0tqWm5KS20zbUNUM05lTFI5dGJnTkFRNUZwUUVLTFRlSDIiLCJtYWMiOiJhMDZiODI5YWQ5ZDk0OTk2NTU1ZWQ5NDY5NWY1M2FmMjYwZDkxMGU2ODc5MjVlYmNkZTZhM2VmYTlkYzhkMjRmIiwidGFnIjoiIn0%3D; expires=Thu, 26-Feb-2026 08:02:16 GMT; Max-Age=7200; path=/; samesite=lax",
+            "laravel_session=eyJpdiI6IjVKZEM1UDZLMzlsRjdrNEVUd3dRTlE9PSIsInZhbHVlIjoiRXg5ZjlvUXN1ODkxV3Z5VzhDK1BxUEVCcVQ5STZYT3dIL2t6YUJYSjZ6VUxvK0JxL2FQMHB0Vm9hWjhQQWJ0T3c2d1l2Q3ZQNmFxZ1FlT1FzcEhUQmxXY01Dcm1DekRORDRqOHZwNlBQdlpmc2RZMUFKMC8rbUZTZTUrZERvOFoiLCJtYWMiOiIxZDI5MmU4ZTI4ZjhhOThhOTE5MGY2NWFkNDk0NTA3MjE5MDdjYTIwMWU0ZWIyYzFmODRhNTk5YTUyNTQzZTI3IiwidGFnIjoiIn0%3D; expires=Thu, 26-Feb-2026 08:02:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+          ],
+          "X-Pilot-Error-SqlState": "42S02",
+          "X-Powered-By": "PHP/7.4.33",
+          "X-Pilot-Data-Status": "db-unavailable-or-schema-mismatch",
+          "X-Coexistence-Route": "pilot-shadow",
+          "X-Pilot-Route-Mode": "shadow-route",
+          "Server": "nginx/1.29.5",
+          "Transfer-Encoding": "chunked",
+          "Vary": "Accept-Encoding",
+          "Cache-Control": "no-cache, private",
+          "X-Pilot-Endpoint": "get_chart_update",
+          "Connection": "keep-alive"
+        },
+        "header_checks": [
+          {
+            "name": "X-Pilot-Route-Mode",
+            "expected": "shadow-route",
+            "actual": "shadow-route",
+            "matched": true
+          },
+          {
+            "name": "X-App-Source",
+            "expected": "pilot-skeleton",
+            "actual": "pilot-skeleton",
+            "matched": true
+          },
+          {
+            "name": "X-Pilot-Endpoint",
+            "expected": "get_chart_update",
+            "actual": "get_chart_update",
+            "matched": true
+          },
+          {
+            "name": "X-Coexistence-Route",
+            "expected": "pilot-shadow",
+            "actual": "pilot-shadow",
+            "matched": true
+          }
+        ],
+        "header_expectation_count": 4,
+        "headers_ok": true,
+        "http_ok": true,
+        "blocked": false,
+        "json_ok": true,
+        "json_kind": "object",
+        "json_error": null,
+        "min_shape": {
+          "ok": true,
+          "endpoint": "get_chart_update",
+          "expected_top": "object",
+          "actual_top": "object",
+          "missing_keys": [],
+          "element_checked": false,
+          "notes": []
+        },
+        "body_snippet": "{\"data\":[],\"time\":\"2026-02-26 06:02:16\"}",
+        "pilot_data_source": "degraded-empty",
+        "pilot_data_status": "db-unavailable-or-schema-mismatch",
+        "pilot_error_sqlstate": "42S02",
+        "pilot_error_code": "1146"
+      }
+    }
+  ]
+}

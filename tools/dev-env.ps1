@@ -1,10 +1,13 @@
 param(
-	[ValidateSet('bootstrap', 'start', 'stop', 'down', 'restart', 'reset', 'status', 'logs', 'smoke', 'coexistence', 'doctor', 'deps', 'cron', 'lint', 'test')]
+	[ValidateSet('bootstrap', 'start', 'stop', 'down', 'restart', 'reset', 'status', 'logs', 'smoke', 'coexistence', 'coexistence-stage2', 'toggle-auction-subset', 'doctor', 'deps', 'cron', 'lint', 'test')]
 	[string] $Action = 'status',
 	[string] $Service = '',
 	[ValidateSet('7.4', '8.2')]
 	[string] $PhpRuntime = '7.4',
-	[switch] $NoBuild
+	[switch] $NoBuild,
+	[ValidateSet('status', 'on', 'off')]
+	[string] $ToggleMode = 'status',
+	[string] $AuctionLelangId = '1'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -193,6 +196,105 @@ function Test-EndpointHeader {
 	}
 }
 
+function Get-AuctionSubsetTogglePaths {
+	$base = Join-Path $root 'docker/nginx'
+	$templates = Join-Path $base 'templates'
+	$includes = Join-Path $base 'includes'
+
+	return [pscustomobject]@{
+		active = Join-Path $includes 'pilot-auction-subset-toggle.active.conf'
+		legacyTemplate = Join-Path $templates 'pilot-auction-subset-toggle.legacy.conf'
+		pilotTemplate = Join-Path $templates 'pilot-auction-subset-toggle.pilot.conf'
+	}
+}
+
+function Get-AuctionSubsetToggleState {
+	$paths = Get-AuctionSubsetTogglePaths
+	if (!(Test-Path $paths.active)) {
+		return 'missing'
+	}
+
+	$content = Get-Content -Path $paths.active -Raw
+	if ($content -match 'auction-json-provider=on') {
+		return 'on'
+	}
+	if ($content -match 'auction-json-provider=off') {
+		return 'off'
+	}
+
+	return 'unknown'
+}
+
+function Invoke-NginxReload {
+	Invoke-Compose -ComposeArgs @('exec', '-T', 'webserver', 'nginx', '-t')
+	Invoke-Compose -ComposeArgs @('exec', '-T', 'webserver', 'nginx', '-s', 'reload')
+	Start-Sleep -Milliseconds 750
+}
+
+function Set-AuctionSubsetToggle {
+	param(
+		[ValidateSet('on', 'off')]
+		[string] $Mode,
+		[switch] $ReloadNginx
+	)
+
+	$paths = Get-AuctionSubsetTogglePaths
+	if (!(Test-Path $paths.active)) {
+		throw "active toggle include not found: $($paths.active)"
+	}
+
+	$template = if ($Mode -eq 'on') { $paths.pilotTemplate } else { $paths.legacyTemplate }
+	if (!(Test-Path $template)) {
+		throw "toggle template not found: $template"
+	}
+
+	Copy-Item -Path $template -Destination $paths.active -Force
+	Write-Host "auction subset toggle file updated: $Mode -> $($paths.active)"
+
+	if ($ReloadNginx) {
+		Invoke-NginxReload
+		Write-Host 'nginx reload completed'
+	}
+}
+
+function Test-EndpointMarkers {
+	param(
+		[string] $Url,
+		[string] $HostHeader,
+		[string] $AppHeaderPattern,
+		[string] $RouteHeaderPattern,
+		[switch] $RequireHttpOk
+	)
+
+	$appCheck = Test-EndpointHeader -Url $Url -HostHeader $HostHeader -HeaderPattern $AppHeaderPattern
+	$routeCheck = Test-EndpointHeader -Url $Url -HostHeader $HostHeader -HeaderPattern $RouteHeaderPattern
+	$markerOk = ($appCheck.headerMatched -and $routeCheck.headerMatched)
+	$httpOk = (($appCheck.code -lt 400) -and ($routeCheck.code -lt 400))
+	$finalOk = if ($RequireHttpOk) { $markerOk -and $httpOk } else { $markerOk }
+
+	return [pscustomobject]@{
+		url = $Url
+		host = $HostHeader
+		code = $appCheck.code
+		routeCode = $routeCheck.code
+		ok = $finalOk
+		appHeaderMatched = $appCheck.headerMatched
+		routeHeaderMatched = $routeCheck.headerMatched
+		httpOk = $httpOk
+		reason = if ($finalOk -and (-not $RequireHttpOk) -and (-not $httpOk)) {
+			'markers ok (HTTP non-2xx/3xx observed)'
+		} elseif ($finalOk) {
+			'ok'
+		} elseif (-not $appCheck.headerMatched) {
+			'missing app marker'
+		} elseif (-not $routeCheck.headerMatched) {
+			'missing route marker'
+		} else {
+			'http error'
+		}
+	}
+}
+
 switch ($Action) {
 	'bootstrap' {
 		Copy-IfMissing -Source (Join-Path $root '.env.example') -Destination (Join-Path $root '.env')
@@ -285,6 +387,78 @@ switch ($Action) {
 		}
 
 		Write-Host 'coexistence check passed (CX-01, CX-02)'
+	}
+	'toggle-auction-subset' {
+		$paths = Get-AuctionSubsetTogglePaths
+		$state = Get-AuctionSubsetToggleState
+
+		switch ($ToggleMode) {
+			'status' {
+				Write-Host "auction subset toggle state: $state"
+				Write-Host "active include: $($paths.active)"
+			}
+			'on' {
+				Set-AuctionSubsetToggle -Mode 'on' -ReloadNginx
+				Write-Host "auction subset toggle state: $(Get-AuctionSubsetToggleState)"
+			}
+			'off' {
+				Set-AuctionSubsetToggle -Mode 'off' -ReloadNginx
+				Write-Host "auction subset toggle state: $(Get-AuctionSubsetToggleState)"
+			}
+			default {
+				throw "unsupported ToggleMode for toggle-auction-subset: $ToggleMode"
+			}
+		}
+	}
+	'coexistence-stage2' {
+		$vmsHost = 'vms.localhost'
+		$targets = @(
+			@{
+				key = 'get_barang'
+				url = "http://127.0.0.1:8080/auction/admin/json_provider/get_barang/$AuctionLelangId"
+			},
+			@{
+				key = 'get_peserta'
+				url = "http://127.0.0.1:8080/auction/admin/json_provider/get_peserta/$AuctionLelangId"
+			}
+		)
+
+		Set-AuctionSubsetToggle -Mode 'on' -ReloadNginx
+		$cx03Results = foreach ($target in $targets) {
+			Test-EndpointMarkers `
+				-Url $target.url `
+				-HostHeader $vmsHost `
+				-AppHeaderPattern 'X-App-Source:\s*pilot-skeleton' `
+				-RouteHeaderPattern 'X-Coexistence-Route:\s*pilot-business-toggle' `
+				-RequireHttpOk
+		}
+
+		$cx03Results | ForEach-Object {
+			Write-Host "CX-03 $($_.code) $($_.url) [Host: $($_.host)] - $($_.reason) (app=$($_.appHeaderMatched); route=$($_.routeHeaderMatched))"
+		}
+
+		if (($cx03Results | Where-Object { -not $_.ok }).Count -gt 0) {
+			throw 'coexistence stage2 failed: CX-03 route toggle to pilot did not pass'
+		}
+
+		Set-AuctionSubsetToggle -Mode 'off' -ReloadNginx
+		$cx04Results = foreach ($target in $targets) {
+			Test-EndpointMarkers `
+				-Url $target.url `
+				-HostHeader $vmsHost `
+				-AppHeaderPattern 'X-App-Source:\s*ci3-legacy' `
+				-RouteHeaderPattern 'X-Coexistence-Route:\s*ci3-legacy-subset'
+		}
+
+		$cx04Results | ForEach-Object {
+			Write-Host "CX-04 $($_.code) $($_.url) [Host: $($_.host)] - $($_.reason) (app=$($_.appHeaderMatched); route=$($_.routeHeaderMatched); httpOk=$($_.httpOk))"
+		}
+
+		if (($cx04Results | Where-Object { -not $_.ok }).Count -gt 0) {
+			throw 'coexistence stage2 failed: CX-04 rollback to CI3 did not pass'
+		}
+
+		Write-Host 'coexistence stage2 check passed (CX-03, CX-04)'
 	}
 	'doctor' {
 		& docker version > $null

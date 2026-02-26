@@ -5,7 +5,7 @@ This repository contains a Dockerized local development setup for an eProc ecosy
 - **VMS** (Vendor Management System) served from `vms/app`
 - **Intra Main** (internal portal) served from `intra/main`
 - **Intra Pengadaan** (procurement module) served from `intra/pengadaan`
-- **Pilot App Placeholder** (`pilot-app/public/index.php`) for shadow-route readiness checks (`/_pilot/auction/*`, dev only)
+- **Pilot App Placeholder** (`pilot-app/public/index.php`) for shadow-route and scoped toggle readiness checks (`/_pilot/auction/*`, selected `/auction/*`, dev only)
 
 The stack is primarily **PHP (CodeIgniter 3)** + **Nginx** + **MariaDB** + **Redis** (sessions).
 
@@ -25,6 +25,8 @@ flowchart LR
   U -->|Host: intra.localhost| N
   N -->|/ -> /var/www/html/vms/app| V
   N -->|/_pilot/auction/* (dev shadow)| P
+  N -->|/auction/admin/json_provider/get_barang/* (toggle ON)| P
+  N -->|/auction/admin/json_provider/get_peserta/* (toggle ON)| P
   N -->|/main -> /var/www/html/intra/main| I
   N -->|/pengadaan -> /var/www/html/intra/pengadaan| I
   V --> D
@@ -43,6 +45,8 @@ Assuming `docker compose up` and your hosts/DNS resolves the following hostnames
 - **VMS**
   - `http://vms.localhost:8080/`
   - `http://vms.localhost:8080/_pilot/auction/health` (Phase 6 Wave B shadow-route health, dev only)
+  - `http://vms.localhost:8080/auction/admin/json_provider/get_barang/1` (scoped toggle target, dev validation)
+  - `http://vms.localhost:8080/auction/admin/json_provider/get_peserta/1` (scoped toggle target, dev validation)
 
 Nginx routing for these hosts lives in `docker/nginx/default.conf`.
 
@@ -56,7 +60,7 @@ Nginx routing for these hosts lives in `docker/nginx/default.conf`.
   - `php/Dockerfile.php82` – optional PHP-FPM 8.2 image for upgrade work
   - `init-db/` – initial SQL loaded into MariaDB on first boot
 - `pilot-app/`
-  - `public/index.php` – placeholder endpoint untuk `/_pilot/auction/health` dan shadow-route wiring proof (bukan implementasi bisnis/Laravel final)
+  - `public/index.php` – placeholder endpoint untuk `/_pilot/auction/health` + stub Stage 2 route toggle subset (`get_barang`, `get_peserta`) (bukan implementasi bisnis/Laravel final)
 - `intra/`
   - `main/` – CodeIgniter app for internal “main” portal
   - `pengadaan/` – CodeIgniter app for procurement module
@@ -106,6 +110,10 @@ There are example env files in both app trees.
 
 Important:
 - VMS is served at `http://vms.localhost:8080/` (no `/app` prefix). If you set `BASE_URL` to include `/app/`, routing will break.
+- Phase 6 dev coexistence hook:
+  - `EPROC_PILOT_APP_BIND_PATH` (root `.env`) mengatur source bind mount untuk service `pilot-app`
+  - Default: `./pilot-app` (placeholder di repo ini)
+  - Untuk repo Laravel final sibling nanti bisa diarahkan ke `../nama-repo-laravel-final` atau path absolut Windows
 
 ### 3) Start the stack
 
@@ -120,6 +128,7 @@ Dual-runtime helper (recommended):
 pwsh ./tools/dev-env.ps1 -Action start -PhpRuntime 7.4
 pwsh ./tools/dev-env.ps1 -Action smoke -PhpRuntime 7.4
 pwsh ./tools/dev-env.ps1 -Action coexistence -PhpRuntime 7.4
+pwsh ./tools/dev-env.ps1 -Action coexistence-stage2 -PhpRuntime 7.4 -AuctionLelangId 1
 pwsh ./tools/dev-env.ps1 -Action deps -PhpRuntime 7.4
 pwsh ./tools/dev-env.ps1 -Action cron -PhpRuntime 7.4
 ```
@@ -222,10 +231,22 @@ pwsh ./tools/dev-env.ps1 -Action stop -PhpRuntime 7.4
 ## Phase 6 Wave B (Pilot Readiness) Notes
 
 - `pilot-app` saat ini adalah **placeholder dev-only** untuk membuktikan wiring coexistence (`docker-compose` + Nginx shadow route + smoke), bukan aplikasi Laravel final.
+- Stage 2 scoped route toggle sudah tersedia untuk endpoint:
+  - `/auction/admin/json_provider/get_barang/*`
+  - `/auction/admin/json_provider/get_peserta/*`
+- Rollback switch cepat tetap via Nginx include + reload (tanpa full stack restart) menggunakan helper:
+  - `pwsh ./tools/dev-env.ps1 -Action toggle-auction-subset -ToggleMode status|on|off -PhpRuntime 7.4`
+- Validasi Stage 2 routing/marker:
+  - `pwsh ./tools/dev-env.ps1 -Action coexistence-stage2 -PhpRuntime 7.4 -AuctionLelangId 1`
+- Integrasi skeleton Laravel final (repo terpisah) disiapkan via sibling bind mount:
+  - set `.env` root: `EPROC_PILOT_APP_BIND_PATH=../nama-repo-laravel-final`
+  - lalu restart env (`pilot-app` recreate) dan ulangi smoke `coexistence` + `coexistence-stage2`
 - Shadow route yang aktif untuk proof:
   - `/_pilot/auction/*` pada host `vms.localhost`
 - Smoke coexistence lokal:
   - `pwsh ./tools/dev-env.ps1 -Action coexistence -PhpRuntime 7.4`
+- Referensi runbook operasional Stage 2 + sibling bind-mount:
+  - `docs/DEV_ENV_RUNBOOK.md`
 - Referensi status/evidence:
   - `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`
   - `docs/PHASE6_GO_NO_GO.md`

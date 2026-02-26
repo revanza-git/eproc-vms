@@ -8,7 +8,7 @@
 - Jika ada blocker, tulis di bagian **Active Blockers**.
 
 ## Snapshot
-- Last Updated: `February 25, 2026`
+- Last Updated: `February 26, 2026`
 - Overall Status: `Phase 5 Completed; Phase 6 Wave B Pilot Readiness In Progress (cutover tetap NO-GO)`
 
 ---
@@ -158,7 +158,7 @@
 - [x] Tetapkan framework target (decision record) - Laravel (2026-02-20)
 - [x] Tetapkan migration pattern (strangler/modular replacement) via `docs/PHASE6_DECISION_RECORDS.md` (`DR-P6-001`)
 - [x] Definisikan boundary domain prioritas migrasi pertama via `docs/PHASE6_DECISION_RECORDS.md` (`DR-P6-002`)
-- [ ] Siapkan arsitektur coexistence (routing CI3 + app baru)
+- [x] Siapkan arsitektur coexistence (routing CI3 + app baru)
 - [x] Siapkan auth/session strategy lintas aplikasi (decision locked, implement + test di Wave B) via `docs/PHASE6_DECISION_RECORDS.md` (`DR-P6-003`)
 - [x] Siapkan data access strategy (shared DB vs anti-corruption layer) via `docs/PHASE6_DECISION_RECORDS.md` (`DR-P6-004`)
 - [ ] Migrasikan domain pilot pertama ke framework baru
@@ -180,7 +180,8 @@
 - [x] Implement service placeholder `pilot-app` + route shadow `/_pilot/auction/*`
 - [x] Tambah helper smoke coexistence (`tools/dev-env.ps1 -Action coexistence`)
 - [x] Validasi `CX-01` + `CX-02` (legacy route + pilot shadow route)
-- [ ] Implement route toggle subset endpoint bisnis `/auction/*` + rollback switch (`CX-03`, `CX-04`)
+- [x] Implement route toggle subset endpoint bisnis `/auction/*` + rollback switch (`CX-03`, `CX-04`)
+- [x] Siapkan hook integrasi skeleton Laravel final via sibling bind mount (`EPROC_PILOT_APP_BIND_PATH`) tanpa merusak Stage 2 toggle
 - [ ] Kunci contract auth bridge (error code + enforcement point) dan implement verifier minimal (`CX-05`)
 - [ ] Jalankan `pilot-contract` dan `pilot-integration` CI untuk subset endpoint pilot
 - [ ] Jalankan UAT pilot + rollback drill evidence
@@ -193,13 +194,16 @@
 | 2026-02-25 | Template evidence UAT pilot + rollback drill disiapkan | PASS | `docs/templates/PHASE6_PILOT_UAT_EVIDENCE_TEMPLATE.md`, `docs/templates/PHASE6_PILOT_ROLLBACK_DRILL_TEMPLATE.md` |
 | 2026-02-25 | Quality gate docs + runbook + status docs disinkronkan untuk Wave A | PASS | `docs/CI_QUALITY_GATES.md`, `docs/DEV_ENV_RUNBOOK.md`, `docs/REVAMP_PLAN.md`, `docs/BASELINE_ISSUES.md`, `docs/FRAMEWORK_MIGRATION_STRATEGY.md`, `docs/PHASE6_GO_NO_GO.md` |
 
-### Wave B Evidence (Phase 6 - Stage 1)
+### Wave B Evidence (Phase 6 - Stage 1/2 + Sibling Bind-Mount Hook)
 | Date | Artifact/Action | Result | Evidence |
 |---|---|---|---|
 | 2026-02-25 | Inventory endpoint pilot `auction` v1 (path-by-path + contract ringkas + auth assumption) + draft auth/integration matrix | PASS (dokumen baseline scope pilot tersedia) | `docs/PHASE6_DECISION_RECORDS.md`, `docs/CI_QUALITY_GATES.md` |
 | 2026-02-25 | Keputusan skeleton app pilot placement untuk proof dev (`DR-P6-005`) | PASS (provisional Wave B Stage 1) | `docs/PHASE6_DECISION_RECORDS.md` |
 | 2026-02-25 | Coexistence runtime Stage 1 (`pilot-app` + shadow route + helper smoke) diimplementasikan | PASS | `docker-compose.yml`, `docker-compose.php82.yml`, `docker/nginx/default.conf`, `pilot-app/public/index.php`, `tools/dev-env.ps1` |
 | 2026-02-25 | Coexistence smoke `CX-01` + `CX-02` dieksekusi | PASS | `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`, `docs/DEV_ENV_RUNBOOK.md` |
+| 2026-02-26 | Route toggle subset `get_barang/get_peserta` + rollback switch (Nginx include active + reload) diimplementasikan | PASS (Wave B Stage 2 scoped routing) | `docker-compose.yml`, `docker/nginx/default.conf`, `docker/nginx/includes/pilot-auction-subset-toggle.active.conf`, `docker/nginx/templates/pilot-auction-subset-toggle.*.conf`, `tools/dev-env.ps1`, `pilot-app/public/index.php` |
+| 2026-02-26 | Validasi `CX-03` + `CX-04` (toggle ON/OFF + marker verification) dieksekusi | PASS (routing marker); CI3 sample HTTP `500` saat OFF karena gap seed DB dev | `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`, `docs/DEV_ENV_RUNBOOK.md`, `tools/dev-env.ps1` |
+| 2026-02-26 | Hook sibling bind mount untuk skeleton Laravel final (`EPROC_PILOT_APP_BIND_PATH`) diimplementasikan + verifikasi post-change | PASS (hook ready, fallback placeholder tetap stabil; sample override `docker compose config` resolve path sibling; repo sibling final belum tersedia di mesin ini) | `docker-compose.yml`, `.env`, `.env.example`, `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`, `docs/DEV_ENV_RUNBOOK.md`, `docs/PHASE6_GO_NO_GO.md` |
 
 ---
 
@@ -264,6 +268,36 @@ Next:
 Blockers:
 - Auth bridge lintas aplikasi belum diimplementasikan; endpoint `get_user_update` masih sebatas draft contract/integration matrix.
 - Route toggle subset endpoint bisnis `/auction/*` belum ada (Stage 2 pending).
+
+Date: February 26, 2026
+Scope: Phase 6 Wave B - Pilot Readiness Implementation (Stage 2 route toggle + rollback switch)
+Completed:
+- Menambahkan route toggle subset `auction/admin/json_provider/{get_barang,get_peserta}` via include file aktif Nginx (`legacy` vs `pilot`) dan marker header ON/OFF (`X-App-Source`, `X-Coexistence-Route`, `X-Coexistence-Toggle`).
+- Menambahkan helper `tools/dev-env.ps1` untuk `toggle-auction-subset` (status/on/off + `nginx -t` + `nginx -s reload`) dan `coexistence-stage2` (validasi `CX-03`, `CX-04`).
+- Menambahkan stub endpoint pilot `get_barang` / `get_peserta` di `pilot-app/public/index.php` untuk proof route split dev.
+- Menjalankan evidence `CX-03/CX-04`: toggle `ON` -> pilot marker + HTTP 200; toggle `OFF` -> CI3 marker kembali tanpa full restart stack (Nginx reload only).
+- Mencatat observasi CI3 sample `id_lelang=1` menghasilkan `HTTP 500` karena tabel `ms_procurement_barang` / `ms_procurement_peserta` tidak tersedia pada DB dev saat ini (routing rollback tetap tervalidasi via marker).
+Next:
+- Kunci contract auth bridge (enforcement point + `401/403`) lalu implement verifier minimal + integration tests untuk `CX-05`.
+- Bekukan sample payload nested (`get_initial_data`, `get_chart_update`) untuk `pilot-contract`.
+- Tambah job CI `pilot-contract` / `pilot-integration` + evidence checks.
+Blockers:
+- Auth bridge lintas aplikasi belum diimplementasikan (`CX-05` pending).
+- Seed data dev untuk endpoint `get_barang/get_peserta` belum representatif (CI3 sample `id_lelang=1` -> DB error), sehingga rollback validation saat ini marker-based.
+
+Date: February 26, 2026
+Scope: Phase 6 Wave B - Pilot Readiness Implementation (Sibling bind-mount hook for final Laravel skeleton)
+Completed:
+- Inspeksi state compose/Nginx/tooling coexistence dev dan verifikasi tidak ada repo sibling Laravel final yang tersedia di `C:\Users\Revanza-Home\source\repos` saat sesi ini.
+- `pilot-app` bind mount di `docker-compose.yml` diubah menjadi bind long-form dengan source env-driven `EPROC_PILOT_APP_BIND_PATH` (fallback `./pilot-app`) agar repo sibling bisa dipasang tanpa ubah route/toggle Stage 2.
+- Menambahkan default env config + dokumentasi runbook untuk integrasi repo sibling Laravel final dan rollback ke placeholder lokal.
+- Menjalankan verifikasi post-change: `docker compose config` (default + PHP 8.2 override), `start -NoBuild`, `coexistence` (`CX-01`,`CX-02`), `coexistence-stage2` (`CX-03`,`CX-04`), dan `stop`; semua PASS sesuai caveat `CX-04` marker-based.
+Next:
+- Clone/sediakan repo Laravel final sibling, set `EPROC_PILOT_APP_BIND_PATH`, lalu ulangi smoke `CX-01` s.d. `CX-04` terhadap skeleton final.
+- Lanjut ke auth bridge contract + verifier minimal (`CX-05`) dan integration tests.
+Blockers:
+- Repo Laravel final sibling belum tersedia / path final belum diketahui, sehingga hook bind mount belum bisa dihubungkan ke skeleton final aktual.
+- `CX-04` rollback CI3 masih marker-based karena tabel dev `ms_procurement_barang` / `ms_procurement_peserta` belum ada (accepted untuk tahap ini).
 
 Date: February 26, 2026
 Scope: Phase 5 - Medium-Term Refactor Track

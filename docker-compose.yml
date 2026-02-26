@@ -107,6 +107,14 @@ services:
       - type: bind
         source: ${EPROC_PILOT_APP_BIND_PATH:-./pilot-app}
         target: /var/www/html/pilot-app
+    environment:
+      APP_ENV: ${EPROC_APP_ENV:-development}
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: ${EPROC_DB_DATABASE:-eproc}
+      DB_USERNAME: ${EPROC_DB_USERNAME:-eproc_app}
+      DB_PASSWORD: ${EPROC_DB_PASSWORD:-root}
     networks:
       - eproc-network
     healthcheck:

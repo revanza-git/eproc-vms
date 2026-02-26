@@ -182,6 +182,7 @@
 - [x] Validasi `CX-01` + `CX-02` (legacy route + pilot shadow route)
 - [x] Implement route toggle subset endpoint bisnis `/auction/*` + rollback switch (`CX-03`, `CX-04`)
 - [x] Siapkan hook integrasi skeleton Laravel final via sibling bind mount (`EPROC_PILOT_APP_BIND_PATH`) tanpa merusak Stage 2 toggle
+- [x] Implement endpoint pilot subset `auction` read-only nyata di Laravel (`get_barang`, `get_peserta`) tanpa merusak coexistence Stage 1/2
 - [ ] Kunci contract auth bridge (error code + enforcement point) dan implement verifier minimal (`CX-05`)
 - [ ] Jalankan `pilot-contract` dan `pilot-integration` CI untuk subset endpoint pilot
 - [ ] Jalankan UAT pilot + rollback drill evidence
@@ -207,6 +208,8 @@
 | 2026-02-26 | Re-validasi pasca-merge hook sibling bind mount (`33139dc`) dengan fallback `EPROC_PILOT_APP_BIND_PATH=./pilot-app` | PASS (Stage 1/2 tetap stabil: `CX-01`..`CX-04`; rollback marker CI3 tetap acceptable walau HTTP `500`) | `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`, `docs/DEV_ENV_RUNBOOK.md`, `docs/PHASE6_GO_NO_GO.md` |
 | 2026-02-26 | Attempt integrasi skeleton Laravel final ke path in-project `./pilot-app` + smoke re-check baseline | PARTIAL (integrasi final BLOCKED; smoke PASS) | `pilot-app/public/index.php`, `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`, `docs/DEV_ENV_RUNBOOK.md`, `docs/PHASE6_GO_NO_GO.md` |
 | 2026-02-26 | Integrasi skeleton Laravel final-compatible ke path in-project `./pilot-app` + smoke re-check baseline | PASS (next-step selesai; coexistence tetap stabil) | `pilot-app/artisan`, `pilot-app/composer.json`, `pilot-app/routes/web.php`, `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`, `docs/DEV_ENV_RUNBOOK.md`, `docs/PHASE6_GO_NO_GO.md` |
+| 2026-02-26 | Implement endpoint pilot subset `auction` read-only di Laravel (`get_barang/get_peserta`) + revalidasi coexistence | PASS (query path implemented; dev table gap handled gracefully) | `pilot-app/routes/web.php`, `pilot-app/app/Http/Controllers/PilotAuctionController.php`, `pilot-app/app/Services/Auction/JsonProviderReadOnlyService.php`, `docker-compose.yml`, `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`, `docs/DEV_ENV_RUNBOOK.md`, `docs/PHASE6_GO_NO_GO.md` |
+| 2026-02-26 | Implement endpoint pilot nested read-only `auction` (`get_initial_data/get_chart_update`) + verifikasi shadow route aman | PARTIAL (query path + graceful fallback implemented; CI3 runtime compare nested blocked oleh gap schema dev) | `pilot-app/routes/web.php`, `pilot-app/app/Http/Controllers/PilotAuctionController.php`, `pilot-app/app/Services/Auction/JsonProviderReadOnlyService.php`, `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`, `docs/DEV_ENV_RUNBOOK.md`, `docs/PHASE6_GO_NO_GO.md` |
 
 ---
 
@@ -342,6 +345,39 @@ Next:
 - Lanjut auth bridge minimal (`CX-05`) + integration/contract test automation.
 Blockers:
 - `CX-04` rollback CI3 tetap marker-based (HTTP `500` sample dev karena tabel `ms_procurement_barang` / `ms_procurement_peserta` belum ada), dan ini tetap accepted; tidak menambah requirement seed data.
+
+Date: February 26, 2026
+Scope: Phase 6 Wave B - Laravel read-only subset implementation (`get_barang`, `get_peserta`) on `./pilot-app`
+Completed:
+- Meng-upgrade endpoint pilot `auction/admin/json_provider/get_barang/{id}` dan `.../get_peserta/{id}` dari stub hardcoded menjadi implementasi Laravel read-only (controller + service + query builder) sambil mempertahankan marker `X-App-Source: pilot-skeleton` dan endpoint `/_pilot/auction/health`.
+- Menambahkan wiring env DB pada service `pilot-app` di `docker-compose.yml` (`DB_HOST=db`, `DB_DATABASE=eproc`, dll.) tanpa mengubah hook `EPROC_PILOT_APP_BIND_PATH` atau mekanisme toggle/rollback Nginx Stage 1/2.
+- Menjalankan verifikasi evidence: `docker compose -f docker-compose.yml config` PASS; `pwsh ./tools/dev-env.ps1 -Action coexistence -PhpRuntime 7.4` PASS (`CX-01`,`CX-02`); `pwsh ./tools/dev-env.ps1 -Action coexistence-stage2 -PhpRuntime 7.4 -AuctionLelangId 1` PASS (`CX-03`,`CX-04`, dengan `CX-04` HTTP `500` CI3 tetap accepted).
+- Header dump manual saat toggle `ON` menunjukkan marker pilot tetap muncul pada `/_pilot/auction/health` dan `/auction/admin/json_provider/get_barang/1`; endpoint pilot `get_barang` juga menampilkan header degradasi (`X-Pilot-Data-Source: degraded-empty`, `X-Pilot-Data-Status: db-unavailable-or-schema-mismatch`, `SQLSTATE 42S02/1146`).
+- Body sample pilot untuk `get_barang/1` dan `get_peserta/1` saat toggle `ON` = `[]`; log Laravel + `SHOW TABLES` mengonfirmasi tabel dev `eproc.ms_procurement_barang` / `eproc.ms_procurement_peserta` belum tersedia (graceful fallback aktif, tidak menambah requirement seed data).
+Next:
+- Lanjut endpoint pilot berikutnya (mis. `get_initial_data` / `get_chart_update`) setelah schema nested dibekukan, sambil mempertahankan marker/toggle compatibility.
+- Lanjut auth bridge minimal (`CX-05`) + automation `pilot-contract` / `pilot-integration`.
+Blockers:
+- Data sample dev untuk tabel `eproc.ms_procurement_barang` / `eproc.ms_procurement_peserta` tidak tersedia, sehingga endpoint pilot read-only saat ini berjalan dalam mode graceful degraded-empty (`[]`) meskipun route split/coexistence tetap tervalidasi.
+- `CX-04` rollback CI3 tetap marker-based (HTTP `500` sample dev), dan ini tetap accepted; tidak menambah requirement seed data.
+
+Date: February 26, 2026
+Scope: Phase 6 Wave B - Laravel nested read-only endpoint implementation (`get_initial_data`, `get_chart_update`) on `./pilot-app`
+Completed:
+- Menginspeksi query path CI3 untuk `get_initial_data` / `get_chart_update` pada `vms/app/application/modules/auction/controllers/admin/Json_provider.php` dan `.../models/Json_provider_model.php`, lalu mengimplementasikan padanannya di Laravel (`JsonProviderReadOnlyService`) dengan query builder read-only (komposisi payload nested, series peserta, latest chart update).
+- Menambahkan endpoint controller + route Laravel untuk path direct `auction/admin/json_provider/get_initial_data/{idLelang}/{idBarang}` dan `.../get_chart_update/{idLelang}`, serta shadow path aman `/_pilot/auction/admin/json_provider/...` untuk verifikasi tanpa memperluas toggle Stage 2 existing.
+- Menambahkan graceful fallback object-shape minimum + header degradasi (`X-Pilot-Data-*`, SQLSTATE/error code) untuk mismatch DB/schema dev, sambil mempertahankan marker `X-App-Source: pilot-skeleton` dan endpoint `/_pilot/auction/health`.
+- Menjalankan verifikasi evidence: `docker compose -f docker-compose.yml config` PASS; `pwsh ./tools/dev-env.ps1 -Action coexistence -PhpRuntime 7.4` PASS (`CX-01`,`CX-02`); `pwsh ./tools/dev-env.ps1 -Action coexistence-stage2 -PhpRuntime 7.4 -AuctionLelangId 1` PASS (`CX-03`,`CX-04`, dengan `CX-04` HTTP `500` CI3 tetap accepted).
+- Header dump manual saat toggle `ON` mengonfirmasi marker pilot tetap muncul pada `/_pilot/auction/health` dan `/auction/admin/json_provider/get_barang/1`; verifikasi shadow endpoint nested (`/_pilot/.../get_initial_data/1/1`, `/_pilot/.../get_chart_update/1`) mengembalikan `HTTP 200` dengan fallback object-shape minimum.
+- Shape nested minimum dibekukan dari CI3 query path + hasil runtime pilot fallback: `get_initial_data` root `{id,name,subtitle,data,last,time}` dan `get_chart_update` root `{data,time}`; detail dicatat di `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`.
+Next:
+- Ambil sample payload anonymized CI3 runtime untuk nested endpoint saat tabel/data dev tersedia, lalu finalize contract snapshot `pilot-contract`.
+- Lanjut endpoint pilot berikutnya di luar subset saat ini sambil mempertahankan shadow route/toggle compatibility.
+- Lanjut auth bridge minimal (`CX-05`) + automation `pilot-contract` / `pilot-integration`.
+Blockers:
+- DB dev masih missing tabel `eproc.ms_procurement_barang` (terbukti dari log Laravel `42S02/1146` untuk query nested), sehingga pilot nested endpoint berjalan dalam mode graceful fallback dan compare body CI3 vs pilot penuh belum bisa dilakukan.
+- CI3 nested sample (`get_initial_data/1/1`, `get_chart_update/1`) saat toggle `OFF` terobservasi `HTTP 500` di dev; blocker dicatat eksplisit dan tidak menambah requirement seed data.
+- `CX-04` rollback CI3 tetap marker-based (HTTP `500` sample dev), dan ini tetap accepted; tidak menambah requirement seed data.
 
 Date: February 26, 2026
 Scope: Phase 5 - Medium-Term Refactor Track

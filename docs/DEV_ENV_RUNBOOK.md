@@ -1,7 +1,7 @@
 # Dev Environment Runbook (Phase 1)
 
 ## Scope
-Runbook ini untuk operasional harian environment development CI3 (`vms`, `intra/main`, `intra/pengadaan`) berbasis Docker Compose, termasuk proof coexistence Phase 6 Wave B (`pilot-app` placeholder dev).
+Runbook ini untuk operasional harian environment development CI3 (`vms`, `intra/main`, `intra/pengadaan`) berbasis Docker Compose, termasuk proof coexistence Phase 6 Wave B (`pilot-app` Laravel skeleton dev).
 
 Dual-runtime tersedia:
 - Default legacy: `PHP 7.4`
@@ -100,15 +100,15 @@ Referensi lengkap quality gate + branch protection:
 
 ## Phase 6 Coexistence Baseline (Wave A -> Wave B Stage 1/2 + Sibling Bind-Mount Hook)
 
-Status saat ini: `Stage 2 implemented untuk scoped route toggle (get_barang/get_peserta) + rollback switch via nginx reload; ./pilot-app sudah berisi skeleton Laravel (stub kompatibel smoke); EPROC_PILOT_APP_BIND_PATH hook tetap ready/opsional; CX-05 auth bridge pending`
+Status saat ini: `Stage 2 implemented untuk scoped route toggle (get_barang/get_peserta) + rollback switch via nginx reload; ./pilot-app sudah berisi skeleton Laravel dengan endpoint subset read-only query-based + nested endpoint read-only berikutnya (get_initial_data/get_chart_update) yang diverifikasi via shadow path, dengan graceful degraded fallback saat tabel dev tidak tersedia; EPROC_PILOT_APP_BIND_PATH hook tetap ready/opsional; CX-05 auth bridge pending`
 
 Wave A menyiapkan baseline desain/checklist/test plan. Wave B Stage 1/2 sudah menambahkan proof runtime coexistence dev di repo ini:
-- service `pilot-app` pada compose (dev pilot; saat ini skeleton Laravel in-project untuk health/shadow + subset stub),
+- service `pilot-app` pada compose (dev pilot; saat ini skeleton Laravel in-project untuk health/shadow + subset read-only `get_barang/get_peserta`),
 - bind mount path `pilot-app` configurable via `.env` (`EPROC_PILOT_APP_BIND_PATH`, default `./pilot-app`) untuk integrasi repo sibling Laravel final,
 - route shadow `/_pilot/auction/*` di Nginx (`vms.localhost`),
 - toggle subset endpoint bisnis `auction/admin/json_provider/{get_barang|get_peserta}` via include file Nginx aktif,
 - action `coexistence` (`CX-01`,`CX-02`) dan `coexistence-stage2` (`CX-03`,`CX-04`) di `tools/dev-env.ps1`.
-- `./pilot-app` sudah diganti dari placeholder ke skeleton Laravel 8 (kompatibel PHP 7.4) dan tetap mempertahankan marker header `X-App-Source: pilot-skeleton`.
+- `./pilot-app` sudah diganti dari placeholder ke skeleton Laravel 8 (kompatibel PHP 7.4), marker header `X-App-Source: pilot-skeleton` tetap dipertahankan, endpoint subset `get_barang/get_peserta` sudah memakai query builder read-only dengan fallback `[]` + header degradasi jika DB/schema dev mismatch, dan endpoint nested `get_initial_data/get_chart_update` sudah memiliki implementasi query-based + fallback object-shape (diverifikasi via shadow path, belum ditambahkan ke toggle Stage 2).
 
 Referensi detail status, checklist, dan evidence:
 - `docs/PHASE6_COEXISTENCE_DEV_BASELINE.md`
@@ -150,12 +150,24 @@ Referensi detail status, checklist, dan evidence:
    pwsh ./tools/dev-env.ps1 -Action toggle-auction-subset -ToggleMode on -PhpRuntime 7.4
    curl.exe -sS -D - -o NUL -H "Host: vms.localhost" http://127.0.0.1:8080/auction/admin/json_provider/get_barang/1
    ```
-5. (Opsional) Toggle `OFF` manual + cek marker rollback CI3:
+   - Endpoint pilot read-only tetap harus mengembalikan marker `X-App-Source: pilot-skeleton`.
+   - Jika tabel dev `auction` belum tersedia, expected tambahan header: `X-Pilot-Data-Source: degraded-empty` dan `X-Pilot-Data-Status: db-unavailable-or-schema-mismatch` (body tetap `[]` untuk kompatibilitas smoke/consumer minimum).
+5. (Opsional, aman tanpa memperluas toggle Stage 2) Verifikasi endpoint nested pilot via shadow path:
+   ```powershell
+   curl.exe -sS -D - -H "Host: vms.localhost" http://127.0.0.1:8080/_pilot/auction/admin/json_provider/get_initial_data/1/1
+   curl.exe -sS -D - -H "Host: vms.localhost" http://127.0.0.1:8080/_pilot/auction/admin/json_provider/get_chart_update/1
+   ```
+   - Expected marker pilot tetap ada: `X-App-Source: pilot-skeleton`, `X-Pilot-Endpoint`, `X-Pilot-Route-Mode: shadow-route`.
+   - Jika DB/schema dev mismatch, expected `HTTP 200` dengan header degradasi `X-Pilot-Data-*` dan body fallback object-shape minimum:
+     - `get_initial_data`: `{id,name,subtitle,data,last,time}`
+     - `get_chart_update`: `{data,time}`
+   - Jalur shadow ini dipakai untuk verifikasi implementasi nested tanpa mengubah scoped toggle Stage 2 existing (`get_barang/get_peserta` tetap satu-satunya route bisnis yang ditoggle).
+6. (Opsional) Toggle `OFF` manual + cek marker rollback CI3:
    ```powershell
    pwsh ./tools/dev-env.ps1 -Action toggle-auction-subset -ToggleMode off -PhpRuntime 7.4
    curl.exe -sS -D - -o NUL -H "Host: vms.localhost" http://127.0.0.1:8080/auction/admin/json_provider/get_barang/1
    ```
-6. Stop environment (opsional setelah verifikasi):
+7. Stop environment (opsional setelah verifikasi):
    ```powershell
    pwsh ./tools/dev-env.ps1 -Action stop -PhpRuntime 7.4
    ```
@@ -165,9 +177,9 @@ Gunakan langkah ini untuk maintain/replace source pilot Laravel. Default dev pat
 
 Keputusan terbaru Wave B: path dev utama untuk pilot adalah in-project `./pilot-app`. Hook `EPROC_PILOT_APP_BIND_PATH` tetap dipertahankan sebagai opsi jika nanti dipindah ke repo terpisah.
 
-Status terbaru (2026-02-26, next-step Wave B selesai): `./pilot-app` berhasil diganti in-place menjadi skeleton Laravel 8 (kompatibel PHP 7.4) dengan route stub kompatibel (`/_pilot/auction/health`, `get_barang`, `get_peserta`) dan marker header `X-App-Source: pilot-skeleton` tetap muncul.
+Status terbaru (2026-02-26, next-step Wave B nested endpoint step selesai parsial): `./pilot-app` berhasil diganti in-place menjadi skeleton Laravel 8 (kompatibel PHP 7.4) dengan route kompatibel (`/_pilot/auction/health`, `get_barang`, `get_peserta`) dan kini endpoint nested `get_initial_data`/`get_chart_update` juga tersedia pada route direct + shadow pilot dengan marker header `X-App-Source: pilot-skeleton` tetap muncul.
 Hook `EPROC_PILOT_APP_BIND_PATH` tetap dipertahankan (opsional jika nanti pindah repo sibling); workflow route shadow, scoped toggle subset, dan rollback cepat `nginx reload` tidak berubah.
-Ringkasan evidence pasca-integrasi (2026-02-26): `docker compose -f docker-compose.yml config` PASS, `pwsh ./tools/dev-env.ps1 -Action coexistence -PhpRuntime 7.4` PASS (`CX-01`,`CX-02`), `pwsh ./tools/dev-env.ps1 -Action coexistence-stage2 -PhpRuntime 7.4 -AuctionLelangId 1` PASS (`CX-03`,`CX-04`; `CX-04` marker rollback CI3 PASS dengan HTTP `500` tetap accepted), dan `curl -D -` menunjukkan marker pilot (`X-App-Source`, `X-Coexistence-Route`, `X-Coexistence-Toggle`) saat toggle `ON`.
+Ringkasan evidence pasca-step nested (2026-02-26): `docker compose -f docker-compose.yml config` PASS, `pwsh ./tools/dev-env.ps1 -Action coexistence -PhpRuntime 7.4` PASS (`CX-01`,`CX-02`), `pwsh ./tools/dev-env.ps1 -Action coexistence-stage2 -PhpRuntime 7.4 -AuctionLelangId 1` PASS (`CX-03`,`CX-04`; `CX-04` marker rollback CI3 PASS dengan HTTP `500` tetap accepted), header dump manual saat toggle `ON` menunjukkan marker pilot tetap muncul pada `/_pilot/auction/health` dan `/auction/admin/json_provider/get_barang/1`, serta verifikasi shadow path `/_pilot/auction/admin/json_provider/get_initial_data/1/1` dan `.../get_chart_update/1` mengembalikan `HTTP 200` dengan header degradasi `X-Pilot-Data-*` + object-shape minimum saat DB/schema dev mismatch (`42S02/1146`).
 
 1. Pilih source pilot Laravel yang akan dipakai.
    - Default saat ini: gunakan in-project `./pilot-app` (sudah terisi skeleton Laravel).
@@ -249,7 +261,7 @@ Healthcheck tersedia untuk:
 - `webserver` (Nginx route check `vms`)
 - `vms-app` (php-fpm syntax check)
 - `intra-app` (php-fpm syntax check)
-- `pilot-app` (placeholder php-fpm syntax check)
+- `pilot-app` (Laravel skeleton php-fpm syntax check)
 - `db` (MariaDB `mysqladmin ping`)
 - `redis` (`redis-cli ping`)
 
@@ -288,6 +300,17 @@ Healthcheck tersedia untuk:
     ```powershell
     docker compose restart webserver
     ```
+- Toggle `ON` (pilot) mengembalikan `[]` dengan header `X-Pilot-Data-Source: degraded-empty`
+  - Ini menandakan endpoint pilot Laravel sudah mencoba query read-only, tetapi DB/schema dev tidak cocok atau tabel belum tersedia (contoh sesi baseline: `ms_procurement_barang` / `ms_procurement_peserta` tidak ada).
+  - Marker coexistence yang tetap harus terlihat:
+    - `X-App-Source: pilot-skeleton`
+    - `X-Coexistence-Route: pilot-business-toggle`
+    - `X-Coexistence-Toggle: auction-json-provider=on`
+  - Cek detail warning (opsional, evidence blocker):
+    ```powershell
+    Get-Content .\pilot-app\storage\logs\laravel.log -Tail 80
+    ```
+  - Jangan menambah requirement seed data untuk `CX-03/CX-04`; cukup catat blocker eksplisit bila perlu.
 - `pilot-app` gagal start setelah mengubah `EPROC_PILOT_APP_BIND_PATH`
   - Penyebab umum: path sibling repo belum ada / typo path absolut.
   - Validasi path di host:
